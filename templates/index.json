@@ -1,0 +1,266 @@
+{
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "block_1": {
+          "type": "announcement",
+          "settings": {
+            "text": "🎉 Free shipping on orders over $59 | Shop Now",
+            "text_alignment": "center",
+            "color_scheme": "accent-1",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["block_1"],
+      "settings": {
+        "color_scheme": "accent-1"
+      }
+    },
+    "hero_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover Your Signature Scent",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Fragrances",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["heading", "button"],
+      "settings": {
+        "image": "shopify://shop_images/vanity-table-with-perfume.jpg",
+        "image_overlay_opacity": 30,
+        "image_height": "large",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "stack_images_on_mobile": true
+      }
+    },
+    "featured_categories": {
+      "type": "featured-categories",
+      "blocks": {
+        "category_1": {
+          "type": "category",
+          "settings": {
+            "title": "Men's Fragrances",
+            "description": "Bold and sophisticated fragrances for men"
+          }
+        },
+        "category_2": {
+          "type": "category",
+          "settings": {
+            "title": "Women's Fragrances",
+            "description": "Elegant and luxurious fragrances for women"
+          }
+        },
+        "category_3": {
+          "type": "category",
+          "settings": {
+            "title": "Unisex",
+            "description": "Versatile fragrances for everyone"
+          }
+        },
+        "category_4": {
+          "type": "category",
+          "settings": {
+            "title": "Gift Sets",
+            "description": "Perfect gifts for fragrance lovers"
+          }
+        }
+      },
+      "block_order": ["category_1", "category_2", "category_3", "category_4"],
+      "settings": {
+        "title": "Shop by Category"
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Best Sellers",
+        "heading_size": "h2",
+        "show_description": false,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "show_view_all": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "new_arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "New Arrivals",
+        "heading_size": "h2",
+        "show_description": false,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "show_view_all": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "brands": {
+      "type": "brand-showcase",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Dumont"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Lattafa"
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Rasasi"
+          }
+        },
+        "brand_4": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Ahmed Al Maghribi"
+          }
+        }
+      },
+      "block_order": ["brand_1", "brand_2", "brand_3", "brand_4"],
+      "settings": {
+        "title": "Top Perfume & Cologne Brands",
+        "subtitle": "Shop from the world's finest fragrance brands",
+        "show_all_link": true
+      }
+    },
+    "trust_section": {
+      "type": "trust-badges",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "title": "100% Authentic",
+            "description": "Guaranteed authentic products",
+            "icon_type": "emoji",
+            "icon_emoji": "✓"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "title": "Free Shipping",
+            "description": "On orders over $59",
+            "icon_type": "emoji",
+            "icon_emoji": "🚚"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "title": "Fast Delivery",
+            "description": "Quick and secure shipping",
+            "icon_type": "emoji",
+            "icon_emoji": "⚡"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "title": "Satisfaction",
+            "description": "30-day money back guarantee",
+            "icon_type": "emoji",
+            "icon_emoji": "❤️"
+          }
+        }
+      },
+      "block_order": ["badge_1", "badge_2", "badge_3", "badge_4"]
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "The quality of the perfumes is exceptional! Excellent service and fast shipping. Highly recommended!",
+            "author_name": "Sarah M.",
+            "author_location": "California"
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "Best fragrance store ever! The prices are unbeatable and everything is 100% authentic. Great customer service!",
+            "author_name": "James T.",
+            "author_location": "New York"
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "My go-to place for all my perfume needs. Customer service is outstanding and shipping is incredibly fast!",
+            "author_name": "Emma L.",
+            "author_location": "Texas"
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"],
+      "settings": {
+        "title": "What People Are Saying About Us",
+        "show_rating": true,
+        "rating": "4.8 stars",
+        "review_count": "21,000+"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "hero_banner",
+    "featured_categories",
+    "best_sellers",
+    "new_arrivals",
+    "brands",
+    "trust_section",
+    "testimonials",
+    "newsletter"
+  ]
+}

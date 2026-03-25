@@ -1,0 +1,193 @@
+{%- style -%}
+  .trust-badges {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .trust-badges .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .badges-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  .badge-item {
+    text-align: center;
+  }
+  
+  .badge-icon {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .badge-icon.emoji {
+    font-size: 48px;
+  }
+  
+  .badge-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  .badge-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+  }
+  
+  .badge-item p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .badges-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .badges-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .badge-item h3 {
+      font-size: 14px;
+    }
+
+    .badge-item p {
+      font-size: 12px;
+    }
+
+    .trust-badges {
+      padding: 40px 15px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="trust-badges">
+  <div class="container">
+    <div class="badges-grid">
+      {% for block in section.blocks %}
+        <div class="badge-item">
+          {% if block.settings.icon_type == 'emoji' %}
+            <div class="badge-icon emoji">{{ block.settings.icon_emoji }}</div>
+          {% elsif block.settings.icon_image %}
+            <div class="badge-icon">
+              {{ block.settings.icon_image | image_url: width: 80 | image_tag: alt: block.settings.title }}
+            </div>
+          {% endif %}
+          
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Badges",
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Badge Title",
+          "default": "100% Authentic"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "All products guaranteed authentic"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            {
+              "value": "emoji",
+              "label": "Emoji"
+            },
+            {
+              "value": "image",
+              "label": "Custom Image"
+            }
+          ],
+          "default": "emoji"
+        },
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Emoji Icon",
+          "default": "✓"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "title": "100% Authentic",
+            "description": "Guaranteed authentic products",
+            "icon_emoji": "✓"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Free Shipping",
+            "description": "On orders over $59",
+            "icon_emoji": "🚚"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Fast Delivery",
+            "description": "Quick and secure shipping",
+            "icon_emoji": "⚡"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Satisfaction",
+            "description": "30-day money back guarantee",
+            "icon_emoji": "❤️"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

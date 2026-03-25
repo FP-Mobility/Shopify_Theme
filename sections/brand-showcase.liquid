@@ -1,0 +1,236 @@
+{%- style -%}
+  .brand-showcase {
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+  
+  .brand-showcase .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+  
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    margin: 0 auto 40px;
+  }
+  
+  .brand-item {
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+  }
+  
+  .brand-item:hover {
+    border-color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .brand-logo {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .brand-logo img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+  
+  .brand-name {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .view-all {
+    text-align: center;
+  }
+
+  .brand-showcase .button {
+    display: inline-block;
+    background-color: #f5f5f5;
+    color: #000;
+    padding: 12px 32px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #e5e5e5;
+    font-weight: 600;
+  }
+
+  .brand-showcase .button:hover {
+    background-color: #e5e5e5;
+  }
+  
+  @media (max-width: 768px) {
+    .brands-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section-title {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .brands-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .brand-item {
+      padding: 15px;
+    }
+
+    .brand-logo {
+      height: 60px;
+    }
+
+    .brand-showcase {
+      padding: 40px 15px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="brand-showcase">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    {% if section.settings.subtitle %}
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+    
+    <div class="brands-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.brand_collection.url }}" class="brand-item">
+          {% if block.settings.brand_logo %}
+            <div class="brand-logo">
+              {{ block.settings.brand_logo | image_url: width: 200 | image_tag: alt: block.settings.brand_name }}
+            </div>
+          {% endif %}
+          <p class="brand-name">{{ block.settings.brand_name }}</p>
+        </a>
+      {% endfor %}
+    </div>
+    
+    {% if section.settings.show_all_link %}
+      <div class="view-all">
+        <a href="{{ section.settings.all_brands_page.url }}" class="button">
+          View All Brands
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Top Perfume & Cologne Brands"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Shop from the world's finest fragrance brands"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_link",
+      "label": "Show 'View All Brands' Button",
+      "default": true
+    },
+    {
+      "type": "page",
+      "id": "all_brands_page",
+      "label": "All Brands Page"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand Logo"
+        },
+        {
+          "type": "collection",
+          "id": "brand_collection",
+          "label": "Brand Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Showcase",
+      "blocks": [
+        {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 1"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 2"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 3"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Brand 4"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,218 @@
+{%- style -%}
+  .featured-categories {
+    padding: 60px 20px;
+    background-color: #fafafa;
+  }
+
+  .featured-categories .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 0 auto;
+  }
+  
+  .category-card {
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .category-image {
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    height: 300px;
+  }
+  
+  .category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover .category-image img {
+    transform: scale(1.05);
+  }
+  
+  .category-content h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .category-content p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .featured-categories .button {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    margin-top: 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    border: 1px solid #000;
+  }
+  
+  .featured-categories .button:hover {
+    background-color: #333;
+    border-color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-title {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .categories-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-image {
+      height: 250px;
+    }
+
+    .featured-categories {
+      padding: 40px 15px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="featured-categories">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.title }}</h2>
+    
+    <div class="categories-grid">
+      {% for block in section.blocks %}
+        <div class="category-card">
+          {% if block.settings.image %}
+            <div class="category-image">
+              {{ block.settings.image | image_url: width: 500 | image_tag: alt: block.settings.title }}
+            </div>
+          {% else %}
+            <div class="category-image" style="background-color: #e5e5e5; display: flex; align-items: center; justify-content: center;">
+              <span style="color: #999;">No image</span>
+            </div>
+          {% endif %}
+          
+          <div class="category-content">
+            <h3>{{ block.settings.title }}</h3>
+            {% if block.settings.description %}
+              <p>{{ block.settings.description }}</p>
+            {% endif %}
+            <a href="{{ block.settings.collection.url }}" class="button">
+              Shop {{ block.settings.title }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop by Category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Name",
+          "default": "Men's Fragrances"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Explore bold and sophisticated fragrances"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Category Image"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Men's Fragrances",
+            "description": "Bold and sophisticated fragrances for men"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Women's Fragrances",
+            "description": "Elegant and luxurious fragrances for women"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Unisex",
+            "description": "Versatile fragrances for everyone"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Gift Sets",
+            "description": "Perfect gifts for fragrance lovers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

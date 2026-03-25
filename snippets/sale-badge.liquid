@@ -1,0 +1,27 @@
+{%- style -%}
+  .sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+  }
+  
+  .discount {
+    background-color: #d63384;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+    min-width: 50px;
+  }
+{%- endstyle -%}
+
+{% if product.compare_at_price > product.price %}
+  <div class="sale-badge">
+    {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round %}
+    <span class="discount">{{ discount_percentage }}% OFF</span>
+  </div>
+{% endif %}

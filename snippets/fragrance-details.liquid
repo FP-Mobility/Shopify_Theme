@@ -1,0 +1,101 @@
+{%- style -%}
+  .fragrance-details {
+    margin: 30px 0;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .details-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-item label {
+    font-weight: 600;
+    color: #333;
+    font-size: 13px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .detail-item span {
+    color: #666;
+    font-size: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fragrance-details {
+      margin: 20px 0;
+      padding: 20px 0;
+    }
+  }
+{%- endstyle -%}
+
+{% if product.metafields.custom.fragrance_type or product.metafields.custom.fragrance_notes or product.metafields.custom.longevity or product.metafields.custom.best_for or product.metafields.custom.occasion or product.metafields.custom.season %}
+  <div class="fragrance-details">
+    <h3 class="details-title">Fragrance Details</h3>
+    
+    <div class="details-grid">
+      {% if product.metafields.custom.fragrance_type %}
+        <div class="detail-item">
+          <label>Type</label>
+          <span>{{ product.metafields.custom.fragrance_type.value }}</span>
+        </div>
+      {% endif %}
+      
+      {% if product.metafields.custom.fragrance_notes %}
+        <div class="detail-item">
+          <label>Notes</label>
+          <span>{{ product.metafields.custom.fragrance_notes.value }}</span>
+        </div>
+      {% endif %}
+      
+      {% if product.metafields.custom.longevity %}
+        <div class="detail-item">
+          <label>Longevity</label>
+          <span>{{ product.metafields.custom.longevity.value }}</span>
+        </div>
+      {% endif %}
+      
+      {% if product.metafields.custom.best_for %}
+        <div class="detail-item">
+          <label>Best For</label>
+          <span>{{ product.metafields.custom.best_for.value }}</span>
+        </div>
+      {% endif %}
+      
+      {% if product.metafields.custom.occasion %}
+        <div class="detail-item">
+          <label>Occasion</label>
+          <span>{{ product.metafields.custom.occasion.value }}</span>
+        </div>
+      {% endif %}
+      
+      {% if product.metafields.custom.season %}
+        <div class="detail-item">
+          <label>Season</label>
+          <span>{{ product.metafields.custom.season.value }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
