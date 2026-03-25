@@ -128,9 +128,15 @@
             {% if block.settings.description %}
               <p>{{ block.settings.description }}</p>
             {% endif %}
-            <a href="{{ block.settings.collection.url }}" class="button">
-              Shop {{ block.settings.title }}
-            </a>
+            {% if block.settings.collection %}
+              <a href="{{ block.settings.collection.url }}" class="button">
+                Shop {{ block.settings.title }}
+              </a>
+            {% else %}
+              <button class="button" disabled style="opacity: 0.6; cursor: not-allowed;">
+                Shop {{ block.settings.title }}
+              </button>
+            {% endif %}
           </div>
         </div>
       {% endfor %}

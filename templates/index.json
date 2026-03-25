@@ -58,28 +58,32 @@
           "type": "category",
           "settings": {
             "title": "Men's Fragrances",
-            "description": "Bold and sophisticated fragrances for men"
+            "description": "Bold and sophisticated fragrances for men",
+            "collection": "shopify://collections/mens-fragrances"
           }
         },
         "category_2": {
           "type": "category",
           "settings": {
             "title": "Women's Fragrances",
-            "description": "Elegant and luxurious fragrances for women"
+            "description": "Elegant and luxurious fragrances for women",
+            "collection": "shopify://collections/womens-fragrances"
           }
         },
         "category_3": {
           "type": "category",
           "settings": {
             "title": "Unisex",
-            "description": "Versatile fragrances for everyone"
+            "description": "Versatile fragrances for everyone",
+            "collection": "shopify://collections/unisex"
           }
         },
         "category_4": {
           "type": "category",
           "settings": {
             "title": "Gift Sets",
-            "description": "Perfect gifts for fragrance lovers"
+            "description": "Perfect gifts for fragrance lovers",
+            "collection": "shopify://collections/gift-sets"
           }
         }
       },
@@ -91,7 +95,7 @@
     "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "shopify://collections/best-sellers",
         "products_to_show": 8,
         "title": "Best Sellers",
         "heading_size": "h2",
@@ -110,7 +114,7 @@
     "new_arrivals": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "shopify://collections/new-arrivals",
         "products_to_show": 8,
         "title": "New Arrivals",
         "heading_size": "h2",

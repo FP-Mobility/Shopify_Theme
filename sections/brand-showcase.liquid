@@ -128,22 +128,32 @@
     
     <div class="brands-grid">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.brand_collection.url }}" class="brand-item">
+        {% if block.settings.brand_collection %}
+          <a href="{{ block.settings.brand_collection.url }}" class="brand-item">
+        {% else %}
+          <div class="brand-item" style="cursor: default;">
+        {% endif %}
           {% if block.settings.brand_logo %}
             <div class="brand-logo">
               {{ block.settings.brand_logo | image_url: width: 200 | image_tag: alt: block.settings.brand_name }}
             </div>
           {% endif %}
           <p class="brand-name">{{ block.settings.brand_name }}</p>
-        </a>
+        {% if block.settings.brand_collection %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
       {% endfor %}
     </div>
     
     {% if section.settings.show_all_link %}
       <div class="view-all">
-        <a href="{{ section.settings.all_brands_page.url }}" class="button">
-          View All Brands
-        </a>
+        {% if section.settings.all_brands_page %}
+          <a href="{{ section.settings.all_brands_page.url }}" class="button">
+            View All Brands
+          </a>
+        {% endif %}
       </div>
     {% endif %}
   </div>
