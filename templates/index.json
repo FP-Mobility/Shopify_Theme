@@ -1,63 +1,103 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "slideshow": {
       "type": "slideshow",
       "blocks": {
+        "slide_bfhiKk": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-25_175815.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
         "slide-1": {
           "type": "slide",
           "settings": {
-            "heading": "Discover Your Signature Scent",
-            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
-            "button_label_1": "SHOP WOMEN",
-            "button_link_1": "shopify://collections/womens-fragrances",
-            "button_style_secondary_1": false,
-            "button_label_2": "SHOP MEN",
-            "button_link_2": "shopify://collections/mens-fragrances",
-            "button_style_secondary_2": true,
-            "box_content_vertical_position": "middle",
-            "text_alignment": "center",
+            "image": "shopify://shop_images/Screenshot_2026-03-25_175815.jpg",
             "image_overlay_opacity": 40,
+            "heading": "Discover Your Signature Scent",
+            "heading_size": "h1",
+            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
           }
         },
         "slide-2": {
           "type": "slide",
           "settings": {
-            "heading": "New Arrivals",
-            "subheading": "Explore the latest fragrances from top brands worldwide.",
-            "button_label_1": "SHOP NOW",
-            "button_link_1": "shopify://collections/new-arrivals",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "box_content_vertical_position": "middle",
-            "text_alignment": "center",
+            "image": "shopify://shop_images/Screenshot_2026-03-25_181903.jpg",
             "image_overlay_opacity": 40,
+            "heading": "New Arrivals",
+            "heading_size": "h1",
+            "subheading": "Explore the latest fragrances from top brands worldwide.",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
           }
         },
         "slide-3": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-25_190035.jpg",
+            "image_overlay_opacity": 0,
             "heading": "Gift Sets Collection",
+            "heading_size": "h1",
             "subheading": "Find the perfect fragrance gift for every occasion.",
-            "button_label_1": "EXPLORE GIFTS",
-            "button_link_1": "shopify://collections/gift-sets",
-            "button_style_secondary_1": false,
-            "button_label_2": "",
-            "box_content_vertical_position": "middle",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": true,
+            "show_text_box": true,
+            "box_align": "bottom-right",
             "text_alignment": "center",
-            "image_overlay_opacity": 40,
+            "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
           }
         }
       },
-      "block_order": ["slide-1", "slide-2", "slide-3"],
+      "block_order": [
+        "slide_bfhiKk",
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
       "settings": {
         "layout": "full_bleed",
         "slide_height": "medium",
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 5,
+        "image_behavior": "none",
         "show_text_below": false,
         "accessibility_info": "Slideshow about our products"
       }
@@ -68,43 +108,63 @@
         "cc-1": {
           "type": "collection_card",
           "settings": {
-            "title": "Men's Fragrances"
+            "title": "Men's Fragrances",
+            "product_count": "",
+            "link": ""
           }
         },
         "cc-2": {
           "type": "collection_card",
           "settings": {
-            "title": "Women's Fragrances"
+            "title": "Women's Fragrances",
+            "product_count": "",
+            "link": ""
           }
         },
         "cc-3": {
           "type": "collection_card",
           "settings": {
-            "title": "Unisex"
+            "title": "Unisex",
+            "product_count": "",
+            "link": ""
           }
         },
         "cc-4": {
           "type": "collection_card",
           "settings": {
-            "title": "Niche Fragrances"
+            "title": "Niche Fragrances",
+            "product_count": "",
+            "link": ""
           }
         },
         "cc-5": {
           "type": "collection_card",
           "settings": {
-            "title": "Gift Sets"
+            "title": "Gift Sets",
+            "product_count": "",
+            "link": ""
           }
         },
         "cc-6": {
           "type": "collection_card",
           "settings": {
-            "title": "New Arrivals"
+            "title": "New Arrivals",
+            "product_count": "",
+            "link": ""
           }
         }
       },
-      "block_order": ["cc-1", "cc-2", "cc-3", "cc-4", "cc-5", "cc-6"],
+      "block_order": [
+        "cc-1",
+        "cc-2",
+        "cc-3",
+        "cc-4",
+        "cc-5",
+        "cc-6"
+      ],
       "settings": {
         "heading": "",
+        "subheading": "",
         "color_scheme": "scheme-1",
         "padding_top": 28,
         "padding_bottom": 12
@@ -113,26 +173,27 @@
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "products_to_show": 8,
         "title": "Best Sellers",
         "heading_size": "h1",
         "description": "<p>Explore the bestselling fragrances of all time</p>",
         "show_description": true,
         "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": false,
         "quick_add": "standard",
-        "columns_desktop": 4,
-        "products_to_show": 8,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "color_scheme": "scheme-1",
-        "full_width": false,
         "padding_top": 36,
         "padding_bottom": 20
       }
@@ -140,26 +201,27 @@
     "new-arrivals": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "products_to_show": 8,
         "title": "New Arrivals",
         "heading_size": "h1",
         "description": "<p>Explore the newest fragrances from top brands</p>",
         "show_description": true,
         "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": false,
         "quick_add": "standard",
-        "columns_desktop": 4,
-        "products_to_show": 8,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "color_scheme": "scheme-1",
-        "full_width": false,
         "padding_top": 36,
         "padding_bottom": 20
       }
@@ -167,22 +229,94 @@
     "brand-showcase": {
       "type": "brand-showcase",
       "blocks": {
-        "b1": { "type": "brand", "settings": { "brand_name": "Burberry" }},
-        "b2": { "type": "brand", "settings": { "brand_name": "Versace" }},
-        "b3": { "type": "brand", "settings": { "brand_name": "Paco Rabanne" }},
-        "b4": { "type": "brand", "settings": { "brand_name": "Calvin Klein" }},
-        "b5": { "type": "brand", "settings": { "brand_name": "Givenchy" }},
-        "b6": { "type": "brand", "settings": { "brand_name": "Jimmy Choo" }},
-        "b7": { "type": "brand", "settings": { "brand_name": "Dolce & Gabbana" }},
-        "b8": { "type": "brand", "settings": { "brand_name": "Bvlgari" }},
-        "b9": { "type": "brand", "settings": { "brand_name": "Hugo Boss" }},
-        "b10": { "type": "brand", "settings": { "brand_name": "Lattafa" }}
+        "b1": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Burberry",
+            "brand_collection": ""
+          }
+        },
+        "b2": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Versace",
+            "brand_collection": ""
+          }
+        },
+        "b3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Paco Rabanne",
+            "brand_collection": ""
+          }
+        },
+        "b4": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Calvin Klein",
+            "brand_collection": ""
+          }
+        },
+        "b5": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Givenchy",
+            "brand_collection": ""
+          }
+        },
+        "b6": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Jimmy Choo",
+            "brand_collection": ""
+          }
+        },
+        "b7": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Dolce & Gabbana",
+            "brand_collection": ""
+          }
+        },
+        "b8": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Bvlgari",
+            "brand_collection": ""
+          }
+        },
+        "b9": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Hugo Boss",
+            "brand_collection": ""
+          }
+        },
+        "b10": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "Lattafa",
+            "brand_collection": ""
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6",
+        "b7",
+        "b8",
+        "b9",
+        "b10"
+      ],
       "settings": {
         "title": "TOP PERFUME & COLOGNE BRANDS",
         "subtitle": "Shop your favorite brands at the best prices",
-        "show_all_link": true
+        "show_all_link": true,
+        "all_brands_page": ""
       }
     },
     "shop-gender": {
@@ -192,26 +326,39 @@
           "type": "gender_card",
           "settings": {
             "title": "FOR MEN",
+            "main_link": "",
             "cta_label": "VIEW ALL MEN'S",
             "link_1_label": "Shop Men",
+            "link_1_url": "",
             "link_2_label": "Best Sellers",
+            "link_2_url": "",
             "link_3_label": "New Arrivals",
-            "link_4_label": "Gift Sets"
+            "link_3_url": "",
+            "link_4_label": "Gift Sets",
+            "link_4_url": ""
           }
         },
         "women": {
           "type": "gender_card",
           "settings": {
             "title": "FOR WOMEN",
+            "main_link": "",
             "cta_label": "VIEW ALL WOMEN'S",
             "link_1_label": "Shop Women",
+            "link_1_url": "",
             "link_2_label": "Best Sellers",
+            "link_2_url": "",
             "link_3_label": "New Arrivals",
-            "link_4_label": "Gift Sets"
+            "link_3_url": "",
+            "link_4_label": "Gift Sets",
+            "link_4_url": ""
           }
         }
       },
-      "block_order": ["men", "women"],
+      "block_order": [
+        "men",
+        "women"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "padding_top": 36,
@@ -221,26 +368,27 @@
     "bundles": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "products_to_show": 4,
         "title": "Bundle & Save",
         "heading_size": "h1",
         "description": "<p>Unbeatable prices — Buy more, save more</p>",
         "show_description": true,
         "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": false,
         "quick_add": "standard",
-        "columns_desktop": 4,
-        "products_to_show": 4,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "full_width": false,
         "padding_top": 36,
         "padding_bottom": 20
       }
@@ -303,7 +451,14 @@
           }
         }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
       "settings": {
         "title": "WHAT PEOPLE ARE SAYING ABOUT US",
         "show_rating": true,
@@ -314,16 +469,16 @@
     "blog": {
       "type": "featured-blog",
       "settings": {
-        "heading": "LATEST BLOG",
-        "heading_size": "h1",
         "blog": "news",
         "post_limit": 4,
+        "heading": "LATEST BLOG",
+        "heading_size": "h1",
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "show_view_all": true,
         "show_image": true,
         "show_date": true,
         "show_author": false,
-        "show_view_all": true,
+        "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -345,7 +500,10 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -364,7 +522,8 @@
             "title": "FREE SHIPPING",
             "description": "On orders over €59",
             "icon_type": "svg",
-            "svg_icon": "shipping"
+            "svg_icon": "shipping",
+            "icon_emoji": "✓"
           }
         },
         "tb-2": {
@@ -373,7 +532,8 @@
             "title": "SATISFACTION GUARANTEED",
             "description": "30-day returns",
             "icon_type": "svg",
-            "svg_icon": "guarantee"
+            "svg_icon": "guarantee",
+            "icon_emoji": "✓"
           }
         },
         "tb-3": {
@@ -382,7 +542,8 @@
             "title": "100% AUTHENTIC",
             "description": "Guaranteed genuine",
             "icon_type": "svg",
-            "svg_icon": "authentic"
+            "svg_icon": "authentic",
+            "icon_emoji": "✓"
           }
         },
         "tb-4": {
@@ -391,20 +552,27 @@
             "title": "SAFE & SECURE",
             "description": "Encrypted checkout",
             "icon_type": "svg",
-            "svg_icon": "secure"
+            "svg_icon": "secure",
+            "icon_emoji": "✓"
           }
         }
       },
-      "block_order": ["tb-1", "tb-2", "tb-3", "tb-4"],
+      "block_order": [
+        "tb-1",
+        "tb-2",
+        "tb-3",
+        "tb-4"
+      ],
       "settings": {
         "heading": "Your Perfect Scent at the Perfect Price",
+        "subheading": "",
         "background_color": "#f9f9f9"
       }
     },
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "label": "",
         "title": "First to know about our sales and discounts",
         "text": "Our email subscribers get early access to new launches, promotions and more.",
