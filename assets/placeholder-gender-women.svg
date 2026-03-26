@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2A1A1A"/>
+      <stop offset="100%" style="stop-color:#0A0A0A"/>
+    </linearGradient>
+    <linearGradient id="wg2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#C4837A;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#wg)"/>
+  <rect width="600" height="800" fill="url(#wg2)"/>
+  <g transform="translate(200,150)" opacity="0.15">
+    <ellipse cx="65" cy="10" rx="15" ry="20" fill="#C4837A"/>
+    <rect x="50" y="30" width="30" height="15" fill="#C4837A"/>
+    <path d="M20,45 Q20,40 30,40 L100,40 Q110,40 110,45 L110,440 Q110,460 90,460 L40,460 Q20,460 20,440 Z" fill="#C4837A"/>
+  </g>
+  <text x="300" y="700" text-anchor="middle" fill="#C4837A" font-family="serif" font-size="28" letter-spacing="8" opacity="0.4">FOR HER</text>
+</svg>

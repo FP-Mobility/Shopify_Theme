@@ -1,270 +1,431 @@
 {
   "sections": {
-    "announcement": {
-      "type": "announcement-bar",
+    "slideshow": {
+      "type": "slideshow",
       "blocks": {
-        "block_1": {
-          "type": "announcement",
-          "settings": {
-            "text": "🎉 Free shipping on orders over $59 | Shop Now",
-            "text_alignment": "center",
-            "color_scheme": "accent-1",
-            "link": ""
-          }
-        }
-      },
-      "block_order": ["block_1"],
-      "settings": {
-        "color_scheme": "accent-1"
-      }
-    },
-    "hero_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide-1": {
+          "type": "slide",
           "settings": {
             "heading": "Discover Your Signature Scent",
-            "heading_size": "h0"
+            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
+            "button_label_1": "SHOP WOMEN",
+            "button_link_1": "shopify://collections/womens-fragrances",
+            "button_style_secondary_1": false,
+            "button_label_2": "SHOP MEN",
+            "button_link_2": "shopify://collections/mens-fragrances",
+            "button_style_secondary_2": true,
+            "box_content_vertical_position": "middle",
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-4"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slide-2": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop Fragrances",
-            "button_link_1": "shopify://collections/all",
+            "heading": "New Arrivals",
+            "subheading": "Explore the latest fragrances from top brands worldwide.",
+            "button_label_1": "SHOP NOW",
+            "button_link_1": "shopify://collections/new-arrivals",
             "button_style_secondary_1": false,
             "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "box_content_vertical_position": "middle",
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-4"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "heading": "Gift Sets Collection",
+            "subheading": "Find the perfect fragrance gift for every occasion.",
+            "button_label_1": "EXPLORE GIFTS",
+            "button_link_1": "shopify://collections/gift-sets",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "box_content_vertical_position": "middle",
+            "text_alignment": "center",
+            "image_overlay_opacity": 40,
+            "color_scheme": "scheme-4"
           }
         }
       },
-      "block_order": ["heading", "button"],
+      "block_order": ["slide-1", "slide-2", "slide-3"],
       "settings": {
-        "image": "shopify://shop_images/vanity-table-with-perfume.jpg",
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "desktop_content_position": "center",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "stack_images_on_mobile": true
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our products"
       }
     },
-    "featured_categories": {
-      "type": "featured-categories",
+    "collection-cards": {
+      "type": "collection-cards-row",
       "blocks": {
-        "category_1": {
-          "type": "category",
+        "cc-1": {
+          "type": "collection_card",
           "settings": {
-            "title": "Men's Fragrances",
-            "description": "Bold and sophisticated fragrances for men",
-            "collection": "shopify://collections/mens-fragrances"
+            "title": "Men's Fragrances"
           }
         },
-        "category_2": {
-          "type": "category",
+        "cc-2": {
+          "type": "collection_card",
           "settings": {
-            "title": "Women's Fragrances",
-            "description": "Elegant and luxurious fragrances for women",
-            "collection": "shopify://collections/womens-fragrances"
+            "title": "Women's Fragrances"
           }
         },
-        "category_3": {
-          "type": "category",
+        "cc-3": {
+          "type": "collection_card",
           "settings": {
-            "title": "Unisex",
-            "description": "Versatile fragrances for everyone",
-            "collection": "shopify://collections/unisex"
+            "title": "Unisex"
           }
         },
-        "category_4": {
-          "type": "category",
+        "cc-4": {
+          "type": "collection_card",
           "settings": {
-            "title": "Gift Sets",
-            "description": "Perfect gifts for fragrance lovers",
-            "collection": "shopify://collections/gift-sets"
+            "title": "Niche Fragrances"
+          }
+        },
+        "cc-5": {
+          "type": "collection_card",
+          "settings": {
+            "title": "Gift Sets"
+          }
+        },
+        "cc-6": {
+          "type": "collection_card",
+          "settings": {
+            "title": "New Arrivals"
           }
         }
       },
-      "block_order": ["category_1", "category_2", "category_3", "category_4"],
+      "block_order": ["cc-1", "cc-2", "cc-3", "cc-4", "cc-5", "cc-6"],
       "settings": {
-        "title": "Shop by Category"
+        "heading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 12
       }
     },
-    "best_sellers": {
+    "best-sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "shopify://collections/best-sellers",
-        "products_to_show": 8,
         "title": "Best Sellers",
-        "heading_size": "h2",
-        "show_description": false,
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "show_view_all": true,
-        "image_ratio": "adapt",
+        "heading_size": "h1",
+        "description": "<p>Explore the bestselling fragrances of all time</p>",
+        "show_description": true,
+        "description_style": "body",
+        "image_ratio": "portrait",
+        "image_shape": "default",
         "show_secondary_image": true,
+        "show_vendor": true,
         "show_rating": false,
+        "quick_add": "standard",
+        "columns_desktop": 4,
+        "products_to_show": 8,
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "swipe_on_mobile": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 20
       }
     },
-    "new_arrivals": {
+    "new-arrivals": {
       "type": "featured-collection",
       "settings": {
-        "collection": "shopify://collections/new-arrivals",
-        "products_to_show": 8,
         "title": "New Arrivals",
-        "heading_size": "h2",
-        "show_description": false,
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "show_view_all": true,
-        "image_ratio": "adapt",
+        "heading_size": "h1",
+        "description": "<p>Explore the newest fragrances from top brands</p>",
+        "show_description": true,
+        "description_style": "body",
+        "image_ratio": "portrait",
+        "image_shape": "default",
         "show_secondary_image": true,
+        "show_vendor": true,
         "show_rating": false,
+        "quick_add": "standard",
+        "columns_desktop": 4,
+        "products_to_show": 8,
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "swipe_on_mobile": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 20
       }
     },
-    "brands": {
+    "brand-showcase": {
       "type": "brand-showcase",
       "blocks": {
-        "brand_1": {
-          "type": "brand",
-          "settings": {
-            "brand_name": "Dumont"
-          }
-        },
-        "brand_2": {
-          "type": "brand",
-          "settings": {
-            "brand_name": "Lattafa"
-          }
-        },
-        "brand_3": {
-          "type": "brand",
-          "settings": {
-            "brand_name": "Rasasi"
-          }
-        },
-        "brand_4": {
-          "type": "brand",
-          "settings": {
-            "brand_name": "Ahmed Al Maghribi"
-          }
-        }
+        "b1": { "type": "brand", "settings": { "brand_name": "Burberry" }},
+        "b2": { "type": "brand", "settings": { "brand_name": "Versace" }},
+        "b3": { "type": "brand", "settings": { "brand_name": "Paco Rabanne" }},
+        "b4": { "type": "brand", "settings": { "brand_name": "Calvin Klein" }},
+        "b5": { "type": "brand", "settings": { "brand_name": "Givenchy" }},
+        "b6": { "type": "brand", "settings": { "brand_name": "Jimmy Choo" }},
+        "b7": { "type": "brand", "settings": { "brand_name": "Dolce & Gabbana" }},
+        "b8": { "type": "brand", "settings": { "brand_name": "Bvlgari" }},
+        "b9": { "type": "brand", "settings": { "brand_name": "Hugo Boss" }},
+        "b10": { "type": "brand", "settings": { "brand_name": "Lattafa" }}
       },
-      "block_order": ["brand_1", "brand_2", "brand_3", "brand_4"],
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10"],
       "settings": {
-        "title": "Top Perfume & Cologne Brands",
-        "subtitle": "Shop from the world's finest fragrance brands",
+        "title": "TOP PERFUME & COLOGNE BRANDS",
+        "subtitle": "Shop your favorite brands at the best prices",
         "show_all_link": true
       }
     },
-    "trust_section": {
-      "type": "trust-badges",
+    "shop-gender": {
+      "type": "shop-by-gender",
       "blocks": {
-        "badge_1": {
-          "type": "badge",
+        "men": {
+          "type": "gender_card",
           "settings": {
-            "title": "100% Authentic",
-            "description": "Guaranteed authentic products",
-            "icon_type": "emoji",
-            "icon_emoji": "✓"
+            "title": "FOR MEN",
+            "cta_label": "VIEW ALL MEN'S",
+            "link_1_label": "Shop Men",
+            "link_2_label": "Best Sellers",
+            "link_3_label": "New Arrivals",
+            "link_4_label": "Gift Sets"
           }
         },
-        "badge_2": {
-          "type": "badge",
+        "women": {
+          "type": "gender_card",
           "settings": {
-            "title": "Free Shipping",
-            "description": "On orders over $59",
-            "icon_type": "emoji",
-            "icon_emoji": "🚚"
-          }
-        },
-        "badge_3": {
-          "type": "badge",
-          "settings": {
-            "title": "Fast Delivery",
-            "description": "Quick and secure shipping",
-            "icon_type": "emoji",
-            "icon_emoji": "⚡"
-          }
-        },
-        "badge_4": {
-          "type": "badge",
-          "settings": {
-            "title": "Satisfaction",
-            "description": "30-day money back guarantee",
-            "icon_type": "emoji",
-            "icon_emoji": "❤️"
+            "title": "FOR WOMEN",
+            "cta_label": "VIEW ALL WOMEN'S",
+            "link_1_label": "Shop Women",
+            "link_2_label": "Best Sellers",
+            "link_3_label": "New Arrivals",
+            "link_4_label": "Gift Sets"
           }
         }
       },
-      "block_order": ["badge_1", "badge_2", "badge_3", "badge_4"]
+      "block_order": ["men", "women"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "bundles": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Bundle & Save",
+        "heading_size": "h1",
+        "description": "<p>Unbeatable prices — Buy more, save more</p>",
+        "show_description": true,
+        "description_style": "body",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_desktop": 4,
+        "products_to_show": 4,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
     },
     "testimonials": {
       "type": "testimonials",
       "blocks": {
-        "testimonial_1": {
+        "t1": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "The quality of the perfumes is exceptional! Excellent service and fast shipping. Highly recommended!",
+            "text": "The quality of fragrances is exceptional. Fast shipping and beautiful packaging. This is my go-to perfume store!",
             "author_name": "Sarah M.",
-            "author_location": "California"
+            "author_location": "Munich"
           }
         },
-        "testimonial_2": {
+        "t2": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "Best fragrance store ever! The prices are unbeatable and everything is 100% authentic. Great customer service!",
+            "text": "Incredible selection and unbeatable prices. Every product I've purchased has been 100% authentic. Highly recommend!",
             "author_name": "James T.",
-            "author_location": "New York"
+            "author_location": "Berlin"
           }
         },
-        "testimonial_3": {
+        "t3": {
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "My go-to place for all my perfume needs. Customer service is outstanding and shipping is incredibly fast!",
-            "author_name": "Emma L.",
-            "author_location": "Texas"
+            "text": "Great customer service! They helped me find the perfect anniversary gift. My wife absolutely loved it.",
+            "author_name": "Michael R.",
+            "author_location": "Hamburg"
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "Such a perfect winter scent. A bit strong, so only one spray needed. Lasts forever. Highly recommend!",
+            "author_name": "Anna K.",
+            "author_location": "Frankfurt"
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "First time ordering fragrances online and can say this is a great site. Authentic, not damaged, arrived in 3 days!",
+            "author_name": "Thomas B.",
+            "author_location": "Cologne"
+          }
+        },
+        "t6": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "I LOVE the perfume. And the customer service, shipping, whole experience was great!! Will order again.",
+            "author_name": "Lisa W.",
+            "author_location": "Stuttgart"
           }
         }
       },
-      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"],
+      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6"],
       "settings": {
-        "title": "What People Are Saying About Us",
+        "title": "WHAT PEOPLE ARE SAYING ABOUT US",
         "show_rating": true,
-        "rating": "4.8 stars",
-        "review_count": "21,000+"
+        "rating": "4.9",
+        "review_count": "2,500+"
       }
     },
-    "newsletter": {
-      "type": "newsletter",
+    "blog": {
+      "type": "featured-blog",
       "settings": {
+        "heading": "LATEST BLOG",
+        "heading_size": "h1",
+        "blog": "news",
+        "post_limit": 4,
+        "columns_desktop": 4,
         "color_scheme": "scheme-1",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich-text-seo": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "PREMIUM FRAGRANCES AT THE BEST PRICES",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LumiScent offers a wide range of premium perfumes designed to elevate your style and express your uniqueness. Our carefully curated collection features everything from the latest men's perfumes to timeless women's fragrances. Whether treating yourself or searching for the perfect gift, our selections guarantee a luxurious and memorable experience.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 40
       }
+    },
+    "trust-badges": {
+      "type": "trust-badges",
+      "blocks": {
+        "tb-1": {
+          "type": "badge",
+          "settings": {
+            "title": "FREE SHIPPING",
+            "description": "On orders over €59",
+            "icon_type": "svg",
+            "svg_icon": "shipping"
+          }
+        },
+        "tb-2": {
+          "type": "badge",
+          "settings": {
+            "title": "SATISFACTION GUARANTEED",
+            "description": "30-day returns",
+            "icon_type": "svg",
+            "svg_icon": "guarantee"
+          }
+        },
+        "tb-3": {
+          "type": "badge",
+          "settings": {
+            "title": "100% AUTHENTIC",
+            "description": "Guaranteed genuine",
+            "icon_type": "svg",
+            "svg_icon": "authentic"
+          }
+        },
+        "tb-4": {
+          "type": "badge",
+          "settings": {
+            "title": "SAFE & SECURE",
+            "description": "Encrypted checkout",
+            "icon_type": "svg",
+            "svg_icon": "secure"
+          }
+        }
+      },
+      "block_order": ["tb-1", "tb-2", "tb-3", "tb-4"],
+      "settings": {
+        "heading": "Your Perfect Scent at the Perfect Price",
+        "background_color": "#f9f9f9"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter-perfume",
+      "settings": {
+        "background_color": "#FFFFFF",
+        "label": "",
+        "title": "First to know about our sales and discounts",
+        "text": "Our email subscribers get early access to new launches, promotions and more.",
+        "placeholder": "Type your email here",
+        "button_label": "SUBSCRIBE",
+        "privacy_text": "By subscribing you agree with our Privacy Policy"
+      }
     }
   },
   "order": [
-    "announcement",
-    "hero_banner",
-    "featured_categories",
-    "best_sellers",
-    "new_arrivals",
-    "brands",
-    "trust_section",
+    "slideshow",
+    "collection-cards",
+    "best-sellers",
+    "new-arrivals",
+    "brand-showcase",
+    "shop-gender",
+    "bundles",
     "testimonials",
+    "blog",
+    "rich-text-seo",
+    "trust-badges",
     "newsletter"
   ]
 }

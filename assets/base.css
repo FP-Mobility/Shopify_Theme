@@ -1,3 +1,54 @@
+/* LumiScent Premium Perfume Branding */
+:root {
+  --color-primary: #111111;
+  --color-accent: #D4AF37;
+  --color-secondary: #FFFFFF;
+  --color-deepblue: #232946;
+  --color-softgray: #F5F5F5;
+  --font-heading: 'Playfair Display', 'Cormorant Garamond', serif;
+  --font-body: 'Lato', 'Source Sans Pro', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+}
+
+.button, button, input[type="submit"] {
+  background: var(--color-accent);
+  color: var(--color-secondary);
+  border-radius: 6px;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 12px 32px;
+  transition: background 0.2s;
+}
+.button:hover, button:hover, input[type="submit"]:hover {
+  background: var(--color-primary);
+  color: var(--color-accent);
+}
+
+/* Section backgrounds */
+.section-dark {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+}
+.section-accent {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+.section-soft {
+  background: var(--color-softgray);
+  color: var(--color-primary);
+}
 :root {
   --alpha-button-background: 1;
   --alpha-button-border: 1;

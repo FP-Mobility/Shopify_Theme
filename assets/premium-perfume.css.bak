@@ -1,0 +1,1389 @@
+/* ============================================
+   LUMISCENT - Premium Perfume Theme Styles
+   ============================================ */
+
+/* === PREMIUM VARIABLES === */
+:root {
+  --premium-gold: #C5A47E;
+  --premium-gold-light: #D4BC94;
+  --premium-gold-dark: #A88B6A;
+  --premium-black: #0A0A0A;
+  --premium-charcoal: #1A1A1A;
+  --premium-dark-gray: #2D2D2D;
+  --premium-medium-gray: #6B6B6B;
+  --premium-light-gray: #F7F5F3;
+  --premium-cream: #FAF8F5;
+  --premium-white: #FFFFFF;
+  --premium-rose: #C4837A;
+  --premium-deep-plum: #3D2B3D;
+
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', 'Lato', 'Helvetica Neue', Arial, sans-serif;
+  --font-accent: 'Cormorant Garamond', Georgia, serif;
+
+  --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-elegant: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 30px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --shadow-gold: 0 4px 20px rgba(197, 164, 126, 0.15);
+}
+
+/* === GLOBAL PREMIUM OVERRIDES === */
+body {
+  font-family: var(--font-body);
+  color: var(--premium-charcoal);
+  background-color: var(--premium-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font-heading);
+  color: var(--premium-black);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h1, .h1 { font-size: clamp(2rem, 4vw, 3.2rem); }
+h2, .h2 { font-size: clamp(1.6rem, 3vw, 2.6rem); }
+h3, .h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+
+a {
+  color: var(--premium-charcoal);
+  transition: color 0.3s var(--transition-smooth);
+}
+a:hover {
+  color: var(--premium-gold);
+}
+
+/* === PREMIUM BUTTONS === */
+.button--primary,
+.shopify-challenge__button,
+.customer button {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 16px 40px;
+  border: 1px solid var(--premium-black);
+  border-radius: 0;
+  transition: all 0.4s var(--transition-elegant);
+  position: relative;
+  overflow: hidden;
+}
+.button--primary:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+  color: var(--premium-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-gold);
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--premium-black);
+  border: 1px solid var(--premium-black);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 16px 40px;
+  border-radius: 0;
+  transition: all 0.4s var(--transition-elegant);
+}
+.button--secondary:hover {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+}
+
+.button--gold {
+  background-color: var(--premium-gold);
+  color: var(--premium-white);
+  border: 1px solid var(--premium-gold);
+}
+.button--gold:hover {
+  background-color: var(--premium-gold-dark);
+  border-color: var(--premium-gold-dark);
+}
+
+/* === PREMIUM HEADER === */
+.section-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: var(--premium-white);
+}
+
+.header {
+  padding: 12px 3rem;
+}
+
+.header__heading-logo-wrapper img,
+.header__heading-logo-wrapper svg {
+  transition: opacity 0.3s ease;
+}
+
+.header__heading-link {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--premium-black);
+  font-weight: 600;
+}
+
+.header__menu-item {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+}
+
+.header__menu-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--premium-gold);
+  transition: width 0.4s var(--transition-elegant);
+}
+.header__menu-item:hover::after {
+  width: 100%;
+}
+
+/* Mega menu premium styling */
+.mega-menu__content {
+  background: var(--premium-white);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-medium);
+}
+
+.mega-menu__link {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  padding: 6px 0;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.mega-menu__link:hover {
+  color: var(--premium-gold);
+  padding-left: 4px;
+}
+
+/* === ANNOUNCEMENT BAR === */
+.utility-bar {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+}
+
+.announcement-bar__message {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* === PREMIUM HERO SECTION === */
+.hero-perfume {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--premium-black);
+}
+
+.hero-perfume__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-perfume__media img,
+.hero-perfume__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-perfume--small .hero-perfume__media { min-height: 420px; }
+.hero-perfume--medium .hero-perfume__media { min-height: 580px; }
+.hero-perfume--large .hero-perfume__media { min-height: 90vh; }
+.hero-perfume--full .hero-perfume__media { min-height: 100vh; }
+
+.hero-perfume__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-perfume__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.hero-perfume__content-inner {
+  max-width: 700px;
+}
+
+.hero-perfume__subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--premium-gold);
+  margin-bottom: 20px;
+  font-weight: 400;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--transition-elegant) 0.2s forwards;
+}
+
+.hero-perfume__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  color: var(--premium-white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--transition-elegant) 0.4s forwards;
+}
+
+.hero-perfume__description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 300;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--transition-elegant) 0.6s forwards;
+}
+
+.hero-perfume__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 0.8s var(--transition-elegant) 0.8s forwards;
+}
+
+.hero-perfume .button--primary {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+  color: var(--premium-white);
+}
+.hero-perfume .button--primary:hover {
+  background-color: var(--premium-white);
+  border-color: var(--premium-white);
+  color: var(--premium-black);
+}
+
+.hero-perfume .button--secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--premium-white);
+}
+.hero-perfume .button--secondary:hover {
+  background-color: var(--premium-white);
+  border-color: var(--premium-white);
+  color: var(--premium-black);
+}
+
+/* Content position variants */
+.hero-perfume__content--left { justify-content: flex-start; text-align: left; }
+.hero-perfume__content--left .hero-perfume__buttons { justify-content: flex-start; }
+.hero-perfume__content--right { justify-content: flex-end; text-align: right; }
+.hero-perfume__content--right .hero-perfume__buttons { justify-content: flex-end; }
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media screen and (max-width: 749px) {
+  .hero-perfume--small .hero-perfume__media { min-height: 350px; }
+  .hero-perfume--medium .hero-perfume__media { min-height: 450px; }
+  .hero-perfume--large .hero-perfume__media { min-height: 70vh; }
+  .hero-perfume__content { padding: 24px; }
+  .hero-perfume__title { font-size: clamp(2rem, 8vw, 3rem); }
+}
+
+/* === PREMIUM SECTION TITLES === */
+.premium-section {
+  padding: 80px 20px;
+}
+
+.premium-section__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.premium-section__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--premium-gold);
+  margin-bottom: 12px;
+  display: block;
+  font-weight: 500;
+}
+
+.premium-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--premium-black);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.premium-section__subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--premium-medium-gray);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.premium-section__divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--premium-gold);
+  margin: 20px auto;
+}
+
+/* === PREMIUM PRODUCT CARDS === */
+.card-wrapper.product-card-wrapper {
+  position: relative;
+}
+
+.card--standard .card__inner,
+.card--media .card__inner {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.5s var(--transition-elegant);
+  background: var(--premium-white);
+}
+
+.card--standard:hover .card__inner,
+.card--media:hover .card__inner {
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-medium);
+}
+
+.card--standard .card__media .media img,
+.card--media .card__media .media img {
+  transition: transform 0.8s var(--transition-elegant);
+}
+
+.card--standard:hover .card__media .media img,
+.card--media:hover .card__media .media img {
+  transform: scale(1.05);
+}
+
+.card__heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.card__heading a {
+  color: var(--premium-charcoal);
+}
+.card__heading a:hover {
+  color: var(--premium-gold);
+}
+
+.card-information .price {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--premium-charcoal);
+}
+
+.card-information .price .price-item--sale {
+  color: var(--premium-rose);
+  font-weight: 600;
+}
+
+.card__badge .badge {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 0;
+  padding: 6px 12px;
+}
+
+.card__badge .badge--sale {
+  background-color: var(--premium-gold);
+}
+
+/* Quick Add Button */
+.quick-add__submit {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+  border: none;
+  transition: all 0.3s var(--transition-elegant);
+}
+.quick-add__submit:hover {
+  background-color: var(--premium-gold);
+}
+
+/* === PREMIUM FEATURED CATEGORIES === */
+.featured-categories {
+  background-color: var(--premium-cream);
+}
+
+.featured-categories .section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--premium-black);
+}
+
+.featured-categories .category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.featured-categories .category-image {
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-categories .category-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.featured-categories .category-card:hover .category-image::after {
+  opacity: 1;
+}
+
+.featured-categories .category-content h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.featured-categories .button {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  border: 1px solid var(--premium-black);
+  border-radius: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  font-weight: 500;
+}
+.featured-categories .button:hover {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+}
+
+/* === PREMIUM BRAND SHOWCASE === */
+.brand-showcase {
+  background-color: var(--premium-white);
+}
+
+.brand-showcase .section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.brand-showcase .section-subtitle {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.brand-showcase .brand-item {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 0;
+  transition: all 0.4s var(--transition-elegant);
+  background: var(--premium-white);
+}
+
+.brand-showcase .brand-item:hover {
+  border-color: var(--premium-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-4px);
+}
+
+.brand-showcase .brand-name {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.brand-showcase .button {
+  background-color: transparent;
+  color: var(--premium-black);
+  border: 1px solid var(--premium-black);
+  border-radius: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.brand-showcase .button:hover {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+}
+
+/* === PREMIUM TRUST BADGES === */
+.trust-badges {
+  background-color: var(--premium-cream);
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.trust-badges .badge-icon.emoji {
+  font-size: 36px;
+  opacity: 0.9;
+}
+
+.trust-badges .badge-item h3 {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--premium-charcoal);
+}
+
+.trust-badges .badge-item p {
+  font-family: var(--font-body);
+  color: var(--premium-medium-gray);
+  font-weight: 300;
+}
+
+/* === PREMIUM TESTIMONIALS === */
+.testimonials-section {
+  background-color: var(--premium-white);
+}
+
+.testimonials-section .testimonials-header h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.testimonials-section .testimonial-card {
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: none;
+  transition: all 0.4s var(--transition-elegant);
+  background: var(--premium-white);
+}
+
+.testimonials-section .testimonial-card:hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-4px);
+}
+
+.testimonials-section .stars {
+  color: var(--premium-gold);
+}
+
+.testimonials-section .testimonial-text {
+  font-family: var(--font-accent);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--premium-dark-gray);
+  line-height: 1.8;
+}
+
+.testimonials-section .author-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.testimonials-section .overall-rating .stars {
+  color: var(--premium-gold);
+}
+
+/* === PROMO BANNER === */
+.promo-banner {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--premium-black);
+}
+
+.promo-banner__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+}
+
+.promo-banner__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-banner__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--transition-elegant);
+}
+
+.promo-banner:hover .promo-banner__media img {
+  transform: scale(1.03);
+}
+
+.promo-banner__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  text-align: center;
+}
+
+.promo-banner__content-inner {
+  max-width: 460px;
+}
+
+.promo-banner__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--premium-gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.promo-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--premium-white);
+  margin-bottom: 20px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.promo-banner__text {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+.promo-banner .button--primary {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+}
+.promo-banner .button--primary:hover {
+  background-color: var(--premium-white);
+  border-color: var(--premium-white);
+  color: var(--premium-black);
+}
+
+@media screen and (max-width: 749px) {
+  .promo-banner__inner {
+    grid-template-columns: 1fr;
+  }
+  .promo-banner__media {
+    min-height: 300px;
+  }
+  .promo-banner__content {
+    padding: 40px 24px;
+  }
+}
+
+/* === PREMIUM NEWSLETTER === */
+.newsletter-perfume {
+  padding: 100px 20px;
+  background-color: var(--premium-cream);
+  text-align: center;
+}
+
+.newsletter-perfume__inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.newsletter-perfume__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--premium-gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.newsletter-perfume__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  color: var(--premium-black);
+  margin-bottom: 16px;
+}
+
+.newsletter-perfume__text {
+  font-family: var(--font-body);
+  color: var(--premium-medium-gray);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+.newsletter-perfume__form {
+  display: flex;
+  gap: 0;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter-perfume__input {
+  flex: 1;
+  padding: 16px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-right: none;
+  background: var(--premium-white);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--premium-charcoal);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-perfume__input::placeholder {
+  color: var(--premium-medium-gray);
+  letter-spacing: 0.02em;
+}
+
+.newsletter-perfume__input:focus {
+  border-color: var(--premium-gold);
+}
+
+.newsletter-perfume__button {
+  padding: 16px 32px;
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  border: 1px solid var(--premium-black);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-elegant);
+  white-space: nowrap;
+}
+
+.newsletter-perfume__button:hover {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+}
+
+.newsletter-perfume__privacy {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--premium-medium-gray);
+}
+
+@media screen and (max-width: 549px) {
+  .newsletter-perfume__form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .newsletter-perfume__input {
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .newsletter-perfume__button {
+    width: 100%;
+  }
+}
+
+/* === FRAGRANCE FINDER === */
+.fragrance-finder {
+  padding: 100px 20px;
+  background-color: var(--premium-white);
+  text-align: center;
+}
+
+.fragrance-finder__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fragrance-finder__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.fragrance-finder__option {
+  padding: 40px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--premium-white);
+  cursor: pointer;
+  transition: all 0.4s var(--transition-elegant);
+  text-decoration: none;
+  display: block;
+}
+
+.fragrance-finder__option:hover {
+  border-color: var(--premium-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-4px);
+}
+
+.fragrance-finder__option-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.fragrance-finder__option-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--premium-black);
+  margin-bottom: 8px;
+}
+
+.fragrance-finder__option-text {
+  font-size: 0.85rem;
+  color: var(--premium-medium-gray);
+  line-height: 1.6;
+}
+
+/* === INSTAGRAM FEED === */
+.instagram-feed {
+  padding: 80px 0;
+  background-color: var(--premium-white);
+  overflow: hidden;
+}
+
+.instagram-feed__header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.instagram-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.instagram-feed__item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.instagram-feed__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--transition-elegant);
+}
+
+.instagram-feed__item:hover img {
+  transform: scale(1.08);
+}
+
+.instagram-feed__item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.instagram-feed__item:hover .instagram-feed__item-overlay {
+  opacity: 1;
+}
+
+.instagram-feed__item-overlay svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--premium-white);
+}
+
+.instagram-feed__handle {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.instagram-feed__handle a {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--premium-charcoal);
+  text-decoration: none;
+  font-weight: 500;
+}
+.instagram-feed__handle a:hover {
+  color: var(--premium-gold);
+}
+
+@media screen and (max-width: 749px) {
+  .instagram-feed__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* === PREMIUM PRODUCT PAGE === */
+.product__info-container .product__title h1,
+.product__info-container .product__title h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--premium-black);
+}
+
+.product__info-container .product__text {
+  font-family: var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--premium-medium-gray);
+}
+
+.product__info-container .price--large .price-item {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.product__description {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  color: var(--premium-dark-gray);
+}
+
+/* Fragrance Details Premium */
+.fragrance-details {
+  margin: 30px 0;
+  padding: 30px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.fragrance-details .details-title {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--premium-black);
+}
+
+.fragrance-details .detail-item label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--premium-medium-gray);
+  font-weight: 600;
+}
+
+.fragrance-details .detail-item span {
+  font-family: var(--font-body);
+  color: var(--premium-charcoal);
+  font-size: 0.9rem;
+}
+
+/* Product variant picker premium */
+.product-form__input label,
+.product-form__input .form__label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--premium-charcoal);
+}
+
+.product-form__submit {
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 0;
+  padding: 18px 40px;
+  transition: all 0.4s var(--transition-elegant);
+  border: 1px solid var(--premium-black);
+}
+
+.product-form__submit:hover {
+  background-color: var(--premium-gold);
+  border-color: var(--premium-gold);
+}
+
+.shopify-payment-button__button {
+  border-radius: 0 !important;
+}
+
+/* === PREMIUM COLLECTION PAGE === */
+.collection-hero {
+  background-color: var(--premium-cream);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.collection-hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.collection-hero__description {
+  font-family: var(--font-body);
+  color: var(--premium-medium-gray);
+  max-width: 600px;
+  margin: 12px auto 0;
+  font-weight: 300;
+}
+
+/* Facets/Filters premium */
+.facets__wrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.facets__heading {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.facets__label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+/* === PREMIUM FOOTER === */
+.footer {
+  background-color: var(--premium-black);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer .footer-block__heading {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--premium-white);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer .list-menu__item--link {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.footer .list-menu__item--link:hover {
+  color: var(--premium-gold);
+  padding-left: 4px;
+}
+
+.footer .footer-block__details-content {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.footer .copyright__content {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer .footer__content-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Footer links */
+.footer a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+.footer a:hover {
+  color: var(--premium-gold);
+}
+
+/* Footer newsletter */
+.footer .newsletter-form__field-wrapper input {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 1rem;
+}
+.footer .newsletter-form__button {
+  border-radius: 0;
+  background: var(--premium-gold);
+  border-color: var(--premium-gold);
+}
+.footer .newsletter-form__button:hover {
+  background: #fff;
+  color: var(--premium-black);
+}
+
+/* Social icons in footer */
+.footer .list-social__link {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+.footer .list-social__link:hover {
+  color: var(--premium-gold);
+}
+
+/* Header inline menu overrides */
+.header__inline-menu .list-menu--inline > li > a {
+  padding: 14px 12px;
+}
+.header__icon {
+  color: var(--premium-black);
+}
+.header__icon:hover {
+  color: var(--premium-gold);
+}
+
+/* === PREMIUM CART === */
+.cart-notification {
+  border-radius: 0;
+  box-shadow: var(--shadow-elevated);
+}
+
+.cart-notification .button {
+  border-radius: 0;
+}
+
+/* Cart Drawer */
+.cart-drawer {
+  background-color: var(--premium-white);
+}
+
+.cart-drawer .cart-item__name {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+/* === PREMIUM SCROLL ANIMATIONS === */
+.premium-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--transition-elegant), transform 0.6s var(--transition-elegant);
+}
+
+.premium-fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.premium-fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s var(--transition-elegant), transform 0.6s var(--transition-elegant);
+}
+
+.premium-fade-in-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.premium-fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s var(--transition-elegant), transform 0.6s var(--transition-elegant);
+}
+
+.premium-fade-in-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.premium-scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s var(--transition-elegant), transform 0.6s var(--transition-elegant);
+}
+
+.premium-scale-in.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered animation delays for grid children */
+.premium-stagger > *:nth-child(1) { transition-delay: 0s; }
+.premium-stagger > *:nth-child(2) { transition-delay: 0.1s; }
+.premium-stagger > *:nth-child(3) { transition-delay: 0.2s; }
+.premium-stagger > *:nth-child(4) { transition-delay: 0.3s; }
+.premium-stagger > *:nth-child(5) { transition-delay: 0.4s; }
+.premium-stagger > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* === PREMIUM PAGE (About, etc.) === */
+.premium-page {
+  padding: 80px 20px;
+}
+
+.premium-page__hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.premium-page__hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.premium-page__hero-text {
+  font-size: 1.05rem;
+  color: var(--premium-medium-gray);
+  line-height: 1.8;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--premium-light-gray);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--premium-gold-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--premium-gold);
+}
+
+/* === SELECTION === */
+::selection {
+  background-color: var(--premium-gold);
+  color: var(--premium-white);
+}
+
+/* === LOADING / SKELETON === */
+.premium-skeleton {
+  background: linear-gradient(90deg, var(--premium-light-gray) 25%, var(--premium-cream) 50%, var(--premium-light-gray) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* === RESPONSIVE FINE-TUNING === */
+@media screen and (max-width: 749px) {
+  .premium-section {
+    padding: 50px 16px;
+  }
+  .premium-section__header {
+    margin-bottom: 36px;
+  }
+  .newsletter-perfume {
+    padding: 60px 16px;
+  }
+  .fragrance-finder {
+    padding: 60px 16px;
+  }
+}
+
+/* === BACK TO TOP === */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  background-color: var(--premium-black);
+  color: var(--premium-white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s var(--transition-elegant);
+  z-index: 99;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: var(--premium-gold);
+  transform: translateY(-2px);
+}
+
+.back-to-top svg {
+  width: 16px;
+  height: 16px;
+}

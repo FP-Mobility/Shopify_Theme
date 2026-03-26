@@ -1,0 +1,301 @@
+<section class="collection-tabs premium-section" style="background-color: {{ section.settings.background_color }};">
+  <div class="page-width">
+    <div class="premium-section__header">
+      {%- if section.settings.label != blank -%}
+        <span class="premium-section__label">{{ section.settings.label }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="premium-section__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      <div class="premium-section__divider"></div>
+    </div>
+
+    {%- if section.blocks.size > 1 -%}
+      <div class="collection-tabs__nav" role="tablist">
+        {%- for block in section.blocks -%}
+          <button
+            class="collection-tabs__tab{% if forloop.first %} collection-tabs__tab--active{% endif %}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="TabPanel-{{ section.id }}-{{ forloop.index }}"
+            data-tab-index="{{ forloop.index }}"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.tab_label | default: block.settings.collection.title | default: 'Collection' }}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="collection-tabs__panels">
+      {%- for block in section.blocks -%}
+        <div
+          class="collection-tabs__panel{% if forloop.first %} collection-tabs__panel--active{% endif %}"
+          id="TabPanel-{{ section.id }}-{{ forloop.index }}"
+          role="tabpanel"
+          data-tab-index="{{ forloop.index }}"
+          {% unless forloop.first %}hidden{% endunless %}
+        >
+          {%- if block.settings.collection != blank -%}
+            <div class="collection-tabs__grid">
+              {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+                <div class="collection-tabs__product premium-fade-in">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    image_shape: 'default',
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: false,
+                    section_id: section.id
+                  %}
+                </div>
+              {%- endfor -%}
+            </div>
+
+            {%- if section.settings.show_view_all -%}
+              <div class="collection-tabs__view-all">
+                <a href="{{ block.settings.collection.url }}" class="button button--secondary">
+                  View All {{ block.settings.collection.title }}
+                </a>
+              </div>
+            {%- endif -%}
+          {%- else -%}
+            <div class="collection-tabs__empty">
+              <p>Connect a collection to display products here.</p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.querySelector('.collection-tabs');
+    if (!section) return;
+
+    const tabs = section.querySelectorAll('.collection-tabs__tab');
+    const panels = section.querySelectorAll('.collection-tabs__panel');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const index = tab.getAttribute('data-tab-index');
+
+        tabs.forEach(t => {
+          t.classList.remove('collection-tabs__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+
+        panels.forEach(p => {
+          p.classList.remove('collection-tabs__panel--active');
+          p.hidden = true;
+        });
+
+        tab.classList.add('collection-tabs__tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const panel = section.querySelector('[data-tab-index="' + index + '"][role="tabpanel"]');
+        if (panel) {
+          panel.classList.add('collection-tabs__panel--active');
+          panel.hidden = false;
+        }
+      });
+    });
+  })();
+</script>
+
+{%- style -%}
+  .collection-tabs__nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .collection-tabs__tab {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 12px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
+    color: var(--premium-charcoal);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .collection-tabs__tab--active,
+  .collection-tabs__tab:hover {
+    background-color: var(--premium-black);
+    color: var(--premium-white);
+    border-color: var(--premium-black);
+  }
+
+  .collection-tabs__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .collection-tabs__view-all {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .collection-tabs__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--premium-medium-gray);
+    font-family: var(--font-body);
+  }
+
+  .collection-tabs__panel {
+    display: none;
+  }
+
+  .collection-tabs__panel--active {
+    display: block;
+  }
+
+  @media screen and (max-width: 989px) {
+    .collection-tabs__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .collection-tabs__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .collection-tabs__tab {
+      padding: 10px 20px;
+      font-size: 0.7rem;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Collection Tabs",
+  "tag": "section",
+  "class": "section-collection-tabs",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Our Collections"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 8,
+      "label": "Products per Tab"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "portrait",
+      "label": "Image Ratio"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "label": "Show second image on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label",
+          "info": "Leave blank to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Tabs",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Best Sellers"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "New Arrivals"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "For Her"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "For Him"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

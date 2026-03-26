@@ -1,0 +1,115 @@
+<section class="promo-banner">
+  <div class="promo-banner__inner{% if section.settings.reverse_layout %} promo-banner__inner--reverse{% endif %}">
+    <div class="promo-banner__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 750px) 50vw, 100vw',
+            widths: '375, 550, 750, 1000, 1200',
+            alt: section.settings.image.alt | default: section.settings.title
+        }}
+      {%- else -%}
+        <div style="background: linear-gradient(135deg, var(--premium-gold-dark) 0%, var(--premium-gold) 100%); width: 100%; height: 100%; min-height: 400px;"></div>
+      {%- endif -%}
+    </div>
+    <div class="promo-banner__content" style="background-color: {{ section.settings.background_color }};">
+      <div class="promo-banner__content-inner">
+        {%- if section.settings.label != blank -%}
+          <span class="promo-banner__label">{{ section.settings.label }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="promo-banner__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <p class="promo-banner__text">{{ section.settings.text }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a
+            {% if section.settings.button_link != blank %}href="{{ section.settings.button_link }}"{% endif %}
+            class="button button--primary"
+          >
+            {{ section.settings.button_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  {% if section.settings.reverse_layout %}
+    .promo-banner__inner--reverse {
+      direction: rtl;
+    }
+    .promo-banner__inner--reverse > * {
+      direction: ltr;
+    }
+  {% endif %}
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Promo Banner",
+  "tag": "section",
+  "class": "section-promo-banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#0A0A0A"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "label": "Reverse Layout (Image Right)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Limited Edition"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Art of Fragrance"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Discover handcrafted scents made with the finest ingredients from around the world."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,108 +1,70 @@
 {%- style -%}
-  .trust-badges {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-  }
-  
-  .trust-badges .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .badges-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-  }
-  
-  .badge-item {
-    text-align: center;
-  }
-  
-  .badge-icon {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .badge-icon.emoji {
-    font-size: 48px;
-  }
-  
-  .badge-icon img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-  }
-  
-  .badge-item h3 {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 10px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #333;
-  }
-  
-  .badge-item p {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
-  }
-  
-  @media (max-width: 768px) {
-    .badges-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .badges-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .badge-item h3 {
-      font-size: 14px;
-    }
-
-    .badge-item p {
-      font-size: 12px;
-    }
-
-    .trust-badges {
-      padding: 40px 15px;
-    }
+  .trust-badges-section {
+    background-color: {{ section.settings.background_color }};
   }
 {%- endstyle -%}
 
-<section class="trust-badges">
-  <div class="container">
-    <div class="badges-grid">
-      {% for block in section.blocks %}
-        <div class="badge-item">
-          {% if block.settings.icon_type == 'emoji' %}
-            <div class="badge-icon emoji">{{ block.settings.icon_emoji }}</div>
-          {% elsif block.settings.icon_image %}
-            <div class="badge-icon">
-              {{ block.settings.icon_image | image_url: width: 80 | image_tag: alt: block.settings.title }}
-            </div>
-          {% endif %}
-          
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.description }}</p>
-        </div>
-      {% endfor %}
+<section class="trust-badges-section">
+  {%- if section.settings.heading != blank -%}
+    <div class="section-heading">
+      <h2>{{ section.settings.heading }}</h2>
     </div>
+  {%- endif -%}
+  {%- if section.settings.subheading != blank -%}
+    <p class="section-subheading">{{ section.settings.subheading }}</p>
+  {%- endif -%}
+  <div class="trust-badges__grid">
+    {% for block in section.blocks %}
+      <div class="trust-badge" {{ block.shopify_attributes }}>
+        <div class="trust-badge__icon">
+          {% if block.settings.icon_type == 'svg' %}
+            {% case block.settings.svg_icon %}
+              {% when 'shipping' %}
+                <svg viewBox="0 0 64 64" fill="none" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="20" width="36" height="22" rx="2"/><path d="M40 28h10l6 8v6h-16V28z"/><circle cx="16" cy="46" r="4"/><circle cx="48" cy="46" r="4"/></svg>
+              {% when 'authentic' %}
+                <svg viewBox="0 0 64 64" fill="none" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 4L8 16v16c0 14 10.67 27.07 24 32 13.33-4.93 24-18 24-32V16L32 4z"/><polyline points="22 32 30 40 44 24"/></svg>
+              {% when 'guarantee' %}
+                <svg viewBox="0 0 64 64" fill="none" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="26"/><path d="M32 14v18l12 8"/></svg>
+              {% when 'secure' %}
+                <svg viewBox="0 0 64 64" fill="none" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="28" width="36" height="28" rx="4"/><path d="M22 28V18a10 10 0 0120 0v10"/><circle cx="32" cy="42" r="4"/><path d="M32 46v4"/></svg>
+            {% endcase %}
+          {% elsif block.settings.icon_type == 'image' and block.settings.icon_image != blank %}
+            {{ block.settings.icon_image | image_url: width: 104 | image_tag: alt: block.settings.title }}
+          {% else %}
+            <span class="emoji-icon">{{ block.settings.icon_emoji }}</span>
+          {% endif %}
+        </div>
+        <h3 class="trust-badge__title">{{ block.settings.title }}</h3>
+        {%- if block.settings.description != blank -%}
+          <p class="trust-badge__desc">{{ block.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {% endfor %}
   </div>
 </section>
 
 {% schema %}
 {
   "name": "Trust Badges",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Perfect Scent at the Perfect Price"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f9f9"
+    }
+  ],
   "blocks": [
     {
       "type": "badge",
@@ -125,16 +87,23 @@
           "id": "icon_type",
           "label": "Icon Type",
           "options": [
-            {
-              "value": "emoji",
-              "label": "Emoji"
-            },
-            {
-              "value": "image",
-              "label": "Custom Image"
-            }
+            { "value": "emoji", "label": "Emoji" },
+            { "value": "svg", "label": "Built-in SVG" },
+            { "value": "image", "label": "Custom Image" }
           ],
-          "default": "emoji"
+          "default": "svg"
+        },
+        {
+          "type": "select",
+          "id": "svg_icon",
+          "label": "SVG Icon",
+          "options": [
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "authentic", "label": "Authentic/Shield" },
+            { "value": "guarantee", "label": "Guarantee/Clock" },
+            { "value": "secure", "label": "Secure/Lock" }
+          ],
+          "default": "authentic"
         },
         {
           "type": "text",
@@ -157,33 +126,37 @@
         {
           "type": "badge",
           "settings": {
-            "title": "100% Authentic",
-            "description": "Guaranteed authentic products",
-            "icon_emoji": "✓"
+            "title": "FREE SHIPPING",
+            "description": "On orders over €59",
+            "icon_type": "svg",
+            "svg_icon": "shipping"
           }
         },
         {
           "type": "badge",
           "settings": {
-            "title": "Free Shipping",
-            "description": "On orders over $59",
-            "icon_emoji": "🚚"
+            "title": "100% AUTHENTIC",
+            "description": "Guaranteed genuine products",
+            "icon_type": "svg",
+            "svg_icon": "authentic"
           }
         },
         {
           "type": "badge",
           "settings": {
-            "title": "Fast Delivery",
-            "description": "Quick and secure shipping",
-            "icon_emoji": "⚡"
-          }
-        },
-        {
-          "type": "badge",
-          "settings": {
-            "title": "Satisfaction",
+            "title": "SATISFACTION GUARANTEED",
             "description": "30-day money back guarantee",
-            "icon_emoji": "❤️"
+            "icon_type": "svg",
+            "svg_icon": "guarantee"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "SAFE & SECURE",
+            "description": "Encrypted checkout",
+            "icon_type": "svg",
+            "svg_icon": "secure"
           }
         }
       ]

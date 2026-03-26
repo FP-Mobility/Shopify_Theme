@@ -1,0 +1,169 @@
+{
+  "sections": {
+    "banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Story",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Crafting luxury fragrance experiences since our inception",
+            "text_style": "subtitle"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "medium",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "The LumiScent Story"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At LumiScent, we believe that fragrance is more than just a scent — it's an expression of identity, a gateway to memories, and an art form to be celebrated.</p><p>Our journey began with a simple mission: to make the world's finest fragrances accessible to everyone. We partner directly with renowned perfume houses and authorized distributors to bring you an unparalleled selection of authentic luxury fragrances at exceptional value.</p><p>Every fragrance in our collection has been carefully curated by our team of experts who share a deep passion for the art of perfumery. From timeless classics to exciting new releases, we're dedicated to helping you discover your perfect scent.</p>"
+          }
+        }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 60,
+        "padding_bottom": 40
+      }
+    },
+    "values": {
+      "type": "multicolumn",
+      "blocks": {
+        "col1": {
+          "type": "column",
+          "settings": {
+            "title": "Authenticity",
+            "text": "<p>Every product we sell is 100% authentic, sourced directly from authorized distributors and major fragrance houses.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col2": {
+          "type": "column",
+          "settings": {
+            "title": "Expertise",
+            "text": "<p>Our team of fragrance experts curates each scent in our collection, ensuring only the finest quality makes it to our shelves.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col3": {
+          "type": "column",
+          "settings": {
+            "title": "Service",
+            "text": "<p>From personalized recommendations to seamless delivery, we're committed to providing an exceptional shopping experience.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": ["col1", "col2", "col3"],
+      "settings": {
+        "title": "Our Values",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "image-with-text": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Choose LumiScent?"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>With thousands of satisfied customers worldwide, we've built our reputation on trust, quality, and exceptional value. Our commitment to authenticity means you'll never have to worry about the products you receive.</p><p>We offer free shipping on orders over $59, a 30-day satisfaction guarantee, and dedicated customer support to ensure your complete happiness with every purchase.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter": {
+      "type": "newsletter-perfume",
+      "settings": {
+        "background_color": "#FAF8F5",
+        "label": "Stay Connected",
+        "title": "Join Our Community",
+        "text": "Be the first to know about new arrivals, exclusive offers, and fragrance tips.",
+        "placeholder": "Enter your email address",
+        "button_label": "Subscribe",
+        "privacy_text": "By subscribing, you agree to our Privacy Policy."
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "story",
+    "values",
+    "image-with-text",
+    "newsletter"
+  ]
+}

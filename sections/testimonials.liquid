@@ -1,125 +1,9 @@
-{%- style -%}
-  .testimonials-section {
-    padding: 60px 20px;
-    background-color: #fafafa;
-  }
-  
-  .testimonials-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .testimonials-header {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  
-  .testimonials-header h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  
-  .overall-rating {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .stars {
-    font-size: 20px;
-    color: #ffc107;
-  }
-  
-  .rating-text {
-    color: #666;
-    font-size: 14px;
-  }
-  
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
-  
-  .testimonial-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .testimonial-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .testimonial-card .stars {
-    display: inline-block;
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: #ffc107;
-  }
-  
-  .testimonial-text {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
-    margin: 15px 0;
-    font-style: italic;
-  }
-  
-  .testimonial-author {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #e5e5e5;
-  }
-  
-  .author-name {
-    font-weight: 600;
-    margin: 0 0 5px 0;
-    color: #333;
-    font-size: 15px;
-  }
-  
-  .author-location {
-    font-size: 13px;
-    color: #999;
-    margin: 0;
-  }
-  
-  @media (max-width: 768px) {
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .testimonials-header h2 {
-      font-size: 24px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .testimonials-section {
-      padding: 40px 15px;
-    }
-
-    .testimonial-card {
-      padding: 20px;
-    }
-
-    .testimonial-text {
-      font-size: 14px;
-    }
-  }
-{%- endstyle -%}
-
 <section class="testimonials-section">
   <div class="container">
     <div class="testimonials-header">
+      <span class="section-label">Reviews</span>
       <h2>{{ section.settings.title }}</h2>
+      <div class="gold-sep"></div>
       {% if section.settings.show_rating %}
         <div class="overall-rating">
           <span class="stars">★★★★★</span>
@@ -127,20 +11,17 @@
         </div>
       {% endif %}
     </div>
-    
+
     <div class="testimonials-grid">
       {% for block in section.blocks %}
-        <div class="testimonial-card">
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+          <span class="quote-mark">"</span>
           <div class="stars">
-            {% for i in (1..block.settings.rating) %}
-              ★
-            {% endfor %}
+            {% for i in (1..block.settings.rating) %}★{% endfor %}
           </div>
-          
-          <p class="testimonial-text">"{{ block.settings.text }}"</p>
-          
+          <p class="testimonial-text">{{ block.settings.text }}</p>
           <div class="testimonial-author">
-            <p class="author-name">— {{ block.settings.author_name }}</p>
+            <p class="author-name">{{ block.settings.author_name }}</p>
             {% if block.settings.author_location %}
               <p class="author-location">{{ block.settings.author_location }}</p>
             {% endif %}

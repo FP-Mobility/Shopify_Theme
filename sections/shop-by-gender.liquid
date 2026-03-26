@@ -1,0 +1,199 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="shop-by-gender section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="shop-by-gender__grid">
+      {%- for block in section.blocks -%}
+        <div class="shop-by-gender__card" {{ block.shopify_attributes }}>
+          <div class="shop-by-gender__image-wrapper">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag:
+                  loading: 'lazy',
+                  class: 'shop-by-gender__image',
+                  widths: '400, 600, 800',
+                  sizes: '(min-width: 990px) 50vw, 100vw'
+              }}
+            {%- else -%}
+              <div class="shop-by-gender__placeholder" style="background: linear-gradient(135deg, #1A1A1A, #0A0A0A);">
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+            <div class="shop-by-gender__overlay"></div>
+            <div class="shop-by-gender__content">
+              <h3 class="shop-by-gender__title">{{ block.settings.title | default: 'Shop' }}</h3>
+              <div class="shop-by-gender__links">
+                {%- if block.settings.link_1_label != blank -%}
+                  <a href="{{ block.settings.link_1_url | default: '#' }}" class="shop-by-gender__link">{{ block.settings.link_1_label }}</a>
+                {%- endif -%}
+                {%- if block.settings.link_2_label != blank -%}
+                  <a href="{{ block.settings.link_2_url | default: '#' }}" class="shop-by-gender__link">{{ block.settings.link_2_label }}</a>
+                {%- endif -%}
+                {%- if block.settings.link_3_label != blank -%}
+                  <a href="{{ block.settings.link_3_url | default: '#' }}" class="shop-by-gender__link">{{ block.settings.link_3_label }}</a>
+                {%- endif -%}
+                {%- if block.settings.link_4_label != blank -%}
+                  <a href="{{ block.settings.link_4_url | default: '#' }}" class="shop-by-gender__link">{{ block.settings.link_4_label }}</a>
+                {%- endif -%}
+              </div>
+              <a href="{{ block.settings.main_link | default: '#' }}" class="shop-by-gender__cta button button--primary">
+                {{ block.settings.cta_label | default: 'View All' }}
+              </a>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop by Gender",
+  "tag": "section",
+  "class": "section section-shop-by-gender",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gender_card",
+      "name": "Gender Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "For Men"
+        },
+        {
+          "type": "url",
+          "id": "main_link",
+          "label": "Main link"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button label",
+          "default": "View All"
+        },
+        {
+          "type": "text",
+          "id": "link_1_label",
+          "label": "Link 1 label",
+          "default": "Best Sellers"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_2_label",
+          "label": "Link 2 label",
+          "default": "New Arrivals"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_3_label",
+          "label": "Link 3 label",
+          "default": "Gift Sets"
+        },
+        {
+          "type": "url",
+          "id": "link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_4_label",
+          "label": "Link 4 label"
+        },
+        {
+          "type": "url",
+          "id": "link_4_url",
+          "label": "Link 4 URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Gender",
+      "blocks": [
+        {
+          "type": "gender_card",
+          "settings": {
+            "title": "FOR MEN",
+            "cta_label": "VIEW ALL MEN'S",
+            "link_1_label": "Shop Men",
+            "link_2_label": "Best Sellers",
+            "link_3_label": "New Arrivals",
+            "link_4_label": "Gift Sets"
+          }
+        },
+        {
+          "type": "gender_card",
+          "settings": {
+            "title": "FOR WOMEN",
+            "cta_label": "VIEW ALL WOMEN'S",
+            "link_1_label": "Shop Women",
+            "link_2_label": "Best Sellers",
+            "link_3_label": "New Arrivals",
+            "link_4_label": "Gift Sets"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,175 @@
+<section class="value-props premium-section" style="background-color: {{ section.settings.background_color }};">
+  <div class="page-width">
+    <div class="value-props__grid">
+      {%- for block in section.blocks -%}
+        <div class="value-props__item premium-fade-in" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != blank -%}
+            <div class="value-props__icon">{{ block.settings.icon }}</div>
+          {%- elsif block.settings.icon_image != blank -%}
+            <div class="value-props__icon">
+              {{ block.settings.icon_image | image_url: width: 48 | image_tag: alt: block.settings.title }}
+            </div>
+          {%- endif -%}
+          <div class="value-props__text">
+            {%- if block.settings.title != blank -%}
+              <h3 class="value-props__title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="value-props__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- style -%}
+  .value-props {
+    padding: 40px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .value-props__grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .value-props__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .value-props__icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .value-props__icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .value-props__title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--premium-charcoal);
+    margin: 0;
+  }
+
+  .value-props__desc {
+    font-size: 0.78rem;
+    color: var(--premium-medium-gray);
+    margin: 2px 0 0;
+    font-weight: 300;
+  }
+
+  @media screen and (max-width: 749px) {
+    .value-props__grid {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .value-props {
+      padding: 30px 20px;
+    }
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Value Propositions",
+  "tag": "section",
+  "class": "section-value-props",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "✓"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom Icon (overrides emoji)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "On orders over $59"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value Propositions",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "icon": "🚚",
+            "title": "Free Shipping",
+            "description": "On orders over $59"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "✓",
+            "title": "100% Authentic",
+            "description": "Guaranteed genuine products"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "⚡",
+            "title": "Fast Delivery",
+            "description": "2-5 business days"
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "🔒",
+            "title": "Secure Payment",
+            "description": "SSL encrypted checkout"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
