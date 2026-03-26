@@ -173,35 +173,6 @@
         "padding_bottom": 12
       }
     },
-    "rich_text_ayk4Jn": {
-      "type": "rich-text",
-      "blocks": {
-        "text_ydyANe": {
-          "type": "text",
-          "settings": {
-            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
-          }
-        },
-        "text_zAzKVh": {
-          "type": "text",
-          "settings": {
-            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_ydyANe",
-        "text_zAzKVh"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-2",
-        "full_width": true,
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
@@ -265,7 +236,8 @@
           "type": "brand",
           "settings": {
             "brand_name": "Burberry",
-            "brand_collection": ""
+            "brand_logo": "shopify://shop_images/burberry-perfume-brand-image.png",
+            "brand_collection": "brands"
           }
         },
         "b2": {
@@ -618,7 +590,6 @@
     "video-hero",
     "slideshow",
     "collection-cards",
-    "rich_text_ayk4Jn",
     "best-sellers",
     "new-arrivals",
     "brand-showcase",
