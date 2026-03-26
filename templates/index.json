@@ -92,6 +92,7 @@
         "slide-2",
         "slide-3"
       ],
+      "disabled": true,
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt",
