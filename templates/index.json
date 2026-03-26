@@ -12,6 +12,8 @@
     "video-hero": {
       "type": "video-hero",
       "settings": {
+        "video": "shopify://files/videos/Firefly Generate high end perfume images for perfume website to make this premium look 992746.mp4",
+        "video_url": "",
         "height": 90,
         "overlay_opacity": 35,
         "eyebrow": "LumiScent",
@@ -21,7 +23,7 @@
         "button_link_1": "shopify://collections/womens-fragrances",
         "button_label_2": "SHOP MEN",
         "button_link_2": "shopify://collections/mens-fragrances",
-        "text_alignment": "center",
+        "text_alignment": "left",
         "show_scroll_indicator": true,
         "color_scheme": "scheme-4"
       }
