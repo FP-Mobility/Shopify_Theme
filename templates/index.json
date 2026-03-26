@@ -184,7 +184,7 @@
             "heading_size": 32,
             "heading_color": "#0a0a0a",
             "heading_alignment": "center",
-            "heading_spacing": 8,
+            "heading_spacing": 60,
             "collection_1": "mens-fragrances",
             "collection_2": "womens-fragrances",
             "collection_3": "new-arrivals",
@@ -194,7 +194,7 @@
             "columns_desktop": 6,
             "columns_tablet": 4,
             "columns_mobile": "2",
-            "container_width": 1200,
+            "container_width": 1300,
             "card_spacing": 16,
             "image_ratio": 115,
             "card_border_radius": 18,
@@ -206,8 +206,8 @@
             "show_product_count": false,
             "count_size": 14,
             "count_color": "#666666",
-            "section_padding_top": 40,
-            "section_padding_bottom": 40
+            "section_padding_top": 88,
+            "section_padding_bottom": 76
           },
           "blocks": {}
         }
