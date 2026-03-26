@@ -1,5 +1,22 @@
 {
   "sections": {
+    "video-hero": {
+      "type": "video-hero",
+      "settings": {
+        "height": 90,
+        "overlay_opacity": 35,
+        "eyebrow": "LumiScent",
+        "heading": "Discover Your Signature Scent",
+        "text": "Curated luxury fragrances. Complimentary shipping on orders over €59.",
+        "button_label_1": "SHOP WOMEN",
+        "button_link_1": "shopify://collections/womens-fragrances",
+        "button_label_2": "SHOP MEN",
+        "button_link_2": "shopify://collections/mens-fragrances",
+        "text_alignment": "center",
+        "show_scroll_indicator": true,
+        "color_scheme": "scheme-4"
+      }
+    },
     "slideshow": {
       "type": "slideshow",
       "blocks": {
@@ -7,7 +24,7 @@
           "type": "slide",
           "settings": {
             "heading": "Discover Your Signature Scent",
-            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
+            "subheading": "Curated luxury fragrances. Complimentary shipping on orders over €59.",
             "button_label_1": "SHOP WOMEN",
             "button_link_1": "shopify://collections/womens-fragrances",
             "button_style_secondary_1": false,
@@ -54,10 +71,10 @@
       "block_order": ["slide-1", "slide-2", "slide-3"],
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "medium",
+        "slide_height": "adapt",
         "slider_visual": "dots",
         "auto_rotate": true,
-        "change_slides_speed": 5,
+        "change_slides_speed": 7,
         "show_text_below": false,
         "accessibility_info": "Slideshow about our products"
       }
@@ -115,7 +132,7 @@
       "settings": {
         "title": "Best Sellers",
         "heading_size": "h1",
-        "description": "<p>Explore the bestselling fragrances of all time</p>",
+        "description": "<p>Our most coveted fragrances, chosen by discerning customers worldwide</p>",
         "show_description": true,
         "description_style": "body",
         "image_ratio": "portrait",
@@ -133,8 +150,8 @@
         "enable_desktop_slider": true,
         "color_scheme": "scheme-1",
         "full_width": false,
-        "padding_top": 36,
-        "padding_bottom": 20
+        "padding_top": 52,
+        "padding_bottom": 28
       }
     },
     "new-arrivals": {
@@ -142,7 +159,7 @@
       "settings": {
         "title": "New Arrivals",
         "heading_size": "h1",
-        "description": "<p>Explore the newest fragrances from top brands</p>",
+        "description": "<p>The latest additions to our curated fragrance collection</p>",
         "show_description": true,
         "description_style": "body",
         "image_ratio": "portrait",
@@ -160,8 +177,8 @@
         "enable_desktop_slider": true,
         "color_scheme": "scheme-1",
         "full_width": false,
-        "padding_top": 36,
-        "padding_bottom": 20
+        "padding_top": 52,
+        "padding_bottom": 28
       }
     },
     "brand-showcase": {
@@ -223,7 +240,7 @@
       "settings": {
         "title": "Bundle & Save",
         "heading_size": "h1",
-        "description": "<p>Unbeatable prices — Buy more, save more</p>",
+        "description": "<p>Exclusive sets at exceptional value — the perfect gift</p>",
         "show_description": true,
         "description_style": "body",
         "image_ratio": "portrait",
@@ -241,8 +258,8 @@
         "enable_desktop_slider": false,
         "color_scheme": "scheme-1",
         "full_width": false,
-        "padding_top": 36,
-        "padding_bottom": 20
+        "padding_top": 52,
+        "padding_bottom": 28
       }
     },
     "testimonials": {
@@ -314,7 +331,7 @@
     "blog": {
       "type": "featured-blog",
       "settings": {
-        "heading": "LATEST BLOG",
+        "heading": "FROM THE JOURNAL",
         "heading_size": "h1",
         "blog": "news",
         "post_limit": 4,
@@ -324,8 +341,8 @@
         "show_date": true,
         "show_author": false,
         "show_view_all": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     },
     "rich-text-seo": {
@@ -341,7 +358,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>LumiScent offers a wide range of premium perfumes designed to elevate your style and express your uniqueness. Our carefully curated collection features everything from the latest men's perfumes to timeless women's fragrances. Whether treating yourself or searching for the perfect gift, our selections guarantee a luxurious and memorable experience.</p>"
+            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
           }
         }
       },
@@ -351,8 +368,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-2",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 40
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "trust-badges": {
@@ -415,6 +432,7 @@
     }
   },
   "order": [
+    "video-hero",
     "slideshow",
     "collection-cards",
     "best-sellers",

@@ -261,7 +261,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'premium-perfume-v2.css' | asset_url | stylesheet_tag }}
+    {{ 'premium-perfume-v3.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -384,7 +384,7 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <script src="{{ 'premium-perfume-v2.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'premium-perfume-v3.js' | asset_url }}" defer="defer"></script>
 
     {%- comment -%} Back to Top Button {%- endcomment -%}
     <button class="back-to-top" aria-label="Back to top">

@@ -1,0 +1,418 @@
+{%- style -%}
+  .video-hero {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.height }}vh;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .video-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-hero__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .video-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 2;
+  }
+  .video-hero__content {
+    position: relative;
+    z-index: 3;
+    text-align: {{ section.settings.text_alignment }};
+    max-width: 780px;
+    padding: 40px 20px;
+  }
+  .video-hero__eyebrow {
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--lux-gold, #C5A47E);
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 500;
+  }
+  .video-hero__heading {
+    font-family: var(--font-display, serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin: 0 0 20px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.4);
+  }
+  @media screen and (min-width: 750px) {
+    .video-hero__heading { font-size: 4.5rem; }
+  }
+  @media screen and (min-width: 990px) {
+    .video-hero__heading { font-size: 5.8rem; letter-spacing: 0.1em; }
+  }
+  .video-hero__text {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.75;
+    letter-spacing: 0.04em;
+    margin: 0 0 36px;
+    max-width: 560px;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+  }
+  .video-hero__content--center .video-hero__text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 750px) {
+    .video-hero__text { font-size: 1.15rem; }
+  }
+  .video-hero__buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .video-hero__content--center .video-hero__buttons {
+    justify-content: center;
+  }
+  .video-hero__content--right .video-hero__buttons {
+    justify-content: flex-end;
+  }
+  .video-hero__btn {
+    display: inline-block;
+    padding: 16px 42px;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .video-hero__btn--primary {
+    background: #FFFFFF;
+    color: #0A0A0A;
+    border: 1.5px solid #FFFFFF;
+  }
+  .video-hero__btn--primary:hover {
+    background: var(--lux-gold, #C5A47E);
+    border-color: var(--lux-gold, #C5A47E);
+    color: #FFFFFF;
+  }
+  .video-hero__btn--secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border: 1.5px solid rgba(255,255,255,0.5);
+  }
+  .video-hero__btn--secondary:hover {
+    border-color: #FFFFFF;
+    background: rgba(255,255,255,0.1);
+  }
+  .video-hero__scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    animation: bounceDown 2s infinite;
+  }
+  .video-hero__scroll-indicator svg {
+    width: 20px;
+    height: 20px;
+  }
+  @keyframes bounceDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* Pause/play toggle */
+  .video-hero__toggle {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 4;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+  }
+  .video-hero__toggle:hover {
+    background: rgba(0,0,0,0.6);
+    border-color: rgba(255,255,255,0.4);
+  }
+  .video-hero__toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+  .video-hero__toggle .icon-play { display: none; }
+  .video-hero__toggle.paused .icon-pause { display: none; }
+  .video-hero__toggle.paused .icon-play { display: block; }
+{%- endstyle -%}
+
+<div class="video-hero color-{{ section.settings.color_scheme }}"
+  data-section-id="{{ section.id }}"
+>
+  <div class="video-hero__media">
+    {%- if section.settings.video != blank -%}
+      {{ section.settings.video | video_tag:
+        autoplay: true,
+        loop: true,
+        muted: true,
+        playsinline: true,
+        class: 'video-hero__video',
+        image_size: '2048x'
+      }}
+    {%- elsif section.settings.video_url != blank -%}
+      <video
+        class="video-hero__video"
+        autoplay
+        loop
+        muted
+        playsinline
+        {%- if section.settings.poster_image != blank %}
+          poster="{{ section.settings.poster_image | image_url: width: 2048 }}"
+        {%- endif %}
+      >
+        <source src="{{ section.settings.video_url }}" type="video/mp4">
+      </video>
+    {%- elsif section.settings.poster_image != blank -%}
+      {{
+        section.settings.poster_image
+        | image_url: width: 3840
+        | image_tag:
+          class: 'video-hero__poster',
+          loading: 'eager',
+          sizes: '100vw',
+          widths: '375, 750, 1100, 1500, 2000, 3840'
+      }}
+    {%- else -%}
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#0A0A0A,#1A1A1A);">
+        {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="video-hero__overlay"></div>
+
+  <div class="video-hero__content video-hero__content--{{ section.settings.text_alignment }}">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="video-hero__eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2 class="video-hero__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="video-hero__text">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label_1 != blank or section.settings.button_label_2 != blank -%}
+      <div class="video-hero__buttons">
+        {%- if section.settings.button_label_1 != blank -%}
+          <a
+            href="{{ section.settings.button_link_1 | default: '#' }}"
+            class="video-hero__btn video-hero__btn--primary"
+          >
+            {{ section.settings.button_label_1 | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a
+            href="{{ section.settings.button_link_2 | default: '#' }}"
+            class="video-hero__btn video-hero__btn--secondary"
+          >
+            {{ section.settings.button_label_2 | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_scroll_indicator -%}
+    <div class="video-hero__scroll-indicator">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.video != blank or section.settings.video_url != blank -%}
+    <button class="video-hero__toggle" aria-label="Pause video" type="button">
+      <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+    </button>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!section) return;
+    var toggle = section.querySelector('.video-hero__toggle');
+    var video = section.querySelector('.video-hero__video');
+    if (toggle && video) {
+      toggle.addEventListener('click', function() {
+        if (video.paused) {
+          video.play();
+          toggle.classList.remove('paused');
+          toggle.setAttribute('aria-label', 'Pause video');
+        } else {
+          video.pause();
+          toggle.classList.add('paused');
+          toggle.setAttribute('aria-label', 'Play video');
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Video Hero",
+  "tag": "section",
+  "class": "section section-video-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-hosted video",
+      "info": "Upload your MP4 in Settings → Files, then select it here"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Or paste video URL",
+      "info": "Direct link to an MP4 file (use if Shopify video picker doesn't work)"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster_image",
+      "label": "Poster / fallback image",
+      "info": "Shown before video loads or on mobile if video fails"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Section height",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay darkness",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "LumiScent"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover Your Signature Scent"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subheading text",
+      "default": "Curated luxury fragrances. Complimentary shipping on orders over €59."
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Button 1 label",
+      "default": "SHOP WOMEN"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Button 2 label",
+      "default": "SHOP MEN"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show scroll down arrow",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Hero"
+    }
+  ]
+}
+{% endschema %}
