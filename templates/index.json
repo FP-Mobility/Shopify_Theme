@@ -42,7 +42,7 @@
             "link": "",
             "button_style_secondary": false,
             "show_text_box": true,
-            "box_align": "middle-center",
+            "box_align": "bottom-right",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
@@ -60,7 +60,7 @@
             "link": "",
             "button_style_secondary": false,
             "show_text_box": true,
-            "box_align": "middle-center",
+            "box_align": "bottom-right",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
             "color_scheme": "scheme-4"
