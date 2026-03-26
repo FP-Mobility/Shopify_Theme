@@ -165,6 +165,7 @@
         "cc-5",
         "cc-6"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "subheading": "",
@@ -173,32 +174,75 @@
         "padding_bottom": 12
       }
     },
+    "177455371579e10e79": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_63e18bd_tNXFRP": {
+          "type": "ai_gen_block_63e18bd",
+          "settings": {
+            "heading": "",
+            "heading_size": 32,
+            "heading_color": "#0a0a0a",
+            "heading_alignment": "center",
+            "heading_spacing": 60,
+            "collection_1": "mens-fragrances",
+            "collection_2": "womens-fragrances",
+            "collection_3": "new-arrivals",
+            "collection_4": "unisex",
+            "collection_5": "new-arrivals",
+            "collection_6": "gift-sets",
+            "columns_desktop": 6,
+            "columns_tablet": 4,
+            "columns_mobile": "2",
+            "container_width": 1300,
+            "card_spacing": 16,
+            "image_ratio": 115,
+            "card_border_radius": 18,
+            "title_spacing": 18,
+            "title_size": 16,
+            "title_color": "#1a1a1a",
+            "title_alignment": "center",
+            "title_weight": "600",
+            "show_product_count": false,
+            "count_size": 14,
+            "count_color": "#666666",
+            "section_padding_top": 88,
+            "section_padding_bottom": 76
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_63e18bd_tNXFRP"
+      ],
+      "settings": {}
+    },
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
-        "products_to_show": 8,
-        "title": "Best Sellers",
-        "heading_size": "h1",
+        "collection": "unisex",
+        "products_to_show": 25,
+        "title": "<strong>Best Sellers</strong>",
+        "heading_size": "h0",
         "description": "<p>Our most coveted fragrances, chosen by discerning customers worldwide</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
         "enable_desktop_slider": true,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": true,
         "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
+        "color_scheme": "scheme-2",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
-        "show_rating": false,
-        "quick_add": "standard",
+        "show_rating": true,
+        "quick_add": "bulk",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 20
+        "padding_top": 48,
+        "padding_bottom": 40
       }
     },
     "new-arrivals": {
@@ -370,6 +414,62 @@
         "padding_bottom": 36
       }
     },
+    "multirow_W8U3BE": {
+      "type": "multirow",
+      "blocks": {
+        "row_WE9KLK": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_NBrfUG": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_3rTnVx": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_WE9KLK",
+        "row_NBrfUG",
+        "row_3rTnVx"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "bundles": {
       "type": "featured-collection",
       "settings": {
@@ -483,9 +583,9 @@
         "show_image": true,
         "show_date": true,
         "show_author": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": "scheme-2",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "rich-text-seo": {
@@ -577,7 +677,7 @@
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
-        "background_color": "#ffffff",
+        "background_color": "#c5a47e",
         "label": "",
         "title": "First to know about our sales and discounts",
         "text": "Our email subscribers get early access to new launches, promotions and more.",
@@ -591,10 +691,12 @@
     "video-hero",
     "slideshow",
     "collection-cards",
+    "177455371579e10e79",
     "best-sellers",
     "new-arrivals",
     "brand-showcase",
     "shop-gender",
+    "multirow_W8U3BE",
     "bundles",
     "testimonials",
     "blog",
