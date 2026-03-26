@@ -766,6 +766,7 @@ button[name="add"]:hover,
   text-decoration: none;
   color: inherit;
   overflow: hidden;
+  border-radius: 16px;
   transition: transform var(--t-elegant), box-shadow var(--t-elegant);
 }
 @media screen and (min-width: 750px) {
@@ -788,6 +789,7 @@ button[name="add"]:hover,
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  border-radius: 16px;
   background: linear-gradient(155deg, var(--lux-charcoal) 0%, var(--lux-black) 100%);
 }
 .collection-cards-row__image {
@@ -831,8 +833,11 @@ button[name="add"]:hover,
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 28px 18px;
+  padding: 20px 18px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   transform: translateY(6px);
   transition: transform var(--t-elegant);
 }
@@ -867,6 +872,7 @@ button[name="add"]:hover,
   transition: transform var(--t-elegant);
   transform-origin: left;
   z-index: 3;
+  border-radius: 0 0 16px 16px;
 }
 .collection-cards-row__card:hover::after {
   transform: scaleX(1);
