@@ -134,7 +134,7 @@
             "collection": "unisex"
           }
         },
-        "category_aiCaBb": {
+        "category_VdqYDL": {
           "type": "category",
           "settings": {
             "title": "Unisex",
@@ -151,24 +151,14 @@
             "image": "shopify://shop_images/Gemini_Generated_Image_5au5u85au5u85au5_aeff88e5-a0a8-42cd-a542-e73547dda8c5.png",
             "collection": "gift-sets"
           }
-        },
-        "category_KKQBLi": {
-          "type": "category",
-          "settings": {
-            "title": "Gift Sets",
-            "description": "Perfect gifts for fragrance lovers",
-            "image": "shopify://shop_images/Gemini_Generated_Image_5au5u85au5u85au5_aeff88e5-a0a8-42cd-a542-e73547dda8c5.png",
-            "collection": "gift-sets"
-          }
         }
       },
       "block_order": [
         "category_afmXcm",
         "category_nXRkx7",
         "category_MDaLY9",
-        "category_aiCaBb",
-        "category_JprphD",
-        "category_KKQBLi"
+        "category_VdqYDL",
+        "category_JprphD"
       ],
       "name": "Featured Categories",
       "settings": {
@@ -411,6 +401,7 @@
         "row_NBrfUG",
         "row_3rTnVx"
       ],
+      "disabled": true,
       "name": "t:sections.multirow.presets.name",
       "settings": {
         "image_height": "medium",
