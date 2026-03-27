@@ -551,6 +551,7 @@
     },
     "blog": {
       "type": "featured-blog",
+      "disabled": true,
       "settings": {
         "blog": "news",
         "post_limit": 4,
