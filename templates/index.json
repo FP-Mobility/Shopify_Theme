@@ -237,7 +237,6 @@
           "type": "brand",
           "settings": {
             "brand_name": "Burberry",
-            "brand_logo": "shopify://shop_images/burberry-perfume-brand-image.png",
             "brand_collection": "brands"
           }
         },
@@ -245,7 +244,6 @@
           "type": "brand",
           "settings": {
             "brand_name": "Versace",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-03-26_200708.jpg",
             "brand_collection": ""
           }
         },
