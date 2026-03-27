@@ -700,6 +700,7 @@
       "blocks": {
         "ai_gen_block_72d8ff5_krmEWb": {
           "type": "ai_gen_block_72d8ff5",
+          "disabled": true,
           "settings": {
             "product": "fragrance-example-product-1",
             "show_title": true,
