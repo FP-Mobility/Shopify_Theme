@@ -155,76 +155,6 @@
         "title": "Shop by Category"
       }
     },
-    "collection-cards": {
-      "type": "collection-cards-row",
-      "blocks": {
-        "cc-1": {
-          "type": "collection_card",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-26_195741.jpg",
-            "title": "Men's Fragrances",
-            "product_count": "test",
-            "link": ""
-          }
-        },
-        "cc-2": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Women's Fragrances",
-            "product_count": "",
-            "link": ""
-          }
-        },
-        "cc-3": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Unisex",
-            "product_count": "",
-            "link": ""
-          }
-        },
-        "cc-4": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Niche Fragrances",
-            "product_count": "",
-            "link": ""
-          }
-        },
-        "cc-5": {
-          "type": "collection_card",
-          "settings": {
-            "title": "Gift Sets",
-            "product_count": "",
-            "link": ""
-          }
-        },
-        "cc-6": {
-          "type": "collection_card",
-          "settings": {
-            "title": "New Arrivals",
-            "product_count": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "cc-1",
-        "cc-2",
-        "cc-3",
-        "cc-4",
-        "cc-5",
-        "cc-6"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "color_scheme": "scheme-1",
-        "padding_top": 28,
-        "padding_bottom": 12
-      }
-    },
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
@@ -380,17 +310,18 @@
         "men": {
           "type": "gender_card",
           "settings": {
+            "image": "shopify://shop_images/fragrance-minimal-3.jpg",
             "title": "FOR MEN",
             "main_link": "",
             "cta_label": "VIEW ALL MEN'S",
             "link_1_label": "Shop Men",
-            "link_1_url": "",
+            "link_1_url": "shopify://collections/mens-fragrances",
             "link_2_label": "Best Sellers",
-            "link_2_url": "",
+            "link_2_url": "shopify://collections/best-sellers",
             "link_3_label": "New Arrivals",
-            "link_3_url": "",
+            "link_3_url": "shopify://collections/new-arrivals",
             "link_4_label": "Gift Sets",
-            "link_4_url": ""
+            "link_4_url": "shopify://collections/gift-sets"
           }
         },
         "women": {
@@ -697,7 +628,6 @@
     "video-hero",
     "slideshow",
     "featured_categories_7MQ8rz",
-    "collection-cards",
     "best-sellers",
     "new-arrivals",
     "brand-showcase",
