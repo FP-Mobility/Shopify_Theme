@@ -312,7 +312,7 @@
           "settings": {
             "image": "shopify://shop_images/fragrance-minimal-3.jpg",
             "title": "FOR MEN",
-            "main_link": "",
+            "main_link": "shopify://collections/mens-fragrances",
             "cta_label": "VIEW ALL MEN'S",
             "link_1_label": "Shop Men",
             "link_1_url": "shopify://collections/mens-fragrances",
