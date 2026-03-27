@@ -211,6 +211,54 @@
         "padding_bottom": 20
       }
     },
+    "shop-gender": {
+      "type": "shop-by-gender",
+      "blocks": {
+        "men": {
+          "type": "gender_card",
+          "settings": {
+            "image": "shopify://shop_images/fragrance-minimal-3.jpg",
+            "title": "FOR MEN",
+            "main_link": "shopify://collections/mens-fragrances",
+            "cta_label": "VIEW ALL MEN'S",
+            "link_1_label": "Shop Men",
+            "link_1_url": "shopify://collections/mens-fragrances",
+            "link_2_label": "Best Sellers",
+            "link_2_url": "shopify://collections/best-sellers",
+            "link_3_label": "New Arrivals",
+            "link_3_url": "shopify://collections/new-arrivals",
+            "link_4_label": "Gift Sets",
+            "link_4_url": "shopify://collections/gift-sets"
+          }
+        },
+        "women": {
+          "type": "gender_card",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-27_112323.jpg",
+            "title": "FOR WOMEN",
+            "main_link": "shopify://collections/womens-fragrances",
+            "cta_label": "VIEW ALL WOMEN'S",
+            "link_1_label": "Shop Women",
+            "link_1_url": "shopify://collections/womens-fragrances",
+            "link_2_label": "Best Sellers",
+            "link_2_url": "shopify://collections/best-sellers",
+            "link_3_label": "New Arrivals",
+            "link_3_url": "shopify://collections/new-arrivals",
+            "link_4_label": "Gift Sets",
+            "link_4_url": "shopify://collections/gift-sets"
+          }
+        }
+      },
+      "block_order": [
+        "men",
+        "women"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "brand-showcase": {
       "type": "brand-showcase",
       "blocks": {
@@ -302,53 +350,6 @@
         "subtitle": "Shop your favorite brands at the best prices",
         "show_all_link": true,
         "all_brands_page": ""
-      }
-    },
-    "shop-gender": {
-      "type": "shop-by-gender",
-      "blocks": {
-        "men": {
-          "type": "gender_card",
-          "settings": {
-            "image": "shopify://shop_images/fragrance-minimal-3.jpg",
-            "title": "FOR MEN",
-            "main_link": "shopify://collections/mens-fragrances",
-            "cta_label": "VIEW ALL MEN'S",
-            "link_1_label": "Shop Men",
-            "link_1_url": "shopify://collections/mens-fragrances",
-            "link_2_label": "Best Sellers",
-            "link_2_url": "shopify://collections/best-sellers",
-            "link_3_label": "New Arrivals",
-            "link_3_url": "shopify://collections/new-arrivals",
-            "link_4_label": "Gift Sets",
-            "link_4_url": "shopify://collections/gift-sets"
-          }
-        },
-        "women": {
-          "type": "gender_card",
-          "settings": {
-            "title": "FOR WOMEN",
-            "main_link": "",
-            "cta_label": "VIEW ALL WOMEN'S",
-            "link_1_label": "Shop Women",
-            "link_1_url": "",
-            "link_2_label": "Best Sellers",
-            "link_2_url": "",
-            "link_3_label": "New Arrivals",
-            "link_3_url": "",
-            "link_4_label": "Gift Sets",
-            "link_4_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "men",
-        "women"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "multirow_W8U3BE": {
@@ -630,8 +631,8 @@
     "featured_categories_7MQ8rz",
     "best-sellers",
     "new-arrivals",
-    "brand-showcase",
     "shop-gender",
+    "brand-showcase",
     "multirow_W8U3BE",
     "bundles",
     "testimonials",
