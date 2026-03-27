@@ -1451,5 +1451,63 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Idealo Price Adjustment",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "idealo_enable",
+        "label": "Enable Idealo price markup",
+        "default": false,
+        "info": "When enabled, customers arriving from Idealo will see a price markup on products other than the one they clicked."
+      },
+      {
+        "type": "number",
+        "id": "idealo_markup_cents",
+        "label": "Markup amount (in cents)",
+        "default": 500,
+        "info": "Enter in cents. E.g. 500 = €5.00. Applied to all products except the landing product."
+      },
+      {
+        "type": "text",
+        "id": "idealo_referrer_pattern",
+        "label": "Referrer domain pattern",
+        "default": "idealo",
+        "info": "Text to match in the referrer URL. Default: idealo"
+      }
+    ]
+  },
+  {
+    "name": "Free Shipping Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "free_shipping_bar_enable",
+        "label": "Enable free shipping progress bar",
+        "default": true,
+        "info": "Show a progress bar toward free shipping in the cart drawer."
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold (in cents)",
+        "default": 5900,
+        "info": "Enter in cents. E.g. 5900 = €59.00"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_message",
+        "label": "Almost there message",
+        "default": "You're €AMOUNT away from free shipping!",
+        "info": "Use AMOUNT as the placeholder for the remaining amount."
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_success_message",
+        "label": "Success message",
+        "default": "You've unlocked FREE shipping!"
+      }
+    ]
   }
 ]

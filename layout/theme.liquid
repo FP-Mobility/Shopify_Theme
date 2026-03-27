@@ -386,6 +386,24 @@
 
     <script src="{{ 'premium-perfume-v3.js' | asset_url }}" defer="defer"></script>
 
+    {%- comment -%} LumiScent Features: Idealo markup, Free Shipping Bar, Sticky ATC, Recently Viewed {%- endcomment -%}
+    {%- assign lux_fs_msg = settings.free_shipping_message | default: "You're AMOUNT away from free shipping!" -%}
+    {%- assign lux_fs_ok = settings.free_shipping_success_message | default: "You've unlocked FREE shipping!" -%}
+    <script>
+      window.__lumiscent = {
+        idealo_enable: {{ settings.idealo_enable | json }},
+        idealo_markup_cents: {{ settings.idealo_markup_cents | default: 0 | json }},
+        idealo_referrer_pattern: {{ settings.idealo_referrer_pattern | default: 'idealo' | json }},
+        free_shipping_enable: {{ settings.free_shipping_bar_enable | json }},
+        free_shipping_threshold: {{ settings.free_shipping_threshold | default: 5900 | json }},
+        free_shipping_message: {{ lux_fs_msg | json }},
+        free_shipping_success_message: {{ lux_fs_ok | json }},
+        currency: {{ cart.currency.iso_code | json }},
+        money_format: {{ shop.money_format | json }}
+      };
+    </script>
+    <script src="{{ 'lumiscent-features.js' | asset_url }}" defer="defer"></script>
+
     {%- comment -%} Back to Top Button {%- endcomment -%}
     <button class="back-to-top" aria-label="Back to top">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

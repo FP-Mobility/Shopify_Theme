@@ -2736,3 +2736,228 @@ body {
 .loading__spinner circle {
   stroke: var(--lux-gold);
 }
+
+/* ============== FREE SHIPPING PROGRESS BAR ============== */
+.free-shipping-bar {
+  padding: 12px 20px;
+  background: var(--lux-pale);
+  border-bottom: 1px solid var(--lux-border-light);
+}
+.free-shipping-bar__inner {
+  max-width: 100%;
+}
+.free-shipping-bar__text {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--lux-dark-gray);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+.free-shipping-bar__track {
+  width: 100%;
+  height: 4px;
+  background: var(--lux-border);
+  overflow: hidden;
+}
+.free-shipping-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--lux-gold);
+  transition: width 0.6s var(--ease-out-expo);
+}
+.free-shipping-bar--success .free-shipping-bar__text {
+  color: var(--lux-green);
+  font-weight: 600;
+}
+
+/* Cart drawer shipping bar */
+.cart-drawer .free-shipping-bar {
+  background: var(--lux-pale);
+}
+
+/* ============== STICKY ADD-TO-CART BAR ============== */
+.sticky-atc-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--lux-white);
+  border-top: 1px solid var(--lux-border);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out-expo);
+  padding: 12px 0;
+}
+.sticky-atc-bar--visible {
+  transform: translateY(0);
+}
+.sticky-atc-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sticky-atc-bar__img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.sticky-atc-bar__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sticky-atc-bar__title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--lux-black);
+}
+.sticky-atc-bar__price {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--lux-dark-gray);
+}
+.sticky-atc-bar__btn {
+  flex-shrink: 0;
+  padding: 14px 36px;
+  background: var(--lux-black);
+  color: var(--lux-white);
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--t-smooth);
+  white-space: nowrap;
+}
+.sticky-atc-bar__btn:hover {
+  background: var(--lux-gold);
+  box-shadow: var(--shadow-gold);
+}
+@media screen and (max-width: 749px) {
+  .sticky-atc-bar__img { display: none; }
+  .sticky-atc-bar__title { font-size: 0.82rem; }
+  .sticky-atc-bar__btn { padding: 12px 24px; }
+}
+
+/* ============== RECENTLY VIEWED ============== */
+.recently-viewed {
+  padding: 64px 0;
+  background: var(--lux-warm-bg);
+  overflow: hidden;
+}
+.recently-viewed__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.recently-viewed__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--lux-gold);
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.recently-viewed__title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--lux-black);
+  margin: 0;
+}
+.recently-viewed__scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.recently-viewed__scroll::-webkit-scrollbar { display: none; }
+
+.recently-viewed__card {
+  flex: 0 0 160px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--t-elegant);
+}
+@media screen and (min-width: 750px) {
+  .recently-viewed__card { flex: 0 0 180px; }
+}
+.recently-viewed__card:hover {
+  transform: translateY(-6px);
+}
+.recently-viewed__img-wrap {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--lux-pale);
+  margin-bottom: 12px;
+}
+.recently-viewed__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out-expo);
+}
+.recently-viewed__card:hover .recently-viewed__img-wrap img {
+  transform: scale(1.08);
+}
+.recently-viewed__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--lux-pale), var(--lux-border));
+}
+.recently-viewed__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.recently-viewed__name {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--lux-black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.recently-viewed__price {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--lux-dark-gray);
+}
+
+/* ============== STOCK URGENCY ============== */
+.stock-urgency {
+  font-size: 0.85rem;
+  color: var(--lux-red);
+  font-weight: 500;
+  padding: 8px 0;
+  letter-spacing: 0.03em;
+  animation: urgencyPulse 2s infinite;
+}
+@keyframes urgencyPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ============== IDEALO MARKUP INDICATOR ============== */
+[data-lux-marked] {
+  /* Subtle transition for price changes */
+  transition: color 0.3s ease;
+}
