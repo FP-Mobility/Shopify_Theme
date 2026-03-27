@@ -104,6 +104,57 @@
         "accessibility_info": "Slideshow about our products"
       }
     },
+    "featured_categories_7MQ8rz": {
+      "type": "featured-categories",
+      "blocks": {
+        "category_afmXcm": {
+          "type": "category",
+          "settings": {
+            "title": "Men's Fragrances",
+            "description": "Bold and sophisticated fragrances for men",
+            "image": "shopify://shop_images/fragrance-minimal-4.jpg",
+            "collection": "mens-fragrances"
+          }
+        },
+        "category_nXRkx7": {
+          "type": "category",
+          "settings": {
+            "title": "Women's Fragrances",
+            "description": "Elegant and luxurious fragrances for women",
+            "image": "shopify://shop_images/Screenshot_2026-03-25_175815.jpg",
+            "collection": "womens-fragrances"
+          }
+        },
+        "category_MDaLY9": {
+          "type": "category",
+          "settings": {
+            "title": "Unisex",
+            "description": "Versatile fragrances for everyone",
+            "image": "shopify://shop_images/Screenshot_2026-03-25_190035.jpg",
+            "collection": "unisex"
+          }
+        },
+        "category_JprphD": {
+          "type": "category",
+          "settings": {
+            "title": "Gift Sets",
+            "description": "Perfect gifts for fragrance lovers",
+            "image": "shopify://shop_images/Gemini_Generated_Image_5au5u85au5u85au5_aeff88e5-a0a8-42cd-a542-e73547dda8c5.png",
+            "collection": "gift-sets"
+          }
+        }
+      },
+      "block_order": [
+        "category_afmXcm",
+        "category_nXRkx7",
+        "category_MDaLY9",
+        "category_JprphD"
+      ],
+      "name": "Featured Categories",
+      "settings": {
+        "title": "Shop by Category"
+      }
+    },
     "collection-cards": {
       "type": "collection-cards-row",
       "blocks": {
@@ -645,6 +696,7 @@
   "order": [
     "video-hero",
     "slideshow",
+    "featured_categories_7MQ8rz",
     "collection-cards",
     "best-sellers",
     "new-arrivals",
