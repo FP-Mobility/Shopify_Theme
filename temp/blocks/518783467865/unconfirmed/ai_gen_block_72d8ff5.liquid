@@ -1,6 +1,500 @@
+{% doc %}
+  @prompt
+    Add product tags as visual badge labels (like "Men", "Women", "Unisex") displayed on product cards in the best sellers featured collection section. The tags should appear as small pill-shaped badges overlaid on the product image (top-left or bottom of image). Only show tags that are relevant gender/category tags (Men, Women, Unisex, Kids, etc.) and style them to match the existing theme design with clean typography and subtle background colors. The badges should be responsive and work on both mobile and desktop.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-card-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    display: block;
+  }
+
+  .ai-product-card__wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+  }
+
+  .ai-product-card__image-container-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-product-card__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .ai-product-card__badges-{{ ai_gen_id }} {
+    position: absolute;
+    {% if block.settings.badge_position == 'top-left' %}
+      top: {{ block.settings.badge_offset }}px;
+      left: {{ block.settings.badge_offset }}px;
+    {% elsif block.settings.badge_position == 'top-right' %}
+      top: {{ block.settings.badge_offset }}px;
+      right: {{ block.settings.badge_offset }}px;
+    {% elsif block.settings.badge_position == 'bottom-left' %}
+      bottom: {{ block.settings.badge_offset }}px;
+      left: {{ block.settings.badge_offset }}px;
+    {% else %}
+      bottom: {{ block.settings.badge_offset }}px;
+      right: {{ block.settings.badge_offset }}px;
+    {% endif %}
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ block.settings.badge_spacing }}px;
+    z-index: 2;
+    {% if block.settings.badge_position == 'top-right' or block.settings.badge_position == 'bottom-right' %}
+      flex-direction: row-reverse;
+    {% endif %}
+  }
+
+  .ai-product-card__badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: {{ block.settings.badge_padding_vertical }}px {{ block.settings.badge_padding_horizontal }}px;
+    background-color: {{ block.settings.badge_background_color }};
+    color: {{ block.settings.badge_text_color }};
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: {{ block.settings.badge_font_weight }};
+    text-transform: {{ block.settings.badge_text_transform }};
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    white-space: nowrap;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    {% if block.settings.badge_shadow_enabled %}
+      box-shadow: 0 2px 8px rgba(0, 0, 0, {{ block.settings.badge_shadow_opacity }});
+    {% endif %}
+  }
+
+  .ai-product-card__info-{{ ai_gen_id }} {
+    margin-top: {{ block.settings.info_spacing }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-product-card__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_font_size }}px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: {{ block.settings.title_color }};
+  }
+
+  .ai-product-card__price-{{ ai_gen_id }} {
+    font-size: {{ block.settings.price_font_size }}px;
+    color: {{ block.settings.price_color }};
+    margin: 0;
+  }
+
+  .ai-product-card__link-{{ ai_gen_id }} {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-product-card__badge-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.badge_font_size }}px * 0.9);
+      padding: calc({{ block.settings.badge_padding_vertical }}px * 0.85) calc({{ block.settings.badge_padding_horizontal }}px * 0.85);
+    }
+
+    .ai-product-card__badges-{{ ai_gen_id }} {
+      gap: calc({{ block.settings.badge_spacing }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<product-card-{{ ai_gen_id }} class="ai-product-card-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-product-card__wrapper-{{ ai_gen_id }}">
+    {% if block.settings.product %}
+      <a href="{{ block.settings.product.url }}" class="ai-product-card__link-{{ ai_gen_id }}">
+        <div class="ai-product-card__image-container-{{ ai_gen_id }}">
+          {% if block.settings.product.featured_image %}
+            <img
+              src="{{ block.settings.product.featured_image | image_url: width: 800 }}"
+              alt="{{ block.settings.product.featured_image.alt | escape }}"
+              class="ai-product-card__image-{{ ai_gen_id }}"
+              loading="lazy"
+              width="{{ block.settings.product.featured_image.width }}"
+              height="{{ block.settings.product.featured_image.height }}"
+            >
+          {% else %}
+            <div class="ai-product-card__image-placeholder-{{ ai_gen_id }}">
+              {{ 'product-1' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_badges and block.settings.product.tags.size > 0 %}
+            <div class="ai-product-card__badges-{{ ai_gen_id }}">
+              {% assign relevant_tags = block.settings.relevant_tags | split: ',' %}
+              {% assign badge_count = 0 %}
+              {% for tag in block.settings.product.tags %}
+                {% if badge_count < block.settings.max_badges %}
+                  {% assign tag_lower = tag | downcase | strip %}
+                  {% assign is_relevant = false %}
+                  
+                  {% for relevant_tag in relevant_tags %}
+                    {% assign relevant_tag_clean = relevant_tag | downcase | strip %}
+                    {% if tag_lower == relevant_tag_clean %}
+                      {% assign is_relevant = true %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if is_relevant %}
+                    <span class="ai-product-card__badge-{{ ai_gen_id }}">{{ tag }}</span>
+                    {% assign badge_count = badge_count | plus: 1 %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-product-card__info-{{ ai_gen_id }}">
+          {% if block.settings.show_title %}
+            <h3 class="ai-product-card__title-{{ ai_gen_id }}">{{ block.settings.product.title }}</h3>
+          {% endif %}
+          {% if block.settings.show_price %}
+            <p class="ai-product-card__price-{{ ai_gen_id }}">{{ block.settings.product.price | money }}</p>
+          {% endif %}
+        </div>
+      </a>
+    {% else %}
+      <div class="ai-product-card__image-container-{{ ai_gen_id }}">
+        <div class="ai-product-card__image-placeholder-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+        <div class="ai-product-card__badges-{{ ai_gen_id }}">
+          <span class="ai-product-card__badge-{{ ai_gen_id }}">Men</span>
+          <span class="ai-product-card__badge-{{ ai_gen_id }}">New</span>
+        </div>
+      </div>
+      <div class="ai-product-card__info-{{ ai_gen_id }}">
+        <h3 class="ai-product-card__title-{{ ai_gen_id }}">Product title</h3>
+        <p class="ai-product-card__price-{{ ai_gen_id }}">€99.00</p>
+      </div>
+    {% endif %}
+  </div>
+</product-card-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductCard{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.style.display = 'block';
+      }
+    }
+
+    customElements.define('product-card-{{ ai_gen_id }}', ProductCard{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product card with badges",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show product title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show product price",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Badge settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show tag badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "relevant_tags",
+      "label": "Relevant tags",
+      "default": "Men, Women, Unisex, Kids, Boys, Girls, New, Sale, Limited",
+      "info": "Comma-separated list of tags to display as badges. Only matching tags will be shown."
+    },
+    {
+      "type": "range",
+      "id": "max_badges",
+      "label": "Maximum badges",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": "Maximum number of badges to display per product"
+    },
+    {
+      "type": "select",
+      "id": "badge_position",
+      "label": "Badge position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "top-left"
+    },
+    {
+      "type": "range",
+      "id": "badge_offset",
+      "label": "Badge offset from edge",
+      "min": 4,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "badge_spacing",
+      "label": "Space between badges",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Badge style"
+    },
+    {
+      "type": "color",
+      "id": "badge_background_color",
+      "label": "Background",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "select",
+      "id": "badge_font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "badge_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_vertical",
+      "label": "Vertical padding",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "badge_padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 6,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "checkbox",
+      "id": "badge_shadow_enabled",
+      "label": "Enable shadow",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "badge_shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.3
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "info_spacing",
+      "label": "Space below image",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "price_font_size",
+      "label": "Price font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#0a0a0a"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#0a0a0a"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product card with badges"
+    }
+  ]
+}
 {% endschema %}
