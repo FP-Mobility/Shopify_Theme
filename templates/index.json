@@ -634,6 +634,65 @@
         "button_label": "SUBSCRIBE",
         "privacy_text": "By subscribing you agree with our Privacy Policy"
       }
+    },
+    "featured_product_CeY6n8": {
+      "type": "featured-product",
+      "blocks": {
+        "text_LAaFpj": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_W78wYC": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_9kGRCy": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_RWp967": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_mnqFEX": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "text_LAaFpj",
+        "title_W78wYC",
+        "price_9kGRCy",
+        "variant_picker_RWp967",
+        "buy_buttons_mnqFEX"
+      ],
+      "name": "t:sections.featured-product.presets.name",
+      "settings": {
+        "product": "fragrance-example-product-1",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "small",
+        "constrain_to_viewport": false,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -650,6 +709,7 @@
     "blog",
     "rich-text-seo",
     "trust-badges",
-    "newsletter"
+    "newsletter",
+    "featured_product_CeY6n8"
   ]
 }
