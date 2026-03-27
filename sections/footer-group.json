@@ -1,1 +1,74 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","blocks":{"menu_shop":{"type":"link_list","settings":{"heading":"SHOP BY","menu":"footer-shop-by"}},"menu_info":{"type":"link_list","settings":{"heading":"INFORMATION","menu":"footer-information"}},"menu_customer":{"type":"link_list","settings":{"heading":"CUSTOMER SERVICES","menu":"footer-customer-services"}},"menu_account":{"type":"link_list","settings":{"heading":"ACCOUNT","menu":"footer-account"}}},"block_order":["menu_shop","menu_info","menu_customer","menu_account"],"custom_css":[],"settings":{"color_scheme":"scheme-4","newsletter_enable":false,"newsletter_heading":"Subscribe for Exclusive Offers","enable_follow_on_shop":false,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":48,"padding_bottom":36}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "SHOP BY",
+            "menu": "footer-shop-by"
+          }
+        },
+        "menu_info": {
+          "type": "link_list",
+          "settings": {
+            "heading": "INFORMATION",
+            "menu": "footer-information"
+          }
+        },
+        "menu_customer": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "heading": "CUSTOMER SERVICES",
+            "menu": ""
+          }
+        },
+        "menu_account": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "heading": "ACCOUNT",
+            "menu": ""
+          }
+        }
+      },
+      "block_order": [
+        "menu_shop",
+        "menu_info",
+        "menu_customer",
+        "menu_account"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe for Exclusive Offers",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
