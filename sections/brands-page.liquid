@@ -1,0 +1,285 @@
+{%- style -%}
+  .brands-page {
+    padding: 60px 0 80px;
+  }
+  .brands-page__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .brands-page__title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--lux-black, #0A0A0A);
+    margin: 0 0 12px;
+  }
+  .brands-page__subtitle {
+    font-size: 0.95rem;
+    color: #777;
+    margin: 0;
+  }
+  .brands-page__search {
+    max-width: 440px;
+    margin: 32px auto 0;
+    position: relative;
+  }
+  .brands-page__search-input {
+    width: 100%;
+    padding: 14px 48px 14px 20px;
+    border: 1px solid #ddd;
+    font-family: var(--font-body, 'Jost', sans-serif);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background: #fff;
+  }
+  .brands-page__search-input:focus {
+    border-color: var(--lux-gold, #C5A47E);
+  }
+  .brands-page__search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #999;
+    pointer-events: none;
+  }
+  .brands-page__alpha-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 40px;
+  }
+  .brands-page__alpha-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-family: var(--font-body, 'Jost', sans-serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+  .brands-page__alpha-btn:hover,
+  .brands-page__alpha-btn.active {
+    background: var(--lux-black, #0A0A0A);
+    color: #fff;
+    border-color: var(--lux-black, #0A0A0A);
+  }
+  .brands-page__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media screen and (min-width: 750px) {
+    .brands-page__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+  @media screen and (min-width: 990px) {
+    .brands-page__grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .brands-page__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 16px;
+    border: 1px solid #eee;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    text-align: center;
+  }
+  .brands-page__card:hover {
+    border-color: var(--lux-gold, #C5A47E);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+  .brands-page__card-logo {
+    max-width: 120px;
+    max-height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  .brands-page__card-name {
+    font-family: var(--font-body, 'Jost', sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lux-black, #0A0A0A);
+  }
+  .brands-page__card-count {
+    font-size: 0.72rem;
+    color: #999;
+    margin-top: 4px;
+  }
+  .brands-page__empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1rem;
+    grid-column: 1 / -1;
+    display: none;
+  }
+{%- endstyle -%}
+
+<div class="brands-page">
+  <div class="page-width">
+    <div class="brands-page__header">
+      <h1 class="brands-page__title">{{ section.settings.title }}</h1>
+      <p class="brands-page__subtitle">{{ section.settings.subtitle }}</p>
+      <div class="brands-page__search">
+        <input type="text" class="brands-page__search-input" id="brandSearch" placeholder="Search brands..." autocomplete="off">
+        <svg class="brands-page__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+    </div>
+
+    <div class="brands-page__alpha-nav" id="alphaNav">
+      <button class="brands-page__alpha-btn active" data-letter="all">ALL</button>
+      {%- for i in (65..90) -%}
+        {%- assign letter = i | append: '' -%}
+        <button class="brands-page__alpha-btn" data-letter="{{ i | minus: 65 | plus: 65 | divided_by: 1 }}">{{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | slice: i | slice: 0, 1 }}</button>
+      {%- endfor -%}
+    </div>
+
+    <div class="brands-page__grid" id="brandsGrid">
+      {%- for block in section.blocks -%}
+        {%- assign brand_name = block.settings.brand_name -%}
+        {%- assign first_letter = brand_name | slice: 0 | upcase -%}
+        <a
+          href="{{ block.settings.brand_collection.url | default: routes.all_products_collection_url | append: '?filter.v.option.brand=' | append: brand_name | url_encode }}"
+          class="brands-page__card"
+          data-brand="{{ brand_name | downcase }}"
+          data-letter="{{ first_letter }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.brand_logo != blank -%}
+            <img
+              src="{{ block.settings.brand_logo | image_url: width: 240 }}"
+              alt="{{ brand_name | escape }}"
+              class="brands-page__card-logo"
+              loading="lazy"
+              width="120"
+              height="60"
+            >
+          {%- endif -%}
+          <span class="brands-page__card-name">{{ brand_name }}</span>
+          {%- if block.settings.product_count != blank -%}
+            <span class="brands-page__card-count">{{ block.settings.product_count }} products</span>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+      <div class="brands-page__empty" id="brandsEmpty">No brands found matching your search.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var searchInput = document.getElementById('brandSearch');
+    var grid = document.getElementById('brandsGrid');
+    var cards = grid.querySelectorAll('.brands-page__card');
+    var alphaNav = document.getElementById('alphaNav');
+    var emptyMsg = document.getElementById('brandsEmpty');
+    var activeBtn = alphaNav.querySelector('.active');
+
+    function filterBrands() {
+      var query = searchInput.value.toLowerCase().trim();
+      var letter = activeBtn ? activeBtn.getAttribute('data-letter') : 'all';
+      var visible = 0;
+
+      cards.forEach(function(card) {
+        var name = card.getAttribute('data-brand') || '';
+        var cardLetter = card.getAttribute('data-letter') || '';
+        var matchSearch = !query || name.indexOf(query) !== -1;
+        var matchLetter = letter === 'all' || cardLetter === letter;
+
+        if (matchSearch && matchLetter) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    searchInput.addEventListener('input', filterBrands);
+
+    alphaNav.addEventListener('click', function(e) {
+      var btn = e.target.closest('.brands-page__alpha-btn');
+      if (!btn) return;
+      if (activeBtn) activeBtn.classList.remove('active');
+      btn.classList.add('active');
+      activeBtn = btn;
+      filterBrands();
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Brands Page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "All Perfume Brands"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Browse our complete collection of designer and niche fragrance brands"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand Logo"
+        },
+        {
+          "type": "collection",
+          "id": "brand_collection",
+          "label": "Brand Collection"
+        },
+        {
+          "type": "text",
+          "id": "product_count",
+          "label": "Product Count (optional)"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

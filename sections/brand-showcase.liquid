@@ -11,7 +11,7 @@
         {% if block.settings.brand_collection %}
           <a href="{{ block.settings.brand_collection.url }}" class="brand-item" {{ block.shopify_attributes }}>
         {% else %}
-          <div class="brand-item" {{ block.shopify_attributes }}>
+          <a href="{{ routes.all_products_collection_url }}?filter.v.option.brand={{ block.settings.brand_name | url_encode }}" class="brand-item" {{ block.shopify_attributes }}>
         {% endif %}
           {% if block.settings.brand_logo %}
             <div class="brand-logo">
@@ -19,21 +19,13 @@
             </div>
           {% endif %}
           <p class="brand-name">{{ block.settings.brand_name }}</p>
-        {% if block.settings.brand_collection %}
-          </a>
-        {% else %}
-          </div>
-        {% endif %}
+        </a>
       {% endfor %}
     </div>
 
     {% if section.settings.show_all_link %}
       <div class="view-all">
-        {% if section.settings.all_brands_page %}
-          <a href="{{ section.settings.all_brands_page.url }}" class="button">
-            View All Brands
-          </a>
-        {% endif %}
+        <a href="{{ routes.collections_url }}/vendors" class="button">View All Brands</a>
       </div>
     {% endif %}
   </div>

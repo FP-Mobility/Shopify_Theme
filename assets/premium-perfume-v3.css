@@ -429,7 +429,7 @@ button[name="add"]:hover,
   .header__inline-menu .list-menu--inline > li > a,
   .mega-menu__link--level-1 {
     padding: 10px 14px !important;
-    font-size: 0.74rem !important;
+    font-size: 0.84rem !important;
     letter-spacing: 0.13em !important;
   }
 }
@@ -462,11 +462,11 @@ button[name="add"]:hover,
 .header__inline-menu .list-menu--inline > li > a,
 .mega-menu__link--level-1 {
   font-family: var(--font-body) !important;
-  font-size: 0.72rem !important;
+  font-size: 0.82rem !important;
   letter-spacing: 0.12em !important;
   text-transform: uppercase;
   font-weight: 500;
-  padding: 10px 10px !important;
+  padding: 10px 12px !important;
   position: relative;
   transition: color var(--t-fast);
   color: var(--lux-dark-gray) !important;
@@ -504,8 +504,32 @@ button[name="add"]:hover,
   color: var(--lux-gold) !important;
 }
 .header__icon .icon {
-  width: 20px;
+  width: 26px;
+  height: 26px;
+}
+.header__icon--cart {
+  position: relative;
+}
+.header__icon--cart .icon {
+  width: 28px;
+  height: 28px;
+}
+.cart-count-bubble {
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  min-width: 20px;
   height: 20px;
+  border-radius: 50%;
+  background: var(--lux-gold, #C5A47E);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0 5px;
 }
 
 /* Cart badge */
@@ -2061,13 +2085,32 @@ button[name="add"]:hover,
 
 .footer .copyright__content {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.4);
   letter-spacing: 0.03em;
 }
+.footer .copyright__content a {
+  color: rgba(255,255,255,0.4);
+}
 .footer .footer__content-bottom {
-  border-top: none !important;
+  border-top: 1px solid rgba(255,255,255,0.08) !important;
   padding-top: 24px;
   padding-bottom: 24px;
+}
+.footer .footer__content-bottom-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer .footer__column--info {
+  flex-shrink: 0;
+}
+@media screen and (max-width: 749px) {
+  .footer .footer__content-bottom-wrapper {
+    justify-content: center;
+    text-align: center;
+  }
 }
 .footer .list-social__link {
   color: rgba(255,255,255,0.4) !important;
@@ -2103,12 +2146,37 @@ button[name="add"]:hover,
 }
 
 /* Footer payment icons */
-.footer .list-payment .payment-icon {
-  opacity: 0.5;
+.footer .footer__payment {
+  display: flex;
+  justify-content: flex-end;
+}
+.footer .list-payment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.footer .list-payment__item {
+  display: flex;
+  align-items: center;
+}
+.footer .list-payment .icon {
+  width: auto;
+  height: 28px;
+  opacity: 0.75;
   transition: opacity var(--t-fast);
 }
-.footer .list-payment .payment-icon:hover {
-  opacity: 0.9;
+.footer .list-payment .icon:hover {
+  opacity: 1;
+}
+@media screen and (max-width: 749px) {
+  .footer .footer__payment {
+    justify-content: center;
+  }
+  .footer .list-payment {
+    justify-content: center;
+  }
 }
 
 /* ============== CART DRAWER ============== */

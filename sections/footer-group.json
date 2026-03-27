@@ -30,18 +30,16 @@
         },
         "menu_customer": {
           "type": "link_list",
-          "disabled": true,
           "settings": {
             "heading": "CUSTOMER SERVICES",
-            "menu": ""
+            "menu": "footer-customer-services"
           }
         },
         "menu_account": {
           "type": "link_list",
-          "disabled": true,
           "settings": {
             "heading": "ACCOUNT",
-            "menu": ""
+            "menu": "footer-account"
           }
         }
       },

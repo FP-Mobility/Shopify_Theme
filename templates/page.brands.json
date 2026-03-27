@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "brands-page",
+      "blocks": {
+        "b1": { "type": "brand", "settings": { "brand_name": "Burberry" } },
+        "b2": { "type": "brand", "settings": { "brand_name": "Versace" } },
+        "b3": { "type": "brand", "settings": { "brand_name": "Paco Rabanne" } },
+        "b4": { "type": "brand", "settings": { "brand_name": "Calvin Klein" } },
+        "b5": { "type": "brand", "settings": { "brand_name": "Givenchy" } },
+        "b6": { "type": "brand", "settings": { "brand_name": "Jimmy Choo" } },
+        "b7": { "type": "brand", "settings": { "brand_name": "Dolce & Gabbana" } },
+        "b8": { "type": "brand", "settings": { "brand_name": "Bvlgari" } },
+        "b9": { "type": "brand", "settings": { "brand_name": "Hugo Boss" } },
+        "b10": { "type": "brand", "settings": { "brand_name": "Lattafa" } },
+        "b11": { "type": "brand", "settings": { "brand_name": "Chanel" } },
+        "b12": { "type": "brand", "settings": { "brand_name": "Dior" } },
+        "b13": { "type": "brand", "settings": { "brand_name": "Tom Ford" } },
+        "b14": { "type": "brand", "settings": { "brand_name": "Gucci" } },
+        "b15": { "type": "brand", "settings": { "brand_name": "Yves Saint Laurent" } },
+        "b16": { "type": "brand", "settings": { "brand_name": "Armani" } },
+        "b17": { "type": "brand", "settings": { "brand_name": "Hermès" } },
+        "b18": { "type": "brand", "settings": { "brand_name": "Creed" } },
+        "b19": { "type": "brand", "settings": { "brand_name": "Jo Malone" } },
+        "b20": { "type": "brand", "settings": { "brand_name": "Montblanc" } }
+      },
+      "block_order": ["b1","b2","b3","b4","b5","b6","b7","b8","b9","b10","b11","b12","b13","b14","b15","b16","b17","b18","b19","b20"],
+      "settings": {
+        "title": "All Perfume Brands",
+        "subtitle": "Browse our complete collection of designer and niche fragrance brands"
+      }
+    }
+  },
+  "order": ["main"]
+}
