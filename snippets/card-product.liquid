@@ -140,6 +140,7 @@
                 {{- 'products.product.on_sale' | t -}}
               </span>
             {%- endif -%}
+            {%- render 'gender-badge', product: card_product -%}
           </div>
         </div>
       </div>
@@ -564,6 +565,7 @@
               {{- 'products.product.on_sale' | t -}}
             </span>
           {%- endif -%}
+          {%- render 'gender-badge', product: card_product -%}
         </div>
       </div>
     </div>

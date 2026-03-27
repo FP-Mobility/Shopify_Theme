@@ -2961,3 +2961,100 @@ body {
   /* Subtle transition for price changes */
   transition: color 0.3s ease;
 }
+
+/* ============== GENDER BADGES ============== */
+.gender-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.gender-badge--men {
+  background: #1a1a2e;
+  color: #fff;
+}
+.gender-badge--women {
+  background: #c5a47e;
+  color: #fff;
+}
+.gender-badge--unisex {
+  background: #fff;
+  color: #1a1a2e;
+  border: 1px solid #1a1a2e;
+}
+
+/* Position gender badge in card__badge container */
+.card__badge .gender-badge {
+  margin-top: 4px;
+}
+
+/* ============== PRODUCT CARD ENHANCEMENTS ============== */
+/* Ensure images display properly in portrait ratio */
+.card__media .media {
+  overflow: hidden;
+}
+.card__media .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+.card:hover .card__media .media img {
+  transform: scale(1.06);
+}
+
+/* Quick-add button styling */
+.quick-add__submit {
+  background: var(--lux-black, #0A0A0A) !important;
+  color: var(--lux-white, #fff) !important;
+  border: none !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 12px 20px !important;
+  transition: all 0.3s ease !important;
+}
+.quick-add__submit:hover {
+  background: var(--lux-gold, #C5A47E) !important;
+  box-shadow: var(--shadow-gold, 0 4px 20px rgba(197,164,126,0.3)) !important;
+}
+
+/* Card info spacing for better readability */
+.card__information {
+  padding-top: 12px;
+}
+.card__heading {
+  margin-bottom: 4px;
+}
+
+/* ============== FEATURED COLLECTION SECTION STYLING ============== */
+.collection .title-wrapper {
+  margin-bottom: 32px;
+}
+.collection .title {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+}
+.collection .collection__description {
+  max-width: 600px;
+  margin: 8px auto 0;
+  color: var(--lux-dark-gray, #555);
+  font-size: 0.92rem;
+}
+
+/* View All button */
+.collection .button--simple,
+.collection a.button {
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+}

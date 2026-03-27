@@ -1,0 +1,52 @@
+{%- comment -%}
+  Gender Badge — renders a Men / Women / Unisex tag on product cards.
+  Checks product tags first, then falls back to collection membership.
+  Usage: {% render 'gender-badge', product: card_product %}
+{%- endcomment -%}
+
+{%- liquid
+  assign gender = ''
+
+  for tag in product.tags
+    assign tag_lower = tag | downcase
+    if tag_lower == 'men' or tag_lower == 'for men' or tag_lower == 'mens' or tag_lower == "men's"
+      assign gender = 'men'
+      break
+    elsif tag_lower == 'women' or tag_lower == 'for women' or tag_lower == 'womens' or tag_lower == "women's"
+      assign gender = 'women'
+      break
+    elsif tag_lower == 'unisex'
+      assign gender = 'unisex'
+      break
+    endif
+  endfor
+
+  if gender == ''
+    for col in product.collections
+      assign col_lower = col.handle | downcase
+      if col_lower contains 'men' and col_lower contains 'women'
+        assign gender = 'unisex'
+        break
+      elsif col_lower contains 'women' or col_lower contains 'her'
+        assign gender = 'women'
+        break
+      elsif col_lower contains 'men' or col_lower contains 'him'
+        assign gender = 'men'
+        break
+      elsif col_lower contains 'unisex'
+        assign gender = 'unisex'
+        break
+      endif
+    endfor
+  endif
+-%}
+
+{%- if gender != '' -%}
+  <span class="gender-badge gender-badge--{{ gender }}">
+    {%- case gender -%}
+      {%- when 'men' -%}Men
+      {%- when 'women' -%}Women
+      {%- when 'unisex' -%}Unisex
+    {%- endcase -%}
+  </span>
+{%- endif -%}
