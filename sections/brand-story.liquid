@@ -1,4 +1,4 @@
-﻿{%- style -%}
+{%- style -%}
   .brand-story {
     padding: 100px 0;
     background: {{ section.settings.background_color }};
@@ -123,7 +123,7 @@
   }
   .brand-story__cta:hover {
     background: var(--lux-gold, #C8A96B);
-    box-shadow: 0 4px 20px rgba(197,164,126,0.3);
+    box-shadow: 0 4px 20px rgba(200,169,107,0.3);
   }
 {%- endstyle -%}
 
@@ -179,7 +179,7 @@
       "type": "value",
       "name": "Value",
       "settings": [
-        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "âœ“" },
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "✓" },
         { "type": "text", "id": "label", "label": "Label", "default": "100% Authentic" }
       ]
     }
@@ -187,10 +187,10 @@
   "presets": [{
     "name": "Brand Story",
     "blocks": [
-      { "type": "value", "settings": { "icon": "âœ“", "label": "100% Authentic" } },
-      { "type": "value", "settings": { "icon": "ðŸšš", "label": "Fast EU Shipping" } },
-      { "type": "value", "settings": { "icon": "ðŸ”’", "label": "Secure Checkout" } },
-      { "type": "value", "settings": { "icon": "â­", "label": "Premium Quality" } }
+      { "type": "value", "settings": { "icon": "✓", "label": "100% Authentic" } },
+      { "type": "value", "settings": { "icon": "🚚", "label": "Fast EU Shipping" } },
+      { "type": "value", "settings": { "icon": "🔒", "label": "Secure Checkout" } },
+      { "type": "value", "settings": { "icon": "⭐", "label": "Premium Quality" } }
     ]
   }]
 }

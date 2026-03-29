@@ -1,5 +1,5 @@
-﻿/* =====================================================
-   LUMISCENT â€” World-Class Luxury Theme JavaScript v3
+/* =====================================================
+   LUMISCENT — World-Class Luxury Theme JavaScript v3
    Ultra-Premium Interactions & Animations
    ===================================================== */
 

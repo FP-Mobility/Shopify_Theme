@@ -1,4 +1,4 @@
-﻿/* =====================================================
+/* =====================================================
    LUMISCENT â€” World-Class Luxury Perfume Theme v3
    Ultra-Premium E-Commerce Experience
    ===================================================== */
@@ -485,7 +485,8 @@ button[name="add"]:hover,
   letter-spacing: 0.25em !important;
   text-transform: uppercase;
   font-weight: 300 !important;
-  color: var(--lux-white) !important;
+  color: var(--lux-gold) !important;
+  text-shadow: 0 0 8px rgba(200, 169, 107, 0.3);
   transition: opacity var(--t-fast), color var(--t-fast);
 }
 .header__heading-link:hover {
@@ -496,11 +497,12 @@ button[name="add"]:hover,
   .header__heading-link span,
   .header .h2 {
     font-size: 1.75rem !important;
+    color: var(--lux-gold) !important;
   }
 }
-/* Logo image invert for dark header */
+/* Logo image — gold tint for dark header */
 .header__heading-logo {
-  filter: brightness(0) invert(1);
+  filter: brightness(0.7) sepia(1) saturate(2) hue-rotate(15deg);
   transition: filter var(--t-fast);
 }
 
@@ -516,12 +518,14 @@ button[name="add"]:hover,
   padding: 10px 12px !important;
   position: relative;
   transition: color var(--t-fast);
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: var(--lux-gold) !important;
+  text-shadow: 0 0 6px rgba(200, 169, 107, 0.2);
   white-space: nowrap;
 }
 .header__menu-item:hover,
 .header__inline-menu .list-menu--inline > li > a:hover {
-  color: var(--lux-gold) !important;
+  color: var(--lux-gold-light) !important;
+  text-shadow: 0 0 12px rgba(200, 169, 107, 0.4);
 }
 
 /* Gold underline animation on nav */
@@ -544,11 +548,12 @@ button[name="add"]:hover,
 
 /* Header icons */
 .header__icon {
-  color: var(--lux-white) !important;
+  color: var(--lux-gold) !important;
   transition: color var(--t-fast);
 }
 .header__icon:hover {
-  color: var(--lux-gold) !important;
+  color: var(--lux-gold-light) !important;
+  filter: drop-shadow(0 0 4px rgba(200, 169, 107, 0.4));
 }
 .header__icon .icon {
   width: 26px;
@@ -3443,7 +3448,7 @@ body {
 
 /* Mobile header drawer icon color */
 header-drawer .header__icon {
-  color: var(--lux-white) !important;
+  color: var(--lux-gold) !important;
 }
 .js .header__icon svg {
   fill: none;
@@ -3470,6 +3475,7 @@ header-drawer .header__icon {
   .header .h2 {
     font-size: 1.2rem !important;
     letter-spacing: 0.2em !important;
+    color: var(--lux-gold) !important;
   }
 }
 
