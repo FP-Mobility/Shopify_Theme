@@ -1,134 +1,144 @@
 /**
  * LumiScent Cart Reservation Timer
- * Shows a countdown on each cart item to create urgency
- * Timer starts when item first appears in cart, persists via localStorage
+ * Shows a prominent countdown banner in the cart drawer / cart page.
+ * Timer starts on first add-to-cart and resets when cart becomes empty.
  */
-(function() {
+(function () {
   'use strict';
 
-  const STORAGE_KEY = 'lumiscent_cart_timers';
-  const TIMER_DURATION = 15 * 60; // 15 minutes in seconds
-  const TICK_INTERVAL = 1000;
-  let intervalId = null;
+  var STORAGE_KEY = 'lumiscent_cart_timer';
+  var DURATION = 15 * 60; // 15 minutes
 
-  function getTimers() {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    } catch(e) {
-      return {};
+  function getStart() {
+    try { return parseInt(localStorage.getItem(STORAGE_KEY), 10) || 0; } catch (e) { return 0; }
+  }
+  function setStart(ts) {
+    try { localStorage.setItem(STORAGE_KEY, String(ts)); } catch (e) {}
+  }
+  function clearStart() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+  }
+
+  function remaining() {
+    var s = getStart();
+    if (!s) return -1;
+    var elapsed = Math.floor((Date.now() - s) / 1000);
+    return Math.max(0, DURATION - elapsed);
+  }
+
+  function fmt(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  /* -------- Banner DOM -------- */
+  function createBanner() {
+    var el = document.createElement('div');
+    el.id = 'cart-reservation-banner';
+    el.innerHTML =
+      '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15">' +
+        '<circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 2"/>' +
+      '</svg>' +
+      '<span>Your cart is reserved for <strong id="cart-timer-countdown">15:00</strong></span>';
+    return el;
+  }
+
+  var style = document.createElement('style');
+  style.textContent =
+    '#cart-reservation-banner {' +
+      'display:flex;align-items:center;justify-content:center;gap:8px;' +
+      'padding:10px 16px;' +
+      'background:linear-gradient(135deg,#1a1206 0%,#2c1f0e 100%);' +
+      'color:#C8A96B;font-size:0.78rem;font-weight:500;letter-spacing:0.06em;' +
+      'border-bottom:1px solid rgba(200,169,107,0.2);' +
+    '}' +
+    '#cart-reservation-banner svg { color:#C8A96B;flex-shrink:0; }' +
+    '#cart-reservation-banner strong { font-weight:700;font-variant-numeric:tabular-nums;color:#e8c874; }' +
+    '#cart-reservation-banner.timer-urgent { background:linear-gradient(135deg,#2a0a0a 0%,#3d1111 100%);color:#ff6b6b; }' +
+    '#cart-reservation-banner.timer-urgent svg { color:#ff6b6b; }' +
+    '#cart-reservation-banner.timer-urgent strong { color:#ff4444; }' +
+    '#cart-reservation-banner.timer-expired { color:#999; }' +
+    '#cart-reservation-banner.timer-expired strong { color:#999; }' +
+    '.cart-page-timer {' +
+      'max-width:800px;margin:0 auto 20px;border-radius:0;' +
+      'border:1px solid rgba(200,169,107,0.25);' +
+    '}';
+  document.head.appendChild(style);
+
+  /* -------- Injection -------- */
+  function injectBanner() {
+    // Cart drawer
+    var drawerHeader = document.querySelector('cart-drawer .drawer__header');
+    if (drawerHeader && !drawerHeader.parentNode.querySelector('#cart-reservation-banner')) {
+      var banner = createBanner();
+      drawerHeader.parentNode.insertBefore(banner, drawerHeader.nextSibling);
+    }
+    // Cart page
+    var cartForm = document.querySelector('.cart__contents, form[action="/cart"]');
+    if (cartForm && !cartForm.parentNode.querySelector('#cart-reservation-banner')) {
+      var pageBanner = createBanner();
+      pageBanner.classList.add('cart-page-timer');
+      cartForm.parentNode.insertBefore(pageBanner, cartForm);
     }
   }
 
-  function saveTimers(timers) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(timers));
-    } catch(e) { /* quota */ }
-  }
+  /* -------- Tick -------- */
+  var tickId = null;
 
-  function ensureTimerExists(itemKey) {
-    const timers = getTimers();
-    if (!timers[itemKey]) {
-      timers[itemKey] = Date.now();
-      saveTimers(timers);
-    }
-    return timers[itemKey];
-  }
+  function tick() {
+    var banners = document.querySelectorAll('#cart-reservation-banner');
+    if (banners.length === 0) return;
 
-  function getSecondsRemaining(startTime) {
-    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-    return Math.max(0, TIMER_DURATION - elapsed);
-  }
-
-  function formatTime(totalSeconds) {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
-  }
-
-  function updateTimers() {
-    const timerEls = document.querySelectorAll('[data-cart-timer]');
-    if (timerEls.length === 0) {
-      // No timers visible, stop ticking
-      if (intervalId) {
-        clearInterval(intervalId);
-        intervalId = null;
-      }
+    var hasItems = document.querySelector('[data-cart-timer]');
+    if (!hasItems) {
+      // Cart is empty
+      clearStart();
+      banners.forEach(function (b) { b.style.display = 'none'; });
       return;
     }
 
-    const timers = getTimers();
+    // Ensure timer is started
+    if (!getStart()) {
+      setStart(Date.now());
+    }
 
-    timerEls.forEach(function(el, index) {
-      const key = 'item_' + index;
-      const startTime = ensureTimerExists(key);
-      const remaining = getSecondsRemaining(startTime);
-      const countdownEl = el.querySelector('[data-cart-timer-countdown]');
+    var secs = remaining();
+    banners.forEach(function (b) {
+      b.style.display = 'flex';
+      var countdown = b.querySelector('#cart-timer-countdown, strong');
+      if (countdown) countdown.textContent = fmt(secs);
 
-      if (countdownEl) {
-        countdownEl.textContent = formatTime(remaining);
-      }
+      b.classList.toggle('timer-urgent', secs > 0 && secs <= 180);
+      b.classList.toggle('timer-expired', secs === 0);
 
-      // Add urgent class when under 3 minutes
-      el.classList.toggle('cart-timer--urgent', remaining > 0 && remaining <= 180);
-
-      if (remaining === 0) {
-        el.classList.add('cart-timer--expired');
-        if (countdownEl) {
-          countdownEl.textContent = '00:00';
-        }
-        const textEl = el.querySelector('[data-cart-timer-text]');
-        if (textEl) {
-          textEl.innerHTML = '<svg class="cart-timer__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l3 2"/></svg> Reservation expired — checkout now!';
-        }
+      if (secs === 0) {
+        var span = b.querySelector('span');
+        if (span) span.innerHTML = '⚡ Reservation expired — <strong>checkout now!</strong>';
       }
     });
   }
 
-  function cleanupExpiredTimers() {
-    const timers = getTimers();
-    const now = Date.now();
-    const maxAge = (TIMER_DURATION + 3600) * 1000; // Keep for 1 hour past expiry
-    let changed = false;
-    for (const key in timers) {
-      if (now - timers[key] > maxAge) {
-        delete timers[key];
-        changed = true;
-      }
-    }
-    if (changed) saveTimers(timers);
+  function startTick() {
+    if (!tickId) tickId = setInterval(tick, 1000);
   }
 
-  function startTicking() {
-    if (!intervalId) {
-      intervalId = setInterval(updateTimers, TICK_INTERVAL);
-    }
-  }
-
+  /* -------- Init -------- */
   function init() {
-    cleanupExpiredTimers();
-    updateTimers();
-    startTicking();
+    injectBanner();
+    tick();
+    startTick();
 
-    // Re-init when cart drawer opens or sections reload
-    const observer = new MutationObserver(function(mutations) {
-      for (const m of mutations) {
-        if (m.addedNodes.length > 0) {
-          const hasTimer = document.querySelector('[data-cart-timer]');
-          if (hasTimer) {
-            updateTimers();
-            startTicking();
-            break;
-          }
-        }
+    // Re-inject when cart drawer re-renders
+    var observer = new MutationObserver(function () {
+      var hasTimer = document.querySelector('[data-cart-timer]');
+      if (hasTimer) {
+        injectBanner();
+        tick();
       }
     });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Listen for Shopify cart events
-    document.addEventListener('cart:refresh', function() {
-      setTimeout(updateTimers, 300);
-    });
+    var drawer = document.querySelector('cart-drawer');
+    if (drawer) observer.observe(drawer, { childList: true, subtree: true });
   }
 
   if (document.readyState === 'loading') {
