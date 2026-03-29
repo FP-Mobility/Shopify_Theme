@@ -1,0 +1,85 @@
+{%- style -%}
+  .legal-page {
+    padding: 60px 0 80px;
+    background: var(--lux-white, #fff);
+  }
+  .legal-page__header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--lux-border, #e5e3de);
+  }
+  .legal-page__title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 2.4rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    color: var(--lux-black, #070707);
+  }
+  @media screen and (min-width: 750px) {
+    .legal-page__title { font-size: 3rem; }
+  }
+  .legal-page__updated {
+    font-size: 0.82rem;
+    color: var(--lux-medium-gray, #666);
+  }
+  .legal-page__content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--lux-dark-gray, #333);
+  }
+  .legal-page__content h2 {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 40px 0 16px;
+    color: var(--lux-black, #070707);
+  }
+  .legal-page__content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    color: var(--lux-black, #070707);
+  }
+  .legal-page__content p {
+    margin-bottom: 16px;
+  }
+  .legal-page__content ul, .legal-page__content ol {
+    margin: 12px 0 20px 24px;
+  }
+  .legal-page__content li {
+    margin-bottom: 8px;
+  }
+  .legal-page__content a {
+    color: var(--lux-gold, #C8A96B);
+    text-decoration: underline;
+  }
+  .legal-page__content a:hover {
+    color: var(--lux-gold-dark, #B08E4A);
+  }
+{%- endstyle -%}
+
+<section class="legal-page">
+  <div class="page-width">
+    <div class="legal-page__header">
+      <h1 class="legal-page__title">{{ page.title }}</h1>
+      {% if page.updated_at %}
+        <p class="legal-page__updated">Zuletzt aktualisiert: {{ page.updated_at | date: "%d.%m.%Y" }}</p>
+      {% endif %}
+    </div>
+    <div class="legal-page__content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Legal Page",
+  "settings": [],
+  "presets": [{ "name": "Legal Page" }]
+}
+{% endschema %}

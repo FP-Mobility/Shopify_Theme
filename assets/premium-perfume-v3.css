@@ -500,9 +500,9 @@ button[name="add"]:hover,
     color: var(--lux-gold) !important;
   }
 }
-/* Logo image — gold tint for dark header */
+/* Logo image — white for dark header */
 .header__heading-logo {
-  filter: brightness(0.7) sepia(1) saturate(2) hue-rotate(15deg);
+  filter: brightness(0) invert(1);
   transition: filter var(--t-fast);
 }
 
@@ -556,8 +556,8 @@ button[name="add"]:hover,
   filter: drop-shadow(0 0 4px rgba(200, 169, 107, 0.4));
 }
 .header__icon .icon {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
 }
 .header__icon--cart {
   position: relative;
