@@ -1,12 +1,12 @@
-/* =====================================================
-   LUMISCENT — Luxury Perfume Theme
+﻿/* =====================================================
+   LUMISCENT â€” Luxury Perfume Theme
    Premium E-Commerce Experience
    ===================================================== */
 
 /* ===================== VARIABLES ===================== */
 :root {
-  /* — Brand Palette — */
-  --pb-gold: #C5A47E;
+  /* â€” Brand Palette â€” */
+  --pb-gold: #C8A96B;
   --pb-gold-light: #D4BC94;
   --pb-gold-dark: #A88B6A;
   --pb-gold-glow: rgba(197, 164, 126, 0.25);
@@ -21,11 +21,11 @@
   --pb-red: #c0392b;
   --pb-green: #27ae60;
 
-  /* — Typography — */
+  /* â€” Typography â€” */
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-body: 'Jost', 'Helvetica Neue', Arial, sans-serif;
 
-  /* — Transitions — */
+  /* â€” Transitions â€” */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -34,7 +34,7 @@
   --transition-elegant: 0.5s var(--ease-out-expo);
   --transition-slow: 0.7s var(--ease-out-expo);
 
-  /* — Shadows — */
+  /* â€” Shadows â€” */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
@@ -116,7 +116,7 @@ img { display: block; max-width: 100%; }
   color: var(--pb-white);
 }
 
-/* — Section Title Pattern — */
+/* â€” Section Title Pattern â€” */
 .luxury-section-title {
   text-align: center;
   margin-bottom: 48px;
@@ -1888,3 +1888,4 @@ img { display: block; max-width: 100%; }
     padding: 15px;
   }
 }
+

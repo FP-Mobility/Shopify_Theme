@@ -1,13 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{
+﻿{
   "sections": {
     "1774782723032a8df8": {
       "type": "_blocks",
@@ -27,7 +18,7 @@
             "font_size": 55,
             "font_weight": "700",
             "text_color": "#000000",
-            "glow_color": "#c5a47e",
+            "glow_color": "#C8A96B",
             "glow_intensity": 40,
             "animation_speed": 5
           },
@@ -49,8 +40,8 @@
         "height": 90,
         "overlay_opacity": 35,
         "eyebrow": "LumiScent",
-        "heading": "Lumiscent – Where Luxury Meets Identity",
-        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on orders over €59.",
+        "heading": "Lumiscent \u2013 Where Luxury Meets Identity",
+        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on orders over \u20ac59.",
         "button_label_1": "SHOP WOMEN",
         "button_link_1": "shopify://collections/womens-fragrances",
         "button_label_2": "SHOP MEN",
@@ -70,7 +61,7 @@
             "image_overlay_opacity": 40,
             "heading": "Discover Your Signature Scent",
             "heading_size": "h1",
-            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
+            "subheading": "Premium fragrances at unbeatable prices. Free shipping over \u20ac59.",
             "button_label": "Button label",
             "link": "",
             "button_style_secondary": false,
@@ -220,28 +211,28 @@
         "v1": {
           "type": "value",
           "settings": {
-            "icon": "✓",
+            "icon": "\u2713",
             "label": "100% Authentic"
           }
         },
         "v2": {
           "type": "value",
           "settings": {
-            "icon": "🚚",
+            "icon": "\ud83d\ude9a",
             "label": "Fast EU Shipping"
           }
         },
         "v3": {
           "type": "value",
           "settings": {
-            "icon": "🔒",
+            "icon": "\ud83d\udd12",
             "label": "Secure Checkout"
           }
         },
         "v4": {
           "type": "value",
           "settings": {
-            "icon": "⭐",
+            "icon": "\u2b50",
             "label": "Premium Quality"
           }
         }
@@ -252,7 +243,6 @@
         "v3",
         "v4"
       ],
-      "disabled": true,
       "settings": {
         "eyebrow": "Our Story",
         "title": "Where Luxury Meets Identity",
@@ -297,7 +287,7 @@
         "eu": {
           "type": "category",
           "settings": {
-            "flag": "🇪🇺 European",
+            "flag": "\ud83c\uddea\ud83c\uddfa European",
             "heading": "European Perfumes",
             "description": "French elegance, Italian passion, timeless craftsmanship",
             "cta_label": "EXPLORE",
@@ -307,7 +297,7 @@
         "uae": {
           "type": "category",
           "settings": {
-            "flag": "🇦🇪 Arabian",
+            "flag": "\ud83c\udde6\ud83c\uddea Arabian",
             "heading": "UAE Perfumes",
             "description": "Rich oud, amber & oriental treasures",
             "cta_label": "EXPLORE",
@@ -317,7 +307,7 @@
         "usa": {
           "type": "category",
           "settings": {
-            "flag": "🇺🇸 American",
+            "flag": "\ud83c\uddfa\ud83c\uddf8 American",
             "heading": "USA Exclusives",
             "description": "Bold, modern designer fragrances",
             "cta_label": "EXPLORE",
@@ -551,7 +541,7 @@
         "products_to_show": 4,
         "title": "Bundle & Save",
         "heading_size": "h1",
-        "description": "<p>Exclusive sets at exceptional value — the perfect gift</p>",
+        "description": "<p>Exclusive sets at exceptional value \u2014 the perfect gift</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
@@ -580,7 +570,7 @@
         "products_to_show": 25,
         "title": "Bundle & Save",
         "heading_size": "h1",
-        "description": "<p>Exclusive sets at exceptional value — the perfect gift</p>",
+        "description": "<p>Exclusive sets at exceptional value \u2014 the perfect gift</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
@@ -730,10 +720,10 @@
           "type": "badge",
           "settings": {
             "title": "FREE SHIPPING",
-            "description": "On orders over €59",
+            "description": "On orders over \u20ac59",
             "icon_type": "svg",
             "svg_icon": "shipping",
-            "icon_emoji": "✓"
+            "icon_emoji": "\u2713"
           }
         },
         "tb-2": {
@@ -743,7 +733,7 @@
             "description": "30-day returns",
             "icon_type": "svg",
             "svg_icon": "guarantee",
-            "icon_emoji": "✓"
+            "icon_emoji": "\u2713"
           }
         },
         "tb-3": {
@@ -753,7 +743,7 @@
             "description": "Guaranteed genuine",
             "icon_type": "svg",
             "svg_icon": "authentic",
-            "icon_emoji": "✓"
+            "icon_emoji": "\u2713"
           }
         },
         "tb-4": {
@@ -763,7 +753,7 @@
             "description": "Encrypted checkout",
             "icon_type": "svg",
             "svg_icon": "secure",
-            "icon_emoji": "✓"
+            "icon_emoji": "\u2713"
           }
         }
       },
@@ -782,7 +772,7 @@
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
-        "background_color": "#c5a47e",
+        "background_color": "#C8A96B",
         "label": "",
         "title": "First to know about our sales and discounts",
         "text": "Our email subscribers get early access to new launches, promotions and more.",
@@ -891,34 +881,36 @@
       "block_order": [
         "ai_gen_block_72d8ff5_krmEWb"
       ],
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "1774783304f07b7321": {
       "type": "_blocks",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     }
   },
   "order": [
-    "1774782723032a8df8",
-    "17747827739e3011c0",
     "video-hero",
-    "slideshow",
     "featured_categories_7MQ8rz",
     "best-sellers",
-    "brand-story",
-    "new-arrivals",
-    "category-blocks",
     "shop-gender",
     "fragrance-quiz",
+    "brand-story",
     "brand-showcase",
+    "testimonials",
+    "trust-badges",
+    "newsletter",
+    "slideshow",
+    "1774782723032a8df8",
+    "17747827739e3011c0",
+    "new-arrivals",
+    "category-blocks",
     "multirow_W8U3BE",
     "bundles",
     "featured_collection_J68hkk",
-    "testimonials",
     "blog",
     "rich-text-seo",
-    "trust-badges",
-    "newsletter",
     "featured_product_CeY6n8",
     "1774621563b9105420",
     "1774783304f07b7321"

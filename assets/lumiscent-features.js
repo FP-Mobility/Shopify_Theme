@@ -179,7 +179,7 @@
             var remaining = ((self.threshold - total) / 100).toFixed(2).replace('.', ',');
             self.textEl.textContent = self.message.replace('AMOUNT', remaining);
             self.barEl.classList.remove('free-shipping-bar--success');
-            self.fillEl.style.background = 'var(--lux-gold, #C5A47E)';
+            self.fillEl.style.background = 'var(--lux-gold, #C8A96B)';
           }
         })
         .catch(function() {});

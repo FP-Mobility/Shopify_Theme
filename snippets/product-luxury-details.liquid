@@ -1,0 +1,392 @@
+{%- comment -%}
+  Luxury Product Details - Below the fold sections
+  Renders: Scent Story, Performance Metrics, Why You'll Love It
+  Usage: Loaded as a section below main-product
+{%- endcomment -%}
+
+{%- assign top_notes = product.metafields.custom.top_notes -%}
+{%- assign heart_notes = product.metafields.custom.heart_notes -%}
+{%- assign base_notes = product.metafields.custom.base_notes -%}
+{%- assign longevity = product.metafields.custom.longevity | default: 0 -%}
+{%- assign projection = product.metafields.custom.projection | default: 0 -%}
+{%- assign season = product.metafields.custom.season -%}
+{%- assign occasion = product.metafields.custom.occasion -%}
+{%- assign scent_family = product.metafields.custom.scent_family -%}
+
+<div class="pdp-luxury-details">
+
+  {%- comment -%} === SCENT STORY SECTION === {%- endcomment -%}
+  {%- if top_notes != blank or heart_notes != blank or base_notes != blank -%}
+  <div class="pdp-scent-story">
+    <div class="pdp-scent-story__inner page-width">
+      <div class="pdp-scent-story__header">
+        <span class="pdp-section-eyebrow">The Scent Story</span>
+        <h2 class="pdp-section-title">A Fragrance Journey</h2>
+        <div class="pdp-gold-line"></div>
+      </div>
+      <div class="pdp-scent-story__pyramid">
+        {%- if top_notes != blank -%}
+        <div class="pdp-note pdp-note--top">
+          <div class="pdp-note__phase">Opening</div>
+          <div class="pdp-note__label">Top Notes</div>
+          <div class="pdp-note__list">{{ top_notes }}</div>
+          <div class="pdp-note__desc">The first impression — bright and inviting</div>
+        </div>
+        {%- endif -%}
+        {%- if heart_notes != blank -%}
+        <div class="pdp-note pdp-note--heart">
+          <div class="pdp-note__phase">Heart</div>
+          <div class="pdp-note__label">Heart Notes</div>
+          <div class="pdp-note__list">{{ heart_notes }}</div>
+          <div class="pdp-note__desc">The soul of the fragrance — rich and full</div>
+        </div>
+        {%- endif -%}
+        {%- if base_notes != blank -%}
+        <div class="pdp-note pdp-note--base">
+          <div class="pdp-note__phase">Dry Down</div>
+          <div class="pdp-note__label">Base Notes</div>
+          <div class="pdp-note__list">{{ base_notes }}</div>
+          <div class="pdp-note__desc">The lasting signature — deep and memorable</div>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- comment -%} === PERFORMANCE METRICS === {%- endcomment -%}
+  {%- if longevity > 0 or projection > 0 or season != blank or occasion != blank -%}
+  <div class="pdp-performance">
+    <div class="pdp-performance__inner page-width">
+      <div class="pdp-performance__header">
+        <span class="pdp-section-eyebrow">Performance</span>
+        <h2 class="pdp-section-title">How It Performs</h2>
+        <div class="pdp-gold-line"></div>
+      </div>
+      <div class="pdp-performance__grid">
+        {%- if longevity > 0 -%}
+        <div class="pdp-metric">
+          <div class="pdp-metric__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="pdp-metric__label">Longevity</div>
+          <div class="pdp-metric__bar">
+            <div class="pdp-metric__fill" style="width: {{ longevity | times: 10 }}%"></div>
+          </div>
+          <div class="pdp-metric__value">{{ longevity }}/10</div>
+        </div>
+        {%- endif -%}
+        {%- if projection > 0 -%}
+        <div class="pdp-metric">
+          <div class="pdp-metric__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="pdp-metric__label">Projection</div>
+          <div class="pdp-metric__bar">
+            <div class="pdp-metric__fill" style="width: {{ projection | times: 10 }}%"></div>
+          </div>
+          <div class="pdp-metric__value">{{ projection }}/10</div>
+        </div>
+        {%- endif -%}
+        {%- if season != blank -%}
+        <div class="pdp-tag-group">
+          <div class="pdp-tag-group__label">Best Season</div>
+          <div class="pdp-tags">
+            {%- assign seasons = season | split: ',' -%}
+            {%- for s in seasons -%}
+              <span class="pdp-tag">{{ s | strip }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
+        {%- if occasion != blank -%}
+        <div class="pdp-tag-group">
+          <div class="pdp-tag-group__label">Best Occasion</div>
+          <div class="pdp-tags">
+            {%- assign occasions = occasion | split: ',' -%}
+            {%- for o in occasions -%}
+              <span class="pdp-tag">{{ o | strip }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- comment -%} === WHY YOU'LL LOVE IT === {%- endcomment -%}
+  <div class="pdp-why-love">
+    <div class="pdp-why-love__inner page-width">
+      <div class="pdp-why-love__header">
+        <span class="pdp-section-eyebrow">The Promise</span>
+        <h2 class="pdp-section-title">Why You'll Love It</h2>
+        <div class="pdp-gold-line"></div>
+      </div>
+      <div class="pdp-why-love__grid">
+        <div class="pdp-love-point">
+          <div class="pdp-love-point__icon">✓</div>
+          <div class="pdp-love-point__text">100% Authentic — sourced directly from authorized distributors</div>
+        </div>
+        <div class="pdp-love-point">
+          <div class="pdp-love-point__icon">✓</div>
+          <div class="pdp-love-point__text">Premium quality that lasts — designed for all-day confidence</div>
+        </div>
+        <div class="pdp-love-point">
+          <div class="pdp-love-point__icon">✓</div>
+          <div class="pdp-love-point__text">Free EU shipping on orders over €59</div>
+        </div>
+        <div class="pdp-love-point">
+          <div class="pdp-love-point__icon">✓</div>
+          <div class="pdp-love-point__text">30-day satisfaction guarantee — shop with confidence</div>
+        </div>
+        {%- if scent_family != blank -%}
+        <div class="pdp-love-point">
+          <div class="pdp-love-point__icon">✓</div>
+          <div class="pdp-love-point__text">Scent Family: {{ scent_family }} — crafted for those who appreciate the finest</div>
+        </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .pdp-luxury-details {
+    background: var(--lux-cream, #FAF8F5);
+  }
+
+  /* Shared section header styles */
+  .pdp-section-eyebrow {
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--lux-gold, #C8A96B);
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .pdp-section-title {
+    font-family: var(--font-display, serif) !important;
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--lux-black, #070707);
+    margin: 0;
+    line-height: 1.2;
+  }
+  @media screen and (min-width: 750px) {
+    .pdp-section-title { font-size: 2.6rem; }
+  }
+  .pdp-gold-line {
+    width: 40px;
+    height: 1px;
+    background: var(--lux-gold, #C8A96B);
+    margin-top: 20px;
+  }
+
+  /* === SCENT STORY === */
+  .pdp-scent-story {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--lux-border, #e5e3de);
+  }
+  .pdp-scent-story__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .pdp-scent-story__header .pdp-gold-line {
+    margin: 20px auto 0;
+  }
+  .pdp-scent-story__pyramid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 750px) {
+    .pdp-scent-story__pyramid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+  }
+  .pdp-note {
+    text-align: center;
+    padding: 32px 24px;
+    border: 1px solid var(--lux-border, #e5e3de);
+    background: var(--lux-white, #fff);
+    transition: all 0.4s ease;
+  }
+  .pdp-note:hover {
+    border-color: var(--lux-gold, #C8A96B);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+  }
+  .pdp-note__phase {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lux-gold, #C8A96B);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .pdp-note__label {
+    font-family: var(--font-display, serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--lux-black, #070707);
+  }
+  .pdp-note__list {
+    font-size: 0.92rem;
+    color: var(--lux-medium-gray, #666);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .pdp-note__desc {
+    font-size: 0.8rem;
+    color: var(--lux-light-gray, #999);
+    font-style: italic;
+  }
+
+  /* === PERFORMANCE === */
+  .pdp-performance {
+    padding: 72px 0;
+    background: var(--lux-white, #fff);
+    border-bottom: 1px solid var(--lux-border, #e5e3de);
+  }
+  .pdp-performance__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .pdp-performance__header .pdp-gold-line {
+    margin: 20px auto 0;
+  }
+  .pdp-performance__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 750px) {
+    .pdp-performance__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .pdp-metric {
+    text-align: center;
+  }
+  .pdp-metric__icon {
+    color: var(--lux-gold, #C8A96B);
+    margin-bottom: 12px;
+  }
+  .pdp-metric__label {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: var(--lux-black, #070707);
+    margin-bottom: 12px;
+  }
+  .pdp-metric__bar {
+    height: 4px;
+    background: var(--lux-border, #e5e3de);
+    margin-bottom: 8px;
+    overflow: hidden;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pdp-metric__fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--lux-gold, #C8A96B), var(--lux-gold-light, #D4BC8A));
+    transition: width 1s var(--ease-out-expo, ease);
+  }
+  .pdp-metric__value {
+    font-size: 0.82rem;
+    color: var(--lux-medium-gray, #666);
+  }
+
+  .pdp-tag-group {
+    text-align: center;
+  }
+  .pdp-tag-group__label {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: var(--lux-black, #070707);
+    margin-bottom: 12px;
+  }
+  .pdp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .pdp-tag {
+    padding: 6px 16px;
+    border: 1px solid var(--lux-border, #e5e3de);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--lux-dark-gray, #333);
+    transition: all 0.3s ease;
+  }
+  .pdp-tag:hover {
+    border-color: var(--lux-gold, #C8A96B);
+    color: var(--lux-gold, #C8A96B);
+  }
+
+  /* === WHY YOU'LL LOVE IT === */
+  .pdp-why-love {
+    padding: 72px 0;
+    background: var(--lux-black, #070707);
+    color: var(--lux-white, #fff);
+  }
+  .pdp-why-love__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .pdp-why-love__header .pdp-section-title {
+    color: var(--lux-white, #fff);
+  }
+  .pdp-why-love__header .pdp-gold-line {
+    margin: 20px auto 0;
+  }
+  .pdp-why-love__grid {
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pdp-love-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .pdp-love-point:last-child {
+    border-bottom: none;
+  }
+  .pdp-love-point__icon {
+    color: var(--lux-gold, #C8A96B);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+  }
+  .pdp-love-point__text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.02em;
+  }
+</style>

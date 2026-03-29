@@ -307,7 +307,7 @@
     </script>
   </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="gradient template-{{ template.name | handle }}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     {%- comment -%} Luxury Preloader {%- endcomment -%}
     <div class="site-preloader" aria-hidden="true">
       <span class="preloader__brand">LumiScent</span>
@@ -408,6 +408,9 @@
     <script src="{{ 'lumiscent-features.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'wishlist.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'cart-timer.js' | asset_url }}" defer="defer"></script>
+
+    {%- comment -%} Exit-Intent Popup {%- endcomment -%}
+    {%- render 'exit-intent-popup' -%}
 
     {%- comment -%} Back to Top Button {%- endcomment -%}
     <button class="back-to-top" aria-label="Back to top">

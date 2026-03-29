@@ -1,5 +1,5 @@
-/* =====================================================
-   LUMISCENT — World-Class Luxury Theme JavaScript v3
+﻿/* =====================================================
+   LUMISCENT â€” World-Class Luxury Theme JavaScript v3
    Ultra-Premium Interactions & Animations
    ===================================================== */
 
@@ -328,7 +328,7 @@
     const style = document.createElement('style');
     style.textContent = `
       .heading-revealed { opacity: 1 !important; transform: translateY(0) !important; }
-      .newsletter-perfume__form.form--focused { box-shadow: 0 0 0 2px var(--lux-gold, #C5A47E); }
+      .newsletter-perfume__form.form--focused { box-shadow: 0 0 0 2px var(--lux-gold, #C8A96B); }
     `;
     document.head.appendChild(style);
   }
@@ -357,3 +357,5 @@
     init();
   }
 })();
+
+

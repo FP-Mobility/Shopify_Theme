@@ -1,23 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 700">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 700">
   <defs>
     <linearGradient id="hg2" x1="100%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#1A1210"/>
       <stop offset="100%" style="stop-color:#0A0A0A"/>
     </linearGradient>
     <radialGradient id="glow2" cx="30%" cy="50%">
-      <stop offset="0%" style="stop-color:#C5A47E;stop-opacity:0.2"/>
-      <stop offset="100%" style="stop-color:#C5A47E;stop-opacity:0"/>
+      <stop offset="0%" style="stop-color:#C8A96B;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#C8A96B;stop-opacity:0"/>
     </radialGradient>
   </defs>
   <rect width="1920" height="700" fill="url(#hg2)"/>
   <rect width="1920" height="700" fill="url(#glow2)"/>
   <!-- Perfume bottle silhouette right -->
   <g transform="translate(300,80)" opacity="0.12">
-    <rect x="80" y="0" width="40" height="25" rx="6" fill="#C5A47E"/>
-    <rect x="85" y="25" width="30" height="15" fill="#C5A47E"/>
-    <path d="M50,40 L150,40 L140,440 Q140,460 120,460 L80,460 Q60,460 60,440 Z" fill="#C5A47E"/>
+    <rect x="80" y="0" width="40" height="25" rx="6" fill="#C8A96B"/>
+    <rect x="85" y="25" width="30" height="15" fill="#C8A96B"/>
+    <path d="M50,40 L150,40 L140,440 Q140,460 120,460 L80,460 Q60,460 60,440 Z" fill="#C8A96B"/>
     <rect x="70" y="50" width="60" height="400" rx="6" fill="#D4BC94" opacity="0.4"/>
   </g>
-  <line x1="1320" y1="200" x2="1820" y2="200" stroke="#C5A47E" stroke-width="0.5" opacity="0.3"/>
-  <line x1="1420" y1="500" x2="1820" y2="500" stroke="#C5A47E" stroke-width="0.5" opacity="0.3"/>
+  <line x1="1320" y1="200" x2="1820" y2="200" stroke="#C8A96B" stroke-width="0.5" opacity="0.3"/>
+  <line x1="1420" y1="500" x2="1820" y2="500" stroke="#C8A96B" stroke-width="0.5" opacity="0.3"/>
 </svg>

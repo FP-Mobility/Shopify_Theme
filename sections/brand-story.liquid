@@ -1,4 +1,4 @@
-{%- style -%}
+﻿{%- style -%}
   .brand-story {
     padding: 100px 0;
     background: {{ section.settings.background_color }};
@@ -40,7 +40,7 @@
     right: -20px;
     width: 120px;
     height: 120px;
-    border: 1px solid var(--lux-gold, #C5A47E);
+    border: 1px solid var(--lux-gold, #C8A96B);
     opacity: 0.3;
     pointer-events: none;
   }
@@ -53,7 +53,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--lux-gold, #C5A47E);
+    color: var(--lux-gold, #C8A96B);
     font-weight: 500;
   }
   .brand-story__title {
@@ -71,7 +71,7 @@
   .brand-story__divider {
     width: 48px;
     height: 1px;
-    background: var(--lux-gold, #C5A47E);
+    background: var(--lux-gold, #C8A96B);
   }
   .brand-story__text {
     font-size: 0.95rem;
@@ -98,7 +98,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--lux-gold, #C5A47E);
+    color: var(--lux-gold, #C8A96B);
     font-size: 1.2rem;
   }
   .brand-story__value-text {
@@ -122,7 +122,7 @@
     align-self: flex-start;
   }
   .brand-story__cta:hover {
-    background: var(--lux-gold, #C5A47E);
+    background: var(--lux-gold, #C8A96B);
     box-shadow: 0 4px 20px rgba(197,164,126,0.3);
   }
 {%- endstyle -%}
@@ -179,7 +179,7 @@
       "type": "value",
       "name": "Value",
       "settings": [
-        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "✓" },
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "âœ“" },
         { "type": "text", "id": "label", "label": "Label", "default": "100% Authentic" }
       ]
     }
@@ -187,11 +187,13 @@
   "presets": [{
     "name": "Brand Story",
     "blocks": [
-      { "type": "value", "settings": { "icon": "✓", "label": "100% Authentic" } },
-      { "type": "value", "settings": { "icon": "🚚", "label": "Fast EU Shipping" } },
-      { "type": "value", "settings": { "icon": "🔒", "label": "Secure Checkout" } },
-      { "type": "value", "settings": { "icon": "⭐", "label": "Premium Quality" } }
+      { "type": "value", "settings": { "icon": "âœ“", "label": "100% Authentic" } },
+      { "type": "value", "settings": { "icon": "ðŸšš", "label": "Fast EU Shipping" } },
+      { "type": "value", "settings": { "icon": "ðŸ”’", "label": "Secure Checkout" } },
+      { "type": "value", "settings": { "icon": "â­", "label": "Premium Quality" } }
     ]
   }]
 }
 {% endschema %}
+
+

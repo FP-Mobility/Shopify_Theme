@@ -1,25 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 700">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 700">
   <defs>
     <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0A0A0A"/>
       <stop offset="100%" style="stop-color:#1A1A1A"/>
     </linearGradient>
     <linearGradient id="gold1" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#C5A47E;stop-opacity:0.3"/>
-      <stop offset="100%" style="stop-color:#C5A47E;stop-opacity:0"/>
+      <stop offset="0%" style="stop-color:#C8A96B;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#C8A96B;stop-opacity:0"/>
     </linearGradient>
   </defs>
   <rect width="1920" height="700" fill="url(#hg1)"/>
   <ellipse cx="1400" cy="350" rx="500" ry="400" fill="url(#gold1)"/>
   <!-- Perfume bottle silhouette -->
   <g transform="translate(1200,100)" opacity="0.15">
-    <rect x="80" y="0" width="40" height="30" rx="4" fill="#C5A47E"/>
-    <rect x="90" y="30" width="20" height="20" fill="#C5A47E"/>
-    <rect x="60" y="50" width="80" height="20" rx="4" fill="#C5A47E"/>
-    <rect x="50" y="70" width="100" height="380" rx="8" fill="#C5A47E"/>
+    <rect x="80" y="0" width="40" height="30" rx="4" fill="#C8A96B"/>
+    <rect x="90" y="30" width="20" height="20" fill="#C8A96B"/>
+    <rect x="60" y="50" width="80" height="20" rx="4" fill="#C8A96B"/>
+    <rect x="50" y="70" width="100" height="380" rx="8" fill="#C8A96B"/>
     <rect x="60" y="80" width="80" height="360" rx="4" fill="#D4BC94" opacity="0.5"/>
   </g>
   <!-- Decorative lines -->
-  <line x1="100" y1="200" x2="600" y2="200" stroke="#C5A47E" stroke-width="0.5" opacity="0.3"/>
-  <line x1="100" y1="500" x2="500" y2="500" stroke="#C5A47E" stroke-width="0.5" opacity="0.3"/>
+  <line x1="100" y1="200" x2="600" y2="200" stroke="#C8A96B" stroke-width="0.5" opacity="0.3"/>
+  <line x1="100" y1="500" x2="500" y2="500" stroke="#C8A96B" stroke-width="0.5" opacity="0.3"/>
 </svg>

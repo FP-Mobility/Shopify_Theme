@@ -1,4 +1,4 @@
-{%- style -%}
+﻿{%- style -%}
   .category-blocks {
     padding: 80px 0;
     background: {{ section.settings.background_color }};
@@ -11,7 +11,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--lux-gold, #C5A47E);
+    color: var(--lux-gold, #C8A96B);
     margin-bottom: 12px;
   }
   .category-blocks__title {
@@ -75,7 +75,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--lux-gold, #C5A47E);
+    color: var(--lux-gold, #C8A96B);
     font-weight: 600;
   }
   .category-block__name {
@@ -159,7 +159,7 @@
       "name": "Category",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "flag", "label": "Region Flag", "default": "🇪🇺 European" },
+        { "type": "text", "id": "flag", "label": "Region Flag", "default": "ðŸ‡ªðŸ‡º European" },
         { "type": "text", "id": "heading", "label": "Heading", "default": "European Perfumes" },
         { "type": "text", "id": "description", "label": "Description", "default": "French elegance, Italian passion" },
         { "type": "text", "id": "cta_label", "label": "CTA Label", "default": "EXPLORE" },
@@ -170,10 +170,12 @@
   "presets": [{
     "name": "Category Blocks",
     "blocks": [
-      { "type": "category", "settings": { "flag": "🇪🇺 European", "heading": "European Perfumes", "description": "French elegance, Italian passion, timeless craftsmanship" } },
-      { "type": "category", "settings": { "flag": "🇦🇪 Arabian", "heading": "UAE Perfumes", "description": "Rich oud, amber & oriental treasures" } },
-      { "type": "category", "settings": { "flag": "🇺🇸 American", "heading": "USA Exclusives", "description": "Bold, modern designer fragrances" } }
+      { "type": "category", "settings": { "flag": "ðŸ‡ªðŸ‡º European", "heading": "European Perfumes", "description": "French elegance, Italian passion, timeless craftsmanship" } },
+      { "type": "category", "settings": { "flag": "ðŸ‡¦ðŸ‡ª Arabian", "heading": "UAE Perfumes", "description": "Rich oud, amber & oriental treasures" } },
+      { "type": "category", "settings": { "flag": "ðŸ‡ºðŸ‡¸ American", "heading": "USA Exclusives", "description": "Bold, modern designer fragrances" } }
     ]
   }]
 }
 {% endschema %}
+
+
