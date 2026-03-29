@@ -892,6 +892,10 @@
         "ai_gen_block_72d8ff5_krmEWb"
       ],
       "settings": {}
+    },
+    "1774783304f07b7321": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
@@ -916,6 +920,7 @@
     "trust-badges",
     "newsletter",
     "featured_product_CeY6n8",
-    "1774621563b9105420"
+    "1774621563b9105420",
+    "1774783304f07b7321"
   ]
 }
