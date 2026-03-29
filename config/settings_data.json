@@ -1,6 +1,15 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "logo": "shopify://shop_images/shared_image.jpg",
+    "logo": "shopify://shop_images/shared_image_5a4e1fb7-2087-477c-aa28-7cae689c7be5.jpg",
     "logo_width": 90,
     "favicon": "shopify://shop_images/shared_image.jpg",
     "type_header_font": "archivo_black_n4",
@@ -48,7 +57,7 @@
     "collection_card_style": "card",
     "collection_card_image_padding": 0,
     "collection_card_text_alignment": "right",
-    "collection_card_color_scheme": "scheme-2",
+    "collection_card_color_scheme": "scheme-5",
     "collection_card_border_thickness": 0,
     "collection_card_border_opacity": 10,
     "collection_card_corner_radius": 0,
@@ -176,9 +185,9 @@
           "background": "#1a1a1a",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#C8A96B",
+          "button": "#c8a96b",
           "button_label": "#ffffff",
-          "secondary_button_label": "#C8A96B",
+          "secondary_button_label": "#c8a96b",
           "shadow": "#070707"
         }
       },
@@ -187,15 +196,15 @@
           "background": "#070707",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#C8A96B",
+          "button": "#c8a96b",
           "button_label": "#ffffff",
-          "secondary_button_label": "#C8A96B",
+          "secondary_button_label": "#c8a96b",
           "shadow": "#070707"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#C8A96B",
+          "background": "#c8a96b",
           "background_gradient": "",
           "text": "#ffffff",
           "button": "#070707",
@@ -414,4 +423,3 @@
     ]
   }
 }
-
