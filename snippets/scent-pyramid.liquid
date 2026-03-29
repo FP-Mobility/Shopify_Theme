@@ -1,0 +1,204 @@
+{%- comment -%}
+  Scent Pyramid Snippet
+  Usage: {% render 'scent-pyramid', product: product %}
+  Reads metafields: product.metafields.custom.top_notes, heart_notes, base_notes,
+                    product.metafields.custom.longevity, projection, season
+{%- endcomment -%}
+
+{%- assign top_notes = product.metafields.custom.top_notes -%}
+{%- assign heart_notes = product.metafields.custom.heart_notes -%}
+{%- assign base_notes = product.metafields.custom.base_notes -%}
+{%- assign longevity = product.metafields.custom.longevity | default: 0 -%}
+{%- assign projection = product.metafields.custom.projection | default: 0 -%}
+{%- assign season = product.metafields.custom.season -%}
+
+{%- if top_notes != blank or heart_notes != blank or base_notes != blank or longevity > 0 -%}
+<div class="scent-details">
+  {%- if top_notes != blank or heart_notes != blank or base_notes != blank -%}
+  <div class="scent-pyramid">
+    <h3 class="scent-pyramid__title">SCENT PROFILE</h3>
+    <div class="scent-pyramid__visual">
+      {%- if top_notes != blank -%}
+      <div class="scent-pyramid__layer scent-pyramid__layer--top">
+        <div class="scent-pyramid__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="20,4 36,32 4,32"/></svg>
+        </div>
+        <div class="scent-pyramid__info">
+          <span class="scent-pyramid__label">Top Notes</span>
+          <span class="scent-pyramid__notes">{{ top_notes }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if heart_notes != blank -%}
+      <div class="scent-pyramid__layer scent-pyramid__layer--heart">
+        <div class="scent-pyramid__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 35S4 24 4 14a9 9 0 0 1 16-5.6A9 9 0 0 1 36 14c0 10-16 21-16 21z"/></svg>
+        </div>
+        <div class="scent-pyramid__info">
+          <span class="scent-pyramid__label">Heart Notes</span>
+          <span class="scent-pyramid__notes">{{ heart_notes }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+      {%- if base_notes != blank -%}
+      <div class="scent-pyramid__layer scent-pyramid__layer--base">
+        <div class="scent-pyramid__icon">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="3"/></svg>
+        </div>
+        <div class="scent-pyramid__info">
+          <span class="scent-pyramid__label">Base Notes</span>
+          <span class="scent-pyramid__notes">{{ base_notes }}</span>
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endif -%}
+
+  {%- if longevity > 0 or projection > 0 -%}
+  <div class="scent-ratings">
+    {%- if longevity > 0 -%}
+    <div class="scent-rating">
+      <div class="scent-rating__header">
+        <span class="scent-rating__label">Longevity</span>
+        <span class="scent-rating__value">{{ longevity }}/10</span>
+      </div>
+      <div class="scent-rating__bar">
+        <div class="scent-rating__fill" style="width: {{ longevity | times: 10 }}%"></div>
+      </div>
+    </div>
+    {%- endif -%}
+    {%- if projection > 0 -%}
+    <div class="scent-rating">
+      <div class="scent-rating__header">
+        <span class="scent-rating__label">Projection</span>
+        <span class="scent-rating__value">{{ projection }}/10</span>
+      </div>
+      <div class="scent-rating__bar">
+        <div class="scent-rating__fill" style="width: {{ projection | times: 10 }}%"></div>
+      </div>
+    </div>
+    {%- endif -%}
+  </div>
+  {%- endif -%}
+
+  {%- if season != blank -%}
+  <div class="scent-season">
+    <span class="scent-season__label">Best For:</span>
+    <span class="scent-season__value">{{ season }}</span>
+  </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .scent-details {
+    padding: 24px 0;
+    border-top: 1px solid var(--lux-border, #e8e0d8);
+  }
+  .scent-pyramid__title {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--lux-gold, #C5A47E);
+    margin: 0 0 20px;
+    font-weight: 600;
+  }
+  .scent-pyramid__visual {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .scent-pyramid__layer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: var(--lux-pale, #faf8f5);
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  .scent-pyramid__layer:hover {
+    background: #f0ebe3;
+  }
+  .scent-pyramid__icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lux-gold, #C5A47E);
+  }
+  .scent-pyramid__icon svg { width: 28px; height: 28px; }
+  .scent-pyramid__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .scent-pyramid__label {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--lux-black, #0A0A0A);
+  }
+  .scent-pyramid__notes {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.4;
+  }
+  .scent-ratings {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .scent-rating__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .scent-rating__label {
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .scent-rating__value {
+    font-size: 0.76rem;
+    color: var(--lux-gold, #C5A47E);
+    font-weight: 600;
+  }
+  .scent-rating__bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .scent-rating__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lux-gold, #C5A47E), #d4b896);
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .scent-season {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scent-season__label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--lux-black, #0A0A0A);
+  }
+  .scent-season__value {
+    font-size: 0.88rem;
+    color: var(--lux-gold, #C5A47E);
+    font-weight: 500;
+  }
+</style>
+{%- endif -%}

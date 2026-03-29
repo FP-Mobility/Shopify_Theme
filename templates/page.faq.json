@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq-page",
+      "blocks": {
+        "cat_shipping": { "type": "category", "settings": { "title": "Shipping & Delivery" } },
+        "q1": { "type": "question", "settings": { "question": "How long does delivery take?", "answer": "<p>Standard shipping within Germany takes 2-4 business days. EU delivery takes 3-7 business days. Express shipping options are available at checkout.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "Do you offer free shipping?", "answer": "<p>Yes! We offer free standard shipping on all orders over €59. Orders under €59 have a flat shipping rate of €4.95.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "Do you ship internationally?", "answer": "<p>We currently ship to all EU countries. International shipping outside the EU is coming soon.</p>" } },
+        "cat_products": { "type": "category", "settings": { "title": "Products & Authenticity" } },
+        "q4": { "type": "question", "settings": { "question": "Are all products 100% authentic?", "answer": "<p>Absolutely. Every fragrance we sell is 100% genuine. We source directly from authorized distributors and never deal in counterfeit products. Each product comes with original packaging and verifiable batch codes.</p>" } },
+        "q5": { "type": "question", "settings": { "question": "What is the difference between EDT, EDP, and Parfum?", "answer": "<p><strong>EDT (Eau de Toilette):</strong> 5-15% concentration, lasts 3-5 hours.<br><strong>EDP (Eau de Parfum):</strong> 15-20% concentration, lasts 6-8 hours.<br><strong>Parfum/Extrait:</strong> 20-30% concentration, lasts 8-12+ hours.</p>" } },
+        "q6": { "type": "question", "settings": { "question": "How should I store my perfume?", "answer": "<p>Store fragrances in a cool, dry place away from direct sunlight and heat. Keep the cap on when not in use. Proper storage can preserve your fragrance for years.</p>" } },
+        "cat_returns": { "type": "category", "settings": { "title": "Returns & Exchanges" } },
+        "q7": { "type": "question", "settings": { "question": "What is your return policy?", "answer": "<p>We offer a 30-day return policy on all unopened items in their original packaging. Damaged or incorrect items can be reported within 48 hours for a free replacement.</p>" } },
+        "q8": { "type": "question", "settings": { "question": "Can I exchange a fragrance?", "answer": "<p>Yes, unopened items can be exchanged within 30 days. Contact our customer service team to arrange the exchange.</p>" } },
+        "cat_payment": { "type": "category", "settings": { "title": "Orders & Payment" } },
+        "q9": { "type": "question", "settings": { "question": "What payment methods do you accept?", "answer": "<p>Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and Klarna. All transactions are encrypted and secure.</p>" } },
+        "q10": { "type": "question", "settings": { "question": "Can I cancel or modify my order?", "answer": "<p>Orders can be modified or cancelled within 1 hour of placement. After that, orders enter our fulfillment process.</p>" } }
+      },
+      "block_order": [
+        "cat_shipping", "q1", "q2", "q3",
+        "cat_products", "q4", "q5", "q6",
+        "cat_returns", "q7", "q8",
+        "cat_payment", "q9", "q10"
+      ],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}

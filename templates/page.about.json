@@ -13,14 +13,14 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "Crafting luxury fragrance experiences since our inception",
+            "text": "Where Luxury Meets Identity — From Europe, Arabia & Beyond",
             "text_style": "subtitle"
           }
         }
       },
       "block_order": ["heading", "text"],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 45,
         "image_height": "medium",
         "desktop_content_position": "middle-center",
         "show_text_box": false,
@@ -32,30 +32,22 @@
         "show_text_below": true
       }
     },
-    "story": {
-      "type": "rich-text",
+    "brand-story": {
+      "type": "brand-story",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "The LumiScent Story"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>At LumiScent, we believe that fragrance is more than just a scent — it's an expression of identity, a gateway to memories, and an art form to be celebrated.</p><p>Our journey began with a simple mission: to make the world's finest fragrances accessible to everyone. We partner directly with renowned perfume houses and authorized distributors to bring you an unparalleled selection of authentic luxury fragrances at exceptional value.</p><p>Every fragrance in our collection has been carefully curated by our team of experts who share a deep passion for the art of perfumery. From timeless classics to exciting new releases, we're dedicated to helping you discover your perfect scent.</p>"
-          }
-        }
+        "v1": { "type": "value", "settings": { "icon": "✓", "label": "100% Authentic" } },
+        "v2": { "type": "value", "settings": { "icon": "🌍", "label": "EU, UAE & USA" } },
+        "v3": { "type": "value", "settings": { "icon": "🚚", "label": "Fast EU Shipping" } },
+        "v4": { "type": "value", "settings": { "icon": "⭐", "label": "Premium Quality" } }
       },
-      "block_order": ["heading", "text"],
+      "block_order": ["v1", "v2", "v3", "v4"],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "padding_top": 60,
-        "padding_bottom": 40
+        "eyebrow": "Our Origin",
+        "title": "EU, UAE & USA Perfume Excellence",
+        "text": "<p>LumiScent was born from a simple belief: everyone deserves access to the world's finest fragrances. We bridge the gap between luxury perfume houses and discerning customers who value authenticity, quality, and exceptional value.</p><p>Our team of fragrance experts travels between Europe, the Arabian Gulf, and the United States to source the most coveted scents — from French haute parfumerie and Italian elegance to rich Arabian oud and exclusive American designer releases.</p><p>Every bottle passes our rigorous authenticity verification. We work directly with authorized distributors so you receive only genuine products at prices that make luxury accessible.</p>",
+        "background_color": "#faf8f5",
+        "button_label": "SHOP ALL FRAGRANCES",
+        "button_link": "shopify://collections/all"
       }
     },
     "values": {
@@ -64,8 +56,8 @@
         "col1": {
           "type": "column",
           "settings": {
-            "title": "Authenticity",
-            "text": "<p>Every product we sell is 100% authentic, sourced directly from authorized distributors and major fragrance houses.</p>",
+            "title": "Authenticity Guaranteed",
+            "text": "<p>Every product is 100% genuine, sourced from authorized distributors with verifiable batch codes and original packaging.</p>",
             "link_label": "",
             "link": ""
           }
@@ -73,8 +65,8 @@
         "col2": {
           "type": "column",
           "settings": {
-            "title": "Expertise",
-            "text": "<p>Our team of fragrance experts curates each scent in our collection, ensuring only the finest quality makes it to our shelves.</p>",
+            "title": "Expert Curation",
+            "text": "<p>Our fragrance experts personally select each scent, ensuring only the finest quality and most compelling compositions make it to our collection.</p>",
             "link_label": "",
             "link": ""
           }
@@ -82,20 +74,29 @@
         "col3": {
           "type": "column",
           "settings": {
-            "title": "Service",
-            "text": "<p>From personalized recommendations to seamless delivery, we're committed to providing an exceptional shopping experience.</p>",
+            "title": "Global Sourcing",
+            "text": "<p>From Parisian ateliers to Arabian oud masters and American designer houses — we bring the world's best fragrances to your doorstep.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col4": {
+          "type": "column",
+          "settings": {
+            "title": "Exceptional Service",
+            "text": "<p>From personalized recommendations to seamless delivery and 30-day returns, we're committed to your complete satisfaction.</p>",
             "link_label": "",
             "link": ""
           }
         }
       },
-      "block_order": ["col1", "col2", "col3"],
+      "block_order": ["col1", "col2", "col3", "col4"],
       "settings": {
-        "title": "Our Values",
+        "title": "Why LumiScent",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "primary",
         "button_label": "",
@@ -103,8 +104,8 @@
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "image-with-text": {
@@ -113,13 +114,13 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Why Choose LumiScent?"
+            "heading": "Our Promise to You"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>With thousands of satisfied customers worldwide, we've built our reputation on trust, quality, and exceptional value. Our commitment to authenticity means you'll never have to worry about the products you receive.</p><p>We offer free shipping on orders over $59, a 30-day satisfaction guarantee, and dedicated customer support to ensure your complete happiness with every purchase.</p>",
+            "text": "<p>With thousands of satisfied customers across Europe, we've built our reputation on trust, quality, and exceptional value. Our commitment to authenticity means you'll never have to worry about the products you receive.</p><p>Free shipping on orders over €59, a 30-day satisfaction guarantee, and dedicated customer support — because your confidence in us is everything.</p>",
             "text_style": "body"
           }
         },
@@ -127,7 +128,7 @@
           "type": "button",
           "settings": {
             "button_label": "Shop Now",
-            "button_link": ""
+            "button_link": "shopify://collections/all"
           }
         }
       },
@@ -149,19 +150,19 @@
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
-        "background_color": "#FAF8F5",
-        "label": "Stay Connected",
-        "title": "Join Our Community",
-        "text": "Be the first to know about new arrivals, exclusive offers, and fragrance tips.",
+        "background_color": "#c5a47e",
+        "label": "",
+        "title": "Join the LumiScent Community",
+        "text": "Be the first to know about new arrivals, exclusive offers, and fragrance tips from our experts.",
         "placeholder": "Enter your email address",
-        "button_label": "Subscribe",
+        "button_label": "SUBSCRIBE",
         "privacy_text": "By subscribing, you agree to our Privacy Policy."
       }
     }
   },
   "order": [
     "banner",
-    "story",
+    "brand-story",
     "values",
     "image-with-text",
     "newsletter"

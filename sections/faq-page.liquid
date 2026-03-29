@@ -1,0 +1,209 @@
+{%- style -%}
+  .faq-page {
+    padding: 80px 0 100px;
+    background: #fff;
+  }
+  .faq-page__header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .faq-page__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--lux-gold, #C5A47E);
+    margin-bottom: 12px;
+  }
+  .faq-page__title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 2.6rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin: 0 0 16px;
+  }
+  @media screen and (min-width: 990px) {
+    .faq-page__title { font-size: 3.2rem; }
+  }
+  .faq-page__subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .faq-categories {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-category__title {
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--lux-gold, #C5A47E);
+    font-weight: 600;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--lux-border, #e8e0d8);
+  }
+  .faq-item {
+    border-bottom: 1px solid #f0ebe3;
+  }
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--lux-black, #0A0A0A);
+    transition: color 0.3s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--lux-gold, #C5A47E); }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--lux-gold, #C5A47E);
+    transition: transform 0.3s;
+  }
+  .faq-item[open] summary::after {
+    transform: rotate(45deg);
+  }
+  .faq-item__answer {
+    padding: 0 0 20px;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.7;
+  }
+  .faq-page__contact {
+    text-align: center;
+    margin-top: 64px;
+    padding: 40px;
+    background: var(--lux-pale, #faf8f5);
+  }
+  .faq-page__contact-title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0 0 8px;
+  }
+  .faq-page__contact-text {
+    font-size: 0.88rem;
+    color: #666;
+    margin: 0 0 20px;
+  }
+  .faq-page__contact-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--lux-black, #0A0A0A);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .faq-page__contact-btn:hover {
+    background: var(--lux-gold, #C5A47E);
+  }
+{%- endstyle -%}
+
+<section class="faq-page">
+  <div class="page-width">
+    <div class="faq-page__header">
+      <div class="faq-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="faq-page__title">{{ section.settings.title }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="faq-page__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="faq-categories">
+      {%- assign current_category = '' -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category' -%}
+          {%- if current_category != '' -%}</div>{%- endif -%}
+          <div class="faq-category" {{ block.shopify_attributes }}>
+            <h2 class="faq-category__title">{{ block.settings.title }}</h2>
+          {%- assign current_category = block.settings.title -%}
+        {%- elsif block.type == 'question' -%}
+          <details class="faq-item" {{ block.shopify_attributes }}>
+            <summary>{{ block.settings.question }}</summary>
+            <div class="faq-item__answer rte">{{ block.settings.answer }}</div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if current_category != '' -%}</div>{%- endif -%}
+    </div>
+
+    {%- if section.settings.show_contact -%}
+    <div class="faq-page__contact">
+      <h3 class="faq-page__contact-title">{{ section.settings.contact_title }}</h3>
+      <p class="faq-page__contact-text">{{ section.settings.contact_text }}</p>
+      {%- if section.settings.contact_link != blank -%}
+        <a href="{{ section.settings.contact_link }}" class="faq-page__contact-btn">{{ section.settings.contact_label }}</a>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Help Center" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Everything you need to know about shopping with LumiScent" },
+    { "type": "checkbox", "id": "show_contact", "label": "Show contact CTA", "default": true },
+    { "type": "text", "id": "contact_title", "label": "Contact Heading", "default": "Still have questions?" },
+    { "type": "text", "id": "contact_text", "label": "Contact Text", "default": "Our fragrance experts are here to help you find your perfect scent." },
+    { "type": "text", "id": "contact_label", "label": "Contact Button Label", "default": "CONTACT US" },
+    { "type": "url", "id": "contact_link", "label": "Contact Link" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Header",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Category Name", "default": "General" }
+      ]
+    },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Are your perfumes authentic?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes, 100%. All our fragrances are sourced directly from authorized distributors and come with full manufacturer guarantees.</p>" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "FAQ Page",
+    "blocks": [
+      { "type": "category", "settings": { "title": "Shipping & Delivery" } },
+      { "type": "question", "settings": { "question": "How long does delivery take?", "answer": "<p>Standard shipping within Germany takes 2-4 business days. EU delivery takes 3-7 business days. Express shipping options are available at checkout.</p>" } },
+      { "type": "question", "settings": { "question": "Do you offer free shipping?", "answer": "<p>Yes! We offer free standard shipping on all orders over €59. Orders under €59 have a flat shipping rate of €4.95.</p>" } },
+      { "type": "question", "settings": { "question": "Do you ship internationally?", "answer": "<p>We currently ship to all EU countries. International shipping outside the EU is coming soon. Sign up for our newsletter to be notified.</p>" } },
+      { "type": "category", "settings": { "title": "Products & Authenticity" } },
+      { "type": "question", "settings": { "question": "Are all products 100% authentic?", "answer": "<p>Absolutely. Every fragrance we sell is 100% genuine. We source directly from authorized distributors and never deal in counterfeit products. Each product comes with original packaging and batch codes that can be verified.</p>" } },
+      { "type": "question", "settings": { "question": "What is the difference between EDT, EDP, and Parfum?", "answer": "<p><strong>EDT (Eau de Toilette):</strong> 5-15% concentration, lasts 3-5 hours. Great for everyday wear.<br><strong>EDP (Eau de Parfum):</strong> 15-20% concentration, lasts 6-8 hours. Our most popular choice.<br><strong>Parfum/Extrait:</strong> 20-30% concentration, lasts 8-12+ hours. The most intense and long-lasting.</p>" } },
+      { "type": "question", "settings": { "question": "How should I store my perfume?", "answer": "<p>Store fragrances in a cool, dry place away from direct sunlight and heat. Keep the cap on when not in use. Avoid storing in bathrooms where humidity and temperature fluctuate. Proper storage can preserve your fragrance for years.</p>" } },
+      { "type": "category", "settings": { "title": "Returns & Exchanges" } },
+      { "type": "question", "settings": { "question": "What is your return policy?", "answer": "<p>We offer a 30-day return policy on all unopened items in their original packaging. If you received a damaged or incorrect item, please contact us within 48 hours of delivery for a free replacement.</p>" } },
+      { "type": "question", "settings": { "question": "Can I exchange a fragrance?", "answer": "<p>Yes, unopened items can be exchanged within 30 days. Simply contact our customer service team and we'll arrange the exchange for you.</p>" } },
+      { "type": "category", "settings": { "title": "Orders & Payment" } },
+      { "type": "question", "settings": { "question": "What payment methods do you accept?", "answer": "<p>We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and Klarna (buy now, pay later). All transactions are encrypted and secure.</p>" } },
+      { "type": "question", "settings": { "question": "Can I cancel or modify my order?", "answer": "<p>Orders can be modified or cancelled within 1 hour of placement. After that, orders enter our fulfillment process. Please contact us immediately if you need changes.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

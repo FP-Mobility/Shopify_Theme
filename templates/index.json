@@ -18,12 +18,14 @@
         "height": 90,
         "overlay_opacity": 35,
         "eyebrow": "LumiScent",
-        "heading": "Discover Your Signature Scent",
-        "text": "Curated luxury fragrances. Complimentary shipping on orders over €59.",
+        "heading": "Lumiscent \u2013 Where Luxury Meets Identity",
+        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on orders over \u20ac59.",
         "button_label_1": "SHOP WOMEN",
         "button_link_1": "shopify://collections/womens-fragrances",
         "button_label_2": "SHOP MEN",
         "button_link_2": "shopify://collections/mens-fragrances",
+        "button_label_3": "SHOP UAE PERFUMES",
+        "button_link_3": "shopify://collections/uae-perfumes",
         "text_alignment": "left",
         "show_scroll_indicator": true,
         "color_scheme": "scheme-4"
@@ -665,6 +667,46 @@
         "privacy_text": "By subscribing you agree with our Privacy Policy"
       }
     },
+    "brand-story": {
+      "type": "brand-story",
+      "blocks": {
+        "v1": { "type": "value", "settings": { "icon": "✓", "label": "100% Authentic" } },
+        "v2": { "type": "value", "settings": { "icon": "🚚", "label": "Fast EU Shipping" } },
+        "v3": { "type": "value", "settings": { "icon": "🔒", "label": "Secure Checkout" } },
+        "v4": { "type": "value", "settings": { "icon": "⭐", "label": "Premium Quality" } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"],
+      "settings": {
+        "eyebrow": "Our Story",
+        "title": "Where Luxury Meets Identity",
+        "text": "<p>At LumiScent, we believe fragrance is the invisible part of your personal style. Born from a passion for authentic luxury, we curate the world's finest perfumes from EU masters, Arabian oud artisans, and exclusive US importers.</p><p>Every bottle in our collection passes rigorous authenticity verification. We work directly with authorized distributors to guarantee you receive only genuine products at exceptional value.</p>",
+        "background_color": "#faf8f5",
+        "button_label": "LEARN MORE",
+        "button_link": ""
+      }
+    },
+    "category-blocks": {
+      "type": "category-blocks",
+      "blocks": {
+        "eu": { "type": "category", "settings": { "flag": "🇪🇺 European", "heading": "European Perfumes", "description": "French elegance, Italian passion, timeless craftsmanship", "cta_label": "EXPLORE" } },
+        "uae": { "type": "category", "settings": { "flag": "🇦🇪 Arabian", "heading": "UAE Perfumes", "description": "Rich oud, amber & oriental treasures", "cta_label": "EXPLORE" } },
+        "usa": { "type": "category", "settings": { "flag": "🇺🇸 American", "heading": "USA Exclusives", "description": "Bold, modern designer fragrances", "cta_label": "EXPLORE" } }
+      },
+      "block_order": ["eu", "uae", "usa"],
+      "settings": {
+        "eyebrow": "Explore Our World",
+        "title": "Perfume Origins",
+        "background_color": "#0a0a0a"
+      }
+    },
+    "fragrance-quiz": {
+      "type": "fragrance-quiz",
+      "settings": {
+        "eyebrow": "Find Your Signature",
+        "title": "Fragrance Finder Quiz",
+        "subtitle": "Answer a few questions and we'll recommend the perfect scent for you"
+      }
+    },
     "featured_product_CeY6n8": {
       "type": "featured-product",
       "blocks": {
@@ -773,8 +815,11 @@
     "slideshow",
     "featured_categories_7MQ8rz",
     "best-sellers",
+    "brand-story",
     "new-arrivals",
+    "category-blocks",
     "shop-gender",
+    "fragrance-quiz",
     "brand-showcase",
     "multirow_W8U3BE",
     "bundles",

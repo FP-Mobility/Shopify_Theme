@@ -1,0 +1,179 @@
+{%- style -%}
+  .category-blocks {
+    padding: 80px 0;
+    background: {{ section.settings.background_color }};
+  }
+  .category-blocks__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .category-blocks__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--lux-gold, #C5A47E);
+    margin-bottom: 12px;
+  }
+  .category-blocks__title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+  @media screen and (min-width: 990px) {
+    .category-blocks__title { font-size: 2.8rem; }
+  }
+  .category-blocks__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  @media screen and (min-width: 750px) {
+    .category-blocks__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .category-block {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    color: #fff;
+  }
+  .category-block__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .category-block:hover .category-block__image {
+    transform: scale(1.06);
+  }
+  .category-block__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+    transition: background 0.4s;
+  }
+  .category-block:hover .category-block__overlay {
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+  }
+  .category-block__content {
+    position: relative;
+    z-index: 2;
+    padding: 32px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .category-block__flag {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--lux-gold, #C5A47E);
+    font-weight: 600;
+  }
+  .category-block__name {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin: 0;
+  }
+  @media screen and (min-width: 990px) {
+    .category-block__name { font-size: 1.9rem; }
+  }
+  .category-block__desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+  .category-block__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 8px;
+    transition: gap 0.3s;
+  }
+  .category-block:hover .category-block__cta { gap: 14px; }
+  .category-block__cta svg { width: 16px; height: 16px; transition: transform 0.3s; }
+  .category-block:hover .category-block__cta svg { transform: translateX(4px); }
+{%- endstyle -%}
+
+<section class="category-blocks">
+  <div class="page-width">
+    <div class="category-blocks__header">
+      <div class="category-blocks__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="category-blocks__title">{{ section.settings.title }}</h2>
+    </div>
+    <div class="category-blocks__grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" class="category-block" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 800 | image_tag: class: 'category-block__image', loading: 'lazy', widths: '400,600,800', sizes: '(min-width: 750px) 33vw, 100vw' }}
+          {%- else -%}
+            <div class="category-block__image" style="background:linear-gradient(135deg,#2a1f1a,#0a0a0a);width:100%;height:100%;"></div>
+          {%- endif -%}
+          <div class="category-block__overlay"></div>
+          <div class="category-block__content">
+            {%- if block.settings.flag != blank -%}
+              <span class="category-block__flag">{{ block.settings.flag }}</span>
+            {%- endif -%}
+            <h3 class="category-block__name">{{ block.settings.heading }}</h3>
+            {%- if block.settings.description != blank -%}
+              <p class="category-block__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+            <span class="category-block__cta">
+              {{ block.settings.cta_label | default: 'EXPLORE' }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Blocks",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Explore Our World" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Perfume Origins" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#0a0a0a" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "flag", "label": "Region Flag", "default": "🇪🇺 European" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "European Perfumes" },
+        { "type": "text", "id": "description", "label": "Description", "default": "French elegance, Italian passion" },
+        { "type": "text", "id": "cta_label", "label": "CTA Label", "default": "EXPLORE" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Category Blocks",
+    "blocks": [
+      { "type": "category", "settings": { "flag": "🇪🇺 European", "heading": "European Perfumes", "description": "French elegance, Italian passion, timeless craftsmanship" } },
+      { "type": "category", "settings": { "flag": "🇦🇪 Arabian", "heading": "UAE Perfumes", "description": "Rich oud, amber & oriental treasures" } },
+      { "type": "category", "settings": { "flag": "🇺🇸 American", "heading": "USA Exclusives", "description": "Bold, modern designer fragrances" } }
+    ]
+  }]
+}
+{% endschema %}

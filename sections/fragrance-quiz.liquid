@@ -1,0 +1,426 @@
+{%- style -%}
+  .fragrance-quiz {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .fragrance-quiz::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(197,164,126,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .fragrance-quiz__inner {
+    position: relative;
+    z-index: 1;
+  }
+  .fragrance-quiz__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .fragrance-quiz__eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #C5A47E;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .fragrance-quiz__title {
+    font-family: var(--font-display, 'Cormorant Garamond', serif);
+    font-size: 2.6rem;
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 12px;
+    letter-spacing: 0.04em;
+  }
+  @media screen and (min-width: 750px) {
+    .fragrance-quiz__title { font-size: 3.2rem; }
+  }
+  .fragrance-quiz__subtitle {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.95rem;
+    margin: 0;
+    max-width: 500px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* Steps */
+  .quiz-step { display: none; }
+  .quiz-step.active { display: block; animation: quizFadeIn 0.5s ease; }
+  @keyframes quizFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .quiz-step__question {
+    text-align: center;
+    font-family: var(--font-display, serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 36px;
+  }
+  .quiz-step__options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 750px) {
+    .quiz-step__options { grid-template-columns: repeat(3, 1fr); }
+  }
+  .quiz-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 24px 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  .quiz-option:hover {
+    border-color: #C5A47E;
+    background: rgba(197,164,126,0.08);
+    transform: translateY(-4px);
+  }
+  .quiz-option.selected {
+    border-color: #C5A47E;
+    background: rgba(197,164,126,0.15);
+    box-shadow: 0 0 20px rgba(197,164,126,0.15);
+  }
+  .quiz-option__icon {
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .quiz-option__label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .quiz-option__desc {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* Progress */
+  .quiz-progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+  .quiz-progress__dot {
+    width: 32px;
+    height: 3px;
+    background: rgba(255,255,255,0.15);
+    transition: background 0.3s;
+  }
+  .quiz-progress__dot.active { background: #C5A47E; }
+  .quiz-progress__dot.done { background: rgba(197,164,126,0.5); }
+
+  /* Navigation */
+  .quiz-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .quiz-nav__btn {
+    padding: 14px 40px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: var(--font-body, sans-serif);
+  }
+  .quiz-nav__btn--back {
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .quiz-nav__btn--back:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .quiz-nav__btn--next {
+    background: #C5A47E;
+    color: #fff;
+  }
+  .quiz-nav__btn--next:hover { background: #b8936d; box-shadow: 0 4px 20px rgba(197,164,126,0.3); }
+  .quiz-nav__btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* Results */
+  .quiz-results { text-align: center; }
+  .quiz-results__heading {
+    font-family: var(--font-display, serif);
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .quiz-results__match {
+    font-size: 0.82rem;
+    color: #C5A47E;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+  .quiz-results__cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: #C5A47E;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .quiz-results__cta:hover { background: #b8936d; box-shadow: 0 4px 20px rgba(197,164,126,0.3); }
+  .quiz-results__restart {
+    display: block;
+    margin-top: 20px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-decoration: underline;
+  }
+{%- endstyle -%}
+
+<section class="fragrance-quiz" id="fragranceQuiz">
+  <div class="page-width fragrance-quiz__inner">
+    <div class="fragrance-quiz__header">
+      <span class="fragrance-quiz__eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="fragrance-quiz__title">{{ section.settings.title }}</h2>
+      <p class="fragrance-quiz__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="quiz-progress" id="quizProgress"></div>
+
+    <!-- Step 1: Who is this for? -->
+    <div class="quiz-step active" data-step="0">
+      <h3 class="quiz-step__question">Who are you shopping for?</h3>
+      <div class="quiz-step__options">
+        <div class="quiz-option" data-value="men">
+          <span class="quiz-option__icon">🧔</span>
+          <span class="quiz-option__label">Men</span>
+          <span class="quiz-option__desc">Bold, refined masculinity</span>
+        </div>
+        <div class="quiz-option" data-value="women">
+          <span class="quiz-option__icon">👩</span>
+          <span class="quiz-option__label">Women</span>
+          <span class="quiz-option__desc">Elegant femininity</span>
+        </div>
+        <div class="quiz-option" data-value="unisex">
+          <span class="quiz-option__icon">✨</span>
+          <span class="quiz-option__label">Unisex</span>
+          <span class="quiz-option__desc">Beyond boundaries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Scent family -->
+    <div class="quiz-step" data-step="1">
+      <h3 class="quiz-step__question">Which scent family speaks to you?</h3>
+      <div class="quiz-step__options">
+        <div class="quiz-option" data-value="fresh">
+          <span class="quiz-option__icon">🍋</span>
+          <span class="quiz-option__label">Fresh</span>
+          <span class="quiz-option__desc">Citrus, aquatic, green</span>
+        </div>
+        <div class="quiz-option" data-value="floral">
+          <span class="quiz-option__icon">🌸</span>
+          <span class="quiz-option__label">Floral</span>
+          <span class="quiz-option__desc">Rose, jasmine, lily</span>
+        </div>
+        <div class="quiz-option" data-value="oriental">
+          <span class="quiz-option__icon">🕌</span>
+          <span class="quiz-option__label">Oriental</span>
+          <span class="quiz-option__desc">Amber, spice, vanilla</span>
+        </div>
+        <div class="quiz-option" data-value="woody">
+          <span class="quiz-option__icon">🌲</span>
+          <span class="quiz-option__label">Woody</span>
+          <span class="quiz-option__desc">Cedar, sandalwood, vetiver</span>
+        </div>
+        <div class="quiz-option" data-value="oud">
+          <span class="quiz-option__icon">🪵</span>
+          <span class="quiz-option__label">Oud</span>
+          <span class="quiz-option__desc">Rich, opulent, Middle Eastern</span>
+        </div>
+        <div class="quiz-option" data-value="sweet">
+          <span class="quiz-option__icon">🍯</span>
+          <span class="quiz-option__label">Sweet</span>
+          <span class="quiz-option__desc">Gourmand, caramel, praline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Occasion -->
+    <div class="quiz-step" data-step="2">
+      <h3 class="quiz-step__question">When will you wear this fragrance?</h3>
+      <div class="quiz-step__options">
+        <div class="quiz-option" data-value="everyday">
+          <span class="quiz-option__icon">☀️</span>
+          <span class="quiz-option__label">Everyday</span>
+          <span class="quiz-option__desc">Office, casual outings</span>
+        </div>
+        <div class="quiz-option" data-value="evening">
+          <span class="quiz-option__icon">🌙</span>
+          <span class="quiz-option__label">Evening</span>
+          <span class="quiz-option__desc">Dinner, dates, events</span>
+        </div>
+        <div class="quiz-option" data-value="special">
+          <span class="quiz-option__icon">💎</span>
+          <span class="quiz-option__label">Special Occasion</span>
+          <span class="quiz-option__desc">Weddings, galas, celebrations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Longevity -->
+    <div class="quiz-step" data-step="3">
+      <h3 class="quiz-step__question">How long should it last?</h3>
+      <div class="quiz-step__options">
+        <div class="quiz-option" data-value="light">
+          <span class="quiz-option__icon">🌿</span>
+          <span class="quiz-option__label">Light (2-4h)</span>
+          <span class="quiz-option__desc">Subtle, close to skin</span>
+        </div>
+        <div class="quiz-option" data-value="moderate">
+          <span class="quiz-option__icon">⏰</span>
+          <span class="quiz-option__label">Moderate (4-8h)</span>
+          <span class="quiz-option__desc">All-day comfort</span>
+        </div>
+        <div class="quiz-option" data-value="beast">
+          <span class="quiz-option__icon">🔥</span>
+          <span class="quiz-option__label">Beast Mode (8h+)</span>
+          <span class="quiz-option__desc">Powerful & long-lasting</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="quiz-step" data-step="results">
+      <div class="quiz-results">
+        <h3 class="quiz-results__heading">Your Perfect Match</h3>
+        <p class="quiz-results__match" id="quizResultText">Fresh & Floral for Her</p>
+        <a href="#" class="quiz-results__cta" id="quizResultLink">EXPLORE YOUR COLLECTION</a>
+        <button class="quiz-results__restart" id="quizRestart">Take the quiz again</button>
+      </div>
+    </div>
+
+    <div class="quiz-nav" id="quizNav">
+      <button class="quiz-nav__btn quiz-nav__btn--back" id="quizBack" style="display:none">BACK</button>
+      <button class="quiz-nav__btn quiz-nav__btn--next" id="quizNext" disabled>NEXT</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var quiz = document.getElementById('fragranceQuiz');
+  if (!quiz) return;
+  var steps = quiz.querySelectorAll('.quiz-step');
+  var totalSteps = steps.length - 1; /* exclude results */
+  var current = 0;
+  var answers = {};
+  var progress = document.getElementById('quizProgress');
+  var nextBtn = document.getElementById('quizNext');
+  var backBtn = document.getElementById('quizBack');
+  var nav = document.getElementById('quizNav');
+
+  /* Build progress dots */
+  for (var i = 0; i < totalSteps; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'quiz-progress__dot' + (i === 0 ? ' active' : '');
+    progress.appendChild(dot);
+  }
+  var dots = progress.querySelectorAll('.quiz-progress__dot');
+
+  function showStep(idx) {
+    steps.forEach(function(s){ s.classList.remove('active'); });
+    if (idx >= totalSteps) {
+      quiz.querySelector('[data-step="results"]').classList.add('active');
+      nav.style.display = 'none';
+      progress.style.display = 'none';
+      showResults();
+    } else {
+      steps[idx].classList.add('active');
+      nav.style.display = 'flex';
+      progress.style.display = 'flex';
+    }
+    dots.forEach(function(d,i){
+      d.className = 'quiz-progress__dot';
+      if (i < idx) d.classList.add('done');
+      if (i === idx) d.classList.add('active');
+    });
+    backBtn.style.display = idx > 0 ? '' : 'none';
+    nextBtn.disabled = !answers[idx];
+    nextBtn.textContent = idx === totalSteps - 1 ? 'SEE RESULTS' : 'NEXT';
+  }
+
+  /* Option click */
+  quiz.addEventListener('click', function(e){
+    var opt = e.target.closest('.quiz-option');
+    if (!opt) return;
+    var step = opt.closest('.quiz-step');
+    step.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+    opt.classList.add('selected');
+    answers[current] = opt.getAttribute('data-value');
+    nextBtn.disabled = false;
+  });
+
+  nextBtn.addEventListener('click', function(){ if (answers[current]) { current++; showStep(current); } });
+  backBtn.addEventListener('click', function(){ if (current > 0) { current--; showStep(current); } });
+
+  document.getElementById('quizRestart').addEventListener('click', function(){
+    current = 0; answers = {};
+    quiz.querySelectorAll('.quiz-option').forEach(function(o){ o.classList.remove('selected'); });
+    showStep(0);
+  });
+
+  function showResults() {
+    var gender = answers[0] || 'unisex';
+    var family = answers[1] || 'fresh';
+    var occasion = answers[2] || 'everyday';
+
+    var familyNames = {fresh:'Fresh',floral:'Floral',oriental:'Oriental',woody:'Woody',oud:'Oud',sweet:'Sweet & Gourmand'};
+    var genderNames = {men:'for Him',women:'for Her',unisex:'Unisex'};
+
+    var label = (familyNames[family] || family) + ' ' + (genderNames[gender] || '');
+    document.getElementById('quizResultText').textContent = label;
+
+    /* Build collection URL with tags */
+    var base = '/collections/all';
+    if (gender === 'men') base = '/collections/mens-fragrances';
+    else if (gender === 'women') base = '/collections/womens-fragrances';
+    document.getElementById('quizResultLink').href = base;
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Fragrance Quiz",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find Your Match" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Discover Your Signature Scent" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Answer a few questions and we'll recommend the perfect fragrance for you" }
+  ],
+  "presets": [{ "name": "Fragrance Quiz" }]
+}
+{% endschema %}
