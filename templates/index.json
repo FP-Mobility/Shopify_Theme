@@ -11,6 +11,33 @@
   "sections": {
     "1774782723032a8df8": {
       "type": "_blocks",
+      "disabled": true,
+      "settings": {}
+    },
+    "17747827739e3011c0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d3aaf99_WRbX36": {
+          "type": "ai_gen_block_d3aaf99",
+          "settings": {
+            "heading_text": "Luxury Fragrances",
+            "heading_tag": "h2",
+            "text_alignment": "center",
+            "desktop_width_percent": 100,
+            "font_size": 55,
+            "font_weight": "700",
+            "text_color": "#000000",
+            "glow_color": "#c5a47e",
+            "glow_intensity": 40,
+            "animation_speed": 5
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d3aaf99_WRbX36"
+      ],
+      "disabled": true,
       "settings": {}
     },
     "video-hero": {
@@ -865,35 +892,11 @@
         "ai_gen_block_72d8ff5_krmEWb"
       ],
       "settings": {}
-    },
-    "17747827739e3011c0": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_d3aaf99_WRbX36": {
-          "type": "ai_gen_block_d3aaf99",
-          "settings": {
-            "heading_text": "Luxury Fragrances",
-            "heading_tag": "h2",
-            "text_alignment": "center",
-            "desktop_width_percent": 100,
-            "font_size": 60,
-            "font_weight": "700",
-            "text_color": "#000000",
-            "glow_color": "#c5a47e",
-            "glow_intensity": 20,
-            "animation_speed": 3
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_d3aaf99_WRbX36"
-      ],
-      "settings": {}
     }
   },
   "order": [
     "1774782723032a8df8",
+    "17747827739e3011c0",
     "video-hero",
     "slideshow",
     "featured_categories_7MQ8rz",
@@ -913,7 +916,6 @@
     "trust-badges",
     "newsletter",
     "featured_product_CeY6n8",
-    "1774621563b9105420",
-    "17747827739e3011c0"
+    "1774621563b9105420"
   ]
 }
