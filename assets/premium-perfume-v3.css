@@ -500,9 +500,9 @@ button[name="add"]:hover,
     color: var(--lux-gold) !important;
   }
 }
-/* Logo image — white for dark header */
+/* Logo image — show original, no filter */
 .header__heading-logo {
-  filter: brightness(0) invert(1);
+  filter: none;
   transition: filter var(--t-fast);
 }
 
