@@ -125,15 +125,6 @@
             "collection": "womens-fragrances"
           }
         },
-        "category_MDaLY9": {
-          "type": "category",
-          "settings": {
-            "title": "Unisex",
-            "description": "Versatile fragrances for everyone",
-            "image": "shopify://shop_images/Screenshot_2026-03-25_190035.jpg",
-            "collection": "unisex"
-          }
-        },
         "category_VdqYDL": {
           "type": "category",
           "settings": {
@@ -156,7 +147,6 @@
       "block_order": [
         "category_afmXcm",
         "category_nXRkx7",
-        "category_MDaLY9",
         "category_VdqYDL",
         "category_JprphD"
       ],
@@ -243,6 +233,7 @@
     },
     "new-arrivals": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "new-arrivals",
         "products_to_show": 25,
@@ -754,7 +745,7 @@
       "settings": {
         "heading": "Your Perfect Scent at the Perfect Price",
         "subheading": "Over 1 million packages shipped",
-        "background_color": "#131111"
+        "background_color": "#000000"
       }
     },
     "newsletter": {

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -18,29 +27,61 @@
           }
         }
       },
-      "block_order": ["heading", "text"],
+      "block_order": [
+        "heading",
+        "text"
+      ],
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "medium",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-4",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
         "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
         "show_text_below": true
       }
     },
     "brand-story": {
       "type": "brand-story",
       "blocks": {
-        "v1": { "type": "value", "settings": { "icon": "✓", "label": "100% Authentic" } },
-        "v2": { "type": "value", "settings": { "icon": "🌍", "label": "EU, UAE & USA" } },
-        "v3": { "type": "value", "settings": { "icon": "🚚", "label": "Fast EU Shipping" } },
-        "v4": { "type": "value", "settings": { "icon": "⭐", "label": "Premium Quality" } }
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "✓",
+            "label": "100% Authentic"
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "🌍",
+            "label": "EU, UAE & USA"
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "🚚",
+            "label": "Fast EU Shipping"
+          }
+        },
+        "v4": {
+          "type": "value",
+          "settings": {
+            "icon": "⭐",
+            "label": "Premium Quality"
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"],
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
       "settings": {
         "eyebrow": "Our Origin",
         "title": "EU, UAE & USA Perfume Excellence",
@@ -90,17 +131,22 @@
           }
         }
       },
-      "block_order": ["col1", "col2", "col3", "col4"],
+      "block_order": [
+        "col1",
+        "col2",
+        "col3",
+        "col4"
+      ],
       "settings": {
         "title": "Why LumiScent",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
         "columns_desktop": 4,
         "column_alignment": "center",
         "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
@@ -132,17 +178,20 @@
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
       "settings": {
-        "image_width": "medium",
         "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
+        "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
