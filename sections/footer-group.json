@@ -32,14 +32,14 @@
           "type": "link_list",
           "settings": {
             "heading": "CUSTOMER SERVICES",
-            "menu": "footer-customer-services"
+            "menu": "impressum"
           }
         },
         "menu_account": {
           "type": "link_list",
           "settings": {
             "heading": "ACCOUNT",
-            "menu": "footer-account"
+            "menu": ""
           }
         }
       },
