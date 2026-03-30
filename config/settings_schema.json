@@ -143,6 +143,22 @@
         "unit": "%",
         "label": "t:settings_schema.typography.settings.body_scale.label",
         "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Custom text colors"
+      },
+      {
+        "type": "color",
+        "id": "global_heading_color",
+        "label": "Headings color (H1-H6)",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "id": "global_body_text_color",
+        "label": "Body text color",
+        "default": "#121212"
       }
     ]
   },

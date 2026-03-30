@@ -8,18 +8,23 @@
     position: relative;
     padding: 14px 0;
   }
+
   .trust-marquee__track {
     display: inline-flex;
-    animation: trust-scroll {{ section.settings.speed | default: 35 }}s linear infinite;
+    width: max-content;
+    animation-name: trust-scroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
     will-change: transform;
   }
+
   .trust-marquee:hover .trust-marquee__track {
     animation-play-state: paused;
   }
+
   .trust-marquee__item {
     display: inline-flex;
     align-items: center;
-    gap: 0;
     font-family: var(--font-body, sans-serif);
     font-size: 0.68rem;
     font-weight: 400;
@@ -28,27 +33,44 @@
     color: rgba(255,255,255,0.5);
     flex-shrink: 0;
   }
+
   .trust-marquee__separator {
     color: var(--lux-gold, #C8A96B);
     margin: 0 28px;
     font-size: 0.6rem;
     opacity: 0.5;
   }
+
+  /* ✅ Smooth full-width loop */
   @keyframes trust-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
   }
 </style>
 
 {%- if section.blocks.size > 0 -%}
   <div class="trust-marquee" role="complementary" aria-label="Trust information">
-    <div class="trust-marquee__track">
+    
+    <!-- ✅ Inline style ensures speed actually updates -->
+    <div 
+      class="trust-marquee__track"
+      style="animation-duration: {{ section.settings.speed | default: 60 }}s;"
+    >
+      
+      {%- comment -%} Duplicate content for seamless loop {%- endcomment -%}
       {%- for i in (1..2) -%}
         {%- for block in section.blocks -%}
-          <span class="trust-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+          <span class="trust-marquee__item" {{ block.shopify_attributes }}>
+            {{ block.settings.text | escape }}
+          </span>
           <span class="trust-marquee__separator" aria-hidden="true">&#10022;</span>
         {%- endfor -%}
       {%- endfor -%}
+
     </div>
   </div>
 {%- endif -%}
@@ -62,11 +84,11 @@
     {
       "type": "range",
       "id": "speed",
-      "label": "Scroll speed (seconds)",
-      "min": 15,
-      "max": 60,
+      "label": "Scroll speed (seconds) – Higher = slower",
+      "min": 20,
+      "max": 120,
       "step": 5,
-      "default": 35
+      "default": 60
     }
   ],
   "blocks": [

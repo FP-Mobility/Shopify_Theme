@@ -1055,10 +1055,6 @@
         },
         "header__9": {
           "content": "Utilities"
-        },
-        "enable_follow_on_shop": {
-          "label": "Follow on Shop",
-          "info": "Shop Pay must be enabled. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
         }
       }
     },
