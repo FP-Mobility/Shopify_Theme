@@ -1,4 +1,4 @@
-<section class="newsletter-perfume" style="background-color: {{ section.settings.background_color }};">
+<section class="newsletter-perfume">
   <div class="newsletter-perfume__inner">
     {%- if section.settings.label != blank -%}
       <span class="newsletter-perfume__label">{{ section.settings.label }}</span>
@@ -7,6 +7,8 @@
     {%- if section.settings.title != blank -%}
       <h2 class="newsletter-perfume__title">{{ section.settings.title }}</h2>
     {%- endif -%}
+
+    <div class="newsletter-perfume__divider"></div>
 
     {%- if section.settings.text != blank -%}
       <p class="newsletter-perfume__text">{{ section.settings.text }}</p>
@@ -65,22 +67,16 @@
   },
   "settings": [
     {
-      "type": "color",
-      "id": "background_color",
-      "label": "Background Color",
-      "default": "#FAF8F5"
-    },
-    {
       "type": "text",
       "id": "label",
       "label": "Label",
-      "default": "Stay Connected"
+      "default": "THE INNER CIRCLE"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Join the LumiScent Family"
+      "default": "Join the House of LumiScent"
     },
     {
       "type": "textarea",

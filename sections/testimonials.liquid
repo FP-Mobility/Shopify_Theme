@@ -7,7 +7,7 @@
       {% if section.settings.show_rating %}
         <div class="overall-rating">
           <span class="stars">★★★★★</span>
-          <span class="rating-text">{{ section.settings.rating }} from {{ section.settings.review_count }} reviews</span>
+          <span class="rating-text">{{ section.settings.rating }} / 5 from {{ section.settings.review_count }} reviews</span>
         </div>
       {% endif %}
     </div>
@@ -15,12 +15,12 @@
     <div class="testimonials-grid">
       {% for block in section.blocks %}
         <div class="testimonial-card" {{ block.shopify_attributes }}>
-          <span class="quote-mark">"</span>
-          <div class="stars">
-            {% for i in (1..block.settings.rating) %}★{% endfor %}
-          </div>
+          <span class="quote-mark">&#8220;</span>
           <p class="testimonial-text">{{ block.settings.text }}</p>
           <div class="testimonial-author">
+            <div class="author-stars">
+              {% for i in (1..block.settings.rating) %}★{% endfor %}
+            </div>
             <p class="author-name">{{ block.settings.author_name }}</p>
             {% if block.settings.author_location %}
               <p class="author-location">{{ block.settings.author_location }}</p>

@@ -135,6 +135,13 @@
     color: rgba(255,255,255,0.5);
     animation: bounceDown 2s infinite;
   }
+  .video-hero__scroll-label {
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
   .video-hero__scroll-indicator svg {
     width: 20px;
     height: 20px;
@@ -265,6 +272,7 @@
 
   {%- if section.settings.show_scroll_indicator -%}
     <div class="video-hero__scroll-indicator">
+      <span class="video-hero__scroll-label">Scroll</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>

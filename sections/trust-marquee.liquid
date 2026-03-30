@@ -1,0 +1,100 @@
+<style>
+  .trust-marquee {
+    background: var(--lux-black, #070707);
+    border-top: 1px solid rgba(200,169,107,0.08);
+    border-bottom: 1px solid rgba(200,169,107,0.08);
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 14px 0;
+  }
+  .trust-marquee__track {
+    display: inline-flex;
+    animation: trust-scroll {{ section.settings.speed | default: 35 }}s linear infinite;
+    will-change: transform;
+  }
+  .trust-marquee:hover .trust-marquee__track {
+    animation-play-state: paused;
+  }
+  .trust-marquee__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    font-family: var(--font-body, sans-serif);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+  .trust-marquee__separator {
+    color: var(--lux-gold, #C8A96B);
+    margin: 0 28px;
+    font-size: 0.6rem;
+    opacity: 0.5;
+  }
+  @keyframes trust-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+{%- if section.blocks.size > 0 -%}
+  <div class="trust-marquee" role="complementary" aria-label="Trust information">
+    <div class="trust-marquee__track">
+      {%- for i in (1..2) -%}
+        {%- for block in section.blocks -%}
+          <span class="trust-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+          <span class="trust-marquee__separator" aria-hidden="true">&#10022;</span>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Trust Marquee",
+  "tag": "section",
+  "class": "section-trust-marquee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll speed (seconds)",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free Shipping over €59"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Marquee",
+      "blocks": [
+        { "type": "message", "settings": { "text": "FREE SHIPPING OVER €59" } },
+        { "type": "message", "settings": { "text": "100% AUTHENTIC LUXURY FRAGRANCES" } },
+        { "type": "message", "settings": { "text": "30-DAY RETURNS" } },
+        { "type": "message", "settings": { "text": "FRAGRANCE CONSULTATION AVAILABLE" } },
+        { "type": "message", "settings": { "text": "DISCREET PACKAGING" } },
+        { "type": "message", "settings": { "text": "OVER 50,000 HAPPY CLIENTS" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

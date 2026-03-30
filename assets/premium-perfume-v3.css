@@ -354,52 +354,11 @@ button[name="add"]:hover,
 }
 
 /* ============== ANNOUNCEMENT BAR ============== */
-.utility-bar {
-  background: var(--lux-black) !important;
-  color: rgba(255, 255, 255, 0.7) !important;
-}
-.announcement-bar {
-  font-family: var(--font-body) !important;
-  font-size: 0.78rem !important;
-  letter-spacing: 0.14em;
-  font-weight: 400;
-  min-height: 42px;
-  color: rgba(255, 255, 255, 0.75);
-}
-.announcement-bar a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 0.5px;
-  color: var(--lux-gold) !important;
-}
-.announcement-bar__message {
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.75) !important;
-}
+/* Announcement bar uses inline styles in announcement-bar.liquid */
+
 /* Gold line below announcement */
 .shopify-section-group-header-group .announcement-bar-section {
   border-bottom: 1px solid rgba(200,169,107,0.15);
-}
-/* Announcement bar slider arrows */
-.announcement-bar-slider .slider-button {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-.announcement-bar-slider .slider-button:hover {
-  color: var(--lux-gold) !important;
-}
-/* Social icons in announcement bar */
-.utility-bar .list-social__link {
-  color: rgba(255, 255, 255, 0.4) !important;
-}
-.utility-bar .list-social__link:hover {
-  color: var(--lux-gold) !important;
-}
-/* Country/Language selectors in header */
-.utility-bar .localization-form__select,
-.utility-bar .disclosure__toggle {
-  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 /* ============== HEADER ============== */
@@ -1676,7 +1635,7 @@ button[name="add"]:hover,
 .testimonials-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -1692,17 +1651,18 @@ button[name="add"]:hover,
 }
 
 .testimonial-card {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.08);
-  padding: 36px 28px;
+  padding: 40px 32px 32px;
   transition: all var(--t-elegant);
   position: relative;
-  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
 }
 .testimonial-card:hover {
   background: rgba(255,255,255,0.06);
   border-color: rgba(200,169,107,0.3);
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.3);
 }
 
@@ -1725,44 +1685,48 @@ button[name="add"]:hover,
 
 .testimonial-card .quote-mark {
   font-family: var(--font-display);
-  font-size: 3.5rem;
-  line-height: 1;
+  font-size: 4.5rem;
+  line-height: 0.8;
   color: var(--lux-gold);
-  opacity: 0.3;
-  margin-bottom: 8px;
+  opacity: 0.25;
+  margin-bottom: 12px;
   display: block;
-}
-.testimonial-card .stars {
-  color: var(--lux-gold);
-  font-size: 0.92rem;
-  margin-bottom: 16px;
-  display: block;
-  letter-spacing: 3px;
 }
 .testimonial-card .testimonial-text,
 .testimonial-card .review-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgba(255,255,255,0.7);
-  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.75);
+  margin: 0 0 auto;
   font-style: italic;
+  padding-bottom: 24px;
 }
 .testimonial-card .testimonial-author {
   padding-top: 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
+.testimonial-card .author-stars {
+  color: var(--lux-gold);
+  font-size: 0.82rem;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: block;
+}
 .testimonial-card .author-name,
 .testimonial-card .author {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--lux-white);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin: 0 0 4px;
 }
 .testimonial-card .author-location {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: rgba(255,255,255,0.4);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -1963,8 +1927,17 @@ button[name="add"]:hover,
 .newsletter-perfume {
   padding: 88px 20px;
   text-align: center;
-  background: var(--lux-white);
+  background: var(--lux-black);
+  color: var(--lux-white);
   position: relative;
+  overflow: hidden;
+}
+.newsletter-perfume::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(200,169,107,0.05) 0%, transparent 60%);
+  pointer-events: none;
 }
 /* Decorative border frame */
 .newsletter-perfume__inner {
@@ -1986,17 +1959,24 @@ button[name="add"]:hover,
   font-size: 2.4rem;
   font-weight: 300;
   letter-spacing: 0.06em;
-  margin: 0 0 16px;
+  margin: 0 0 0;
   line-height: 1.25;
+  color: var(--lux-white);
 }
 @media screen and (min-width: 750px) {
   .newsletter-perfume__title {
     font-size: 2.8rem;
   }
 }
+.newsletter-perfume__divider {
+  width: 40px;
+  height: 1px;
+  background: var(--lux-gold);
+  margin: 24px auto;
+}
 .newsletter-perfume__text {
   font-size: 1.05rem;
-  color: var(--lux-medium-gray);
+  color: rgba(255,255,255,0.55);
   margin: 0 0 36px;
   line-height: 1.7;
 }
@@ -2009,14 +1989,15 @@ button[name="add"]:hover,
 .newsletter-perfume__input {
   flex: 1;
   padding: 16px 20px;
-  border: 1px solid var(--lux-border);
+  border: 1px solid rgba(255,255,255,0.15);
   border-right: none;
   border-radius: 0;
   font-size: 0.92rem;
   font-family: var(--font-body);
   outline: none;
   transition: border-color var(--t-fast), box-shadow var(--t-fast);
-  background: var(--lux-white);
+  background: rgba(255,255,255,0.05);
+  color: var(--lux-white);
   letter-spacing: 0.03em;
 }
 .newsletter-perfume__input:focus {
@@ -2024,14 +2005,14 @@ button[name="add"]:hover,
   box-shadow: inset 0 0 0 1px var(--lux-gold);
 }
 .newsletter-perfume__input::placeholder {
-  color: #b5b5b5;
+  color: rgba(255,255,255,0.35);
   letter-spacing: 0.04em;
 }
 .newsletter-perfume__button {
   padding: 16px 32px;
-  background: var(--lux-black);
-  color: var(--lux-white);
-  border: 1px solid var(--lux-black);
+  background: var(--lux-gold);
+  color: var(--lux-black);
+  border: 1px solid var(--lux-gold);
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
@@ -2045,13 +2026,13 @@ button[name="add"]:hover,
   overflow: hidden;
 }
 .newsletter-perfume__button:hover {
-  background: var(--lux-gold);
+  background: transparent;
+  color: var(--lux-gold);
   border-color: var(--lux-gold);
-  box-shadow: var(--shadow-gold);
 }
 .newsletter-perfume__privacy {
   font-size: 0.8rem;
-  color: var(--lux-light-gray);
+  color: rgba(255,255,255,0.35);
   margin-top: 16px;
   letter-spacing: 0.03em;
 }
@@ -2128,6 +2109,40 @@ button[name="add"]:hover,
   color: rgba(255,255,255,0.5);
   font-size: 0.95rem;
   line-height: 1.8;
+}
+
+/* Footer trust badges bar */
+.footer__trust-bar {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 24px 0;
+  margin-top: 8px;
+}
+.footer__trust-bar-inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media screen and (min-width: 750px) {
+  .footer__trust-bar-inner {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+.footer__trust-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}
+.footer__trust-item svg {
+  flex-shrink: 0;
+  color: var(--lux-gold);
+  stroke: var(--lux-gold);
 }
 
 /* Contact email bar between columns and copyright */
@@ -2878,7 +2893,7 @@ cart-drawer-items .cart-item {
     gap: 0;
   }
   .newsletter-perfume__input {
-    border-right: 1px solid var(--lux-border);
+    border-right: 1px solid rgba(255,255,255,0.15);
     border-bottom: none;
   }
   .newsletter-perfume__button {
@@ -3466,17 +3481,6 @@ header-drawer .header__icon {
   fill: none;
 }
 
-/* Announcement bar mobile tweaks */
-@media screen and (max-width: 749px) {
-  .announcement-bar__message {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.1em;
-  }
-  .utility-bar .list-social {
-    display: none !important;
-  }
-}
-
 /* Mobile header spacing */
 @media screen and (max-width: 749px) {
   .header {
@@ -3727,38 +3731,6 @@ img[loading="lazy"] {
 /* Fragrance quiz section dark */
 .fragrance-quiz-section {
   background: var(--lux-surface, #111) !important;
-}
-
-/* Newsletter section dark */
-.newsletter-perfume {
-  background: var(--lux-black) !important;
-  color: var(--lux-white);
-}
-.newsletter-perfume__title {
-  color: var(--lux-white) !important;
-}
-.newsletter-perfume__text {
-  color: rgba(255, 255, 255, 0.5);
-}
-.newsletter-perfume__input {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  color: var(--lux-white) !important;
-}
-.newsletter-perfume__input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
-}
-.newsletter-perfume__button {
-  background: var(--lux-gold) !important;
-  border-color: var(--lux-gold) !important;
-  color: var(--lux-black) !important;
-}
-.newsletter-perfume__button:hover {
-  background: transparent !important;
-  color: var(--lux-gold) !important;
-}
-.newsletter-perfume__privacy {
-  color: rgba(255, 255, 255, 0.3);
 }
 
 /* Featured collection alternating backgrounds */
