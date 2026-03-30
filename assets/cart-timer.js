@@ -129,13 +129,21 @@
     tick();
     startTick();
 
-    // Re-inject when cart drawer re-renders
+    // Re-inject when cart drawer re-renders (debounced to prevent cascade)
+    var injecting = false;
+    var debounceTimer = null;
     var observer = new MutationObserver(function () {
-      var hasTimer = document.querySelector('[data-cart-timer]');
-      if (hasTimer) {
-        injectBanner();
-        tick();
-      }
+      if (injecting) return;
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () {
+        var hasTimer = document.querySelector('[data-cart-timer]');
+        if (hasTimer) {
+          injecting = true;
+          injectBanner();
+          tick();
+          injecting = false;
+        }
+      }, 100);
     });
     var drawer = document.querySelector('cart-drawer');
     if (drawer) observer.observe(drawer, { childList: true, subtree: true });

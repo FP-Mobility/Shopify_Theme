@@ -410,12 +410,23 @@ button[name="add"]:hover,
   -webkit-backdrop-filter: blur(20px);
   transition: all 0.5s var(--ease-luxury);
 }
+/* Force dark header-wrapper (prevents white fallback if JSON color scheme fails) */
+.section-header .header-wrapper {
+  background: rgba(7, 7, 7, 0.97) !important;
+}
+.section-header .header-wrapper.gradient {
+  background: rgba(7, 7, 7, 0.97) !important;
+}
 
 /* Transparent header on homepage only (before scrolling) */
 .template-index .section-header:not(.shopify-section-header-sticky) {
   background: transparent !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+.template-index .section-header:not(.shopify-section-header-sticky) .header-wrapper,
+.template-index .section-header:not(.shopify-section-header-sticky) .header-wrapper.gradient {
+  background: transparent !important;
 }
 
 /* Solid header after scrolling past hero */
@@ -2292,9 +2303,10 @@ button[name="add"]:hover,
 }
 
 /* ============== CART DRAWER ============== */
-.cart-drawer {
+.cart-drawer .drawer__inner {
   background-color: var(--lux-white) !important;
   border-radius: 0 !important;
+  max-width: 420px;
 }
 .cart-drawer__head {
   border-bottom: 1px solid var(--lux-border);
@@ -3567,13 +3579,9 @@ header-drawer .header__icon {
 }
 
 /* Cart drawer — luxury upgrade */
-.cart-drawer {
+.cart-drawer .drawer__inner {
   background: var(--lux-white) !important;
   max-width: 420px;
-}
-.cart-drawer__head {
-  border-bottom: 1px solid var(--lux-border);
-  padding: 20px 24px;
 }
 .cart-drawer .heading {
   font-family: var(--font-display) !important;
