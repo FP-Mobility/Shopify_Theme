@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "video-hero": {
@@ -83,7 +92,7 @@
         "description": "<p>Our most coveted fragrances, chosen by discerning customers worldwide</p>",
         "show_description": true,
         "description_style": "body",
-        "columns_desktop": 4,
+        "columns_desktop": 6,
         "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
@@ -296,6 +305,7 @@
         "title": "TOP PERFUME & COLOGNE BRANDS",
         "subtitle": "Shop your favorite brands at the best prices",
         "show_all_link": true,
+        "scroll_speed": 30,
         "all_brands_page": ""
       }
     },
