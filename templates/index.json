@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "video-hero": {
@@ -20,116 +29,6 @@
         "text_alignment": "left",
         "show_scroll_indicator": true,
         "color_scheme": "scheme-4"
-      }
-    },
-    "trust-marquee": {
-      "type": "trust-marquee",
-      "blocks": {
-        "msg1": {
-          "type": "message",
-          "settings": {
-            "text": "FREE SHIPPING OVER €59"
-          }
-        },
-        "msg2": {
-          "type": "message",
-          "settings": {
-            "text": "100% AUTHENTIC LUXURY FRAGRANCES"
-          }
-        },
-        "msg3": {
-          "type": "message",
-          "settings": {
-            "text": "30-DAY RETURNS"
-          }
-        },
-        "msg4": {
-          "type": "message",
-          "settings": {
-            "text": "FRAGRANCE CONSULTATION AVAILABLE"
-          }
-        },
-        "msg5": {
-          "type": "message",
-          "settings": {
-            "text": "DISCREET PACKAGING"
-          }
-        },
-        "msg6": {
-          "type": "message",
-          "settings": {
-            "text": "OVER 50,000 HAPPY CLIENTS"
-          }
-        }
-      },
-      "block_order": ["msg1", "msg2", "msg3", "msg4", "msg5", "msg6"],
-      "settings": {
-        "speed": 35
-      }
-    },
-    "olfactory-families": {
-      "type": "olfactory-families",
-      "blocks": {
-        "fam1": {
-          "type": "family",
-          "settings": {
-            "name": "Woody",
-            "icon": "🌲",
-            "count": "120+ Fragrances",
-            "url": ""
-          }
-        },
-        "fam2": {
-          "type": "family",
-          "settings": {
-            "name": "Floral",
-            "icon": "🌸",
-            "count": "85+ Fragrances",
-            "url": ""
-          }
-        },
-        "fam3": {
-          "type": "family",
-          "settings": {
-            "name": "Oriental",
-            "icon": "✨",
-            "count": "95+ Fragrances",
-            "url": ""
-          }
-        },
-        "fam4": {
-          "type": "family",
-          "settings": {
-            "name": "Fresh",
-            "icon": "💧",
-            "count": "70+ Fragrances",
-            "url": ""
-          }
-        },
-        "fam5": {
-          "type": "family",
-          "settings": {
-            "name": "Citrus",
-            "icon": "🍋",
-            "count": "60+ Fragrances",
-            "url": ""
-          }
-        },
-        "fam6": {
-          "type": "family",
-          "settings": {
-            "name": "Aromatic",
-            "icon": "🌿",
-            "count": "50+ Fragrances",
-            "url": ""
-          }
-        }
-      },
-      "block_order": ["fam1", "fam2", "fam3", "fam4", "fam5", "fam6"],
-      "settings": {
-        "eyebrow": "EXPLORE",
-        "title": "Olfactory Families",
-        "subtitle": "Find Your Signature Scent Profile"
       }
     },
     "featured_categories_7MQ8rz": {
@@ -306,9 +205,10 @@
         "v3",
         "v4"
       ],
+      "disabled": true,
       "settings": {
-        "eyebrow": "THE HOUSE OF LUMISCENT",
-        "title": "Mastery in Every Drop",
+        "eyebrow": "Our Story",
+        "title": "Where Luxury Meets Identity",
         "text": "<p>At LumiScent, we believe fragrance is the invisible part of your personal style. Born from a passion for authentic luxury, we curate the world's finest perfumes from EU masters, Arabian oud artisans, and exclusive US importers.</p><p>Every bottle in our collection passes rigorous authenticity verification. We work directly with authorized distributors to guarantee you receive only genuine products at exceptional value.</p>",
         "background_color": "#faf8f5",
         "button_label": "LEARN MORE",
@@ -540,12 +440,12 @@
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
-        "label": "THE INNER CIRCLE",
-        "title": "Join the House of LumiScent",
-        "text": "Subscribe and receive exclusive access to new arrivals, special offers, and fragrance tips curated just for you.",
-        "placeholder": "Enter your email address",
+        "label": "",
+        "title": "First to know about our sales and discounts",
+        "text": "Our email subscribers get early access to new launches, promotions and more.",
+        "placeholder": "Type your email here",
         "button_label": "SUBSCRIBE",
-        "privacy_text": "By subscribing you agree with our Privacy Policy. Unsubscribe anytime."
+        "privacy_text": "By subscribing you agree with our Privacy Policy"
       }
     },
     "slideshow": {
@@ -1004,17 +904,15 @@
   },
   "order": [
     "video-hero",
-    "trust-marquee",
-    "olfactory-families",
     "featured_categories_7MQ8rz",
     "best-sellers",
+    "shop-gender",
+    "fragrance-quiz",
     "brand-story",
     "brand-showcase",
     "testimonials",
-    "newsletter",
     "trust-badges",
-    "shop-gender",
-    "fragrance-quiz",
+    "newsletter",
     "slideshow",
     "1774782723032a8df8",
     "17747827739e3011c0",
