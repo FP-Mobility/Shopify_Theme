@@ -152,7 +152,7 @@
         "type": "color",
         "id": "global_heading_color",
         "label": "Headings color (H1-H6)",
-        "default": "#121212"
+        "default": "#C8A96B"
       },
       {
         "type": "color",
