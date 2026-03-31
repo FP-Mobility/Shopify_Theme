@@ -901,6 +901,24 @@
       "type": "_blocks",
       "disabled": true,
       "settings": {}
+    },
+    "177493318972d097fe": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_f41d7be_Dep3Qg": {
+          "type": "ai_gen_block_f41d7be",
+          "settings": {
+            "drawer_background_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.5
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f41d7be_Dep3Qg"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -926,6 +944,7 @@
     "rich-text-seo",
     "featured_product_CeY6n8",
     "1774621563b9105420",
-    "1774783304f07b7321"
+    "1774783304f07b7321",
+    "177493318972d097fe"
   ]
 }
