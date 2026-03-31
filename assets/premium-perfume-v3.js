@@ -159,26 +159,43 @@
 
   /* === COLLECTION CARDS DRAG SCROLL === */
   function initCardRowScroll() {
+    const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    if (isCoarsePointer) return;
+
     document.querySelectorAll('.collection-cards-row__scroll').forEach((row) => {
       let isDown = false;
       let startX;
       let scrollLeft;
 
+      const isScrollable = () => row.scrollWidth > row.clientWidth + 2;
+      const updateCursor = () => {
+        row.style.cursor = isScrollable() ? 'grab' : 'default';
+      };
+
+      updateCursor();
+      window.addEventListener('resize', updateCursor, { passive: true });
+
       row.addEventListener('mousedown', (e) => {
+        if (!isScrollable()) return;
         isDown = true;
         row.style.cursor = 'grabbing';
         startX = e.pageX - row.offsetLeft;
         scrollLeft = row.scrollLeft;
       });
-      row.addEventListener('mouseleave', () => { isDown = false; row.style.cursor = 'grab'; });
-      row.addEventListener('mouseup', () => { isDown = false; row.style.cursor = 'grab'; });
+      row.addEventListener('mouseleave', () => {
+        isDown = false;
+        updateCursor();
+      });
+      row.addEventListener('mouseup', () => {
+        isDown = false;
+        updateCursor();
+      });
       row.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - row.offsetLeft;
         row.scrollLeft = scrollLeft - (x - startX) * 1.5;
       });
-      row.style.cursor = 'grab';
     });
   }
 

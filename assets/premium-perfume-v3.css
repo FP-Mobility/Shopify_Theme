@@ -905,7 +905,6 @@ button[name="add"]:hover,
 }
 .collection-cards-row__scroll {
   display: flex;
-  gap: 12px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -915,24 +914,12 @@ button[name="add"]:hover,
 .collection-cards-row__scroll::-webkit-scrollbar { display: none; }
 
 .collection-cards-row__card {
-  flex: 0 0 170px;
   scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
   border-radius: 16px;
   transition: transform var(--t-elegant), box-shadow var(--t-elegant);
-}
-@media screen and (min-width: 750px) {
-  .collection-cards-row__card {
-    flex: 0 0 210px;
-  }
-}
-@media screen and (min-width: 990px) {
-  .collection-cards-row__card {
-    flex: 1 0 0;
-    min-width: 140px;
-  }
 }
 .collection-cards-row__card:hover {
   transform: translateY(-8px);
@@ -1171,37 +1158,11 @@ button[name="add"]:hover,
 .product-card-wrapper .card__media,
 .product-card-wrapper .card__media .media {
   background: #f7f7f7 !important;
-  min-height: 220px;
-}
-
-/* Force consistent product image box across imported catalogs */
-.product-grid .card__inner.ratio::before,
-.section-featured-collection .card__inner.ratio::before {
-  padding-bottom: 112% !important;
-}
-
-.product-card-wrapper .card__media .media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain !important;
-  object-position: center center !important;
-  padding: 12px !important;
-}
-
-@media screen and (max-width: 749px) {
-  .product-card-wrapper .card__media,
-  .product-card-wrapper .card__media .media {
-    min-height: 180px;
-  }
 }
 
 /* Product info styling */
-.card__information {
-  padding: 14px 14px 10px !important;
-}
 .card__heading a {
   font-family: var(--font-body) !important;
-  font-size: 0.86rem !important;
   font-weight: 500;
   line-height: 1.42;
   color: var(--lux-black);
@@ -3272,7 +3233,6 @@ body {
 }
 .recently-viewed__scroll {
   display: flex;
-  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -3282,21 +3242,11 @@ body {
 .recently-viewed__scroll::-webkit-scrollbar { display: none; }
 
 .recently-viewed__card {
-  flex: 0 0 200px;
-  min-width: 200px;
-  max-width: 200px;
   scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
   transition: transform var(--t-elegant);
   overflow: hidden;
-}
-@media screen and (min-width: 750px) {
-  .recently-viewed__card {
-    flex: 0 0 240px;
-    min-width: 240px;
-    max-width: 240px;
-  }
 }
 
 .recently-viewed__scroll > a {
@@ -3334,7 +3284,6 @@ body {
   gap: 4px;
 }
 .recently-viewed__name {
-  font-size: 0.85rem;
   font-weight: 400;
   color: var(--lux-black);
   white-space: nowrap;
@@ -3343,7 +3292,6 @@ body {
   line-height: 1.4;
 }
 .recently-viewed__price {
-  font-size: 0.88rem;
   font-weight: 500;
   color: var(--lux-dark-gray);
 }
@@ -3398,47 +3346,6 @@ body {
 /* Position gender badge in card__badge container */
 .card__badge .gender-badge {
   margin-top: 4px;
-}
-
-/* ============== PRODUCT CARD ENHANCEMENTS ============== */
-/* Ensure images display properly in portrait ratio */
-.card__media .media {
-  overflow: hidden;
-}
-.card__media .media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
-}
-.card:hover .card__media .media img {
-  transform: scale(1.06);
-}
-
-/* Quick-add button styling */
-.quick-add__submit {
-  background: var(--lux-black, #070707) !important;
-  color: var(--lux-white, #fff) !important;
-  border: none !important;
-  font-family: var(--font-body) !important;
-  font-size: 0.72rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-  padding: 12px 20px !important;
-  transition: all 0.3s ease !important;
-}
-.quick-add__submit:hover {
-  background: var(--lux-gold, #C8A96B) !important;
-  box-shadow: var(--shadow-gold, 0 4px 20px rgba(200,169,107,0.3)) !important;
-}
-
-/* Card info spacing for better readability */
-.card__information {
-  padding-top: 12px;
-}
-.card__heading {
-  margin-bottom: 4px;
 }
 
 /* ============== FEATURED COLLECTION SECTION STYLING ============== */
@@ -3940,4 +3847,482 @@ img[loading="lazy"] {
 /* Shop by gender section */
 .section-shop-by-gender {
   background: var(--lux-cream) !important;
+}
+
+/* ============================================================
+   VISUAL CONSISTENCY PASS (CANONICAL OVERRIDES)
+   ============================================================ */
+
+/* Mini typography token map (single source of truth) */
+:root {
+  --type-step-h1: clamp(2.3rem, 4.2vw, 3.7rem);
+  --type-step-h2: clamp(1.85rem, 2.35vw, 2.7rem);
+  --type-step-h3: clamp(1.4rem, 1.8vw, 1.9rem);
+  --type-step-body: clamp(1rem, 1.08vw, 1.14rem);
+  --type-step-subtext: clamp(0.96rem, 1.02vw, 1.1rem);
+  --type-line-heading: 1.18;
+  --type-line-body: 1.66;
+
+  /* Product image consistency tokens */
+  --product-card-media-ratio: 133.333%;
+  --product-image-fit: contain;
+  --product-image-padding: 12px;
+  --product-image-bg: #f6f4f1;
+  --product-image-hover-scale: 1;
+}
+
+/* Typography lock for consistent hierarchy across templates */
+body {
+  font-size: 1.35rem !important;
+  line-height: 1.65;
+}
+
+h1,
+.h0,
+.h1 {
+  font-size: var(--type-step-h1) !important;
+  line-height: var(--type-line-heading);
+}
+
+h2,
+.h2 {
+  font-size: var(--type-step-h2) !important;
+  line-height: var(--type-line-heading);
+}
+
+h3,
+.h3 {
+  font-size: var(--type-step-h3) !important;
+  line-height: 1.24;
+}
+
+p,
+li,
+.rte p,
+.collection__description,
+.rich-text__text p,
+.newsletter-perfume__text {
+  font-size: var(--type-step-body) !important;
+  line-height: var(--type-line-body);
+}
+
+/* Section typography alignment: keep headings/descriptions consistent */
+.collection-cards-row__title,
+.section-featured-collection .title,
+.brand-showcase .section-title,
+.testimonials-header h2,
+.blog-posts .title,
+.rich-text__heading,
+.trust-badges-section .section-heading h2,
+.newsletter-perfume__title {
+  font-size: var(--type-step-h2) !important;
+  line-height: var(--type-line-heading) !important;
+  letter-spacing: 0.04em !important;
+}
+
+.collection-cards-row__subtitle,
+.section-featured-collection .collection__description,
+.brand-showcase .section-subtitle,
+.trust-badges-section .section-subheading,
+.newsletter-perfume__text,
+.rich-text__text p {
+  font-size: var(--type-step-subtext) !important;
+  line-height: 1.62 !important;
+}
+
+/* Prevent awkward trust badge title wrapping while keeping compact scale */
+.trust-badge__title {
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em !important;
+  line-height: 1.34;
+}
+
+/* Canonical product card system for collection and featured rows */
+.product-grid .card,
+.section-featured-collection .card,
+.recently-viewed__card {
+  border: 1px solid var(--lux-border) !important;
+  background: var(--lux-white);
+  overflow: hidden;
+}
+
+.product-grid .card__inner,
+.section-featured-collection .card__inner {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.product-card-wrapper .card__inner.ratio::before,
+.section-featured-collection .product-card-wrapper .card__inner.ratio::before {
+  content: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Use a hard media frame instead of adaptive Dawn ratio to avoid inconsistent crop windows */
+.product-card-wrapper .card__inner.ratio,
+.section-featured-collection .product-card-wrapper .card__inner.ratio,
+.template-search .product-card-wrapper .card__inner.ratio,
+.related-products .product-card-wrapper .card__inner.ratio {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+}
+
+.product-card-wrapper .card__media,
+.product-card-wrapper .card__media .media,
+.section-featured-collection .product-card-wrapper .card__media,
+.section-featured-collection .product-card-wrapper .card__media .media {
+  background: var(--product-image-bg) !important;
+}
+
+.product-card-wrapper .card__media .media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-card-wrapper .card__media .media img,
+.section-featured-collection .product-card-wrapper .card__media .media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: var(--product-image-fit) !important;
+  object-position: center center !important;
+  padding: var(--product-image-padding) !important;
+  transform: none !important;
+}
+
+/* Final anti-crop guardrail for all product-listing contexts */
+.product-grid .product-card-wrapper .card__media .media img,
+.template-search .product-card-wrapper .card__media .media img,
+.related-products .product-card-wrapper .card__media .media img,
+.section-featured-collection .product-card-wrapper .card__media .media img,
+.recently-viewed__img-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Match Continue Your Journey frame across all product listings */
+.product-grid .product-card-wrapper .card__media,
+.template-search .product-card-wrapper .card__media,
+.related-products .product-card-wrapper .card__media,
+.section-featured-collection .product-card-wrapper .card__media,
+.recently-viewed__img-wrap {
+  aspect-ratio: 3 / 4;
+  background: var(--product-image-bg) !important;
+}
+
+.product-card-wrapper:hover .card__media .media img,
+.section-featured-collection .product-card-wrapper:hover .card__media .media img {
+  transform: scale(var(--product-image-hover-scale)) !important;
+}
+
+.product-grid .card__information,
+.section-featured-collection .card__information {
+  padding: 14px 14px 12px !important;
+}
+
+.product-grid .card__heading,
+.section-featured-collection .card__heading {
+  margin-bottom: 4px;
+  min-height: 2.7em;
+}
+
+.product-grid .card__heading a,
+.section-featured-collection .card__heading a {
+  font-size: 1.16rem !important;
+  line-height: 1.38 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  color: var(--lux-black) !important;
+}
+
+.product-grid .caption-with-letter-spacing,
+.section-featured-collection .caption-with-letter-spacing {
+  font-size: 0.84rem !important;
+  letter-spacing: 0.11em !important;
+}
+
+.product-grid .price,
+.section-featured-collection .price {
+  margin-top: 4px;
+}
+
+.product-grid .price .price-item,
+.section-featured-collection .price .price-item {
+  font-size: 1.22rem !important;
+  font-weight: 600 !important;
+  line-height: 1.3;
+}
+
+.product-grid .price:not(.price--on-sale) .price-item--regular,
+.section-featured-collection .price:not(.price--on-sale) .price-item--regular {
+  text-decoration: none !important;
+}
+
+.product-grid .price .price__sale .price-item--regular,
+.section-featured-collection .price .price__sale .price-item--regular {
+  font-weight: 400 !important;
+  color: var(--lux-light-gray) !important;
+}
+
+.product-grid .quick-add,
+.section-featured-collection .quick-add {
+  margin-top: auto;
+}
+
+.product-grid .quick-add__submit,
+.section-featured-collection .quick-add__submit {
+  min-height: 40px;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* Collection page controls and rhythm */
+.template-collection .facets-wrapper,
+.template-collection .product-grid-container {
+  margin-top: 12px;
+}
+
+.template-collection .facets-vertical-form,
+.template-collection .facet-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.template-collection .facet-filters__label,
+.template-collection .facet-filters__field label {
+  font-size: 1.08rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase;
+}
+
+.template-collection .facet-filters__sort,
+.template-collection .select__select {
+  min-height: 42px;
+  font-size: 1.25rem !important;
+}
+
+.template-collection .product-count,
+.template-collection .product-count-vertical .product-count__text {
+  font-size: 1.18rem !important;
+  letter-spacing: 0.03em;
+}
+
+.template-collection .product-grid {
+  row-gap: 22px !important;
+}
+
+.template-collection .grid__item {
+  padding-bottom: 2px;
+}
+
+/* Collection cards row aligned to full-card visibility */
+.collection-cards-row__scroll {
+  gap: 16px;
+}
+
+@media screen and (min-width: 990px) {
+  .collection-cards-row__scroll {
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
+  .collection-cards-row__card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+.collection-cards-row__card {
+  flex: 0 0 calc((100% - 64px) / 5);
+  min-width: calc((100% - 64px) / 5);
+  max-width: calc((100% - 64px) / 5);
+}
+
+@media screen and (max-width: 1199px) {
+  .collection-cards-row__card {
+    flex-basis: calc((100% - 48px) / 4);
+    min-width: calc((100% - 48px) / 4);
+    max-width: calc((100% - 48px) / 4);
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .collection-cards-row__card {
+    flex-basis: calc((100% - 32px) / 3);
+    min-width: calc((100% - 32px) / 3);
+    max-width: calc((100% - 32px) / 3);
+  }
+}
+
+/* Recently viewed aligned with card system */
+.recently-viewed__scroll {
+  gap: 16px;
+}
+
+@media screen and (min-width: 990px) {
+  .recently-viewed__scroll {
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
+  .recently-viewed__card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+  }
+}
+
+.recently-viewed__card {
+  flex: 0 0 calc((100% - 64px) / 5);
+  min-width: calc((100% - 64px) / 5);
+  max-width: calc((100% - 64px) / 5);
+}
+
+@media screen and (max-width: 1199px) {
+  .recently-viewed__card {
+    flex-basis: calc((100% - 48px) / 4);
+    min-width: calc((100% - 48px) / 4);
+    max-width: calc((100% - 48px) / 4);
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .recently-viewed__card {
+    flex-basis: calc((100% - 32px) / 3);
+    min-width: calc((100% - 32px) / 3);
+    max-width: calc((100% - 32px) / 3);
+  }
+}
+
+.recently-viewed__img-wrap {
+  margin-bottom: 0;
+  background: #f6f4f1;
+}
+
+.recently-viewed__img-wrap img {
+  object-fit: var(--product-image-fit);
+  object-position: center;
+  padding: calc(var(--product-image-padding) + 2px);
+}
+
+.recently-viewed__info {
+  padding: 12px 12px 14px;
+  gap: 5px;
+}
+
+.recently-viewed__name {
+  font-size: 1.16rem;
+  font-weight: 600;
+  line-height: 1.38;
+  white-space: normal;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recently-viewed__price {
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 749px) {
+  .collection-cards-row__scroll {
+    gap: 12px;
+  }
+
+  .collection-cards-row__card {
+    flex-basis: calc((100% - 12px) / 2);
+    min-width: calc((100% - 12px) / 2);
+    max-width: calc((100% - 12px) / 2);
+  }
+
+  .recently-viewed__scroll {
+    gap: 12px;
+  }
+
+  .recently-viewed__card {
+    flex-basis: calc((100% - 12px) / 2);
+    min-width: calc((100% - 12px) / 2);
+    max-width: calc((100% - 12px) / 2);
+  }
+
+  .recently-viewed__name {
+    font-size: 1.04rem;
+  }
+
+  .recently-viewed__price {
+    font-size: 1.1rem;
+  }
+
+  .product-grid .card__information,
+  .section-featured-collection .card__information {
+    padding: 12px 10px 10px !important;
+  }
+
+  .product-grid .card__heading a,
+  .section-featured-collection .card__heading a {
+    font-size: 1.04rem !important;
+  }
+
+  .product-grid .price .price-item,
+  .section-featured-collection .price .price-item {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Product details tabs: keep Fragrance Details and Shipping/Returns compact */
+.template-product .fragrance-details .details-title {
+  font-size: 1.3rem !important;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+}
+
+.template-product .fragrance-details .detail-item label {
+  font-size: 0.95rem !important;
+  letter-spacing: 0.08em;
+}
+
+.template-product .fragrance-details .detail-item span {
+  font-size: 1.08rem !important;
+  line-height: 1.55;
+}
+
+.template-product .accordion summary,
+.template-product .accordion .summary__title {
+  font-size: 1.02rem !important;
+  letter-spacing: 0.08em !important;
+}
+
+.template-product .accordion__content,
+.template-product .accordion__content p,
+.template-product .accordion__content li {
+  font-size: 1.06rem !important;
+  line-height: 1.62;
+}
+
+@media screen and (max-width: 749px) {
+  .template-product .fragrance-details .details-title {
+    font-size: 1.22rem !important;
+  }
+
+  .template-product .fragrance-details .detail-item label {
+    font-size: 0.9rem !important;
+  }
+
+  .template-product .fragrance-details .detail-item span,
+  .template-product .accordion summary,
+  .template-product .accordion .summary__title,
+  .template-product .accordion__content,
+  .template-product .accordion__content p,
+  .template-product .accordion__content li {
+    font-size: 1rem !important;
+  }
 }
