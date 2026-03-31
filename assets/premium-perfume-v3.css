@@ -696,6 +696,13 @@ button[name="add"]:hover,
     min-height: calc(100dvh - var(--header-bottom-position, 64px));
   }
 
+  /* Disable backdrop-filter when menu is open — it creates a containing block
+     that traps the fixed-positioned drawer inside the header area */
+  body:has(#Details-menu-drawer-container[open]) .section-header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   body:has(#Details-menu-drawer-container[open]) {
     overflow: hidden;
   }
