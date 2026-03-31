@@ -337,6 +337,18 @@
       var isCollectionPage = /\/collections\//.test(window.location.pathname);
       if (!isProductPage && !isCollectionPage) return;
 
+      var existing = document.querySelector('.recently-viewed');
+      if (existing) existing.remove();
+
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
       var html =
         '<section class="recently-viewed">' +
           '<div class="page-width">' +
@@ -346,15 +358,26 @@
             '</div>' +
             '<div class="recently-viewed__scroll">';
 
+      function resizedImageUrl(url, width) {
+        if (!url) return '';
+        var cleanUrl = url.replace(/([?&])width=\d+/g, '').replace(/[?&]$/, '');
+        return cleanUrl + (cleanUrl.indexOf('?') === -1 ? '?' : '&') + 'width=' + width;
+      }
+
       items.forEach(function(item) {
+        var safeUrl = /^\//.test(item.url || '') ? item.url : '/collections/all';
+        var safeTitle = escapeHtml(item.title || 'Product');
+        var safePrice = escapeHtml(item.price || '');
+        var safeImg = item.image ? resizedImageUrl(item.image, 300) : '';
+
         html +=
-          '<a href="' + item.url + '" class="recently-viewed__card">' +
+          '<a href="' + safeUrl + '" class="recently-viewed__card">' +
             '<div class="recently-viewed__img-wrap">' +
-              (item.image ? '<img src="' + item.image.replace(/(\?|&)width=\d+/g, '') + '&width=300" alt="' + (item.title || '').replace(/"/g, '&quot;') + '" loading="lazy" width="150" height="200">' : '<div class="recently-viewed__placeholder"></div>') +
+              (safeImg ? '<img src="' + safeImg + '" alt="' + safeTitle + '" loading="lazy" width="150" height="200">' : '<div class="recently-viewed__placeholder"></div>') +
             '</div>' +
             '<div class="recently-viewed__info">' +
-              '<span class="recently-viewed__name">' + (item.title || '') + '</span>' +
-              '<span class="recently-viewed__price">' + (item.price || '') + '</span>' +
+              '<span class="recently-viewed__name">' + safeTitle + '</span>' +
+              '<span class="recently-viewed__price">' + safePrice + '</span>' +
             '</div>' +
           '</a>';
       });

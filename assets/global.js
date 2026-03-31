@@ -691,6 +691,26 @@ class ModalOpener extends HTMLElement {
 }
 customElements.define('modal-opener', ModalOpener);
 
+// Make product cards open product page when clicking anywhere on the card
+document.addEventListener('click', (event) => {
+  const card = event.target.closest('.product-card-wrapper');
+  if (!card) return;
+
+  // Keep native behavior for explicit interactive elements
+  if (
+    event.target.closest(
+      'a, button, input, select, textarea, summary, label, modal-opener, quick-add-bulk, quantity-popover, wishlist-btn'
+    )
+  ) {
+    return;
+  }
+
+  const productLink = card.querySelector('a.full-unstyled-link[href]');
+  if (productLink) {
+    window.location.href = productLink.href;
+  }
+});
+
 class DeferredMedia extends HTMLElement {
   constructor() {
     super();

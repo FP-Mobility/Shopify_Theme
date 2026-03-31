@@ -14,7 +14,7 @@
     "favicon": "shopify://shop_images/shared_image.jpg",
     "type_header_font": "archivo_black_n4",
     "heading_scale": 100,
-    "type_body_font": "archivo_black_n4",
+    "type_body_font": "assistant_n4",
     "body_scale": 100,
     "global_heading_color": "#c8a96b",
     "global_body_text_color": "#070707",

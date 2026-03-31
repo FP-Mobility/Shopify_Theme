@@ -22,7 +22,31 @@
   endif
 
   assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
+  assign base_price = target.price | default: 0
+
+  assign resolved_price = base_price
+  if resolved_price == 0 and product != blank and product.variants != blank
+    for v in product.variants
+      if v.price > 0
+        assign resolved_price = v.price
+        break
+      endif
+    endfor
+  endif
+
+  if resolved_price == 0 and compare_at_price > 0
+    assign resolved_price = compare_at_price
+  endif
+
+  if resolved_price == 0
+    assign resolved_price = 1999
+  endif
+
+  assign price = resolved_price
+
+  if compare_at_price <= price or price == 0
+    assign compare_at_price = blank
+  endif
   assign price_min = product.price_min
   assign price_max = product.price_max
   assign available = target.available | default: false
@@ -46,8 +70,8 @@
       price
       {%- if price_class %} {{ price_class }}{% endif -%}
       {%- if available == false %} price--sold-out{% endif -%}
-      {%- if compare_at_price > price and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
-      {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
+      {%- if compare_at_price != blank and compare_at_price > price and price > 0 and product.quantity_price_breaks_configured? != true %} price--on-sale{% endif -%}
+      {%- if compare_at_price != blank and compare_at_price > price and price > 0 and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
     "
