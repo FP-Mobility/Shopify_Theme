@@ -1,6 +1,89 @@
+{% doc %}
+  @prompt
+    Fix the mobile navigation menu drawer so it has a fully opaque background and completely covers the content behind it (such as the Video Hero section text and buttons). Currently on mobile, when the nav menu is open, the hero section content bleeds through behind the menu overlay. The fix should ensure the mobile nav drawer has a solid, non-transparent background that fully hides any page content behind it. The store uses a dark luxury aesthetic with dark backgrounds.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-mobile-nav-fix-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    menu-drawer {
+      background-color: {{ block.settings.drawer_background_color }} !important;
+      z-index: 9999 !important;
+    }
+
+    menu-drawer .menu-drawer {
+      background-color: {{ block.settings.drawer_background_color }} !important;
+    }
+
+    menu-drawer .menu-drawer__inner-container {
+      background-color: {{ block.settings.drawer_background_color }} !important;
+    }
+
+    menu-drawer .menu-drawer__navigation {
+      background-color: {{ block.settings.drawer_background_color }} !important;
+    }
+
+    .menu-drawer__overlay {
+      background-color: {{ block.settings.overlay_color }} !important;
+      opacity: {{ block.settings.overlay_opacity }} !important;
+      z-index: 9998 !important;
+    }
+
+    body.overflow-hidden-mobile {
+      overflow: hidden !important;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-mobile-nav-fix-{{ ai_gen_id }}" {{ block.shopify_attributes }}></div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Mobile nav background fix",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Mobile navigation drawer"
+    },
+    {
+      "type": "paragraph",
+      "content": "This block ensures the mobile navigation menu has a fully opaque background that covers all content behind it."
+    },
+    {
+      "type": "color",
+      "id": "drawer_background_color",
+      "label": "Drawer background",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Overlay settings"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mobile nav background fix"
+    }
+  ]
+}
 {% endschema %}
