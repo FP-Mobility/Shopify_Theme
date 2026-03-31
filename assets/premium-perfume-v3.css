@@ -703,6 +703,15 @@ button[name="add"]:hover,
     -webkit-backdrop-filter: none !important;
   }
 
+  /* Elevate the entire header group above all page content when menu is open,
+     so the fixed-positioned drawer isn't trapped by the header stacking context */
+  body:has(#Details-menu-drawer-container[open]) .shopify-section-group-header-group {
+    z-index: 9999 !important;
+  }
+  body:has(#Details-menu-drawer-container[open]) .section-header.shopify-section-group-header-group {
+    z-index: 9999 !important;
+  }
+
   body:has(#Details-menu-drawer-container[open]) {
     overflow: hidden;
   }
