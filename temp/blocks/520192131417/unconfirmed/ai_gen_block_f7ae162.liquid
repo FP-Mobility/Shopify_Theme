@@ -1,6 +1,339 @@
+{% doc %}
+  @prompt
+    Fix the mobile navigation menu drawer so it has a fully opaque background and completely covers the content behind it (such as the Video Hero section text and buttons). Currently on mobile, when the nav menu is open, the hero section content bleeds through behind the menu overlay. The fix should ensure the mobile nav drawer has a solid, non-transparent background that fully hides any page content behind it. The store uses a dark luxury aesthetic with dark backgrounds.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-mobile-nav-overlay-{{ ai_gen_id }} {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: {{ block.settings.overlay_color }};
+    opacity: 0;
+    z-index: 9998;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-mobile-nav-overlay-{{ ai_gen_id }}.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .ai-mobile-nav-drawer-{{ ai_gen_id }} {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: {{ block.settings.drawer_width }}%;
+    max-width: 400px;
+    height: 100%;
+    background-color: {{ block.settings.drawer_bg_color }};
+    z-index: 9999;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .ai-mobile-nav-drawer-{{ ai_gen_id }}.active {
+    left: 0;
+  }
+
+  .ai-mobile-nav-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid {{ block.settings.divider_color }};
+    background-color: {{ block.settings.drawer_bg_color }};
+  }
+
+  .ai-mobile-nav-logo-{{ ai_gen_id }} {
+    font-size: {{ block.settings.logo_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+  }
+
+  .ai-mobile-nav-close-{{ ai_gen_id }} {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: {{ block.settings.text_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-mobile-nav-close-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ai-mobile-nav-menu-{{ ai_gen_id }} {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: {{ block.settings.drawer_bg_color }};
+  }
+
+  .ai-mobile-nav-item-{{ ai_gen_id }} {
+    border-bottom: 1px solid {{ block.settings.divider_color }};
+  }
+
+  .ai-mobile-nav-link-{{ ai_gen_id }} {
+    display: block;
+    padding: 16px 20px;
+    color: {{ block.settings.text_color }};
+    text-decoration: none;
+    font-size: {{ block.settings.link_size }}px;
+    transition: background-color 0.2s ease;
+  }
+
+  .ai-mobile-nav-link-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.hover_bg_color }};
+  }
+
+  .ai-mobile-nav-toggle-{{ ai_gen_id }} {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: {{ block.settings.toggle_color }};
+  }
+
+  .ai-mobile-nav-toggle-{{ ai_gen_id }} svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-mobile-nav-toggle-{{ ai_gen_id }} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-mobile-nav-overlay-{{ ai_gen_id }},
+    .ai-mobile-nav-drawer-{{ ai_gen_id }} {
+      display: none !important;
+    }
+  }
+
+  body.ai-mobile-nav-open-{{ ai_gen_id }} {
+    overflow: hidden;
+  }
+{% endstyle %}
+
+<mobile-nav-{{ ai_gen_id }} {{ block.shopify_attributes }}>
+  <button
+    class="ai-mobile-nav-toggle-{{ ai_gen_id }}"
+    aria-label="Open mobile menu"
+    aria-expanded="false"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <div class="ai-mobile-nav-overlay-{{ ai_gen_id }}"></div>
+
+  <nav class="ai-mobile-nav-drawer-{{ ai_gen_id }}" aria-label="Mobile navigation">
+    <div class="ai-mobile-nav-header-{{ ai_gen_id }}">
+      <a href="/" class="ai-mobile-nav-logo-{{ ai_gen_id }}">
+        {{ block.settings.logo_text }}
+      </a>
+      <button
+        class="ai-mobile-nav-close-{{ ai_gen_id }}"
+        aria-label="Close mobile menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <ul class="ai-mobile-nav-menu-{{ ai_gen_id }}">
+      {% for link in linklists[block.settings.menu].links %}
+        <li class="ai-mobile-nav-item-{{ ai_gen_id }}">
+          <a
+            href="{{ link.url }}"
+            class="ai-mobile-nav-link-{{ ai_gen_id }}"
+            {% if link.current %}aria-current="page"{% endif %}
+          >
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</mobile-nav-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class MobileNav{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.toggleButton = this.querySelector('.ai-mobile-nav-toggle-{{ ai_gen_id }}');
+        this.closeButton = this.querySelector('.ai-mobile-nav-close-{{ ai_gen_id }}');
+        this.overlay = this.querySelector('.ai-mobile-nav-overlay-{{ ai_gen_id }}');
+        this.drawer = this.querySelector('.ai-mobile-nav-drawer-{{ ai_gen_id }}');
+      }
+
+      connectedCallback() {
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        if (this.toggleButton) {
+          this.toggleButton.addEventListener('click', () => this.openMenu());
+        }
+
+        if (this.closeButton) {
+          this.closeButton.addEventListener('click', () => this.closeMenu());
+        }
+
+        if (this.overlay) {
+          this.overlay.addEventListener('click', () => this.closeMenu());
+        }
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && this.drawer.classList.contains('active')) {
+            this.closeMenu();
+          }
+        });
+      }
+
+      openMenu() {
+        this.overlay.classList.add('active');
+        this.drawer.classList.add('active');
+        document.body.classList.add('ai-mobile-nav-open-{{ ai_gen_id }}');
+        this.toggleButton.setAttribute('aria-expanded', 'true');
+        this.drawer.focus();
+      }
+
+      closeMenu() {
+        this.overlay.classList.remove('active');
+        this.drawer.classList.remove('active');
+        document.body.classList.remove('ai-mobile-nav-open-{{ ai_gen_id }}');
+        this.toggleButton.setAttribute('aria-expanded', 'false');
+        this.toggleButton.focus();
+      }
+    }
+
+    customElements.define('mobile-nav-{{ ai_gen_id }}', MobileNav{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Mobile nav drawer fix",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "Lumiscent"
+    },
+    {
+      "type": "range",
+      "id": "logo_size",
+      "label": "Logo size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "link_size",
+      "label": "Link size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Drawer style"
+    },
+    {
+      "type": "range",
+      "id": "drawer_width",
+      "label": "Drawer width",
+      "min": 70,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 85
+    },
+    {
+      "type": "color",
+      "id": "drawer_bg_color",
+      "label": "Drawer background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#c8a96b"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "hover_bg_color",
+      "label": "Hover background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Toggle button"
+    },
+    {
+      "type": "color",
+      "id": "toggle_color",
+      "label": "Toggle button color",
+      "default": "#c8a96b"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mobile nav drawer fix"
+    }
+  ]
+}
 {% endschema %}
