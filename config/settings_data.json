@@ -161,7 +161,7 @@
       },
       "13095726950816047308": {
         "type": "shopify://apps/ea-auto-translate/blocks/app-embed-block/74970794-df41-4243-8f9a-ca0ffb4f8827",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     },
