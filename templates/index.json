@@ -206,7 +206,6 @@
         "v3",
         "v4"
       ],
-      "disabled": false,
       "settings": {
         "eyebrow": "Our Story",
         "title": "Where Luxury Meets Identity",
@@ -558,7 +557,6 @@
     },
     "new-arrivals": {
       "type": "featured-collection",
-      "disabled": false,
       "settings": {
         "collection": "new-arrivals",
         "products_to_show": 25,
@@ -785,7 +783,6 @@
         "heading",
         "text"
       ],
-      "disabled": false,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",

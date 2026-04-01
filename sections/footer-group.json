@@ -18,7 +18,7 @@
           "type": "link_list",
           "settings": {
             "heading": "SHOP BY",
-            "menu": "footer-shop-by"
+            "menu": "shop-menu"
           }
         },
         "menu_info": {
