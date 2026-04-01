@@ -3628,6 +3628,60 @@ body {
   color: var(--lux-gold) !important;
 }
 
+/* ---- Fix: predictive search mobile overlay ---- */
+@media screen and (max-width: 749px) {
+  .header__search details[open] > .search-modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    background: var(--lux-black) !important;
+    overflow-y: auto !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .header__search details[open] > .search-modal .search-modal__content {
+    padding: 12px 16px 0 !important;
+    flex-shrink: 0;
+  }
+  .header__search details[open] > .search-modal .modal-overlay {
+    display: none !important;
+  }
+  .header__search .predictive-search {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    max-height: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow-y: auto !important;
+    flex: 1;
+  }
+  .header__search .predictive-search__results-groups-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .header__search .predictive-search__item {
+    padding: 0.6rem 1rem;
+  }
+  .header__search .predictive-search__item-heading {
+    font-size: 0.82rem !important;
+    line-height: 1.3;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  .header__search .predictive-search__item .price {
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+}
+
 /* Mobile header drawer icon color */
 header-drawer .header__icon {
   color: var(--lux-gold) !important;
@@ -3657,7 +3711,7 @@ header-drawer .header__icon {
    ============================================================ */
 @media screen and (max-width: 749px) {
 
-  /* ---- Grid ---- */
+  /* ---- Grid: force 2-col on mobile (override slider/peek) ---- */
   .grid--2-col-tablet-down {
     gap: 8px !important;
   }
@@ -3665,6 +3719,37 @@ header-drawer .header__icon {
   .section-featured-collection .collection__grid {
     row-gap: 8px !important;
     column-gap: 8px !important;
+  }
+
+  /* Override Dawn slider behavior — force proper 2-col grid on mobile */
+  .product-grid.slider--tablet.grid--peek,
+  .product-grid.slider.grid--peek,
+  .section-featured-collection .slider--tablet.grid--peek {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    scroll-snap-type: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .product-grid.slider--tablet.grid--peek .grid__item,
+  .product-grid.slider.grid--peek .grid__item,
+  .section-featured-collection .slider--tablet.grid--peek .grid__item {
+    width: calc(50% - 4px) !important;
+    max-width: calc(50% - 4px) !important;
+    min-width: calc(50% - 4px) !important;
+    flex: 0 0 calc(50% - 4px) !important;
+    margin-left: 0 !important;
+    box-sizing: border-box !important;
+  }
+  /* Also ensure non-slider grids are 2-col */
+  .product-grid.grid--2-col-tablet-down .grid__item {
+    width: calc(50% - 4px) !important;
+    max-width: calc(50% - 4px) !important;
+  }
+  /* Hide slider arrows and counter on mobile when forcing grid */
+  .section-featured-collection .slider-buttons {
+    display: none !important;
   }
 
   /* ---- Card chrome ---- */
@@ -3809,9 +3894,11 @@ header-drawer .header__icon {
     padding: 6px 10px;
   }
 
+  /* Hide product count ("81 Produkte") from filter bar */
   .template-collection .product-count,
+  .template-collection .product-count-vertical,
   .template-collection .product-count-vertical .product-count__text {
-    font-size: 0.72rem !important;
+    display: none !important;
   }
 
   /* Tighter product grid on mobile */
@@ -4345,10 +4432,10 @@ li,
   font-size: 1.25rem !important;
 }
 
+/* Hide product count from filter bar on all breakpoints */
 .template-collection .product-count,
-.template-collection .product-count-vertical .product-count__text {
-  font-size: 1.18rem !important;
-  letter-spacing: 0.03em;
+.template-collection .product-count-vertical {
+  display: none !important;
 }
 
 .template-collection .product-grid {
