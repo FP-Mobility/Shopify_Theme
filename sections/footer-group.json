@@ -28,6 +28,13 @@
             "menu": "footer-information"
           }
         },
+        "link_list_xQTCjJ": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Legal",
+            "menu": "legal"
+          }
+        },
         "menu_customer": {
           "type": "link_list",
           "disabled": true,
@@ -48,6 +55,7 @@
       "block_order": [
         "menu_shop",
         "menu_info",
+        "link_list_xQTCjJ",
         "menu_customer",
         "menu_account"
       ],
