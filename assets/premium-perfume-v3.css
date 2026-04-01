@@ -1127,9 +1127,14 @@ button[name="add"]:hover,
   color: var(--lux-gold) !important;
 }
 
-/* ============== PRODUCT CARDS ============== */
+/* ============== PRODUCT CARDS (ParfumGroup-aligned) ============== */
 .card-wrapper {
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
 }
 
 .product-grid .grid__item {
@@ -1149,97 +1154,180 @@ button[name="add"]:hover,
 
 .card--standard .card__inner,
 .card--media .card__inner {
-  border: 1px solid var(--lux-border) !important;
-  border-radius: 0 !important;
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 4px !important;
   overflow: hidden;
-  transition: all 0.6s var(--ease-out-expo);
-  background: var(--lux-white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
 }
 .card--standard:hover .card__inner,
 .card--media:hover .card__inner {
-  box-shadow: var(--shadow-card-hover);
-  border-color: transparent !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-color: #d0d0d0 !important;
 }
 
-/* Image zoom */
+/* Image zoom on hover */
 .card--standard .media,
 .card--media .media {
-  transition: transform 0.6s var(--ease-out-expo);
+  transition: transform 0.5s ease;
 }
 .card--standard:hover .media,
 .card--media:hover .media {
-  transform: scale(1.01);
+  transform: scale(1.03);
 }
 
 .product-card-wrapper .card__media,
 .product-card-wrapper .card__media .media {
-  background: #f7f7f7 !important;
+  background: #f8f8f8 !important;
 }
 
-/* Product info styling */
+/* -- Brand name (above product title) -- */
+.card__brand {
+  margin-bottom: 2px;
+}
+.card__brand-link {
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+.card__brand-link:hover {
+  color: var(--lux-gold) !important;
+}
+
+/* -- Product title -- */
 .card__heading a {
   font-family: var(--font-body) !important;
   font-weight: 500;
-  line-height: 1.42;
-  color: var(--lux-black);
+  line-height: 1.4;
+  color: #1a1a1a;
   text-decoration: none !important;
-  letter-spacing: 0.02em;
-  transition: color var(--t-fast);
+  letter-spacing: 0.01em;
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
 }
 
 .card__heading {
-  min-height: 2.84em;
+  min-height: 2.6em;
   display: -webkit-box;
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 2px;
 }
 .card__heading a:hover {
   color: var(--lux-gold);
 }
 
-/* Vendor */
-.card-information__text .visually-hidden + span,
-.card-wrapper .caption-with-letter-spacing {
-  font-size: 0.72rem !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase;
-  color: var(--lux-light-gray) !important;
-  font-weight: 500;
+/* -- Product type line -- */
+.card__product-type {
+  font-size: 0.74rem;
+  color: #999;
+  font-weight: 400;
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
-/* Price */
+/* -- Vendor (legacy conditional — hidden, brand replaces it) -- */
+.card-information__text .visually-hidden + span,
+.card-wrapper .caption-with-letter-spacing {
+  display: none;
+}
+
+/* -- Rating row -- */
+.card__rating-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.card__rating-row .rating {
+  margin-top: 0;
+}
+.card__rating-row .rating-star {
+  font-size: 0.78rem;
+}
+.card__rating-row .rating-text,
+.card__rating-row .rating-count {
+  font-size: 0.7rem;
+  color: #888;
+  margin: 0;
+}
+.rating { margin-top: 4px; }
+.rating .icon-star { color: #e8a100; }
+
+/* -- Price block (parfumgroup.de style) -- */
+.card__price-block {
+  margin-top: 4px;
+}
+.card__price-uvp {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 1px;
+}
+.card__price-uvp-label {
+  font-size: 0.68rem;
+  color: #aaa;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.card__price-uvp-amount {
+  font-size: 0.82rem;
+  color: #aaa;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
 .price .price-item--regular {
-  font-weight: 500;
-  color: var(--lux-black);
-  font-size: 1rem;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
 }
 .price:not(.price--on-sale) .price-item--regular {
   text-decoration: none !important;
 }
 .price .price__sale .price-item--sale {
-  color: var(--lux-black);
-  font-weight: 600;
-  font-size: 1rem;
+  color: #c0392b;
+  font-weight: 700;
+  font-size: 1.05rem;
 }
 .price .price__sale .price-item--regular,
 .price .price-item--regular.price-item--last {
-  color: var(--lux-light-gray);
+  color: #aaa;
   text-decoration: line-through;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 0.82rem;
 }
 
-/* Sale badge */
+/* Unit price (per liter etc.) */
+.card__unit-price {
+  font-size: 0.68rem;
+  color: #999;
+  margin-top: 2px;
+  font-weight: 400;
+}
+.card__unit-price-separator {
+  margin: 0 1px;
+}
+
+/* -- Sale badge -- */
 .card__badge .badge {
-  background: var(--lux-black) !important;
-  color: var(--lux-white) !important;
-  border-radius: 0 !important;
-  padding: 6px 14px !important;
-  font-size: 0.68rem !important;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  background: #c0392b !important;
+  color: #fff !important;
+  border-radius: 3px !important;
+  padding: 4px 10px !important;
+  font-size: 0.66rem !important;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   border: none !important;
 }
@@ -1247,12 +1335,12 @@ button[name="add"]:hover,
 /* Luxury product badges */
 .card-badge--bestseller {
   background: var(--lux-gold) !important;
-  color: var(--lux-white) !important;
+  color: #fff !important;
 }
 .card-badge--new {
-  background: var(--lux-white) !important;
-  color: var(--lux-black) !important;
-  border: 1px solid var(--lux-black) !important;
+  background: #2ecc71 !important;
+  color: #fff !important;
+  border: none !important;
 }
 .card-badge--oud {
   background: #2C1810 !important;
@@ -1260,12 +1348,12 @@ button[name="add"]:hover,
 }
 .card-badge--long-lasting {
   background: #1a1a2e !important;
-  color: var(--lux-white) !important;
+  color: #fff !important;
 }
 .card-badge--unisex {
   background: transparent !important;
-  color: var(--lux-white) !important;
-  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
 }
 
 /* Scent family tag on cards */
@@ -1274,7 +1362,7 @@ button[name="add"]:hover,
   font-family: var(--font-body);
   font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--lux-gold);
   margin-top: 4px;
@@ -1283,87 +1371,38 @@ button[name="add"]:hover,
 /* Discount percentage badge */
 .card__discount-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: var(--lux-red);
-  color: var(--lux-white);
-  font-size: 0.68rem;
+  top: 10px;
+  right: 10px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 0.66rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 3px 8px;
+  border-radius: 3px;
   letter-spacing: 0.04em;
   z-index: 4;
 }
 
-/* Quick add button */
+/* Quick add button — parfumgroup.de: appears on hover as overlay */
 .quick-add__submit,
 .card__content .quick-add__submit {
-  border-radius: 0 !important;
+  border-radius: 4px !important;
   font-family: var(--font-body) !important;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-size: 0.76rem;
-  background: var(--lux-black) !important;
-  color: var(--lux-white) !important;
-  transition: all var(--t-smooth);
-  padding: 12px 20px;
+  font-size: 0.72rem;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  transition: all 0.25s ease;
+  padding: 10px 16px;
 }
 .product-grid .quick-add {
   margin-top: auto;
 }
 .quick-add__submit:hover {
   background: var(--lux-gold) !important;
-  box-shadow: var(--shadow-gold);
 }
-
-/* VIEW DETAILS overlay */
-.card--standard .card__inner::after,
-.card--media .card__inner::after {
-  content: 'VIEW DETAILS';
-  position: absolute;
-  bottom: -60px;
-  left: 0;
-  right: 0;
-  padding: 14px;
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--lux-white);
-  text-align: center;
-  font-size: 0.76rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  transition: bottom var(--t-elegant);
-  z-index: 5;
-  pointer-events: none;
-}
-.card--standard:hover .card__inner::after,
-.card--media:hover .card__inner::after {
-  bottom: 0;
-}
-
-/* Gold top line on card hover */
-.card--standard .card__inner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--lux-gold);
-  z-index: 6;
-  transform: scaleX(0);
-  transition: transform var(--t-elegant);
-  transform-origin: left;
-}
-.card--standard:hover .card__inner::before {
-  transform: scaleX(1);
-}
-
-/* Rating stars */
-.rating { margin-top: 4px; }
-.rating .icon-star { color: #d4a017; }
 
 /* ============== BRAND SHOWCASE ============== */
 .brand-showcase {
@@ -2244,33 +2283,50 @@ button[name="add"]:hover,
   line-height: 1.8;
 }
 
-/* Footer trust badges bar */
+/* Footer trust badges bar (parfumgroup.de style — prominent horizontal strip) */
 .footer__trust-bar {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 28px 0;
   margin-top: 8px;
+  background: rgba(255,255,255,0.03);
 }
 .footer__trust-bar-inner {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: 0;
+  padding-bottom: 4px;
+}
+.footer__trust-item {
+  flex: 0 0 auto;
+  min-width: 110px;
+  scroll-snap-align: start;
 }
 @media screen and (min-width: 750px) {
   .footer__trust-bar-inner {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    overflow-x: visible;
+  }
+  .footer__trust-item {
+    min-width: 0;
   }
 }
 .footer__trust-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  line-height: 1.3;
 }
 .footer__trust-item svg {
   flex-shrink: 0;
@@ -2392,14 +2448,22 @@ button[name="add"]:hover,
   transform: translateY(-3px);
 }
 
-/* Footer newsletter */
+/* Footer newsletter (parfumgroup.de style — prominent with discount callout) */
+.footer .footer-block__newsletter {
+  max-width: 480px;
+}
+.footer .footer-block--newsletter .footer-block__heading {
+  font-size: 1.1rem !important;
+  letter-spacing: 0.06em !important;
+  margin-bottom: 8px !important;
+}
 .footer .newsletter-form__field-wrapper input {
-  background: rgba(255,255,255,0.05) !important;
+  background: rgba(255,255,255,0.06) !important;
   color: var(--lux-white) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  border-radius: 0 !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  border-radius: 4px !important;
   padding: 14px 18px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
 }
 .footer .newsletter-form__field-wrapper input::placeholder {
   color: rgba(255,255,255,0.3);
@@ -2407,7 +2471,7 @@ button[name="add"]:hover,
 .footer .newsletter-form__button {
   background: var(--lux-gold) !important;
   border-color: var(--lux-gold) !important;
-  border-radius: 0 !important;
+  border-radius: 4px !important;
   transition: all var(--t-fast);
 }
 .footer .newsletter-form__button:hover {
@@ -2416,7 +2480,7 @@ button[name="add"]:hover,
   color: var(--lux-black) !important;
 }
 
-/* Footer payment icons */
+/* Footer payment icons (parfumgroup.de style — larger, more visible) */
 .footer .footer__payment {
   display: flex;
   justify-content: flex-end;
@@ -2424,7 +2488,7 @@ button[name="add"]:hover,
 .footer .list-payment {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
   align-items: center;
 }
@@ -2434,8 +2498,8 @@ button[name="add"]:hover,
 }
 .footer .list-payment .icon {
   width: auto;
-  height: 28px;
-  opacity: 0.75;
+  height: 32px;
+  opacity: 0.85;
   transition: opacity var(--t-fast);
 }
 .footer .list-payment .icon:hover {
@@ -3389,53 +3453,22 @@ body {
 }
 
 /* ============================================================
-   MICRO-INTERACTIONS & LUXURY ANIMATIONS
+   MICRO-INTERACTIONS (clean, parfumgroup.de aligned)
    ============================================================ */
 
-/* Bottle Shine Effect on product card hover */
-.card__media .media img {
-  position: relative;
-}
-.card__inner::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  z-index: 3;
-  pointer-events: none;
-  transition: none;
-}
-.card__inner:hover::after {
-  animation: bottleShine 0.8s ease forwards;
-}
-@keyframes bottleShine {
-  0% { left: -100%; }
-  100% { left: 150%; }
-}
+/* Subtle card hover lift is already in the card block above */
 
-/* Smooth card lift on hover */
-.card-wrapper {
-  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
-}
-.card-wrapper:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-}
-
-/* Gold underline reveal on links */
+/* Underline reveal on card title links */
 .card__heading a::after {
   content: '';
   display: block;
   width: 0;
   height: 1px;
   background: var(--lux-gold, #C8A96B);
-  transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+  transition: width 0.3s ease;
 }
 .card__heading a:hover::after {
-  width: 100%;
+  width: 40%;
 }
 
 /* Button hover ripple effect */
@@ -3617,20 +3650,210 @@ header-drawer .header__icon {
   }
 }
 
-/* Mobile-first card grid spacing */
+/* ============================================================
+   MOBILE PRODUCT CARDS – parfumgroup.de aligned
+   Compact 2-col grid, small fonts, prominent sale price,
+   always-visible quick-add, no hover effects on touch.
+   ============================================================ */
 @media screen and (max-width: 749px) {
+
+  /* ---- Grid ---- */
   .grid--2-col-tablet-down {
-    gap: 12px;
+    gap: 8px !important;
   }
+  .template-collection .product-grid,
+  .section-featured-collection .collection__grid {
+    row-gap: 8px !important;
+    column-gap: 8px !important;
+  }
+
+  /* ---- Card chrome ---- */
+  .card--standard .card__inner,
+  .card--media .card__inner,
+  .product-grid .card,
+  .section-featured-collection .card {
+    border-radius: 3px !important;
+  }
+
+  /* ---- Product image: less padding on small screens ---- */
+  .product-card-wrapper .card__media .media img,
+  .section-featured-collection .product-card-wrapper .card__media .media img {
+    padding: 8px !important;
+  }
+
+  /* ---- Card info area ---- */
   .card__information {
-    padding: 12px 10px !important;
+    padding: 8px 8px 10px !important;
+  }
+
+  /* Brand */
+  .card__brand {
+    margin-bottom: 1px;
+  }
+  .card__brand-link {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Title – compact, 2-line clamp */
+  .card__heading {
+    min-height: 2.2em;
+    margin-bottom: 1px;
   }
   .card__heading a {
-    font-size: 0.85rem !important;
+    font-size: 0.76rem !important;
+    line-height: 1.32 !important;
+  }
+
+  /* Product type */
+  .card__product-type {
+    font-size: 0.64rem;
+    margin-bottom: 4px;
+  }
+
+  /* Rating row */
+  .card__rating-row {
+    gap: 3px;
+    margin-bottom: 4px;
+  }
+  .card__rating-row .rating-star {
+    font-size: 0.68rem;
+  }
+  .card__rating-row .rating-text,
+  .card__rating-row .rating-count {
+    font-size: 0.62rem;
+  }
+
+  /* UVP / strikethrough price */
+  .card__price-uvp {
+    margin-bottom: 0;
+  }
+  .card__price-uvp-label {
+    font-size: 0.6rem;
+  }
+  .card__price-uvp-amount {
+    font-size: 0.72rem;
+  }
+
+  /* Sale / main price */
+  .card__price-block .price .price-item--regular,
+  .card__price-block .price .price__sale .price-item--sale {
+    font-size: 0.88rem;
+  }
+  .card__price-block .price .price__sale .price-item--regular {
+    font-size: 0.68rem;
+  }
+
+  /* Unit price (per liter) */
+  .card__unit-price {
+    font-size: 0.6rem;
+    margin-top: 1px;
+  }
+
+  /* ---- Badges ---- */
+  .card__badge .badge {
+    padding: 3px 6px !important;
+    font-size: 0.58rem !important;
+  }
+  .card__discount-badge {
+    top: 6px;
+    right: 6px;
+    padding: 2px 6px;
+    font-size: 0.58rem;
+  }
+
+  /* ---- Quick-add: always visible, full-width, compact ---- */
+  .quick-add__submit,
+  .card__content .quick-add__submit {
+    padding: 8px 10px;
+    font-size: 0.64rem !important;
+    letter-spacing: 0.04em;
+    min-height: 34px;
+  }
+
+  /* ---- Disable hover effects on touch ---- */
+  .card-wrapper:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .card--standard:hover .media,
+  .card--media:hover .media {
+    transform: none !important;
   }
 }
 
-/* Collection page dark hero + product grid on white */
+/* Mobile collection page refinements (parfumgroup.de aligned) */
+@media screen and (max-width: 749px) {
+
+  /* Sort/filter bar: compact, sticky at top */
+  .template-collection .facets-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    padding: 8px 0;
+    margin-top: 0 !important;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .template-collection .facet-filters__label,
+  .template-collection .facet-filters__field label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .template-collection .facet-filters__sort,
+  .template-collection .select__select {
+    min-height: 36px;
+    font-size: 0.78rem !important;
+    padding: 6px 10px;
+  }
+
+  .template-collection .product-count,
+  .template-collection .product-count-vertical .product-count__text {
+    font-size: 0.72rem !important;
+  }
+
+  /* Tighter product grid on mobile */
+  .template-collection .product-grid {
+    row-gap: 8px !important;
+  }
+
+  .template-collection .grid__item {
+    padding-bottom: 0;
+  }
+
+  /* Active filter pills compact */
+  .active-facets .active-facets__button {
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    min-height: auto;
+  }
+
+  /* Facets drawer/panel mobile */
+  .facets__wrapper {
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .facets__label {
+    font-size: 0.64rem;
+  }
+  .facet-checkbox__text,
+  .facets__label-text {
+    font-size: 0.72rem;
+  }
+
+  /* Collection title compact */
+  .template-collection .collection-hero__title,
+  .template-collection h1.title {
+    font-size: 1.3rem !important;
+    margin-bottom: 4px;
+  }
+  .template-collection .collection-hero__description {
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+  }
+}
 .template-collection .collection-hero-lux + .section-template--*-padding {
   background: var(--lux-white);
 }
@@ -3882,8 +4105,8 @@ img[loading="lazy"] {
   /* Product image consistency tokens */
   --product-card-media-ratio: 133.333%;
   --product-image-fit: contain;
-  --product-image-padding: 12px;
-  --product-image-bg: #f6f4f1;
+  --product-image-padding: 14px;
+  --product-image-bg: #f8f8f8;
   --product-image-hover-scale: 1;
 }
 
@@ -3953,12 +4176,13 @@ li,
   line-height: 1.34;
 }
 
-/* Canonical product card system for collection and featured rows */
+/* Canonical product card system (parfumgroup.de aligned) */
 .product-grid .card,
 .section-featured-collection .card,
 .recently-viewed__card {
-  border: 1px solid var(--lux-border) !important;
-  background: var(--lux-white);
+  border: 1px solid #e8e8e8 !important;
+  border-radius: 4px !important;
+  background: #fff;
   overflow: hidden;
 }
 
@@ -3974,7 +4198,7 @@ li,
   padding-bottom: 0 !important;
 }
 
-/* Use a hard media frame instead of adaptive Dawn ratio to avoid inconsistent crop windows */
+/* Use a hard media frame instead of adaptive Dawn ratio */
 .product-card-wrapper .card__inner.ratio,
 .section-featured-collection .product-card-wrapper .card__inner.ratio,
 .template-search .product-card-wrapper .card__inner.ratio,
@@ -3987,7 +4211,7 @@ li,
 .product-card-wrapper .card__media .media,
 .section-featured-collection .product-card-wrapper .card__media,
 .section-featured-collection .product-card-wrapper .card__media .media {
-  background: var(--product-image-bg) !important;
+  background: #f8f8f8 !important;
 }
 
 .product-card-wrapper .card__media .media {
@@ -4001,13 +4225,13 @@ li,
 .section-featured-collection .product-card-wrapper .card__media .media img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: var(--product-image-fit) !important;
+  object-fit: contain !important;
   object-position: center center !important;
-  padding: var(--product-image-padding) !important;
+  padding: 14px !important;
   transform: none !important;
 }
 
-/* Final anti-crop guardrail for all product-listing contexts */
+/* Anti-crop guardrail for all product-listing contexts */
 .product-grid .product-card-wrapper .card__media .media img,
 .template-search .product-card-wrapper .card__media .media img,
 .related-products .product-card-wrapper .card__media .media img,
@@ -4019,55 +4243,49 @@ li,
   object-position: center !important;
 }
 
-/* Match Continue Your Journey frame across all product listings */
+/* Consistent media frame across all product listings */
 .product-grid .product-card-wrapper .card__media,
 .template-search .product-card-wrapper .card__media,
 .related-products .product-card-wrapper .card__media,
 .section-featured-collection .product-card-wrapper .card__media,
 .recently-viewed__img-wrap {
   aspect-ratio: 3 / 4;
-  background: var(--product-image-bg) !important;
+  background: #f8f8f8 !important;
 }
 
 .product-card-wrapper:hover .card__media .media img,
 .section-featured-collection .product-card-wrapper:hover .card__media .media img {
-  transform: scale(var(--product-image-hover-scale)) !important;
+  transform: scale(1) !important;
 }
 
 .product-grid .card__information,
 .section-featured-collection .card__information {
-  padding: 14px 14px 12px !important;
+  padding: 12px 14px 14px !important;
 }
 
 .product-grid .card__heading,
 .section-featured-collection .card__heading {
-  margin-bottom: 4px;
-  min-height: 2.7em;
+  margin-bottom: 2px;
+  min-height: 2.5em;
 }
 
 .product-grid .card__heading a,
 .section-featured-collection .card__heading a {
-  font-size: 1.16rem !important;
+  font-size: 0.92rem !important;
   line-height: 1.38 !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   letter-spacing: 0.01em !important;
-  color: var(--lux-black) !important;
-}
-
-.product-grid .caption-with-letter-spacing,
-.section-featured-collection .caption-with-letter-spacing {
-  font-size: 0.84rem !important;
-  letter-spacing: 0.11em !important;
+  color: #1a1a1a !important;
 }
 
 .product-grid .price,
 .section-featured-collection .price {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .product-grid .price .price-item,
 .section-featured-collection .price .price-item {
-  font-size: 1.22rem !important;
+  font-size: 1.05rem !important;
   font-weight: 600 !important;
   line-height: 1.3;
 }
@@ -4077,10 +4295,15 @@ li,
   text-decoration: none !important;
 }
 
+/* Hide the compare-at inside price snippet when our UVP block handles it */
+.card__price-block .price--on-sale .price__sale .price-item--regular {
+  display: none;
+}
+
 .product-grid .price .price__sale .price-item--regular,
 .section-featured-collection .price .price__sale .price-item--regular {
   font-weight: 400 !important;
-  color: var(--lux-light-gray) !important;
+  color: #aaa !important;
 }
 
 .product-grid .quick-add,
@@ -4090,9 +4313,9 @@ li,
 
 .product-grid .quick-add__submit,
 .section-featured-collection .quick-add__submit {
-  min-height: 40px;
-  font-size: 1.05rem !important;
-  letter-spacing: 0.12em !important;
+  min-height: 38px;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em !important;
 }
 
 /* Collection page controls and rhythm */
@@ -4251,46 +4474,31 @@ li,
 
 @media screen and (max-width: 749px) {
   .collection-cards-row__scroll {
-    gap: 12px;
+    gap: 8px;
   }
 
   .collection-cards-row__card {
-    flex-basis: calc((100% - 12px) / 2);
-    min-width: calc((100% - 12px) / 2);
-    max-width: calc((100% - 12px) / 2);
+    flex-basis: calc((100% - 8px) / 2);
+    min-width: calc((100% - 8px) / 2);
+    max-width: calc((100% - 8px) / 2);
   }
 
   .recently-viewed__scroll {
-    gap: 12px;
+    gap: 8px;
   }
 
   .recently-viewed__card {
-    flex-basis: calc((100% - 12px) / 2);
-    min-width: calc((100% - 12px) / 2);
-    max-width: calc((100% - 12px) / 2);
+    flex-basis: calc((100% - 8px) / 2);
+    min-width: calc((100% - 8px) / 2);
+    max-width: calc((100% - 8px) / 2);
   }
 
   .recently-viewed__name {
-    font-size: 1.04rem;
+    font-size: 0.82rem;
   }
 
   .recently-viewed__price {
-    font-size: 1.1rem;
-  }
-
-  .product-grid .card__information,
-  .section-featured-collection .card__information {
-    padding: 12px 10px 10px !important;
-  }
-
-  .product-grid .card__heading a,
-  .section-featured-collection .card__heading a {
-    font-size: 1.04rem !important;
-  }
-
-  .product-grid .price .price-item,
-  .section-featured-collection .price .price-item {
-    font-size: 1.1rem !important;
+    font-size: 0.88rem;
   }
 }
 

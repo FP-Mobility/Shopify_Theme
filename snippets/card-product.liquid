@@ -54,7 +54,7 @@
       >
         {%- if card_product.featured_media -%}
           <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
-            <div class="media media--transparent media--hover-effect" style="background: #f6f4f1;">
+            <div class="media media--transparent media--hover-effect" style="background: #f8f8f8;">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
                 srcset="
@@ -70,7 +70,7 @@
                 sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                 alt="{{ card_product.featured_media.alt | escape }}"
                 class="motion-reduce"
-                style="object-fit: contain; padding: 12px;"
+                style="object-fit: contain; padding: 14px;"
                 {% unless lazy_load == false %}
                   loading="lazy"
                 {% endunless %}
@@ -94,7 +94,7 @@
                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
                   alt="{{ card_product.media[1].alt | escape }}"
                   class="motion-reduce"
-                  style="object-fit: contain; padding: 12px;"
+                  style="object-fit: contain; padding: 14px;"
                   loading="lazy"
                   width="{{ card_product.media[1].width }}"
                   height="{{ card_product.media[1].height }}"
@@ -144,6 +144,14 @@
       </div>
       <div class="card__content">
         <div class="card__information">
+          {%- comment -%} ParfumGroup-style: Brand → Name → Type → Rating → Price {%- endcomment -%}
+          {%- if card_product.vendor != blank -%}
+            <div class="card__brand">
+              <a href="{{ card_product.vendor | url_encode | prepend: '/collections/vendors?q=' }}" class="card__brand-link">
+                {{ card_product.vendor }}
+              </a>
+            </div>
+          {%- endif -%}
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
@@ -160,12 +168,9 @@
             </a>
           </h3>
           <div class="card-information">
-            {%- if show_vendor -%}
-              <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
-              <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
+            {%- if card_product.type != blank -%}
+              <div class="card__product-type">{{ card_product.type }}</div>
             {%- endif -%}
-
-            <span class="caption-large light">{{ block.settings.description | escape }}</span>
 
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
@@ -177,33 +182,55 @@
                   assign rating_decimal = 1
                 endif
               %}
-              <div
-                class="rating"
-                role="img"
-                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
-              >
-                <span
-                  aria-hidden="true"
-                  class="rating-star"
-                  style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                ></span>
+              <div class="card__rating-row">
+                <div
+                  class="rating"
+                  role="img"
+                  aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="rating-star"
+                    style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                  ></span>
+                </div>
+                <p class="rating-text caption">
+                  <span aria-hidden="true">
+                    {{- card_product.metafields.reviews.rating.value }} /
+                    {{ card_product.metafields.reviews.rating.value.scale_max -}}
+                  </span>
+                </p>
+                {%- if card_product.metafields.reviews.rating_count != blank -%}
+                  <p class="rating-count caption">
+                    <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                    <span class="visually-hidden">
+                      {{- card_product.metafields.reviews.rating_count }}
+                      {{ 'accessibility.total_reviews' | t -}}
+                    </span>
+                  </p>
+                {%- endif -%}
               </div>
-              <p class="rating-text caption">
-                <span aria-hidden="true">
-                  {{- card_product.metafields.reviews.rating.value }} /
-                  {{ card_product.metafields.reviews.rating.value.scale_max -}}
-                </span>
-              </p>
-              <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-                <span class="visually-hidden">
-                  {{- card_product.metafields.reviews.rating_count }}
-                  {{ 'accessibility.total_reviews' | t -}}
-                </span>
-              </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            <div class="card__price-block">
+              {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+                <div class="card__price-uvp">
+                  <span class="card__price-uvp-label">UVP</span>
+                  <s class="card__price-uvp-amount">{{ card_product.compare_at_price | money }}</s>
+                </div>
+              {%- endif -%}
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+              {%- if card_product.selected_or_first_available_variant.unit_price_measurement -%}
+                <div class="card__unit-price">
+                  {{ card_product.selected_or_first_available_variant.unit_price | money }}
+                  <span class="card__unit-price-separator">/</span>
+                  {%- if card_product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+                    {{ card_product.selected_or_first_available_variant.unit_price_measurement.reference_value }}
+                  {%- endif -%}
+                  {{ card_product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+                </div>
+              {%- endif -%}
+            </div>
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                 {% liquid
