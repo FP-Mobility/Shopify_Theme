@@ -30,6 +30,7 @@
         },
         "link_list_xQTCjJ": {
           "type": "link_list",
+          "disabled": true,
           "settings": {
             "heading": "Legal",
             "menu": "legal"
