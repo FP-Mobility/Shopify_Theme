@@ -342,19 +342,12 @@
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }} LumiScent. All rights reserved.
         </small>
-        {%- if section.settings.show_policy -%}
-          <ul class="policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                  >
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
+        <ul class="policies list-unstyled">
+          <li><small class="copyright__content"><a href="/pages/impressum">Impressum</a></small></li>
+          <li><small class="copyright__content"><a href="/pages/allgemeine-geschaftsbedingungen-agb">AGB</a></small></li>
+          <li><small class="copyright__content"><a href="/pages/datenschutzerklarung-schutz-ihrer-personenbezogenen-daten">Datenschutzerklärung</a></small></li>
+          <li><small class="copyright__content"><a href="/pages/cookie-richtlinie">Cookie-Richtlinie</a></small></li>
+        </ul>
       </div>
     </div>
   </div>
