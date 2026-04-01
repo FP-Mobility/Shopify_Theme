@@ -150,6 +150,11 @@
     0%, 100% { transform: translateX(-50%) translateY(0); }
     50% { transform: translateX(-50%) translateY(8px); }
   }
+  @media (prefers-reduced-motion: reduce) {
+    .video-hero__scroll-indicator {
+      animation: none;
+    }
+  }
 
   /* Pause/play toggle */
   .video-hero__toggle {
@@ -233,7 +238,7 @@
     {%- endif -%}
 
     {%- if section.settings.heading != blank -%}
-      <h2 class="video-hero__heading">{{ section.settings.heading }}</h2>
+      <h1 class="video-hero__heading">{{ section.settings.heading }}</h1>
     {%- endif -%}
 
     {%- if section.settings.text != blank -%}

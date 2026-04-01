@@ -112,9 +112,9 @@
   var FreeShippingBar = {
     init: function() {
       if (!SETTINGS.free_shipping_enable) return;
-      this.threshold = parseInt(SETTINGS.free_shipping_threshold, 10) || 5900;
-      this.message = SETTINGS.free_shipping_message || "You're \u20acAMOUNT away from free shipping!";
-      this.successMessage = SETTINGS.free_shipping_success_message || "You've unlocked FREE shipping!";
+      this.threshold = parseInt(SETTINGS.free_shipping_threshold, 10);
+      this.message = SETTINGS.free_shipping_message || "Kostenloser Versand f\u00fcr alle Bestellungen!";
+      this.successMessage = SETTINGS.free_shipping_success_message || "Kostenloser Versand f\u00fcr alle Bestellungen!";
 
       this.injectBar();
       this.update();
@@ -168,6 +168,16 @@
         .then(function(r) { return r.json(); })
         .then(function(cart) {
           var total = cart.total_price; /* in cents */
+
+          /* Threshold 0 = free shipping on all orders */
+          if (self.threshold <= 0) {
+            self.fillEl.style.width = '100%';
+            self.textEl.textContent = self.successMessage;
+            self.barEl.classList.add('free-shipping-bar--success');
+            self.fillEl.style.background = 'var(--lux-green, #27ae60)';
+            return;
+          }
+
           var pct = Math.min((total / self.threshold) * 100, 100);
           self.fillEl.style.width = pct + '%';
 

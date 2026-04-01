@@ -205,14 +205,14 @@
         "v3",
         "v4"
       ],
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "eyebrow": "Our Story",
         "title": "Where Luxury Meets Identity",
         "text": "<p>At LumiScent, we believe fragrance is the invisible part of your personal style. Born from a passion for authentic luxury, we curate the world's finest perfumes from EU masters, Arabian oud artisans, and exclusive US importers.</p><p>Every bottle in our collection passes rigorous authenticity verification. We work directly with authorized distributors to guarantee you receive only genuine products at exceptional value.</p>",
         "background_color": "#faf8f5",
         "button_label": "LEARN MORE",
-        "button_link": ""
+        "button_link": "shopify://pages/about"
       }
     },
     "brand-showcase": {
@@ -557,7 +557,7 @@
     },
     "new-arrivals": {
       "type": "featured-collection",
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "collection": "new-arrivals",
         "products_to_show": 25,
@@ -770,7 +770,7 @@
           "type": "heading",
           "settings": {
             "heading": "PREMIUM FRAGRANCES AT THE BEST PRICES",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text": {
@@ -784,7 +784,7 @@
         "heading",
         "text"
       ],
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -925,23 +925,23 @@
     "video-hero",
     "featured_categories_7MQ8rz",
     "best-sellers",
+    "new-arrivals",
     "shop-gender",
     "fragrance-quiz",
     "brand-story",
     "brand-showcase",
     "testimonials",
     "trust-badges",
+    "rich-text-seo",
     "newsletter",
     "slideshow",
     "1774782723032a8df8",
     "17747827739e3011c0",
-    "new-arrivals",
     "category-blocks",
     "multirow_W8U3BE",
     "bundles",
     "featured_collection_J68hkk",
     "blog",
-    "rich-text-seo",
     "featured_product_CeY6n8",
     "1774621563b9105420",
     "1774783304f07b7321",

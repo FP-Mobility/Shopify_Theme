@@ -19,6 +19,11 @@
       }, 800);
     }
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hidePreloader();
+      return;
+    }
+
     if (document.readyState === 'complete') {
       setTimeout(hidePreloader, 400);
     } else {

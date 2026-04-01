@@ -1,5 +1,5 @@
 /* =====================================================
-   LUMISCENT â€” World-Class Luxury Perfume Theme v3
+   LUMISCENT - World-Class Luxury Perfume Theme v3
    Ultra-Premium E-Commerce Experience
    ===================================================== */
 
@@ -37,7 +37,7 @@
   --collection-card-shadow-opacity: 0 !important;
   --blog-card-shadow-opacity: 0 !important;
 
-  /* â€” LumiScent Brand Palette â€” */
+  /* LumiScent Brand Palette */
   --lux-gold: #C8A96B;
   --lux-gold-light: #D4BC8A;
   --lux-gold-dark: #B08E4A;
@@ -60,11 +60,11 @@
   --lux-red: #c0392b;
   --lux-green: #27ae60;
 
-  /* â€” Typography â€” */
+  /* Typography */
   --font-display: var(--font-heading-family, 'Cormorant Garamond', Georgia, 'Times New Roman', serif);
   --font-body: var(--font-body-family, 'Jost', 'Helvetica Neue', Arial, sans-serif);
 
-  /* â€” Transitions â€” */
+  /* Transitions */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,7 +75,7 @@
   --t-slow: 0.8s var(--ease-out-expo);
   --t-dramatic: 1s var(--ease-luxury);
 
-  /* â€” Shadows â€” */
+  /* Shadows */
   --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
@@ -144,6 +144,22 @@
 }
 @keyframes preloaderFadeIn {
   to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-preloader {
+    transition: none;
+  }
+  .preloader__brand,
+  .preloader__line {
+    animation: none !important;
+    opacity: 1;
+  }
+  .preloader__line::after {
+    animation: none;
+    left: 0;
+    width: 100%;
+  }
 }
 
 /* ============== GLOBAL RESETS & BASE ============== */
@@ -463,7 +479,7 @@ button[name="add"]:hover,
   flex-shrink: 0;
 }
 
-/* Navigation container â€” single line */
+/* Navigation container - single line */
 .header__inline-menu {
   flex: 1 1 auto;
   overflow: visible;
@@ -474,7 +490,7 @@ button[name="add"]:hover,
   justify-content: center;
 }
 
-/* Icons area â€” don't shrink */
+/* Icons area - don't shrink */
 .header__icons {
   flex-shrink: 0;
 }

@@ -132,7 +132,10 @@
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-3",
     "idealo_enable": true,
-    "free_shipping_bar_enable": false,
+    "free_shipping_bar_enable": true,
+    "free_shipping_threshold": 0,
+    "free_shipping_message": "Kostenloser Versand für alle Bestellungen!",
+    "free_shipping_success_message": "Kostenloser Versand für alle Bestellungen!",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
