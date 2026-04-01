@@ -34,45 +34,27 @@
             "heading": "Legal",
             "menu": "legal"
           }
-        },
-        "menu_customer": {
-          "type": "link_list",
-          "disabled": true,
-          "settings": {
-            "heading": "CUSTOMER SERVICES",
-            "menu": "impressum"
-          }
-        },
-        "menu_account": {
-          "type": "link_list",
-          "disabled": true,
-          "settings": {
-            "heading": "ACCOUNT",
-            "menu": ""
-          }
         }
       },
       "block_order": [
         "menu_shop",
         "menu_info",
-        "link_list_xQTCjJ",
-        "menu_customer",
-        "menu_account"
+        "link_list_xQTCjJ"
       ],
       "custom_css": [],
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe for Exclusive Offers",
-        "enable_follow_on_shop": false,
+        "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,
         "enable_language_selector": true,
         "payment_enable": true,
         "show_policy": true,
         "margin_top": 0,
-        "padding_top": 60,
-        "padding_bottom": 56
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
