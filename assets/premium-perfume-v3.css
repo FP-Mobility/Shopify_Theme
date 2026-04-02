@@ -3613,14 +3613,16 @@ body {
 .search-modal__form {
   border-bottom: 1px solid rgba(200, 169, 107, 0.3);
 }
-.search-modal__input {
+.search-modal__input,
+.search-modal .search__input {
   font-family: var(--font-display) !important;
   font-size: 1.6rem !important;
   letter-spacing: 0.04em;
   color: var(--lux-white) !important;
   background: transparent !important;
 }
-.search-modal__input::placeholder {
+.search-modal__input::placeholder,
+.search-modal .search__input::placeholder {
   color: rgba(255, 255, 255, 0.3);
 }
 .search-modal__close-button {

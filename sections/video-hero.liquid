@@ -193,20 +193,21 @@
   <div class="video-hero__media">
     {%- if section.settings.video != blank -%}
       {{ section.settings.video | video_tag:
-        autoplay: true,
+        autoplay: false,
         loop: true,
         muted: true,
         playsinline: true,
+        preload: 'metadata',
         class: 'video-hero__video',
         image_size: '2048x'
       }}
     {%- elsif section.settings.video_url != blank -%}
       <video
         class="video-hero__video"
-        autoplay
         loop
         muted
         playsinline
+        preload="metadata"
         {%- if section.settings.poster_image != blank %}
           poster="{{ section.settings.poster_image | image_url: width: 2048 }}"
         {%- endif %}
@@ -299,6 +300,28 @@
     var toggle = section.querySelector('.video-hero__toggle');
     var video = section.querySelector('.video-hero__video');
     if (toggle && video) {
+      var isMobile = window.innerWidth < 750;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var shouldAutoPlay = !isMobile && !reduceMotion;
+
+      // Keep poster visible on mobile; autoplay only on desktop for performance.
+      if (!shouldAutoPlay) {
+        video.pause();
+        toggle.classList.add('paused');
+        toggle.setAttribute('aria-label', 'Play video');
+      } else {
+        video
+          .play()
+          .then(function() {
+            toggle.classList.remove('paused');
+            toggle.setAttribute('aria-label', 'Pause video');
+          })
+          .catch(function() {
+            toggle.classList.add('paused');
+            toggle.setAttribute('aria-label', 'Play video');
+          });
+      }
+
       toggle.addEventListener('click', function() {
         if (video.paused) {
           video.play();
