@@ -86,7 +86,7 @@
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "best-sellers",
+        "collection": "bestseller",
         "products_to_show": 25,
         "title": "<strong>Best Sellers</strong>",
         "heading_size": "h0",
@@ -109,6 +109,34 @@
         "swipe_on_mobile": true,
         "padding_top": 48,
         "padding_bottom": 40
+      }
+    },
+    "new-arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "dubai-parfum",
+        "products_to_show": 25,
+        "title": "Dubai Parfum",
+        "heading_size": "h1",
+        "description": "<p>The latest additions to our curated fragrance collection</p>",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 20
       }
     },
     "shop-gender": {
@@ -207,6 +235,7 @@
         "v4"
       ],
       "settings": {
+        "image": "shopify://shop_images/pink-peony-blossom.jpg",
         "eyebrow": "Our Story",
         "title": "Where Luxury Meets Identity",
         "text": "<p>At LumiScent, we believe fragrance is the invisible part of your personal style. Born from a passion for authentic luxury, we curate the world's finest perfumes from EU masters, Arabian oud artisans, and exclusive US importers.</p><p>Every bottle in our collection passes rigorous authenticity verification. We work directly with authorized distributors to guarantee you receive only genuine products at exceptional value.</p>",
@@ -438,6 +467,37 @@
         "background_color": "#000000"
       }
     },
+    "rich-text-seo": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "PREMIUM FRAGRANCES AT THE BEST PRICES",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
     "newsletter": {
       "type": "newsletter-perfume",
       "settings": {
@@ -554,34 +614,6 @@
       ],
       "disabled": true,
       "settings": {}
-    },
-    "new-arrivals": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "new-arrivals",
-        "products_to_show": 25,
-        "title": "New Arrivals",
-        "heading_size": "h1",
-        "description": "<p>The latest additions to our curated fragrance collection</p>",
-        "show_description": true,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": true,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": true,
-        "show_rating": true,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 20
-      }
     },
     "category-blocks": {
       "type": "category-blocks",
@@ -760,36 +792,6 @@
         "color_scheme": "scheme-2",
         "padding_top": 100,
         "padding_bottom": 100
-      }
-    },
-    "rich-text-seo": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "PREMIUM FRAGRANCES AT THE BEST PRICES",
-            "heading_size": "h2"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-2",
-        "full_width": true,
-        "padding_top": 56,
-        "padding_bottom": 56
       }
     },
     "featured_product_CeY6n8": {
