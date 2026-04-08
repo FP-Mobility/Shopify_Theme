@@ -54,7 +54,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
-            "content": "<p>Free shipping on orders over $59. Standard delivery takes 2-5 business days. Express shipping available at checkout.</p><p>Easy returns within 30 days of purchase. Items must be unopened and in original packaging.</p>",
+            "content": "<p>Free shipping on all orders. Standard delivery takes 2-5 business days. Express shipping available at checkout.</p><p>Easy returns within 30 days of purchase. Items must be unopened and in original packaging.</p>",
             "page": ""
           }
         },

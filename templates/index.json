@@ -19,7 +19,7 @@
         "overlay_opacity": 35,
         "eyebrow": "LumiScent",
         "heading": "Lumiscent – Where Luxury Meets Identity",
-        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on orders over €59.",
+        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on all orders.",
         "button_label_1": "SHOP WOMEN",
         "button_link_1": "shopify://collections/womens-fragrances",
         "button_label_2": "SHOP MEN",
@@ -418,7 +418,7 @@
           "type": "badge",
           "settings": {
             "title": "FREE SHIPPING",
-            "description": "On orders over €59",
+            "description": "On all orders",
             "icon_type": "svg",
             "svg_icon": "shipping",
             "icon_emoji": "✓"
@@ -519,7 +519,7 @@
             "image_overlay_opacity": 40,
             "heading": "Discover Your Signature Scent",
             "heading_size": "h1",
-            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
+            "subheading": "Premium fragrances at unbeatable prices. Free shipping on all orders.",
             "button_label": "Button label",
             "link": "",
             "button_style_secondary": false,

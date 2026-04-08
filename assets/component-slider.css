@@ -176,6 +176,15 @@ slider-component.slider-component-full-width {
     scroll-margin-left: 1.5rem;
   }
 
+  .slider-component-desktop .slider--desktop {
+    scroll-padding-left: 1.5rem;
+  }
+
+  .slider-component-desktop .slider--desktop .slider__slide:first-child {
+    margin-left: 1.5rem;
+    scroll-margin-left: 1.5rem;
+  }
+
   /* Fix to show some space at the end of our sliders in all browsers */
   .slider-component-full-width .slider--desktop:after {
     padding-left: 1.5rem;
@@ -315,6 +324,15 @@ slider-component.slider-component-full-width {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding-bottom: 0.5rem;
+}
+
+.slider-button {
+  min-width: 44px;
+  min-height: 44px;
 }
 
 @media screen and (min-width: 990px) {
@@ -325,7 +343,7 @@ slider-component.slider-component-full-width {
 
 @media screen and (max-width: 989px) {
   .slider--desktop:not(.slider--tablet) + .slider-buttons {
-    display: none;
+    display: flex;
   }
 }
 

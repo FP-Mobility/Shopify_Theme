@@ -278,11 +278,7 @@
     }
   };
 
-  /* =================================================================
-     4. RECENTLY VIEWED PRODUCTS
-     Tracks visited product pages and shows them in a horizontal strip
-     at the bottom of product and collection pages.
-     ================================================================= */
+  
   var RecentlyViewed = {
     KEY: 'lux_recently_viewed',
     MAX: 12,

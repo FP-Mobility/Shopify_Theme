@@ -147,11 +147,12 @@
       </ul>
 
       {%- if show_mobile_slider -%}
-        <div class="slider-buttons large-up-hide">
+        <div class="slider-buttons">
           <button
             type="button"
             class="slider-button slider-button--prev"
             name="previous"
+            aria-controls="Slider-{{ section.id }}"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
             <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
@@ -166,6 +167,7 @@
             type="button"
             class="slider-button slider-button--next"
             name="next"
+            aria-controls="Slider-{{ section.id }}"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
             <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
