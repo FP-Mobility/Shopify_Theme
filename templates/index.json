@@ -335,7 +335,7 @@
         "subtitle": "Shop your favorite brands at the best prices",
         "show_all_link": true,
         "scroll_speed": 60,
-        "all_brands_page": ""
+        "all_brands_page": "brands"
       }
     },
     "testimonials": {
