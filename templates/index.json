@@ -418,7 +418,7 @@
           "type": "badge",
           "settings": {
             "title": "FREE SHIPPING",
-            "description": "On orders over €59",
+            "description": "Enjoy free shipping on every order",
             "icon_type": "svg",
             "svg_icon": "shipping",
             "icon_emoji": "✓"
