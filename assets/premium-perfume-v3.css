@@ -2530,8 +2530,13 @@ button[name="add"]:hover,
   }
 }
 
+
+
+
+
 /* ============== CART DRAWER ============== */
-.cart-drawer .drawer__inner {
+.cart-drawer cart-count-bubble { /* 8 */
+  
   background-color: var(--lux-white) !important;
   border-radius: 0 !important;
   max-width: 420px;
@@ -4033,9 +4038,9 @@ header-drawer .header__icon {
 }
 
 /* Cart drawer — luxury upgrade */
-.cart-drawer .drawer__inner {
-  background: var(--lux-white) !important;
+.cart-drawer .drawer__inner { /* 8 */
   max-width: 420px;
+  color: var(--lux-dark);
 }
 .cart-drawer .heading {
   font-family: var(--font-display) !important;
