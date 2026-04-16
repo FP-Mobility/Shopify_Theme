@@ -96,11 +96,20 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
-                  
-                </div>
+             <div class="product__title" {{ block.shopify_attributes }}>
+  
+  <h1 class="product__title">
+    {{ product.title | escape }}
+  </h1>
+
+  <div class="product-rating">
+    ⭐ ⭐ ⭐ ⭐ ☆ <span>(4.0)</span>
+  </div>
+
+</div>
+                    
+                
+                
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -237,7 +246,7 @@
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
                   {% # theme-check-enable %}
-                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">
+                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">shopify theme devc
                     {%- if cart_qty > 0 -%}
                       {{- 'products.product.quantity.in_cart_aria_label' | t: quantity: cart_qty -}}
                     {%- else -%}
