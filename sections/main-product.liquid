@@ -98,18 +98,15 @@
                 </p>
              <div class="product__title" {{ block.shopify_attributes }}>
   
-  <h1 class="product__title">
-    {{ product.title | escape }}
-  </h1>
+            <h1 class="product__title">
+             {{ product.title | escape }}
+          </h1>
 
-  <div class="product-rating">
-    ⭐ ⭐ ⭐ ⭐ ☆ <span>(4.0)</span>
-  </div>
+        <div class="product-rating">
+          ⭐ ⭐ ⭐ ⭐ ☆ <span>(4.0)</span>
+       </div>
 
-</div>
-                    
-                
-                
+      </div>           
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -2276,3 +2273,4 @@
   ]
 }
 {% endschema %}
+{% render 'product-reviews' %}

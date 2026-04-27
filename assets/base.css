@@ -4245,3 +4245,182 @@ details-disclosure > details {
   color: #777;
   font-size: 13px;
 }
+/* Fix header overlapping cart drawer */
+#cart-drawer,
+.cart-drawer,
+[id*="cart-drawer"],
+cart-drawer {
+  z-index: 99999 !important;
+}
+
+.cart-drawer-overlay,
+#cart-drawer-overlay {
+  z-index: 99998 !important;
+}
+
+.header-wrapper,
+.section-header,
+header {
+  z-index: 1000 !important;
+}
+content = re.sub(r'/\* ===== PREMIUM CART DRAWER STYLING =====.*?EOF', '', content, flags=re.DOTALL)
+
+new_css = """
+/* ===== CLEAN GOLD CART DRAWER ===== */
+cart-drawer,
+.cart-drawer {
+  background: #ffffff !important;
+}
+
+/* Header */
+cart-drawer .drawer__header {
+  background: #ffffff !important;
+  border-bottom: 2px solid #c8a96e !important;
+  padding: 18px 20px !important;
+}
+
+cart-drawer .drawer__heading {
+  color: #3b2f2f !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+}
+
+/* Cart items area */
+cart-drawer .drawer__contents {
+  background: #f9f6f1 !important;
+  padding: 10px !important;
+}
+
+/* Each item card */
+cart-drawer .cart-item {
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  border: 1px solid #ede8df !important;
+  padding: 14px !important;
+  margin-bottom: 10px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* Product name */
+cart-drawer .cart-item__name {
+  color: #3b2f2f !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Price */
+cart-drawer .price--end {
+  color: #c8a96e !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}
+
+/* Quantity buttons */
+cart-drawer .quantity__button {
+  border-color: #c8a96e !important;
+  color: #c8a96e !important;
+}
+
+cart-drawer .quantity__input {
+  border-color: #c8a96e !important;
+  color: #3b2f2f !important;
+}
+
+/* Footer */
+cart-drawer .drawer__footer {
+  background: #ffffff !important;
+  border-top: 2px solid #c8a96e !important;
+  padding: 16px 20px !important;
+}
+
+/* Total label */
+cart-drawer .totals__total {
+  color: #3b2f2f !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Total price */
+cart-drawer .totals__total-value {
+  color: #c8a96e !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+}
+
+/* Tax note */
+cart-drawer .tax-note,
+cart-drawer .cart__tax-note {
+  color: #999 !important;
+  font-size: 0.78rem !important;
+}
+
+/* Checkout button */
+cart-drawer .cart__checkout-button {
+  background: #3b2f2f !important;
+  color: #c8a96e !important;
+  border: 2px solid #c8a96e !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  font-size: 0.9rem !important;
+  padding: 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+cart-drawer .cart__checkout-button:hover {
+  background: #c8a96e !important;
+  color: #3b2f2f !important;
+}
+.slider-button,
+.slider__button,
+.slideshow__button,
+button.slider-button,
+.product-recommendations .slider-button,
+[class*="slider"] button[name="next"],
+[class*="slider"] button[name="previous"] {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: #3b2f2f !important;
+  border: 2px solid #c8a96e !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+}
+
+.slider-button svg,
+.slider__button svg,
+[class*="slider"] button svg {
+  color: #c8a96e !important;
+  fill: #c8a96e !important;
+  width: 18px !important;
+  height: 18px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  stroke: #c8a96e !important;
+}
+
+.slider-button:hover,
+.slider__button:hover {
+  background: #c8a96e !important;
+}
+
+.slider-button:hover svg {
+  color: #3b2f2f !important;
+  fill: #3b2f2f !important;
+  stroke: #3b2f2f !important;
+}
+
+/* Slider counter text */
+.slider-counter,
+.slider__counter {
+  color: #3b2f2f !important;
+  font-weight: 600 !important;
+}ls /workspaces/Shopify_Theme/sections/ | grep brand
