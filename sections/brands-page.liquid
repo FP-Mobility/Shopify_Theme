@@ -163,8 +163,7 @@
         {%- assign brand_name = block.settings.brand_name -%}
         {%- assign first_letter = brand_name | slice: 0 | upcase -%}
         <a
-          href="/collections/all?filter.p.vendor={{ brand_name | url_encode }}"
-
+          href="{{ block.settings.brand_collection.url | default: routes.all_products_collection_url | append: '?filter.v.option.brand=' | append: brand_name | url_encode }}"
           class="brands-page__card"
           data-brand="{{ brand_name | downcase }}"
           data-letter="{{ first_letter }}"
