@@ -24,14 +24,14 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 5% Off Orders over €59 — Use Code: LUMISCENT5 ✦",
+            "text": "✦ 5 % Rabatt auf Bestellungen über 59 € — Verwende den Code: LUMISCENT5 ✦",
             "link": ""
           }
         },
         "announcement_secure": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 100% Authentic · Secure Checkout · Fast EU Dispatch ✦",
+            "text": "✦ 100 % authentisch · Sicherer Checkout · Schneller Versand innerhalb der EU ✦",
             "link": ""
           }
         },
