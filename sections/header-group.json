@@ -24,21 +24,21 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 5 % Rabatt auf Bestellungen über 59 € — Verwende den Code: LUMISCENT5 ✦",
+            "text": "✦ 5% Off Orders over €59 — Use Code: LUMISCENT5 ✦",
             "link": ""
           }
         },
         "announcement_secure": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 100 % authentisch · Sicherer Checkout · Schneller Versand innerhalb der EU ✦",
+            "text": "✦ 100% Authentic · Secure Checkout · Fast EU Dispatch ✦",
             "link": ""
           }
         },
         "announcement_guarantee": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 30-Tage-Zufriedenheitsgarantie · Echtheitszertifiziert ✦",
+            "text": "✦ 30-Day Satisfaction Guarantee · Authenticity Certified ✦",
             "link": ""
           }
         }
@@ -75,8 +75,8 @@
         "enable_language_selector": true,
         "enable_customer_avatar": true,
         "margin_bottom": 0,
-        "padding_top": 8,
-        "padding_bottom": 8
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     }
   },

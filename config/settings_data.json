@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/image_9fb85147-2698-499c-9322-54ea7a68ea81.png",
+    "logo": "shopify://shop_images/Logo_NB.jpg",
     "logo_width": 90,
     "favicon": "shopify://shop_images/shared_image.jpg",
     "type_header_font": "assistant_n4",
@@ -161,7 +161,7 @@
       },
       "13095726950816047308": {
         "type": "shopify://apps/ea-auto-translate/blocks/app-embed-block/74970794-df41-4243-8f9a-ca0ffb4f8827",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     },
