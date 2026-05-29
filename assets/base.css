@@ -22,8 +22,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .button, button, input[type="submit"] {
-  background: var(--color-accent);
-  color: var(--color-secondary);
   border-radius: 6px;
   border: none;
   font-family: var(--font-body);
@@ -31,11 +29,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 12px 32px;
   transition: background 0.2s;
 }
-.button:hover, button:hover, input[type="submit"]:hover {
-  background: var(--color-primary);
-  color: var(--color-accent);
-}
-
 /* Section backgrounds */
 .section-dark {
   background: var(--color-primary);
@@ -4263,9 +4256,7 @@ cart-drawer {
 header {
   z-index: 1000 !important;
 }
-content = re.sub(r'/\* ===== PREMIUM CART DRAWER STYLING =====.*?EOF', '', content, flags=re.DOTALL)
 
-new_css = """
 
 cart-drawer,
 .cart-drawer {
@@ -4432,29 +4423,106 @@ button.slider-button,
   opacity: 0 !important;
   pointer-events: none !important;
 }
-/* Force Add to Cart button to always be visible */
-.product-form__submit {
-  background: #D4AF37 !important;
-  color: #111111 !important;
-  border: 2px solid #D4AF37 !important;
-  opacity: 1 !important;
+.product-form__buttons.custom-buttons-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+}
+
+.product-form__buttons.custom-buttons-wrapper > * {
+  margin: 0 !important;
+}
+
+.product-form__submit.button {
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.paypal-wrapper {
+  width: 320px !important;
+}
+
+.shopify-payment-button {
+  width: 320px !important;
+}
+.product-form__buttons {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
   width: 100% !important;
-  padding: 16px !important;
-  font-size: 1.5rem !important;
+  max-width: 400px !important;
+}
+
+.product-form__submit {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+.paypal-wrapper {
+  width: 100% !important;
+  display: block !important;
+}
+
+.shopify-payment-button,
+.shopify-payment-button__button {
+  width: 100% !important;
+}
+
+.shopify-payment-button__button--branded {
+  min-height: 50px !important;
+  border-radius: 4px !important;
+}
+/* ADD this to force button visible */
+.product-form__submit.button--primary {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}.product-form__submit.button--primary {
+  background: #111111 !important;
+  color: #ffffff !important;
+  min-height: 50px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  margin-bottom: 12px !important;
-  cursor: pointer !important;
 }
-
-.product-form__submit:hover {
+.product-form__submit.button--primary {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   background: #111111 !important;
-  color: #D4AF37 !important;
-  border-color: #111111 !important;
+  color: #ffffff !important;
+  min-height: 50px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  width: 100% !important;
 }
-
-.product-form__submit[disabled] {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
+/* FORCE ADD TO CART BUTTON VISIBLE */
+.product-form__submit {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  width: 100% !important;
+  min-height: 50px !important;
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
+  cursor: pointer !important;
 }
