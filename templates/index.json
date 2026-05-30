@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "video-hero": {
@@ -12,9 +21,9 @@
         "heading": "LumiScent - Duftwelten für jeden Moment",
         "text": "Ausgewählte Luxusdüfte aus Europa, Arabien und darüber hinaus. Kostenloser Versand für alle Bestellungen.",
         "button_label_1": "DAMENDÜFTE",
-        "button_link_1": "shopify://collections/womens-fragrances",
+        "button_link_1": "shopify://collections/damen-parfum",
         "button_label_2": "HERRENDÜFTE",
-        "button_link_2": "shopify://collections/mens-fragrances",
+        "button_link_2": "shopify://collections/herren-parfum",
         "button_label_3": "",
         "button_link_3": "",
         "text_alignment": "left",
