@@ -73,8 +73,12 @@
     document.querySelectorAll('[data-wishlist-btn]').forEach(btn => {
       if (isInWishlist(btn.dataset.productId)) {
         btn.classList.add('is-wishlisted');
+        btn.setAttribute('aria-label', 'Aus Wunschliste entfernen');
+        btn.setAttribute('title', 'Aus Wunschliste entfernen');
       } else {
         btn.classList.remove('is-wishlisted');
+        btn.setAttribute('aria-label', 'Zur Wunschliste hinzufügen');
+        btn.setAttribute('title', 'Zur Wunschliste hinzufügen');
       }
     });
   }

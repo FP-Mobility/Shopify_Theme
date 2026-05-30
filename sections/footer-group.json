@@ -17,14 +17,14 @@
         "menu_shop": {
           "type": "link_list",
           "settings": {
-            "heading": "SHOP BY",
+            "heading": "SHOPPEN",
             "menu": "shop-menu"
           }
         },
         "menu_info": {
           "type": "link_list",
           "settings": {
-            "heading": "INFORMATION",
+            "heading": "INFORMATIONEN",
             "menu": "footer-information"
           }
         },
@@ -32,7 +32,7 @@
           "type": "link_list",
           "disabled": true,
           "settings": {
-            "heading": "Legal",
+            "heading": "Rechtliches",
             "menu": "legal"
           }
         }
@@ -46,7 +46,7 @@
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": false,
-        "newsletter_heading": "Subscribe for Exclusive Offers",
+        "newsletter_heading": "Exklusive Angebote erhalten",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,

@@ -278,7 +278,7 @@
 
   {%- if section.settings.show_scroll_indicator -%}
     <div class="video-hero__scroll-indicator">
-      <span class="video-hero__scroll-label">Scroll</span>
+      <span class="video-hero__scroll-label">Weiter</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <path d="M12 5v14M5 12l7 7 7-7"/>
       </svg>
@@ -286,7 +286,7 @@
   {%- endif -%}
 
   {%- if section.settings.video != blank or section.settings.video_url != blank -%}
-    <button class="video-hero__toggle" aria-label="Pause video" type="button">
+    <button class="video-hero__toggle" aria-label="Video pausieren" type="button">
       <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
       <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
     </button>
@@ -308,17 +308,17 @@
       if (!shouldAutoPlay) {
         video.pause();
         toggle.classList.add('paused');
-        toggle.setAttribute('aria-label', 'Play video');
+        toggle.setAttribute('aria-label', 'Video abspielen');
       } else {
         video
           .play()
           .then(function() {
             toggle.classList.remove('paused');
-            toggle.setAttribute('aria-label', 'Pause video');
+            toggle.setAttribute('aria-label', 'Video pausieren');
           })
           .catch(function() {
             toggle.classList.add('paused');
-            toggle.setAttribute('aria-label', 'Play video');
+            toggle.setAttribute('aria-label', 'Video abspielen');
           });
       }
 
@@ -326,11 +326,11 @@
         if (video.paused) {
           video.play();
           toggle.classList.remove('paused');
-          toggle.setAttribute('aria-label', 'Pause video');
+          toggle.setAttribute('aria-label', 'Video pausieren');
         } else {
           video.pause();
           toggle.classList.add('paused');
-          toggle.setAttribute('aria-label', 'Play video');
+          toggle.setAttribute('aria-label', 'Video abspielen');
         }
       });
     }
@@ -399,19 +399,19 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Discover Your Signature Scent"
+      "default": "LumiScent - Duftwelten für jeden Moment"
     },
     {
       "type": "textarea",
       "id": "text",
       "label": "Subheading text",
-      "default": "Curated luxury fragrances. Complimentary shipping on orders over €59."
+      "default": "Ausgewählte Luxusdüfte. Kostenloser Versand für alle Bestellungen."
     },
     {
       "type": "text",
       "id": "button_label_1",
       "label": "Button 1 label",
-      "default": "SHOP WOMEN"
+      "default": "DAMENDÜFTE"
     },
     {
       "type": "url",
@@ -422,7 +422,7 @@
       "type": "text",
       "id": "button_label_2",
       "label": "Button 2 label",
-      "default": "SHOP MEN"
+      "default": "HERRENDÜFTE"
     },
     {
       "type": "url",

@@ -1,20 +1,20 @@
 {%- comment -%}
-  Exit Intent Popup — Luxury Newsletter/Discount Capture
+  Exit Intent Popup - Newsletter capture
   Renders: Full-screen overlay with email capture
   Loaded in theme.liquid
 {%- endcomment -%}
 
-<div id="exitIntentPopup" class="exit-popup" aria-hidden="true" role="dialog" aria-label="Special offer">
+<div id="exitIntentPopup" class="exit-popup" aria-hidden="true" role="dialog" aria-label="Newsletter Anmeldung">
   <div class="exit-popup__overlay" data-exit-close></div>
   <div class="exit-popup__modal">
-    <button class="exit-popup__close" data-exit-close aria-label="Close popup">
+    <button class="exit-popup__close" data-exit-close aria-label="Popup schließen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="exit-popup__content">
-      <span class="exit-popup__eyebrow">Before You Go</span>
-      <h2 class="exit-popup__title">Don't Miss Out</h2>
+      <span class="exit-popup__eyebrow">Bevor du gehst</span>
+      <h2 class="exit-popup__title">Neuheiten zuerst entdecken</h2>
       <div class="exit-popup__gold-line"></div>
-      <p class="exit-popup__text">Subscribe to receive exclusive offers, early access to new arrivals, and a special welcome discount on your first order.</p>
+      <p class="exit-popup__text">Melde dich an und erhalte Updates zu neuen Düften, Aktionen und Dufttipps direkt per E-Mail.</p>
       <form class="exit-popup__form" method="post" action="/contact#contact_form" accept-charset="UTF-8">
         <input type="hidden" name="form_type" value="customer">
         <input type="hidden" name="utf8" value="✓">
@@ -24,14 +24,22 @@
             type="email"
             name="contact[email]"
             class="exit-popup__input"
-            placeholder="Your email address"
+            placeholder="E-Mail-Adresse"
             required
             autocomplete="email"
           >
-          <button type="submit" class="exit-popup__btn">Subscribe</button>
+          <button type="submit" class="exit-popup__btn">Anmelden</button>
         </div>
+        <label class="exit-popup__consent">
+          <input type="checkbox" name="contact[note]" value="Newsletter marketing consent" required>
+          <span>
+            Ich möchte den LumiScent Newsletter erhalten und akzeptiere die
+            <a href="/pages/datenschutzerklarung-schutz-ihrer-personenbezogenen-daten">Datenschutzerklärung</a>.
+            Abmeldung jederzeit möglich.
+          </span>
+        </label>
       </form>
-      <p class="exit-popup__privacy">No spam. Unsubscribe at any time.</p>
+      <p class="exit-popup__privacy">Kein Spam. Du kannst dich jederzeit abmelden.</p>
     </div>
   </div>
 </div>
@@ -169,6 +177,25 @@
     font-size: 0.76rem;
     color: rgba(255, 255, 255, 0.3);
     margin-top: 14px;
+  }
+  .exit-popup__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+  .exit-popup__consent input {
+    margin-top: 3px;
+    flex: 0 0 auto;
+  }
+  .exit-popup__consent a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   @media (max-width: 480px) {
     .exit-popup__modal { padding: 36px 24px; }

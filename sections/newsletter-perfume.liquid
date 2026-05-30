@@ -49,6 +49,14 @@
           {{ section.settings.button_label }}
         </button>
       </div>
+      <label class="newsletter-perfume__consent">
+        <input type="checkbox" name="contact[note]" value="Newsletter marketing consent" required>
+        <span>
+          Ich möchte den LumiScent Newsletter mit Angeboten und Neuheiten erhalten und akzeptiere die
+          <a href="/pages/datenschutzerklarung-schutz-ihrer-personenbezogenen-daten">Datenschutzerklärung</a>.
+          Eine Abmeldung ist jederzeit möglich.
+        </span>
+      </label>
     {%- endform -%}
 
     {%- if section.settings.privacy_text != blank -%}
@@ -56,6 +64,31 @@
     {%- endif -%}
   </div>
 </section>
+
+<style>
+  .newsletter-perfume__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    max-width: 760px;
+    margin: 1rem auto 0;
+    color: rgba(var(--color-foreground), 0.72);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .newsletter-perfume__consent input {
+    margin-top: 0.25rem;
+    flex: 0 0 auto;
+  }
+
+  .newsletter-perfume__consent a {
+    color: currentColor;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+</style>
 
 {% schema %}
 {
@@ -70,37 +103,37 @@
       "type": "text",
       "id": "label",
       "label": "Label",
-      "default": "THE INNER CIRCLE"
+      "default": "LUMISCENT NEWSLETTER"
     },
     {
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Join the House of LumiScent"
+      "default": "Neuheiten von LumiScent erhalten"
     },
     {
       "type": "textarea",
       "id": "text",
       "label": "Description",
-      "default": "Subscribe and receive exclusive access to new arrivals, special offers, and fragrance tips curated just for you."
+      "default": "Erhalte Updates zu neuen Düften, Aktionen und Dufttipps direkt per E-Mail."
     },
     {
       "type": "text",
       "id": "placeholder",
       "label": "Input Placeholder",
-      "default": "Enter your email address"
+      "default": "E-Mail-Adresse eingeben"
     },
     {
       "type": "text",
       "id": "button_label",
       "label": "Button Label",
-      "default": "Subscribe"
+      "default": "Anmelden"
     },
     {
       "type": "text",
       "id": "privacy_text",
       "label": "Privacy Text",
-      "default": "By subscribing, you agree to our Privacy Policy. Unsubscribe anytime."
+      "default": "Mit der Anmeldung akzeptierst du unsere Datenschutzerklärung. Abmeldung jederzeit möglich."
     }
   ],
   "presets": [

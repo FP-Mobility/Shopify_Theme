@@ -16,7 +16,7 @@
 <div class="scent-details">
   {%- if top_notes != blank or heart_notes != blank or base_notes != blank -%}
   <div class="scent-pyramid">
-    <h3 class="scent-pyramid__title">SCENT PROFILE</h3>
+    <h3 class="scent-pyramid__title">DUFTPROFIL</h3>
     <div class="scent-pyramid__visual">
       {%- if top_notes != blank -%}
       <div class="scent-pyramid__layer scent-pyramid__layer--top">
@@ -24,7 +24,7 @@
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="20,4 36,32 4,32"/></svg>
         </div>
         <div class="scent-pyramid__info">
-          <span class="scent-pyramid__label">Top Notes</span>
+          <span class="scent-pyramid__label">Kopfnote</span>
           <span class="scent-pyramid__notes">{{ top_notes }}</span>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 35S4 24 4 14a9 9 0 0 1 16-5.6A9 9 0 0 1 36 14c0 10-16 21-16 21z"/></svg>
         </div>
         <div class="scent-pyramid__info">
-          <span class="scent-pyramid__label">Heart Notes</span>
+          <span class="scent-pyramid__label">Herznote</span>
           <span class="scent-pyramid__notes">{{ heart_notes }}</span>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="32" height="24" rx="3"/></svg>
         </div>
         <div class="scent-pyramid__info">
-          <span class="scent-pyramid__label">Base Notes</span>
+          <span class="scent-pyramid__label">Basisnote</span>
           <span class="scent-pyramid__notes">{{ base_notes }}</span>
         </div>
       </div>
@@ -60,7 +60,7 @@
     {%- if longevity > 0 -%}
     <div class="scent-rating">
       <div class="scent-rating__header">
-        <span class="scent-rating__label">Longevity</span>
+        <span class="scent-rating__label">Haltbarkeit</span>
         <span class="scent-rating__value">{{ longevity }}/10</span>
       </div>
       <div class="scent-rating__bar">
@@ -71,7 +71,7 @@
     {%- if projection > 0 -%}
     <div class="scent-rating">
       <div class="scent-rating__header">
-        <span class="scent-rating__label">Projection</span>
+        <span class="scent-rating__label">Sillage</span>
         <span class="scent-rating__value">{{ projection }}/10</span>
       </div>
       <div class="scent-rating__bar">
@@ -84,7 +84,7 @@
 
   {%- if season != blank -%}
   <div class="scent-season">
-    <span class="scent-season__label">Best For:</span>
+    <span class="scent-season__label">Ideal für:</span>
     <span class="scent-season__value">{{ season }}</span>
   </div>
   {%- endif -%}

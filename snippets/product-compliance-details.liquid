@@ -1,0 +1,148 @@
+{%- comment -%}
+  Product compliance details for perfume/cosmetic product pages.
+  Expected metafields:
+  - custom.inci or custom.ingredients
+  - custom.fragrance_allergens or custom.allergens
+  - custom.warnings or custom.safety_info
+  - custom.responsible_person, custom.manufacturer, custom.importer
+  - custom.nominal_content or custom.volume
+  - custom.batch_code
+{%- endcomment -%}
+
+{%- liquid
+  assign inci = product.metafields.custom.inci
+  if inci == blank
+    assign inci = product.metafields.custom.ingredients
+  endif
+
+  assign allergens = product.metafields.custom.fragrance_allergens
+  if allergens == blank
+    assign allergens = product.metafields.custom.allergens
+  endif
+
+  assign warnings = product.metafields.custom.warnings
+  if warnings == blank
+    assign warnings = product.metafields.custom.safety_info
+  endif
+
+  assign responsible_person = product.metafields.custom.responsible_person
+  assign manufacturer = product.metafields.custom.manufacturer
+  assign importer = product.metafields.custom.importer
+
+  assign nominal_content = product.metafields.custom.nominal_content
+  if nominal_content == blank
+    assign nominal_content = product.metafields.custom.volume
+  endif
+
+  assign batch_code = product.metafields.custom.batch_code
+
+  assign has_compliance_info = false
+  if inci != blank or allergens != blank or warnings != blank or responsible_person != blank or manufacturer != blank or importer != blank or nominal_content != blank or batch_code != blank
+    assign has_compliance_info = true
+  endif
+-%}
+
+{%- if has_compliance_info or request.design_mode -%}
+  <div class="product-compliance quick-add-hidden">
+    <h2 class="product-compliance__heading">Produktinformationen</h2>
+
+    {%- if has_compliance_info -%}
+      <div class="product-compliance__grid">
+        {%- if nominal_content != blank -%}
+          <div class="product-compliance__item">
+            <h3>Füllmenge</h3>
+            <div class="rte">{{ nominal_content | metafield_tag }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- if inci != blank -%}
+          <div class="product-compliance__item">
+            <h3>Inhaltsstoffe / INCI</h3>
+            <div class="rte">{{ inci | metafield_tag }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- if allergens != blank -%}
+          <div class="product-compliance__item">
+            <h3>Duftallergene</h3>
+            <div class="rte">{{ allergens | metafield_tag }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- if warnings != blank -%}
+          <div class="product-compliance__item">
+            <h3>Warnhinweise</h3>
+            <div class="rte">{{ warnings | metafield_tag }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- if responsible_person != blank or manufacturer != blank or importer != blank -%}
+          <div class="product-compliance__item">
+            <h3>Hersteller / Verantwortliche Person</h3>
+            <div class="rte">
+              {%- if responsible_person != blank -%}
+                {{ responsible_person | metafield_tag }}
+              {%- endif -%}
+              {%- if manufacturer != blank -%}
+                {{ manufacturer | metafield_tag }}
+              {%- endif -%}
+              {%- if importer != blank -%}
+                {{ importer | metafield_tag }}
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        {%- if batch_code != blank -%}
+          <div class="product-compliance__item">
+            <h3>Chargencode / Echtheit</h3>
+            <div class="rte">{{ batch_code | metafield_tag }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <p class="product-compliance__editor-note">
+        Theme-Editor-Hinweis: Pflege die Metafelder für INCI, Warnhinweise, Verantwortliche Person,
+        Füllmenge und Chargencode, damit diese Angaben auf der Produktseite erscheinen.
+      </p>
+    {%- endif -%}
+  </div>
+
+  <style>
+    .product-compliance {
+      margin: 2rem 0;
+      padding: 1.8rem 0;
+      border-top: 1px solid rgba(var(--color-foreground), 0.12);
+      border-bottom: 1px solid rgba(var(--color-foreground), 0.12);
+    }
+
+    .product-compliance__heading {
+      margin: 0 0 1.2rem;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .product-compliance__grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .product-compliance__item h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.2rem;
+    }
+
+    .product-compliance__item .rte {
+      font-size: 1.4rem;
+      line-height: 1.6;
+    }
+
+    .product-compliance__editor-note {
+      margin: 0;
+      color: rgba(var(--color-foreground), 0.72);
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+  </style>
+{%- endif -%}

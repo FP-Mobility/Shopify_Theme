@@ -17,28 +17,28 @@
         "announcement_bxqebJ": {
           "type": "announcement",
           "settings": {
-            "text": "✦ Free EU Shipping over €59 — Authentic Fragrances Only ✦",
+            "text": "✦ Kostenloser Versand für alle Bestellungen ✦",
             "link": ""
           }
         },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 5% Off Orders over €59 — Use Code: LUMISCENT5 ✦",
+            "text": "✦ 5% Rabatt mit Code LUMISCENT5 ✦",
             "link": ""
           }
         },
         "announcement_secure": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 100% Authentic · Secure Checkout · Fast EU Dispatch ✦",
+            "text": "✦ 100% Originalware · Sicherer Checkout · Schneller Versand ✦",
             "link": ""
           }
         },
         "announcement_guarantee": {
           "type": "announcement",
           "settings": {
-            "text": "✦ 30-Day Satisfaction Guarantee · Authenticity Certified ✦",
+            "text": "✦ 30 Tage Rückgabe für ungeöffnete Artikel ✦",
             "link": ""
           }
         }

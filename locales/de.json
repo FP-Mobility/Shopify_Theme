@@ -108,7 +108,7 @@
     "product": {
       "add_to_cart": "In den Warenkorb legen",
       "description": "Beschreibung",
-      "on_sale": "Sale",
+      "on_sale": "Angebot",
       "quantity": {
         "label": "Anzahl",
         "input_label": "Anzahl von {{ product }}",
@@ -126,7 +126,7 @@
       "price": {
         "from_price_html": "Von {{ price }}",
         "regular_price": "Normaler Preis",
-        "sale_price": "Verkaufspreis",
+        "sale_price": "Angebotspreis",
         "unit_price": "Grundpreis"
       },
       "share": "Dieses Produkt teilen",
@@ -157,7 +157,7 @@
       },
       "nested_label": "{{ title }} für {{ parent_title }}",
       "view_full_details": "Vollständige Details anzeigen",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Versand</a> wird beim Checkout berechnet",
+      "shipping_policy_html": "<a href=\"{{ link }}\">Versand</a> ist kostenlos",
       "choose_options": "Optionen auswählen",
       "choose_product_options": "Optionen für {{ product_name }} auswählen",
       "value_unavailable": "{{ option_value }} – nicht verfügbar",

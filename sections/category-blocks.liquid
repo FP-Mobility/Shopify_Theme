@@ -134,7 +134,7 @@
               <p class="category-block__desc">{{ block.settings.description }}</p>
             {%- endif -%}
             <span class="category-block__cta">
-              {{ block.settings.cta_label | default: 'EXPLORE' }}
+              {{ block.settings.cta_label | default: 'ENTDECKEN' }}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </span>
           </div>
@@ -146,11 +146,11 @@
 
 {% schema %}
 {
-  "name": "Category Blocks",
+  "name": "Kategorieblöcke",
   "tag": "section",
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Explore Our World" },
-    { "type": "text", "id": "title", "label": "Heading", "default": "Perfume Origins" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Duftwelten entdecken" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Herkunft und Stil" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#0a0a0a" }
   ],
   "blocks": [
@@ -159,10 +159,10 @@
       "name": "Category",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "flag", "label": "Region Flag", "default": "🇪🇺 European" },
-        { "type": "text", "id": "heading", "label": "Heading", "default": "European Perfumes" },
-        { "type": "text", "id": "description", "label": "Description", "default": "French elegance, Italian passion" },
-        { "type": "text", "id": "cta_label", "label": "CTA Label", "default": "EXPLORE" },
+        { "type": "text", "id": "flag", "label": "Region Flag", "default": "Europäisch" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Europäische Parfums" },
+        { "type": "text", "id": "description", "label": "Description", "default": "Französische Eleganz, italienische Leidenschaft" },
+        { "type": "text", "id": "cta_label", "label": "CTA Label", "default": "ENTDECKEN" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
@@ -170,9 +170,9 @@
   "presets": [{
     "name": "Category Blocks",
     "blocks": [
-      { "type": "category", "settings": { "flag": "🇪🇺 European", "heading": "European Perfumes", "description": "French elegance, Italian passion, timeless craftsmanship" } },
-      { "type": "category", "settings": { "flag": "🇦🇪 Arabian", "heading": "UAE Perfumes", "description": "Rich oud, amber & oriental treasures" } },
-      { "type": "category", "settings": { "flag": "🇺🇸 American", "heading": "USA Exclusives", "description": "Bold, modern designer fragrances" } }
+      { "type": "category", "settings": { "flag": "Europäisch", "heading": "Europäische Parfums", "description": "Französische Eleganz, italienische Leidenschaft, zeitlose Handwerkskunst" } },
+      { "type": "category", "settings": { "flag": "Arabisch", "heading": "Arabische Düfte", "description": "Oud, Amber und orientalische Duftwelten" } },
+      { "type": "category", "settings": { "flag": "International", "heading": "Designer-Düfte", "description": "Moderne Markenklassiker und besondere Entdeckungen" } }
     ]
   }]
 }

@@ -110,26 +110,26 @@
 
   {%- if section.settings.show_all_link -%}
     <div class="brand-showcase__cta">
-      <a href="{{ section.settings.all_brands_page | default: '/collections/brands' }}">View All Brands</a>
+      <a href="{{ section.settings.all_brands_page | default: '/collections/brands' }}">Alle Marken ansehen</a>
     </div>
   {%- endif -%}
 </section>
 
 {% schema %}
 {
-  "name": "Brand Showcase",
+  "name": "Marken Showcase",
   "settings": [
     {
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "Top Perfume & Cologne Brands"
+      "default": "Ausgewählte Duftmarken"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Shop from the world's finest fragrance brands"
+      "default": "Entdecke ausgewählte Duftmarken aus aller Welt"
     },
     {
       "type": "checkbox",

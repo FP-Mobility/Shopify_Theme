@@ -1143,6 +1143,76 @@ button[name="add"]:hover,
   color: var(--lux-gold) !important;
 }
 
+@media screen and (min-width: 990px) {
+  .featured-collection-slider.slider-component-desktop {
+    --desktop-margin-left-first-item: max(
+      3rem,
+      calc((100vw - var(--page-width) + 2rem - var(--grid-desktop-horizontal-spacing)) / 2)
+    );
+  }
+}
+
+.featured-collection-slider__track.slider {
+  scrollbar-width: thin;
+  scrollbar-color: var(--lux-gold) rgba(255,255,255,0.16);
+  padding-bottom: 0.8rem;
+}
+
+.featured-collection-slider__track.slider::-webkit-scrollbar {
+  display: block;
+  height: 8px;
+}
+
+.featured-collection-slider__track.slider::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+}
+
+.featured-collection-slider__track.slider::-webkit-scrollbar-thumb {
+  background: var(--lux-gold);
+  border-radius: 999px;
+}
+
+.featured-collection-slider__buttons {
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.featured-collection-slider__buttons .slider-counter {
+  color: rgb(var(--color-foreground));
+  font-size: 1.2rem;
+  font-weight: 600;
+  min-width: 5.2rem;
+}
+
+.featured-collection-slider__buttons .slider-button {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--lux-gold);
+  border-radius: 999px;
+  background: var(--lux-gold);
+  color: var(--lux-black);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.featured-collection-slider__buttons .slider-button:hover:not([disabled]) {
+  background: var(--lux-gold-dark);
+  border-color: var(--lux-gold-dark);
+  color: var(--lux-white);
+}
+
+.featured-collection-slider__buttons .slider-button[disabled] {
+  background: rgba(200,169,107,0.18);
+  border-color: rgba(200,169,107,0.45);
+  color: var(--lux-gold);
+  opacity: 0.65;
+}
+
+.featured-collection-slider__buttons .slider-button .icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 /* ============== PRODUCT CARDS (ParfumGroup-aligned) ============== */
 .card-wrapper {
   position: relative;

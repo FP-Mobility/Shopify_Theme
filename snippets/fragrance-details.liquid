@@ -52,47 +52,47 @@
 
 {% if product.metafields.custom.fragrance_type or product.metafields.custom.fragrance_notes or product.metafields.custom.longevity or product.metafields.custom.best_for or product.metafields.custom.occasion or product.metafields.custom.season %}
   <div class="fragrance-details">
-    <h3 class="details-title">Fragrance Details</h3>
+    <h3 class="details-title">Duftdetails</h3>
     
     <div class="details-grid">
       {% if product.metafields.custom.fragrance_type %}
         <div class="detail-item">
-          <label>Type</label>
+          <label>Typ</label>
           <span>{{ product.metafields.custom.fragrance_type.value }}</span>
         </div>
       {% endif %}
       
       {% if product.metafields.custom.fragrance_notes %}
         <div class="detail-item">
-          <label>Notes</label>
+          <label>Duftnoten</label>
           <span>{{ product.metafields.custom.fragrance_notes.value }}</span>
         </div>
       {% endif %}
       
       {% if product.metafields.custom.longevity %}
         <div class="detail-item">
-          <label>Longevity</label>
+          <label>Haltbarkeit</label>
           <span>{{ product.metafields.custom.longevity.value }}</span>
         </div>
       {% endif %}
       
       {% if product.metafields.custom.best_for %}
         <div class="detail-item">
-          <label>Best For</label>
+          <label>Ideal für</label>
           <span>{{ product.metafields.custom.best_for.value }}</span>
         </div>
       {% endif %}
       
       {% if product.metafields.custom.occasion %}
         <div class="detail-item">
-          <label>Occasion</label>
+          <label>Anlass</label>
           <span>{{ product.metafields.custom.occasion.value }}</span>
         </div>
       {% endif %}
       
       {% if product.metafields.custom.season %}
         <div class="detail-item">
-          <label>Season</label>
+          <label>Saison</label>
           <span>{{ product.metafields.custom.season.value }}</span>
         </div>
       {% endif %}

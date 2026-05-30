@@ -15,14 +15,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Our Story",
+            "heading": "Unsere Geschichte",
             "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Where Luxury Meets Identity — From Europe, Arabia & Beyond",
+            "text": "Luxusdüfte aus Europa, Arabien und darüber hinaus",
             "text_style": "subtitle"
           }
         }
@@ -50,29 +50,29 @@
         "v1": {
           "type": "value",
           "settings": {
-            "icon": "âœ“",
-            "label": "100% Authentic"
+            "icon": "✓",
+            "label": "100% Originalware"
           }
         },
         "v2": {
           "type": "value",
           "settings": {
-            "icon": "ðŸŒ",
-            "label": "EU, UAE & USA"
+            "icon": "✓",
+            "label": "Europa, Arabien & International"
           }
         },
         "v3": {
           "type": "value",
           "settings": {
-            "icon": "ðŸšš",
-            "label": "Fast EU Shipping"
+            "icon": "✓",
+            "label": "Kostenloser Versand"
           }
         },
         "v4": {
           "type": "value",
           "settings": {
-            "icon": "â­",
-            "label": "Premium Quality"
+            "icon": "✓",
+            "label": "Premium-Auswahl"
           }
         }
       },
@@ -83,11 +83,11 @@
         "v4"
       ],
       "settings": {
-        "eyebrow": "Our Origin",
-        "title": "EU, UAE & USA Perfume Excellence",
-        "text": "<p>LumiScent was born from a simple belief: everyone deserves access to the world's finest fragrances. We bridge the gap between luxury perfume houses and discerning customers who value authenticity, quality, and exceptional value.</p><p>Our team of fragrance experts travels between Europe, the Arabian Gulf, and the United States to source the most coveted scents â€” from French haute parfumerie and Italian elegance to rich Arabian oud and exclusive American designer releases.</p><p>Every bottle passes our rigorous authenticity verification. We work directly with authorized distributors so you receive only genuine products at prices that make luxury accessible.</p>",
+        "eyebrow": "Unsere Herkunft",
+        "title": "Ausgewählte Duftwelten",
+        "text": "<p>LumiScent entstand aus der Überzeugung, dass hochwertige Düfte zugänglich, authentisch und sorgfältig ausgewählt sein sollten. Wir verbinden die Welt internationaler Parfummarken mit Kunden, die Wert auf Qualität und Vertrauen legen.</p><p>Unsere Auswahl umfasst europäische Klassiker, arabische Duftwelten und internationale Designerparfums.</p><p>Jeder Duft wird mit Blick auf Originalware, Verpackung und nachvollziehbare Produktinformationen geprüft.</p>",
         "background_color": "#faf8f5",
-        "button_label": "SHOP ALL FRAGRANCES",
+        "button_label": "ALLE DÜFTE ENTDECKEN",
         "button_link": "shopify://collections/all"
       }
     },
@@ -97,8 +97,8 @@
         "col1": {
           "type": "column",
           "settings": {
-            "title": "Authenticity Guaranteed",
-            "text": "<p>Every product is 100% genuine, sourced from authorized distributors with verifiable batch codes and original packaging.</p>",
+            "title": "Originalware im Fokus",
+            "text": "<p>Wir legen Wert auf echte, originalverpackte Produkte und klare Produktinformationen.</p>",
             "link_label": "",
             "link": ""
           }
@@ -106,8 +106,8 @@
         "col2": {
           "type": "column",
           "settings": {
-            "title": "Expert Curation",
-            "text": "<p>Our fragrance experts personally select each scent, ensuring only the finest quality and most compelling compositions make it to our collection.</p>",
+            "title": "Sorgfältige Auswahl",
+            "text": "<p>Unsere Duftauswahl wird kuratiert, damit du passende Klassiker, Neuheiten und besondere Entdeckungen findest.</p>",
             "link_label": "",
             "link": ""
           }
@@ -115,8 +115,8 @@
         "col3": {
           "type": "column",
           "settings": {
-            "title": "Global Sourcing",
-            "text": "<p>From Parisian ateliers to Arabian oud masters and American designer houses â€” we bring the world's best fragrances to your doorstep.</p>",
+            "title": "Internationale Duftwelten",
+            "text": "<p>Von europäischen Parfumtraditionen bis zu arabischen Oud-Kompositionen: Wir bringen besondere Duftwelten zu dir nach Hause.</p>",
             "link_label": "",
             "link": ""
           }
@@ -124,8 +124,8 @@
         "col4": {
           "type": "column",
           "settings": {
-            "title": "Exceptional Service",
-            "text": "<p>From personalized recommendations to seamless delivery and 30-day returns, we're committed to your complete satisfaction.</p>",
+            "title": "Verlässlicher Service",
+            "text": "<p>Kostenloser Versand, sichere Zahlung und 30 Tage Rückgabe für ungeöffnete, originalverpackte Artikel.</p>",
             "link_label": "",
             "link": ""
           }
@@ -138,7 +138,7 @@
         "col4"
       ],
       "settings": {
-        "title": "Why LumiScent",
+        "title": "Warum LumiScent",
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "adapt",
@@ -160,20 +160,20 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Our Promise to You"
+            "heading": "Unser Versprechen"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>With thousands of satisfied customers across Europe, we've built our reputation on trust, quality, and exceptional value. Our commitment to authenticity means you'll never have to worry about the products you receive.</p><p>Free shipping on orders over â‚¬59, a 30-day satisfaction guarantee, and dedicated customer support â€” because your confidence in us is everything.</p>",
+            "text": "<p>Wir möchten, dass du mit Vertrauen bestellst: transparente Produktinformationen, sorgfältig ausgewählte Originalware und ein sicherer Checkout.</p><p>Der Versand ist für alle Bestellungen kostenlos. Für ungeöffnete, originalverpackte Artikel bieten wir 30 Tage Rückgabe; dein gesetzliches Widerrufsrecht bleibt unberührt.</p>",
             "text_style": "body"
           }
         },
         "button": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Now",
+            "button_label": "Jetzt shoppen",
             "button_link": "shopify://collections/all"
           }
         }
@@ -200,11 +200,11 @@
       "type": "newsletter-perfume",
       "settings": {
         "label": "",
-        "title": "Join the LumiScent Community",
-        "text": "Be the first to know about new arrivals, exclusive offers, and fragrance tips from our experts.",
-        "placeholder": "Enter your email address",
-        "button_label": "SUBSCRIBE",
-        "privacy_text": "By subscribing, you agree to our Privacy Policy."
+        "title": "Neuheiten von LumiScent erhalten",
+        "text": "Erhalte Updates zu neuen Düften, Aktionen und Dufttipps direkt per E-Mail.",
+        "placeholder": "E-Mail-Adresse eingeben",
+        "button_label": "ANMELDEN",
+        "privacy_text": "Mit der Anmeldung akzeptierst du unsere Datenschutzerklärung. Abmeldung jederzeit möglich."
       }
     }
   },

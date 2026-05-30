@@ -18,11 +18,11 @@
         "height": 90,
         "overlay_opacity": 35,
         "eyebrow": "LumiScent",
-        "heading": "Lumiscent – Where Luxury Meets Identity",
-        "text": "Curated luxury fragrances from Europe, Arabia & Beyond. Complimentary shipping on orders over €59.",
-        "button_label_1": "SHOP WOMEN",
+        "heading": "LumiScent - Duftwelten für jeden Moment",
+        "text": "Ausgewählte Luxusdüfte aus Europa, Arabien und darüber hinaus. Kostenloser Versand für alle Bestellungen.",
+        "button_label_1": "DAMENDÜFTE",
         "button_link_1": "shopify://collections/womens-fragrances",
-        "button_label_2": "SHOP MEN",
+        "button_label_2": "HERRENDÜFTE",
         "button_link_2": "shopify://collections/mens-fragrances",
         "button_label_3": "",
         "button_link_3": "",
@@ -37,8 +37,8 @@
         "category_afmXcm": {
           "type": "category",
           "settings": {
-            "title": "Men's Fragrances",
-            "description": "Bold and sophisticated fragrances for men",
+            "title": "Herrendüfte",
+            "description": "Markante und stilvolle Düfte für Herren",
             "image": "shopify://shop_images/Screenshot_2026-03-29_131422.jpg",
             "collection": "mens-fragrances"
           }
@@ -46,8 +46,8 @@
         "category_nXRkx7": {
           "type": "category",
           "settings": {
-            "title": "Women's Fragrances",
-            "description": "Elegant and luxurious fragrances for women",
+            "title": "Damendüfte",
+            "description": "Elegante und luxuriöse Düfte für Damen",
             "image": "shopify://shop_images/Screenshot_2026-03-29_131951.jpg",
             "collection": "womens-fragrances"
           }
@@ -56,7 +56,7 @@
           "type": "category",
           "settings": {
             "title": "Unisex",
-            "description": "Versatile fragrances for everyone",
+            "description": "Vielseitige Düfte für jeden Stil",
             "image": "shopify://shop_images/Screenshot_2026-03-25_190035.jpg",
             "collection": "unisex"
           }
@@ -64,8 +64,8 @@
         "category_JprphD": {
           "type": "category",
           "settings": {
-            "title": "Gift Sets",
-            "description": "Perfect gifts for fragrance lovers",
+            "title": "Geschenksets",
+            "description": "Besondere Geschenke für Duftliebhaber",
             "image": "shopify://shop_images/Screenshot_2026-03-27_145032.jpg",
             "collection": "gift-sets"
           }
@@ -80,7 +80,7 @@
       "disabled": true,
       "name": "Featured Categories",
       "settings": {
-        "title": "Shop by Category"
+        "title": "Nach Kategorie shoppen"
       }
     },
     "best-sellers": {
@@ -88,9 +88,9 @@
       "settings": {
         "collection": "bestseller",
         "products_to_show": 25,
-        "title": "<strong>Best Sellers</strong>",
+        "title": "<strong>Bestseller</strong>",
         "heading_size": "h0",
-        "description": "<p>Our most coveted fragrances, chosen by discerning customers worldwide</p>",
+        "description": "<p>Beliebte Duftfavoriten, sorgfältig für anspruchsvolle Kunden ausgewählt</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 6,
@@ -118,7 +118,7 @@
         "products_to_show": 25,
         "title": "Dubai Parfum",
         "heading_size": "h1",
-        "description": "<p>The latest additions to our curated fragrance collection</p>",
+        "description": "<p>Neue Highlights aus unserer kuratierten Duftauswahl</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
@@ -146,16 +146,16 @@
           "type": "gender_card",
           "settings": {
             "image": "shopify://shop_images/fragrance-minimal-3.jpg",
-            "title": "FOR MEN",
+            "title": "FÜR HERREN",
             "main_link": "shopify://collections/mens-fragrances",
-            "cta_label": "VIEW ALL MEN'S",
-            "link_1_label": "Shop Men",
+            "cta_label": "ALLE HERRENDÜFTE",
+            "link_1_label": "Herren shoppen",
             "link_1_url": "shopify://collections/mens-fragrances",
-            "link_2_label": "Best Sellers",
+            "link_2_label": "Bestseller",
             "link_2_url": "shopify://collections/best-sellers",
-            "link_3_label": "New Arrivals",
+            "link_3_label": "Neuheiten",
             "link_3_url": "shopify://collections/new-arrivals",
-            "link_4_label": "Gift Sets",
+            "link_4_label": "Geschenksets",
             "link_4_url": "shopify://collections/gift-sets"
           }
         },
@@ -163,16 +163,16 @@
           "type": "gender_card",
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-03-07_204920.jpg",
-            "title": "FOR WOMEN",
+            "title": "FÜR DAMEN",
             "main_link": "shopify://collections/womens-fragrances",
-            "cta_label": "VIEW ALL WOMEN'S",
-            "link_1_label": "Shop Women",
+            "cta_label": "ALLE DAMENDÜFTE",
+            "link_1_label": "Damen shoppen",
             "link_1_url": "shopify://collections/womens-fragrances",
-            "link_2_label": "Best Sellers",
+            "link_2_label": "Bestseller",
             "link_2_url": "shopify://collections/best-sellers",
-            "link_3_label": "New Arrivals",
+            "link_3_label": "Neuheiten",
             "link_3_url": "shopify://collections/new-arrivals",
-            "link_4_label": "Gift Sets",
+            "link_4_label": "Geschenksets",
             "link_4_url": "shopify://collections/gift-sets"
           }
         }
@@ -191,9 +191,9 @@
     "fragrance-quiz": {
       "type": "fragrance-quiz",
       "settings": {
-        "eyebrow": "Find Your Signature",
-        "title": "Fragrance Finder Quiz",
-        "subtitle": "Answer a few questions and we'll recommend the perfect scent for you"
+        "eyebrow": "Finde deinen Duft",
+        "title": "Duftfinder",
+        "subtitle": "Beantworte ein paar Fragen und entdecke passende Duftempfehlungen"
       }
     },
     "brand-story": {
@@ -203,28 +203,28 @@
           "type": "value",
           "settings": {
             "icon": "✓",
-            "label": "100% Authentic"
+            "label": "100% Originalware"
           }
         },
         "v2": {
           "type": "value",
           "settings": {
-            "icon": "🚚",
-            "label": "Fast EU Shipping"
+            "icon": "✓",
+            "label": "Kostenloser Versand"
           }
         },
         "v3": {
           "type": "value",
           "settings": {
-            "icon": "🔒",
-            "label": "Secure Checkout"
+            "icon": "✓",
+            "label": "Sicherer Checkout"
           }
         },
         "v4": {
           "type": "value",
           "settings": {
-            "icon": "⭐",
-            "label": "Premium Quality"
+            "icon": "✓",
+            "label": "Premium-Auswahl"
           }
         }
       },
@@ -236,11 +236,11 @@
       ],
       "settings": {
         "image": "shopify://shop_images/pink-peony-blossom.jpg",
-        "eyebrow": "Our Story",
-        "title": "Where Luxury Meets Identity",
-        "text": "<p>At LumiScent, we believe fragrance is the invisible part of your personal style. Born from a passion for authentic luxury, we curate the world's finest perfumes from EU masters, Arabian oud artisans, and exclusive US importers.</p><p>Every bottle in our collection passes rigorous authenticity verification. We work directly with authorized distributors to guarantee you receive only genuine products at exceptional value.</p>",
+        "eyebrow": "Unsere Geschichte",
+        "title": "Luxusduft mit Charakter",
+        "text": "<p>Bei LumiScent glauben wir, dass ein Duft ein unsichtbarer Teil des persönlichen Stils ist. Aus Leidenschaft für echte Luxusdüfte kuratieren wir ausgewählte Parfums aus Europa, Arabien und internationalen Markenwelten.</p><p>Jeder Duft in unserer Auswahl wird sorgfältig geprüft. Wir beziehen unsere Produkte über verlässliche Distributionswege, damit du ausschließlich Originalware erhältst.</p>",
         "background_color": "#faf8f5",
-        "button_label": "LEARN MORE",
+        "button_label": "MEHR ERFAHREN",
         "button_link": "shopify://pages/about"
       }
     },
@@ -331,8 +331,8 @@
         "b10"
       ],
       "settings": {
-        "title": "TOP PERFUME & COLOGNE BRANDS",
-        "subtitle": "Shop your favorite brands at the best prices",
+        "title": "TOP PARFUMMARKEN",
+        "subtitle": "Entdecke deine Lieblingsmarken bei LumiScent",
         "show_all_link": true,
         "scroll_speed": 30,
         "all_brands_page": ""
@@ -345,7 +345,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "The quality of fragrances is exceptional. Fast shipping and beautiful packaging. This is my go-to perfume store!",
+            "text": "Die Duftauswahl ist hochwertig, die Lieferung schnell und die Verpackung sehr schön. Hier bestelle ich gerne wieder.",
             "author_name": "Sarah M.",
             "author_location": "Munich"
           }
@@ -354,7 +354,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "Incredible selection and unbeatable prices. Every product I've purchased has been 100% authentic. Highly recommend!",
+            "text": "Sehr gute Auswahl und jedes bestellte Produkt war originalverpackt. Klare Empfehlung.",
             "author_name": "James T.",
             "author_location": "Berlin"
           }
@@ -363,7 +363,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "Great customer service! They helped me find the perfect anniversary gift. My wife absolutely loved it.",
+            "text": "Guter Kundenservice. Ich habe ein passendes Geschenk gefunden und es kam sehr gut an.",
             "author_name": "Michael R.",
             "author_location": "Hamburg"
           }
@@ -372,7 +372,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "Such a perfect winter scent. A bit strong, so only one spray needed. Lasts forever. Highly recommend!",
+            "text": "Ein toller Duft für die kalte Jahreszeit. Sehr intensiv und langanhaltend.",
             "author_name": "Anna K.",
             "author_location": "Frankfurt"
           }
@@ -381,7 +381,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "First time ordering fragrances online and can say this is a great site. Authentic, not damaged, arrived in 3 days!",
+            "text": "Meine erste Online-Bestellung für Parfum lief reibungslos. Originalware, unbeschädigt und schnell geliefert.",
             "author_name": "Thomas B.",
             "author_location": "Cologne"
           }
@@ -390,7 +390,7 @@
           "type": "testimonial",
           "settings": {
             "rating": 5,
-            "text": "I LOVE the perfume. And the customer service, shipping, whole experience was great!! Will order again.",
+            "text": "Der Duft gefällt mir sehr gut. Bestellung, Versand und Service waren unkompliziert.",
             "author_name": "Lisa W.",
             "author_location": "Stuttgart"
           }
@@ -405,10 +405,10 @@
         "t6"
       ],
       "settings": {
-        "title": "WHAT PEOPLE ARE SAYING ABOUT US",
+        "title": "KUNDENSTIMMEN",
         "show_rating": true,
         "rating": "4.9",
-        "review_count": "2,500+"
+        "review_count": ""
       }
     },
     "trust-badges": {
@@ -417,8 +417,8 @@
         "tb-1": {
           "type": "badge",
           "settings": {
-            "title": "FREE SHIPPING",
-            "description": "On orders over €59",
+            "title": "KOSTENLOSER VERSAND",
+            "description": "Für alle Bestellungen",
             "icon_type": "svg",
             "svg_icon": "shipping",
             "icon_emoji": "✓"
@@ -427,8 +427,8 @@
         "tb-2": {
           "type": "badge",
           "settings": {
-            "title": "SATISFACTION GUARANTEED",
-            "description": "30-day returns",
+            "title": "EINFACHE RÜCKGABE",
+            "description": "30 Tage für ungeöffnete Artikel",
             "icon_type": "svg",
             "svg_icon": "guarantee",
             "icon_emoji": "✓"
@@ -437,8 +437,8 @@
         "tb-3": {
           "type": "badge",
           "settings": {
-            "title": "100% AUTHENTIC",
-            "description": "Guaranteed genuine",
+            "title": "100% ORIGINALWARE",
+            "description": "Sorgfältig geprüft",
             "icon_type": "svg",
             "svg_icon": "authentic",
             "icon_emoji": "✓"
@@ -447,8 +447,8 @@
         "tb-4": {
           "type": "badge",
           "settings": {
-            "title": "SAFE & SECURE",
-            "description": "Encrypted checkout",
+            "title": "SICHERER CHECKOUT",
+            "description": "Verschlüsselte Zahlung",
             "icon_type": "svg",
             "svg_icon": "secure",
             "icon_emoji": "✓"
@@ -462,8 +462,8 @@
         "tb-4"
       ],
       "settings": {
-        "heading": "Your Perfect Scent at the Perfect Price",
-        "subheading": "Over 1 million packages shipped",
+        "heading": "Dein nächster Lieblingsduft",
+        "subheading": "Originalware, sichere Zahlung und kostenloser Versand",
         "background_color": "#000000"
       }
     },
@@ -473,14 +473,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "PREMIUM FRAGRANCES AT THE BEST PRICES",
+            "heading": "PREMIUM-DÜFTE FÜR DEINEN STIL",
             "heading_size": "h2"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>LumiScent curates the world's finest fragrances to elevate your personal style and express your individuality. Our meticulously selected collection features everything from the latest men's fragrances to timeless women's perfumes. Whether you are treating yourself or searching for the perfect gift, our selections promise a luxurious and unforgettable experience.</p>"
+            "text": "<p>LumiScent kuratiert ausgewählte Düfte für unterschiedliche Stile, Anlässe und Persönlichkeiten. Von markanten Herrendüften über zeitlose Damenparfums bis zu besonderen Geschenkideen findest du eine Auswahl, die sorgfältig auf Qualität und Authentizität geprüft wird.</p>"
           }
         }
       },
@@ -502,11 +502,11 @@
       "type": "newsletter-perfume",
       "settings": {
         "label": "",
-        "title": "First to know about our sales and discounts",
-        "text": "Our email subscribers get early access to new launches, promotions and more.",
-        "placeholder": "Type your email here",
-        "button_label": "SUBSCRIBE",
-        "privacy_text": "By subscribing you agree with our Privacy Policy"
+        "title": "Neuheiten und Angebote zuerst entdecken",
+        "text": "Erhalte Updates zu neuen Düften, Aktionen und Dufttipps direkt per E-Mail.",
+        "placeholder": "E-Mail-Adresse eingeben",
+        "button_label": "ANMELDEN",
+        "privacy_text": "Mit der Anmeldung akzeptierst du unsere Datenschutzerklärung. Abmeldung jederzeit möglich."
       }
     },
     "slideshow": {
@@ -517,10 +517,10 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-03-25_175815.jpg",
             "image_overlay_opacity": 40,
-            "heading": "Discover Your Signature Scent",
+            "heading": "Entdecke deinen Signature-Duft",
             "heading_size": "h1",
-            "subheading": "Premium fragrances at unbeatable prices. Free shipping over €59.",
-            "button_label": "Button label",
+            "subheading": "Ausgewählte Premium-Düfte mit kostenlosem Versand für alle Bestellungen.",
+            "button_label": "Jetzt shoppen",
             "link": "",
             "button_style_secondary": false,
             "show_text_box": false,
@@ -535,10 +535,10 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-03-25_181903.jpg",
             "image_overlay_opacity": 40,
-            "heading": "New Arrivals",
+            "heading": "Neuheiten",
             "heading_size": "h1",
-            "subheading": "Explore the latest fragrances from top brands worldwide.",
-            "button_label": "Button label",
+            "subheading": "Entdecke neue Düfte ausgewählter Marken.",
+            "button_label": "Jetzt entdecken",
             "link": "",
             "button_style_secondary": false,
             "show_text_box": false,
@@ -553,10 +553,10 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-03-25_190035.jpg",
             "image_overlay_opacity": 0,
-            "heading": "Gift Sets Collection",
+            "heading": "Geschenksets",
             "heading_size": "h1",
-            "subheading": "Find the perfect fragrance gift for every occasion.",
-            "button_label": "Button label",
+            "subheading": "Finde besondere Duftgeschenke für jeden Anlass.",
+            "button_label": "Geschenke ansehen",
             "link": "",
             "button_style_secondary": true,
             "show_text_box": false,
@@ -595,7 +595,7 @@
         "ai_gen_block_d3aaf99_WRbX36": {
           "type": "ai_gen_block_d3aaf99",
           "settings": {
-            "heading_text": "Luxury Fragrances",
+            "heading_text": "Luxusdüfte",
             "heading_tag": "h2",
             "text_alignment": "center",
             "desktop_width_percent": 100,
@@ -621,30 +621,30 @@
         "eu": {
           "type": "category",
           "settings": {
-            "flag": "🇪🇺 European",
-            "heading": "European Perfumes",
-            "description": "French elegance, Italian passion, timeless craftsmanship",
-            "cta_label": "EXPLORE",
+            "flag": "Europäisch",
+            "heading": "Europäische Parfums",
+            "description": "Französische Eleganz, italienische Leidenschaft, zeitlose Handwerkskunst",
+            "cta_label": "ENTDECKEN",
             "link": ""
           }
         },
         "uae": {
           "type": "category",
           "settings": {
-            "flag": "🇦🇪 Arabian",
-            "heading": "UAE Perfumes",
-            "description": "Rich oud, amber & oriental treasures",
-            "cta_label": "EXPLORE",
+            "flag": "Arabisch",
+            "heading": "Arabische Düfte",
+            "description": "Oud, Amber und orientalische Duftwelten",
+            "cta_label": "ENTDECKEN",
             "link": ""
           }
         },
         "usa": {
           "type": "category",
           "settings": {
-            "flag": "🇺🇸 American",
-            "heading": "USA Exclusives",
-            "description": "Bold, modern designer fragrances",
-            "cta_label": "EXPLORE",
+            "flag": "International",
+            "heading": "Designer-Düfte",
+            "description": "Moderne Markenklassiker und besondere Entdeckungen",
+            "cta_label": "ENTDECKEN",
             "link": ""
           }
         }
@@ -656,8 +656,8 @@
       ],
       "disabled": true,
       "settings": {
-        "eyebrow": "Explore Our World",
-        "title": "Perfume Origins",
+        "eyebrow": "Duftwelten entdecken",
+        "title": "Herkunft und Stil",
         "background_color": "#0a0a0a"
       }
     },
@@ -667,30 +667,30 @@
         "row_WE9KLK": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
+            "caption": "Duftauswahl",
+            "heading": "Kuratiert für deinen Stil",
+            "text": "<p>Setze ausgewählte Produkte, Kollektionen oder Duftwelten in Szene und erzähle, was sie besonders macht.</p>",
+            "button_label": "Mehr erfahren",
             "button_link": ""
           }
         },
         "row_NBrfUG": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
+            "caption": "Service",
+            "heading": "Schnell und sicher bestellt",
+            "text": "<p>Kommuniziere hier Versand, Rückgabe und Servicevorteile klar und vertrauensbildend.</p>",
+            "button_label": "Mehr erfahren",
             "button_link": ""
           }
         },
         "row_3rTnVx": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
+            "caption": "Originalware",
+            "heading": "Verlässliche Duftauswahl",
+            "text": "<p>Nutze diesen Bereich für Informationen zu Marken, Herkunft und Produktauthentizität.</p>",
+            "button_label": "Mehr erfahren",
             "button_link": ""
           }
         }
@@ -724,9 +724,9 @@
       "settings": {
         "collection": "",
         "products_to_show": 4,
-        "title": "Bundle & Save",
+        "title": "Sets entdecken",
         "heading_size": "h1",
-        "description": "<p>Exclusive sets at exceptional value — the perfect gift</p>",
+        "description": "<p>Ausgewählte Duftsets als besondere Geschenkidee</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
@@ -753,9 +753,9 @@
       "settings": {
         "collection": "new-arrivals",
         "products_to_show": 25,
-        "title": "Bundle & Save",
+        "title": "Sets entdecken",
         "heading_size": "h1",
-        "description": "<p>Exclusive sets at exceptional value — the perfect gift</p>",
+        "description": "<p>Ausgewählte Duftsets als besondere Geschenkidee</p>",
         "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
@@ -782,7 +782,7 @@
       "settings": {
         "blog": "news",
         "post_limit": 4,
-        "heading": "LATEST BLOG",
+        "heading": "DUFTMAGAZIN",
         "heading_size": "h1",
         "columns_desktop": 4,
         "show_view_all": true,
@@ -866,7 +866,7 @@
             "show_price": true,
             "text_alignment": "center",
             "show_badges": true,
-            "relevant_tags": "Men, Women, Unisex, Kids, Boys, Girls, New, Sale, Limited",
+            "relevant_tags": "Herren, Damen, Unisex, Neu, Angebot, Limitiert",
             "max_badges": 5,
             "badge_position": "top-left",
             "badge_offset": 12,

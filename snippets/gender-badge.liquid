@@ -24,17 +24,14 @@
   if gender == ''
     for col in product.collections
       assign col_lower = col.handle | downcase
-      if col_lower contains 'men' and col_lower contains 'women'
+      if col_lower contains 'unisex'
         assign gender = 'unisex'
         break
-      elsif col_lower contains 'women' or col_lower contains 'her'
+      elsif col_lower contains 'damen' or col_lower contains 'women' or col_lower contains 'womens' or col_lower contains 'frau'
         assign gender = 'women'
         break
-      elsif col_lower contains 'men' or col_lower contains 'him'
+      elsif col_lower contains 'herren' or col_lower contains 'men' or col_lower contains 'mens' or col_lower contains 'mann'
         assign gender = 'men'
-        break
-      elsif col_lower contains 'unisex'
-        assign gender = 'unisex'
         break
       endif
     endfor
@@ -44,8 +41,8 @@
 {%- if gender != '' -%}
   <span class="gender-badge gender-badge--{{ gender }}">
     {%- case gender -%}
-      {%- when 'men' -%}Men
-      {%- when 'women' -%}Women
+      {%- when 'men' -%}Herren
+      {%- when 'women' -%}Damen
       {%- when 'unisex' -%}Unisex
     {%- endcase -%}
   </span>

@@ -23,7 +23,7 @@
   {%- endif -%}
   <div class="collection-hero-lux__overlay"></div>
   <div class="collection-hero-lux__content page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-    <span class="collection-hero-lux__eyebrow">Collection</span>
+    <span class="collection-hero-lux__eyebrow">Kollektion</span>
     <h1 class="collection-hero-lux__title">
       {{- collection.title | escape -}}
     </h1>
@@ -31,7 +31,7 @@
       <div class="collection-hero-lux__desc rte">{{ collection.description }}</div>
     {%- endif -%}
     <div class="collection-hero-lux__count">
-      {{ collection.products_count }} {{ collection.products_count | pluralize: 'Product', 'Products' }}
+      {{ collection.products_count }} {% if collection.products_count == 1 %}Produkt{% else %}Produkte{% endif %}
     </div>
   </div>
 </div>

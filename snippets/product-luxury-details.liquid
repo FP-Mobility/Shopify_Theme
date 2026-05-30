@@ -1,6 +1,6 @@
 {%- comment -%}
-  Luxury Product Details - Below the fold sections
-  Renders: Scent Story, Performance Metrics, Why You'll Love It
+  Product detail sections below the fold.
+  Renders: scent story, performance metrics, and trust points.
   Usage: Loaded as a section below main-product
 {%- endcomment -%}
 
@@ -20,33 +20,33 @@
   <div class="pdp-scent-story">
     <div class="pdp-scent-story__inner page-width">
       <div class="pdp-scent-story__header">
-        <span class="pdp-section-eyebrow">The Scent Story</span>
-        <h2 class="pdp-section-title">A Fragrance Journey</h2>
+        <span class="pdp-section-eyebrow">Duftverlauf</span>
+        <h2 class="pdp-section-title">Die Duftkomposition</h2>
         <div class="pdp-gold-line"></div>
       </div>
       <div class="pdp-scent-story__pyramid">
         {%- if top_notes != blank -%}
         <div class="pdp-note pdp-note--top">
-          <div class="pdp-note__phase">Opening</div>
-          <div class="pdp-note__label">Top Notes</div>
+          <div class="pdp-note__phase">Auftakt</div>
+          <div class="pdp-note__label">Kopfnote</div>
           <div class="pdp-note__list">{{ top_notes }}</div>
-          <div class="pdp-note__desc">The first impression — bright and inviting</div>
+          <div class="pdp-note__desc">Der erste Eindruck - frisch und einladend</div>
         </div>
         {%- endif -%}
         {%- if heart_notes != blank -%}
         <div class="pdp-note pdp-note--heart">
-          <div class="pdp-note__phase">Heart</div>
-          <div class="pdp-note__label">Heart Notes</div>
+          <div class="pdp-note__phase">Herz</div>
+          <div class="pdp-note__label">Herznote</div>
           <div class="pdp-note__list">{{ heart_notes }}</div>
-          <div class="pdp-note__desc">The soul of the fragrance — rich and full</div>
+          <div class="pdp-note__desc">Die Seele des Duftes - charaktervoll und rund</div>
         </div>
         {%- endif -%}
         {%- if base_notes != blank -%}
         <div class="pdp-note pdp-note--base">
-          <div class="pdp-note__phase">Dry Down</div>
-          <div class="pdp-note__label">Base Notes</div>
+          <div class="pdp-note__phase">Basis</div>
+          <div class="pdp-note__label">Basisnote</div>
           <div class="pdp-note__list">{{ base_notes }}</div>
-          <div class="pdp-note__desc">The lasting signature — deep and memorable</div>
+          <div class="pdp-note__desc">Die bleibende Signatur - tief und einprägsam</div>
         </div>
         {%- endif -%}
       </div>
@@ -60,7 +60,7 @@
     <div class="pdp-performance__inner page-width">
       <div class="pdp-performance__header">
         <span class="pdp-section-eyebrow">Performance</span>
-        <h2 class="pdp-section-title">How It Performs</h2>
+        <h2 class="pdp-section-title">So wirkt der Duft</h2>
         <div class="pdp-gold-line"></div>
       </div>
       <div class="pdp-performance__grid">
@@ -69,7 +69,7 @@
           <div class="pdp-metric__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="pdp-metric__label">Longevity</div>
+          <div class="pdp-metric__label">Haltbarkeit</div>
           <div class="pdp-metric__bar">
             <div class="pdp-metric__fill" style="width: {{ longevity | times: 10 }}%"></div>
           </div>
@@ -81,7 +81,7 @@
           <div class="pdp-metric__icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <div class="pdp-metric__label">Projection</div>
+          <div class="pdp-metric__label">Sillage</div>
           <div class="pdp-metric__bar">
             <div class="pdp-metric__fill" style="width: {{ projection | times: 10 }}%"></div>
           </div>
@@ -90,7 +90,7 @@
         {%- endif -%}
         {%- if season != blank -%}
         <div class="pdp-tag-group">
-          <div class="pdp-tag-group__label">Best Season</div>
+          <div class="pdp-tag-group__label">Beste Saison</div>
           <div class="pdp-tags">
             {%- assign seasons = season | split: ',' -%}
             {%- for s in seasons -%}
@@ -101,7 +101,7 @@
         {%- endif -%}
         {%- if occasion != blank -%}
         <div class="pdp-tag-group">
-          <div class="pdp-tag-group__label">Best Occasion</div>
+          <div class="pdp-tag-group__label">Anlass</div>
           <div class="pdp-tags">
             {%- assign occasions = occasion | split: ',' -%}
             {%- for o in occasions -%}
@@ -119,31 +119,31 @@
   <div class="pdp-why-love">
     <div class="pdp-why-love__inner page-width">
       <div class="pdp-why-love__header">
-        <span class="pdp-section-eyebrow">The Promise</span>
-        <h2 class="pdp-section-title">Why You'll Love It</h2>
+        <span class="pdp-section-eyebrow">Unser Versprechen</span>
+        <h2 class="pdp-section-title">Warum du ihn lieben wirst</h2>
         <div class="pdp-gold-line"></div>
       </div>
       <div class="pdp-why-love__grid">
         <div class="pdp-love-point">
           <div class="pdp-love-point__icon">✓</div>
-          <div class="pdp-love-point__text">100% Authentic — sourced directly from authorized distributors</div>
+          <div class="pdp-love-point__text">100% Originalware - sorgfältig geprüft</div>
         </div>
         <div class="pdp-love-point">
           <div class="pdp-love-point__icon">✓</div>
-          <div class="pdp-love-point__text">Premium quality that lasts — designed for all-day confidence</div>
+          <div class="pdp-love-point__text">Premium-Auswahl mit Fokus auf Qualität und Charakter</div>
         </div>
         <div class="pdp-love-point">
           <div class="pdp-love-point__icon">✓</div>
-          <div class="pdp-love-point__text">Free EU shipping on orders over €59</div>
+          <div class="pdp-love-point__text">Kostenloser Versand für alle Bestellungen</div>
         </div>
         <div class="pdp-love-point">
           <div class="pdp-love-point__icon">✓</div>
-          <div class="pdp-love-point__text">30-day satisfaction guarantee — shop with confidence</div>
+          <div class="pdp-love-point__text">30 Tage Rückgabe für ungeöffnete, originalverpackte Artikel</div>
         </div>
         {%- if scent_family != blank -%}
         <div class="pdp-love-point">
           <div class="pdp-love-point__icon">✓</div>
-          <div class="pdp-love-point__text">Scent Family: {{ scent_family }} — crafted for those who appreciate the finest</div>
+          <div class="pdp-love-point__text">Duftfamilie: {{ scent_family }} - für Liebhaber besonderer Kompositionen</div>
         </div>
         {%- endif -%}
       </div>
