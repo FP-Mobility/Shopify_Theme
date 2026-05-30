@@ -334,8 +334,8 @@
         "title": "TOP PARFUMMARKEN",
         "subtitle": "Entdecke deine Lieblingsmarken bei LumiScent",
         "show_all_link": true,
-        "scroll_speed": 30,
-        "all_brands_page": ""
+        "scroll_speed": 60,
+        "all_brands_page": "brands"
       }
     },
     "testimonials": {
@@ -521,6 +521,7 @@
             "heading_size": "h1",
             "subheading": "Ausgewählte Premium-Düfte mit kostenlosem Versand für alle Bestellungen.",
             "button_label": "Jetzt shoppen",
+>>>>>>> 3d20be775fd8c709d9eacb7610fecfdff9f951fe
             "link": "",
             "button_style_secondary": false,
             "show_text_box": false,

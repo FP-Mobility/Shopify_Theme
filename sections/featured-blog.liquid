@@ -144,6 +144,7 @@
             type="button"
             class="slider-button slider-button--prev"
             name="previous"
+            aria-controls="Slider-{{ section.id }}"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
           >
             <span class="svg-wrapper">
@@ -160,6 +161,7 @@
             type="button"
             class="slider-button slider-button--next"
             name="next"
+            aria-controls="Slider-{{ section.id }}"
             aria-label="{{ 'general.slider.next_slide' | t }}"
           >
             <span class="svg-wrapper">

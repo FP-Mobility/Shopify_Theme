@@ -2600,8 +2600,13 @@ button[name="add"]:hover,
   }
 }
 
+
+
+
+
 /* ============== CART DRAWER ============== */
-.cart-drawer .drawer__inner {
+.cart-drawer cart-count-bubble { /* 8 */
+  
   background-color: var(--lux-white) !important;
   border-radius: 0 !important;
   max-width: 420px;
@@ -4103,9 +4108,9 @@ header-drawer .header__icon {
 }
 
 /* Cart drawer — luxury upgrade */
-.cart-drawer .drawer__inner {
-  background: var(--lux-white) !important;
+.cart-drawer .drawer__inner { /* 8 */
   max-width: 420px;
+  color: var(--lux-dark);
 }
 .cart-drawer .heading {
   font-family: var(--font-display) !important;
@@ -4679,25 +4684,46 @@ li,
 
 /* Product details tabs: keep Fragrance Details and Shipping/Returns compact */
 .template-product .fragrance-details .details-title {
-  font-size: 1.3rem !important;
-  line-height: 1.3;
-  letter-spacing: 0.03em;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: none !important;
+  margin-bottom: 0.6rem;
 }
 
 .template-product .fragrance-details .detail-item label {
-  font-size: 0.95rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
   letter-spacing: 0.08em;
 }
 
 .template-product .fragrance-details .detail-item span {
-  font-size: 1.08rem !important;
+  font-size: 1rem !important;
   line-height: 1.55;
 }
 
 .template-product .accordion summary,
 .template-product .accordion .summary__title {
-  font-size: 1.02rem !important;
-  letter-spacing: 0.08em !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  padding: 0.9rem 0 !important;
+}
+
+.template-product .accordion .accordion__title {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  line-height: 1.3 !important;
+  margin: 0 !important;
+}
+
+.template-product .accordion .svg-wrapper {
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+  margin-right: 0.75rem !important;
 }
 
 .template-product .accordion__content,
@@ -4723,5 +4749,194 @@ li,
   .template-product .accordion__content p,
   .template-product .accordion__content li {
     font-size: 1rem !important;
+  }
+}
+
+/* ============================================================
+   PERFUME AMBIENCE BACKGROUNDS
+   Subtle scent trails and botanical gold linework for a more
+   premium, dynamic storefront without distracting from products.
+   ============================================================ */
+:root {
+  --lux-scent-ribbon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='980' height='430' viewBox='0 0 980 430' fill='none'%3E%3Cpath d='M-80 270C120 82 264 370 430 170C590-23 740 112 1060 258' stroke='%23C8A96B' stroke-width='1.3' stroke-opacity='.48'/%3E%3Cpath d='M-120 332C104 158 256 404 462 226C640 72 766 196 1080 118' stroke='%23D4BC8A' stroke-width='.8' stroke-opacity='.34'/%3E%3Cpath d='M20 118C206 12 330 212 492 104C650-2 774 28 976 126' stroke='%23C8A96B' stroke-width='.7' stroke-opacity='.2'/%3E%3C/svg%3E");
+  --lux-botanical-linework: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520' fill='none'%3E%3Cpath d='M114 440C144 342 150 238 132 124' stroke='%23C8A96B' stroke-width='1' stroke-opacity='.38'/%3E%3Cpath d='M132 188C172 150 212 146 246 178C202 196 166 202 132 188Z' stroke='%23C8A96B' stroke-width='1' stroke-opacity='.34'/%3E%3Cpath d='M143 262C196 234 246 248 284 296C224 302 176 292 143 262Z' stroke='%23D4BC8A' stroke-width='1' stroke-opacity='.28'/%3E%3Cpath d='M118 334C74 302 54 258 72 210C116 246 134 286 118 334Z' stroke='%23C8A96B' stroke-width='1' stroke-opacity='.3'/%3E%3Cpath d='M330 416C354 336 350 254 316 170' stroke='%23C8A96B' stroke-width='1' stroke-opacity='.32'/%3E%3Cpath d='M316 170C358 126 410 120 448 156C398 180 358 184 316 170Z' stroke='%23C8A96B' stroke-width='1' stroke-opacity='.24'/%3E%3Cpath d='M342 268C384 238 430 240 470 276C420 292 378 290 342 268Z' stroke='%23D4BC8A' stroke-width='1' stroke-opacity='.22'/%3E%3C/svg%3E");
+  --lux-gold-veil: linear-gradient(112deg, transparent 0%, transparent 35%, rgba(200,169,107,0.16) 46%, rgba(212,188,138,0.08) 52%, transparent 65%, transparent 100%);
+}
+
+.video-hero,
+.slideshow .banner,
+.collection-hero-lux,
+.brand-story,
+.fragrance-quiz,
+.brand-showcase,
+.trust-badges-section,
+.newsletter-perfume,
+.template-product .product,
+.featured-collection-slider {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.video-hero::after,
+.slideshow .banner::after,
+.collection-hero-lux::after,
+.newsletter-perfume::after {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  pointer-events: none;
+  background-image: var(--lux-scent-ribbon), var(--lux-gold-veil);
+  background-repeat: repeat-x, no-repeat;
+  background-size: 980px 430px, 240% 100%;
+  background-position: 0 62%, -150% 0;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  transform: translate3d(0,0,0);
+  animation: luxScentAndVeil 30s ease-in-out infinite;
+}
+
+.video-hero::after {
+  z-index: 2;
+  opacity: 0.28;
+}
+
+.slideshow .banner::after,
+.collection-hero-lux::after {
+  z-index: 2;
+}
+
+.newsletter-perfume::after {
+  z-index: 0;
+  opacity: 0.24;
+}
+
+.brand-story::before,
+.fragrance-quiz::after,
+.featured-collection-slider::before,
+.template-product .product::before {
+  content: '';
+  position: absolute;
+  inset: -8%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: var(--lux-botanical-linework);
+  background-repeat: repeat;
+  background-size: 520px 520px;
+  background-position: 0 0;
+  opacity: 0.12;
+  transform: translate3d(0,0,0);
+  animation: luxBotanicalFloat 46s linear infinite;
+}
+
+.brand-story::before {
+  opacity: 0.16;
+}
+
+.fragrance-quiz::after {
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.featured-collection-slider::before,
+.template-product .product::before {
+  opacity: 0.07;
+}
+
+.trust-badges-section {
+  background-image: var(--lux-scent-ribbon) !important;
+  background-repeat: repeat-x !important;
+  background-size: 760px 330px !important;
+  background-position: 0 50% !important;
+  animation: luxScentField 40s linear infinite;
+}
+
+.brand-showcase {
+  background-image: var(--lux-botanical-linework), var(--lux-gold-veil) !important;
+  background-repeat: repeat, no-repeat !important;
+  background-size: 560px 560px, 220% 100% !important;
+  background-position: 0 0, -150% 0 !important;
+  animation: luxBotanicalVeil 52s linear infinite;
+}
+
+.video-hero__content,
+.video-hero__scroll-indicator,
+.video-hero__toggle,
+.slideshow .banner__content,
+.collection-hero-lux__content,
+.brand-story > *,
+.fragrance-quiz > *,
+.brand-showcase > *,
+.trust-badges-section > *,
+.newsletter-perfume > *,
+.template-product .product > *,
+.featured-collection-slider > * {
+  position: relative;
+  z-index: 1;
+}
+
+.video-hero__content,
+.video-hero__scroll-indicator,
+.video-hero__toggle,
+.slideshow .banner__content,
+.collection-hero-lux__content {
+  z-index: 3;
+}
+
+@keyframes luxScentAndVeil {
+  0% { background-position: 0 62%, -150% 0; }
+  42% { background-position: 410px 62%, -150% 0; }
+  72% { background-position: 705px 62%, 160% 0; }
+  100% { background-position: 980px 62%, 160% 0; }
+}
+
+@keyframes luxBotanicalFloat {
+  0% { background-position: 0 0; transform: translate3d(0,0,0); }
+  50% { transform: translate3d(18px,-10px,0); }
+  100% { background-position: 520px -520px; transform: translate3d(0,0,0); }
+}
+
+@keyframes luxScentField {
+  0% { background-position: 0 50%; }
+  100% { background-position: 760px 50%; }
+}
+
+@keyframes luxBotanicalVeil {
+  0% { background-position: 0 0, -150% 0; }
+  52% { background-position: 280px -280px, -150% 0; }
+  78% { background-position: 420px -420px, 160% 0; }
+  100% { background-position: 560px -560px, 160% 0; }
+}
+
+@media screen and (max-width: 749px) {
+  .video-hero::after,
+  .slideshow .banner::after,
+  .collection-hero-lux::after,
+  .newsletter-perfume::after {
+    opacity: 0.14;
+    background-size: 720px 316px, 260% 100%;
+  }
+
+  .brand-story::before,
+  .fragrance-quiz::after,
+  .featured-collection-slider::before,
+  .template-product .product::before {
+    opacity: 0.06;
+    background-size: 420px 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-hero::after,
+  .slideshow .banner::after,
+  .collection-hero-lux::after,
+  .newsletter-perfume::after,
+  .brand-story::before,
+  .fragrance-quiz::after,
+  .featured-collection-slider::before,
+  .template-product .product::before,
+  .brand-showcase,
+  .trust-badges-section {
+    animation: none !important;
   }
 }

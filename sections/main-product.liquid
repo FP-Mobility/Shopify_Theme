@@ -96,15 +96,14 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
-                  <h1>{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
+<div class="product__title" {{ block.shopify_attributes }}>
+                <h1 class="product__title">
+                  {{ product.title | escape }}
+                </h1>
+                <div class="product-rating">
+                  ⭐ ⭐ ⭐ ⭐ ☆ <span>(4.0)</span>
                 </div>
+              </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -211,23 +210,24 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
-                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                  <details id="Details-{{ block.id }}-{{ section.id }}">
-                    <summary>
-                      <div class="summary__title">
-                        {% render 'icon-accordion', icon: block.settings.icon %}
-                        <h2 class="h4 accordion__title inline-richtext">
-                          {{ block.settings.heading | default: block.settings.page.title | escape }}
-                        </h2>
-                      </div>
-                      {{- 'icon-caret.svg' | inline_asset_content -}}
-                    </summary>
-                    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                      {{ block.settings.content }}
-                      {{ block.settings.page.content }}
-                    </div>
-                  </details>
-                </div>
+  <div class="product__horizontal-tabs-wrapper">
+    <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+      <details id="Details-{{ block.id }}-{{ section.id }}">
+        <summary>
+          <div class="summary__title">
+            {% render 'icon-accordion', icon: block.settings.icon %}
+            <h2 class="h4 accordion__title inline-richtext">
+              {{ block.settings.heading | default: block.settings.page.title | escape }}
+            </h2>
+          </div>
+        </summary>
+        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+          {{ block.settings.content }}
+          {{ block.settings.page.content }}
+        </div>
+      </details>
+    </div>
+  </div>
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -240,7 +240,7 @@
                     | item_count_for_variant: product.selected_or_first_available_variant.id
                   -%}
                   {% # theme-check-enable %}
-                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">
+                  <span class="visually-hidden" id="quantity-label-{{ section.id }}">shopify theme devc
                     {%- if cart_qty > 0 -%}
                       {{- 'products.product.quantity.in_cart_aria_label' | t: quantity: cart_qty -}}
                     {%- else -%}
@@ -478,14 +478,53 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-              {%- when 'buy_buttons' -%}
-                {%- render 'buy-buttons',
-                  block: block,
-                  product: product,
-                  product_form_id: product_form_id,
-                  section_id: section.id,
-                  show_pickup_availability: true
-                -%}
+{%- when 'buy_buttons' -%}
+
+<div class="custom-product-buttons">
+
+  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
+    
+    <button
+      id="ProductSubmitButton-{{ section.id }}"
+      type="submit"
+      name="add"
+      class="product-form__submit button button--full-width button--primary"
+      style="
+        display: flex !important;
+        width: 100% !important;
+        min-height: 52px !important;
+        background-color: #111111 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.1em !important;
+        text-transform: uppercase !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-bottom: 12px !important;
+        cursor: pointer !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      "
+      {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+    >
+      {% if product.selected_or_first_available_variant.available == false %}
+        AUSVERKAUFT
+      {% else %}
+        IN DEN WARENKORB
+      {% endif %}
+    </button>
+
+    <div style="width:100%;">
+      {{ form | payment_button }}
+    </div>
+
+  {%- endform -%}
+
+</div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -2270,3 +2309,4 @@
   ]
 }
 {% endschema %}
+{% render 'product-reviews' %}
