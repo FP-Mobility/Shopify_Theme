@@ -109,8 +109,12 @@
   {%- endif -%}
 
   {%- if section.settings.show_all_link -%}
+    {%- assign all_brands_url = '/pages/brands' -%}
+    {%- if section.settings.all_brands_page != blank -%}
+      {%- assign all_brands_url = section.settings.all_brands_page.url | default: all_brands_url -%}
+    {%- endif -%}
     <div class="brand-showcase__cta">
-      <a href="{{ section.settings.all_brands_page | default: '/pages/brands' }}">Alle Marken ansehen</a>
+      <a href="{{ all_brands_url }}">Alle Marken ansehen</a>
     </div>
   {%- endif -%}
 </section>

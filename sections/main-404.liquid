@@ -10,6 +10,16 @@
   }
 </style>
 
+{%- assign brands_page_url = pages.brands.url | default: '/pages/brands' -%}
+<script>
+  (function() {
+    var path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+    if (path === '/brands') {
+      window.location.replace({{ brands_page_url | json }});
+    }
+  })();
+</script>
+
 <div class="template-404 page-width page-margin center">
   <p>
     {{ 'templates.404.subtext' | t }}

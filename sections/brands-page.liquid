@@ -145,16 +145,16 @@
       <h1 class="brands-page__title">{{ section.settings.title }}</h1>
       <p class="brands-page__subtitle">{{ section.settings.subtitle }}</p>
       <div class="brands-page__search">
-        <input type="text" class="brands-page__search-input" id="brandSearch" placeholder="Search brands..." autocomplete="off">
+        <input type="text" class="brands-page__search-input" id="brandSearch" placeholder="Marke suchen..." autocomplete="off">
         <svg class="brands-page__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </div>
     </div>
 
     <div class="brands-page__alpha-nav" id="alphaNav">
-      <button class="brands-page__alpha-btn active" data-letter="all">ALL</button>
-      {%- for i in (65..90) -%}
-        {%- assign letter = i | append: '' -%}
-        <button class="brands-page__alpha-btn" data-letter="{{ i | minus: 65 | plus: 65 | divided_by: 1 }}">{{ 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | slice: i | slice: 0, 1 }}</button>
+      <button class="brands-page__alpha-btn active" data-letter="all">Alle</button>
+      {%- assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' -%}
+      {%- for letter in alphabet -%}
+        <button class="brands-page__alpha-btn" data-letter="{{ letter }}">{{ letter }}</button>
       {%- endfor -%}
     </div>
 
@@ -181,11 +181,11 @@
           {%- endif -%}
           <span class="brands-page__card-name">{{ brand_name }}</span>
           {%- if block.settings.product_count != blank -%}
-            <span class="brands-page__card-count">{{ block.settings.product_count }} products</span>
+            <span class="brands-page__card-count">{{ block.settings.product_count }} Produkte</span>
           {%- endif -%}
         </a>
       {%- endfor -%}
-      <div class="brands-page__empty" id="brandsEmpty">No brands found matching your search.</div>
+      <div class="brands-page__empty" id="brandsEmpty">Keine passende Marke gefunden.</div>
     </div>
   </div>
 </div>
@@ -243,13 +243,13 @@
       "type": "text",
       "id": "title",
       "label": "Page Title",
-      "default": "All Perfume Brands"
+      "default": "Parfummarken"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subtitle",
-      "default": "Browse our complete collection of designer and niche fragrance brands"
+      "default": "Entdecke unsere Auswahl an Designer- und Nischenduftmarken"
     }
   ],
   "blocks": [
