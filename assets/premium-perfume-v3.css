@@ -4763,6 +4763,7 @@ li,
   --lux-gold-veil: linear-gradient(112deg, transparent 0%, transparent 35%, rgba(200,169,107,0.16) 46%, rgba(212,188,138,0.08) 52%, transparent 65%, transparent 100%);
 }
 
+.section-video-hero,
 .video-hero,
 .slideshow .banner,
 .collection-hero-lux,
@@ -4778,6 +4779,7 @@ li,
   overflow: hidden;
 }
 
+.section-video-hero::after,
 .video-hero::after,
 .slideshow .banner::after,
 .collection-hero-lux::after,
@@ -4796,6 +4798,7 @@ li,
   animation: luxScentAndVeil 30s ease-in-out infinite;
 }
 
+.section-video-hero::after,
 .video-hero::after {
   z-index: 2;
   opacity: 0.28;
@@ -4859,6 +4862,7 @@ li,
   animation: luxBotanicalVeil 52s linear infinite;
 }
 
+.section-video-hero > *:not(.lux-ambient-layer),
 .video-hero__content,
 .video-hero__scroll-indicator,
 .video-hero__toggle,
@@ -4875,6 +4879,7 @@ li,
   z-index: 1;
 }
 
+.section-video-hero > *:not(.lux-ambient-layer),
 .video-hero__content,
 .video-hero__scroll-indicator,
 .video-hero__toggle,
@@ -4910,6 +4915,7 @@ li,
 
 @media screen and (max-width: 749px) {
   .video-hero::after,
+  .section-video-hero::after,
   .slideshow .banner::after,
   .collection-hero-lux::after,
   .newsletter-perfume::after {
@@ -4928,6 +4934,7 @@ li,
 
 @media (prefers-reduced-motion: reduce) {
   .video-hero::after,
+  .section-video-hero::after,
   .slideshow .banner::after,
   .collection-hero-lux::after,
   .newsletter-perfume::after,
@@ -4938,5 +4945,309 @@ li,
   .brand-showcase,
   .trust-badges-section {
     animation: none !important;
+  }
+}
+
+/* ============================================================
+   PREMIUM DYNAMIC POLISH
+   Interaction-led movement for a more alive luxury storefront.
+   ============================================================ */
+.lux-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  background: rgba(9,9,9,0.18);
+}
+
+.lux-scroll-progress__bar {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, transparent, var(--lux-gold), #fff2c8, var(--lux-gold));
+  box-shadow: 0 0 14px rgba(200,169,107,0.42);
+}
+
+.lux-ambient-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.section-video-hero .lux-ambient-layer,
+.video-hero .lux-ambient-layer,
+.slideshow .banner .lux-ambient-layer,
+.collection-hero-lux .lux-ambient-layer {
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.lux-scent-line {
+  position: absolute;
+  left: var(--line-left, 50%);
+  top: var(--line-top, 50%);
+  width: var(--line-width, 88px);
+  height: 1px;
+  opacity: 0;
+  transform-origin: left center;
+  background: linear-gradient(90deg, transparent, rgba(255,241,198,0.82), rgba(200,169,107,0.74), transparent);
+  filter: drop-shadow(0 0 5px rgba(200,169,107,0.32));
+  animation: luxScentLine var(--line-duration, 14s) ease-in-out infinite;
+  animation-delay: var(--line-delay, 0s);
+}
+
+.lux-scent-line::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: 4px;
+  width: 22px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255,242,200,0.58), transparent);
+  transform: skewX(-24deg);
+}
+
+.product-card-wrapper .lux-dynamic-card,
+.section-featured-collection .product-card-wrapper .lux-dynamic-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  position: relative;
+  overflow: hidden;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.26s ease, border-color 0.26s ease;
+}
+
+.product-card-wrapper .lux-dynamic-card::after,
+.section-featured-collection .product-card-wrapper .lux-dynamic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    112deg,
+    transparent 0%,
+    transparent calc(var(--shine-x) - 22%),
+    rgba(255,242,199,0.2) var(--shine-x),
+    transparent calc(var(--shine-x) + 22%),
+    transparent 100%
+  );
+  transition: opacity 0.22s ease;
+}
+
+.product-card-wrapper .lux-dynamic-card.lux-card-active,
+.section-featured-collection .product-card-wrapper .lux-dynamic-card.lux-card-active {
+  box-shadow: 0 18px 38px rgba(0,0,0,0.1);
+}
+
+.product-card-wrapper .lux-dynamic-card.lux-card-active::after,
+.section-featured-collection .product-card-wrapper .lux-dynamic-card.lux-card-active::after {
+  opacity: 1;
+}
+
+.product-card-wrapper .lux-dynamic-card.lux-card-active .card__media,
+.section-featured-collection .product-card-wrapper .lux-dynamic-card.lux-card-active .card__media {
+  background:
+    linear-gradient(135deg, rgba(200,169,107,0.09), transparent 42%),
+    #faf9f5 !important;
+}
+
+.quick-add__submit,
+.card__content .quick-add__submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-add__submit::after,
+.card__content .quick-add__submit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -84px;
+  width: 58px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255,242,199,0.42), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.58s ease;
+}
+
+.quick-add__submit:hover::after,
+.card__content .quick-add__submit:hover::after,
+.quick-add__submit:focus-visible::after,
+.card__content .quick-add__submit:focus-visible::after {
+  left: calc(100% + 84px);
+}
+
+.collection-cards-row,
+.recently-viewed {
+  position: relative;
+  isolation: isolate;
+}
+
+.featured-collection-slider.lux-carousel-ready::after,
+.collection-cards-row.lux-carousel-ready::after,
+.recently-viewed.lux-carousel-ready::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 1.4rem;
+  width: min(120px, 18vw);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.78;
+  background: linear-gradient(90deg, transparent, rgba(200,169,107,0.18));
+  animation: luxEdgeHint 3.6s ease-in-out infinite;
+}
+
+.featured-collection-slider.lux-carousel-at-end::after,
+.collection-cards-row.lux-carousel-at-end::after,
+.recently-viewed.lux-carousel-at-end::after {
+  opacity: 0;
+}
+
+.featured-collection-slider.lux-carousel-ready .featured-collection-slider__buttons .slider-button:not([disabled]) {
+  animation: luxCarouselButtonBreath 3.2s ease-in-out infinite;
+}
+
+.featured-collection-slider__track[data-lux-scrollable="true"],
+.collection-cards-row__scroll[data-lux-scrollable="true"],
+.recently-viewed__scroll[data-lux-scrollable="true"] {
+  scroll-behavior: smooth;
+}
+
+@keyframes luxScentLine {
+  0% {
+    opacity: 0;
+    transform: translate3d(-18px, 18px, 0) rotate(var(--line-angle, 0deg)) scaleX(0.18);
+  }
+  26% {
+    opacity: 0.78;
+  }
+  58% {
+    opacity: 0.38;
+    transform: translate3d(34px, -34px, 0) rotate(var(--line-angle, 0deg)) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(76px, -56px, 0) rotate(var(--line-angle, 0deg)) scaleX(0.28);
+  }
+}
+
+@keyframes luxEdgeHint {
+  0%, 100% {
+    opacity: 0.48;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes luxCarouselButtonBreath {
+  0%, 100% {
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  }
+  50% {
+    box-shadow: 0 12px 28px rgba(200,169,107,0.38);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .lux-scroll-progress {
+    height: 2px;
+  }
+
+  .lux-scent-line {
+    opacity: 0;
+    width: calc(var(--line-width, 88px) * 0.72);
+  }
+
+  .featured-collection-slider.lux-carousel-ready::after,
+  .collection-cards-row.lux-carousel-ready::after,
+  .recently-viewed.lux-carousel-ready::after {
+    width: 64px;
+    opacity: 0.48;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (pointer: coarse) {
+  .product-card-wrapper .lux-dynamic-card,
+  .section-featured-collection .product-card-wrapper .lux-dynamic-card {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lux-scent-line,
+  .featured-collection-slider.lux-carousel-ready::after,
+  .collection-cards-row.lux-carousel-ready::after,
+  .recently-viewed.lux-carousel-ready::after,
+  .featured-collection-slider.lux-carousel-ready .featured-collection-slider__buttons .slider-button:not([disabled]) {
+    animation: none !important;
+  }
+
+  .lux-scent-line {
+    opacity: 0.22 !important;
+    transform: translate3d(0,0,0) rotate(var(--line-angle, 0deg)) scaleX(0.82);
+  }
+
+  .lux-scent-line:nth-child(even) {
+    opacity: 0.14 !important;
+  }
+}
+
+/* ============================================================
+   CART DRAWER FUNCTIONAL FIXES
+   Keep the storefront visible behind the drawer and give the
+   panel enough width for German copy and price columns.
+   ============================================================ */
+body cart-drawer.drawer {
+  background: rgba(7,7,7,0.46) !important;
+}
+
+body cart-drawer.drawer:not(.active) {
+  background: transparent !important;
+}
+
+#CartDrawer.cart-drawer {
+  background: transparent !important;
+}
+
+#CartDrawer-Overlay.cart-drawer__overlay {
+  background: transparent !important;
+}
+
+cart-drawer .drawer__inner {
+  width: min(52rem, calc(100vw - 2rem)) !important;
+  max-width: min(52rem, calc(100vw - 2rem)) !important;
+  background: #fff !important;
+  box-shadow: -18px 0 42px rgba(0,0,0,0.16);
+}
+
+.template-product .product[class*="product--thumbnail"] .product-form__submit.button,
+.template-product .product__info-wrapper .product-form__submit.button {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+@media screen and (max-width: 749px) {
+  cart-drawer .drawer__inner {
+    width: 100vw !important;
+    max-width: 100vw !important;
   }
 }

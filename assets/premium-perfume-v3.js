@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   /* === PRELOADER === */
   function initPreloader() {
     const preloader = document.querySelector('.site-preloader');
@@ -122,6 +124,39 @@
     });
   }
 
+  /* === PREMIUM SCROLL PROGRESS === */
+  function initScrollProgress() {
+    if (document.querySelector('.lux-scroll-progress')) return;
+
+    const progress = document.createElement('div');
+    progress.className = 'lux-scroll-progress';
+    progress.setAttribute('aria-hidden', 'true');
+
+    const bar = document.createElement('div');
+    bar.className = 'lux-scroll-progress__bar';
+    progress.appendChild(bar);
+    document.body.appendChild(progress);
+
+    let ticking = false;
+
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const value = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+      bar.style.transform = 'scaleX(' + value + ')';
+      ticking = false;
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    updateProgress();
+  }
+
   /* === BACK TO TOP === */
   function initBackToTop() {
     const btn = document.querySelector('.back-to-top');
@@ -234,13 +269,161 @@
     });
   }
 
-  /* === PRODUCT CARD PERFORMANCE === */
+  /* === PRODUCT CARD PERFORMANCE + PREMIUM MOTION === */
   function initProductCards() {
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+    const canTilt = isFinePointer && !reduceMotion();
+
     document.querySelectorAll('.card--media, .card--standard').forEach((card) => {
+      if (card.dataset.luxCardBound === 'true') return;
+      card.dataset.luxCardBound = 'true';
+      card.classList.add('lux-dynamic-card');
+
       const media = card.querySelector('.media');
-      if (!media) return;
-      card.addEventListener('mouseenter', () => { media.style.willChange = 'transform'; });
-      card.addEventListener('mouseleave', () => { media.style.willChange = 'auto'; });
+
+      card.addEventListener('mouseenter', () => {
+        card.classList.add('lux-card-active');
+        if (media) media.style.willChange = 'transform';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('lux-card-active');
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+        if (media) media.style.willChange = 'auto';
+      });
+
+      card.addEventListener('focusin', () => card.classList.add('lux-card-active'));
+      card.addEventListener('focusout', () => card.classList.remove('lux-card-active'));
+
+      if (!canTilt) return;
+
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const tiltY = (x - 0.5) * 4;
+        const tiltX = (0.5 - y) * 3;
+
+        card.style.setProperty('--tilt-x', tiltX.toFixed(2) + 'deg');
+        card.style.setProperty('--tilt-y', tiltY.toFixed(2) + 'deg');
+        card.style.setProperty('--shine-x', Math.round(x * 100) + '%');
+      });
+    });
+  }
+
+  /* === DYNAMIC SCENT-LINE AMBIENCE === */
+  function initSectionAmbience() {
+    const isReducedMotion = reduceMotion();
+
+    const sections = document.querySelectorAll(
+      '.section-video-hero, .video-hero, .slideshow .banner, .collection-hero-lux, .brand-story, .brand-showcase, .trust-badges-section, .newsletter-perfume, .fragrance-quiz, .featured-collection-slider'
+    );
+
+    sections.forEach((section, sectionIndex) => {
+      const alreadyHasLayer = Array.from(section.children).some((child) =>
+        child.classList.contains('lux-ambient-layer')
+      );
+      if (alreadyHasLayer) return;
+
+      const layer = document.createElement('div');
+      layer.className = 'lux-ambient-layer';
+      layer.setAttribute('aria-hidden', 'true');
+
+      const isHero = section.matches('.section-video-hero, .video-hero, .slideshow .banner, .collection-hero-lux');
+      const lineCount = isReducedMotion ? (isHero ? 5 : 3) : (isHero ? 10 : 6);
+
+      for (let i = 0; i < lineCount; i += 1) {
+        const line = document.createElement('span');
+        line.className = 'lux-scent-line';
+
+        const left = 4 + ((i * 19 + sectionIndex * 11) % 88);
+        const top = 10 + ((i * 23 + sectionIndex * 7) % 72);
+        const width = 58 + ((i * 17 + sectionIndex * 13) % 92);
+        const angle = -18 + ((i * 9 + sectionIndex * 5) % 36);
+        const duration = 12 + ((i + sectionIndex) % 6);
+        const delay = -1 * ((i * 1.7 + sectionIndex) % 10);
+
+        line.style.setProperty('--line-left', left + '%');
+        line.style.setProperty('--line-top', top + '%');
+        line.style.setProperty('--line-width', width + 'px');
+        line.style.setProperty('--line-angle', angle + 'deg');
+        line.style.setProperty('--line-duration', duration + 's');
+        line.style.setProperty('--line-delay', delay + 's');
+        layer.appendChild(line);
+      }
+
+      section.appendChild(layer);
+    });
+  }
+
+  /* === CAROUSEL MOTION CUES === */
+  function initCarouselCues() {
+    const rows = document.querySelectorAll(
+      '.featured-collection-slider__track.slider, .collection-cards-row__scroll, .recently-viewed__scroll'
+    );
+    if (!rows.length) return;
+
+    rows.forEach((row) => {
+      if (row.dataset.luxCarouselBound === 'true') return;
+      row.dataset.luxCarouselBound = 'true';
+
+      const frame =
+        row.closest('.featured-collection-slider') ||
+        row.closest('.collection-cards-row') ||
+        row.closest('.recently-viewed') ||
+        row.parentElement;
+
+      if (!frame) return;
+
+      const isScrollable = () => row.scrollWidth > row.clientWidth + 8;
+
+      function updateState() {
+        const scrollable = isScrollable();
+        frame.classList.toggle('lux-carousel-ready', scrollable);
+        row.dataset.luxScrollable = scrollable ? 'true' : 'false';
+
+        if (!scrollable) return;
+
+        const atStart = row.scrollLeft <= 4;
+        const atEnd = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+        frame.classList.toggle('lux-carousel-at-start', atStart);
+        frame.classList.toggle('lux-carousel-at-end', atEnd);
+      }
+
+      updateState();
+      window.addEventListener('resize', updateState, { passive: true });
+      row.addEventListener('scroll', updateState, { passive: true });
+
+      if (reduceMotion() || !('IntersectionObserver' in window)) return;
+
+      let userEngaged = false;
+      row.addEventListener('pointerdown', () => { userEngaged = true; }, { passive: true });
+      row.addEventListener('mouseenter', () => { userEngaged = true; }, { passive: true });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || !isScrollable()) return;
+            observer.unobserve(row);
+
+            window.setTimeout(() => {
+              if (userEngaged || row.scrollLeft > 4) return;
+
+              const distance = Math.min(96, row.scrollWidth - row.clientWidth);
+              row.scrollTo({ left: distance, behavior: 'smooth' });
+              window.setTimeout(() => {
+                if (!userEngaged) row.scrollTo({ left: 0, behavior: 'smooth' });
+              }, 850);
+            }, 700);
+          });
+        },
+        { threshold: 0.45 }
+      );
+
+      observer.observe(row);
     });
   }
 
@@ -366,6 +549,7 @@
   function init() {
     injectStyles();
     initPreloader();
+    initScrollProgress();
     initScrollReveal();
     initHeadingReveal();
     initBackToTop();
@@ -373,6 +557,8 @@
     initCardRowScroll();
     initCollectionTabs();
     initProductCards();
+    initSectionAmbience();
+    initCarouselCues();
     initCounters();
     initParallax();
     initNewsletterFocus();

@@ -481,49 +481,70 @@
 {%- when 'buy_buttons' -%}
 
 <div class="custom-product-buttons">
-
-  {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
-    
-    <button
-      id="ProductSubmitButton-{{ section.id }}"
-      type="submit"
-      name="add"
-      class="product-form__submit button button--full-width button--primary"
-      style="
-        display: flex !important;
-        width: 100% !important;
-        min-height: 52px !important;
-        background-color: #111111 !important;
-        color: #ffffff !important;
-        border: none !important;
-        border-radius: 4px !important;
-        font-size: 14px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.1em !important;
-        text-transform: uppercase !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-bottom: 12px !important;
-        cursor: pointer !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      "
-      {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-    >
-      {% if product.selected_or_first_available_variant.available == false %}
-        AUSVERKAUFT
-      {% else %}
-        IN DEN WARENKORB
-      {% endif %}
-    </button>
-
-    <div style="width:100%;">
-      {{ form | payment_button }}
+  <product-form
+    class="product-form"
+    data-hide-errors="false"
+    data-section-id="{{ section.id }}"
+  >
+    <div class="product-form__error-message-wrapper" role="alert" hidden>
+      <span class="svg-wrapper">
+        {{- 'icon-error.svg' | inline_asset_content -}}
+      </span>
+      <span class="product-form__error-message"></span>
     </div>
 
-  {%- endform -%}
+    {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input
+        type="hidden"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id }}"
+        class="product-variant-id"
+        {% if product.selected_or_first_available_variant.available == false or product.selected_or_first_available_variant == null %}
+          disabled
+        {% endif %}
+      >
 
+      <button
+        id="ProductSubmitButton-{{ section.id }}"
+        type="submit"
+        name="add"
+        class="product-form__submit button button--full-width button--primary"
+        style="
+          display: flex !important;
+          width: 100% !important;
+          min-height: 52px !important;
+          background-color: #111111 !important;
+          color: #ffffff !important;
+          border: none !important;
+          border-radius: 4px !important;
+          font-size: 14px !important;
+          font-weight: 700 !important;
+          letter-spacing: 0.1em !important;
+          text-transform: uppercase !important;
+          justify-content: center !important;
+          align-items: center !important;
+          margin-bottom: 12px !important;
+          cursor: pointer !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+        "
+        {% if product.selected_or_first_available_variant.available == false or product.selected_or_first_available_variant == null %}disabled{% endif %}
+      >
+        <span>
+          {% if product.selected_or_first_available_variant.available == false %}
+            AUSVERKAUFT
+          {% else %}
+            IN DEN WARENKORB
+          {% endif %}
+        </span>
+        {% render 'loading-spinner' %}
+      </button>
+
+      <div style="width:100%;">
+        {{ form | payment_button }}
+      </div>
+    {%- endform -%}
+  </product-form>
 </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
