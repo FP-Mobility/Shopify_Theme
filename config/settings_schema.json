@@ -1469,14 +1469,14 @@
     ]
   },
   {
-    "name": "Idealo Price Adjustment",
+    "name": "Referral Price Adjustment",
     "settings": [
       {
         "type": "checkbox",
         "id": "idealo_enable",
-        "label": "Enable Idealo price markup",
+        "label": "Enable referral price markup",
         "default": false,
-        "info": "When enabled, customers arriving from Idealo will see a price markup on products other than the one they clicked."
+        "info": "When enabled, visitors from referral sources see a price markup on products other than the one they clicked."
       },
       {
         "type": "number",
@@ -1488,9 +1488,22 @@
       {
         "type": "text",
         "id": "idealo_referrer_pattern",
-        "label": "Referrer domain pattern",
+        "label": "[DEPRECATED] Single referrer pattern",
         "default": "idealo",
-        "info": "Text to match in the referrer URL. Default: idealo"
+        "info": "Use the new \"Referral source patterns\" field below instead."
+      },
+      {
+        "type": "text",
+        "id": "idealo_adj_variant_id",
+        "label": "Price Adjustment variant ID",
+        "info": "Variant ID of your hidden 'Price Adjustment' product. Required to charge markup at checkout. Find it in Shopify Admin > Products > Price Adjustment > variant URL."
+      },
+      {
+        "type": "text",
+        "id": "referral_patterns",
+        "label": "Referral source patterns (comma-separated)",
+        "default": "idealo, google",
+        "info": "Comma-separated list of referrer domains to match. E.g: idealo, google, bing, facebook, instagram. Any visitor whose referrer URL contains one of these words triggers the markup."
       }
     ]
   },
@@ -1508,21 +1521,21 @@
         "type": "number",
         "id": "free_shipping_threshold",
         "label": "Free shipping threshold (in cents)",
-        "default": 0,
-        "info": "Enter in cents. Use 0 for free shipping on all orders."
+        "default": 5900,
+        "info": "Enter in cents. E.g. 5900 = €59.00"
       },
       {
         "type": "text",
         "id": "free_shipping_message",
         "label": "Almost there message",
-        "default": "Free shipping is active for all orders!",
+        "default": "You're €AMOUNT away from free shipping!",
         "info": "Use AMOUNT as the placeholder for the remaining amount."
       },
       {
         "type": "text",
         "id": "free_shipping_success_message",
         "label": "Success message",
-        "default": "You've got free shipping on all orders!"
+        "default": "You've unlocked FREE shipping!"
       }
     ]
   }
