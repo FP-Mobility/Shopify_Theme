@@ -1,6 +1,6 @@
 /* =====================================================
-   LUMISCENT — Smart Features Module v2.0
-   Idealo Markup · Free Shipping Bar · Sticky ATC · Recently Viewed
+   LUMISCENT — Smart Features Module
+   Referral Markup · Free Shipping Bar · Sticky ATC · Recently Viewed
    ===================================================== */
 
 (function() {
@@ -14,23 +14,11 @@
   }
 
   /* =================================================================
-     1. IDEALO REFERRER PRICE MARKUP
-     ─────────────────────────────────────────────────────────────────
-     FULL CHECKOUT-SAFE IMPLEMENTATION:
-
-     DISPLAY  → visually adjusts .price-item elements on all pages
-                (landing product kept at original price)
-
-     CART     → intercepts every /cart/add.js call; if it's NOT the
-                landing product, auto-adds a hidden "Price Adjustment"
-                line item so the checkout total matches the display.
-
-     LOCK     → hides the remove button on the Price Adjustment item
-                via CSS + re-adds it if removed via cart API watch.
-
-     SESSION  → 30-min sessionStorage window; clears on tab close.
-  ================================================================= */
-
+     1. REFERRAL PRICE MARKUP
+     Supports multiple referral sources: idealo, google, bing, etc.
+     Landing product keeps original price.
+     All other products: display + cart + checkout show marked-up price.
+     ================================================================= */
   var Idealo = {
     STORAGE_KEY:        'lux_ref_active',
     LANDING_KEY:        'lux_ref_landing',
@@ -38,16 +26,13 @@
     SOURCE_KEY:         'lux_ref_source',
     SESSION_EXPIRY_KEY: 'lux_ref_expiry',
     SESSION_MINUTES:    30,
-    ADJ_TITLE:          'Price Adjustment',
     _intercepting:      false,
 
-    /* ── Detect which referral source matched (returns source name or null) ── */
+    /* Returns which referral source matched, or null for direct visitors */
     detectSource: function(referrer) {
       if (!SETTINGS.idealo_enable) return null;
-      /* patterns is a comma-separated string from Theme Settings
-         e.g. "idealo, google, bing, facebook" */
-      var patternsRaw = SETTINGS.referral_patterns || 'idealo';
-      var patterns    = patternsRaw.split(',').map(function(p) { return p.trim().toLowerCase(); });
+      var patternsRaw = SETTINGS.referral_patterns || SETTINGS.idealo_referrer_pattern || 'idealo';
+      var patterns = patternsRaw.split(',').map(function(p) { return p.trim().toLowerCase(); });
       for (var i = 0; i < patterns.length; i++) {
         if (patterns[i] && referrer.indexOf(patterns[i]) !== -1) return patterns[i];
       }
@@ -60,7 +45,7 @@
       var referrer = (document.referrer || '').toLowerCase();
       var source   = this.detectSource(referrer);
 
-      /* ── Fresh referral arrival ── */
+      /* Fresh referral arrival */
       if (source) {
         var expiry = Date.now() + this.SESSION_MINUTES * 60 * 1000;
         sessionStorage.setItem(this.STORAGE_KEY,        '1');
@@ -70,7 +55,7 @@
         sessionStorage.setItem(this.SESSION_EXPIRY_KEY, String(expiry));
       }
 
-      /* ── Check session expiry ── */
+      /* Check session expiry */
       var expiry = parseInt(sessionStorage.getItem(this.SESSION_EXPIRY_KEY) || '0', 10);
       if (expiry && Date.now() > expiry) { this.clearSession(); return; }
       if (sessionStorage.getItem(this.STORAGE_KEY) !== '1') return;
@@ -83,7 +68,7 @@
 
       if (markupCents <= 0) return;
 
-      /* ── A) DISPLAY: adjust visible prices on non-landing pages ── */
+      /* A) DISPLAY: adjust visible prices on non-landing pages */
       if (!isLanding) {
         this.applyMarkup(markupCents);
 
@@ -92,24 +77,24 @@
         });
 
         if (window.MutationObserver) {
-          var debounce;
-          var obs = new MutationObserver(function() {
-            clearTimeout(debounce);
-            debounce = setTimeout(function() { Idealo.applyMarkup(markupCents); }, 200);
+          var debounceTimer;
+          var observer = new MutationObserver(function() {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() { Idealo.applyMarkup(markupCents); }, 200);
           });
-          obs.observe(document.body, { childList: true, subtree: true });
-          setTimeout(function() { obs.disconnect(); }, 30000);
+          observer.observe(document.body, { childList: true, subtree: true });
+          setTimeout(function() { observer.disconnect(); }, 30000);
         }
       }
 
-      /* ── B) CART: intercept ATC to inject Price Adjustment item ── */
+      /* B) CART: intercept ATC to auto-add Price Adjustment line item */
       if (adjVariantId) {
         this.interceptAddToCart(markupCents, adjVariantId, landingPath);
         this.hideAdjustmentRemoveButton(adjVariantId);
         this.watchCartForRemoval(markupCents, adjVariantId);
       }
 
-      /* ── C) Tag cart attributes for Admin visibility ── */
+      /* C) Tag cart attributes — visible in Shopify Admin on every order */
       this.tagCart(markupCents);
     },
 
@@ -118,49 +103,44 @@
       keys.forEach(function(k) { sessionStorage.removeItem(k); });
     },
 
-    /* ── Visually adjust all unmarked price elements ── */
     applyMarkup: function(markupCents) {
-      var els = document.querySelectorAll(
-        '.price-item--regular:not([data-lux-marked]),' +
+      var priceEls = document.querySelectorAll(
+        '.price-item--regular:not([data-lux-marked]), ' +
         '.price-item--sale:not([data-lux-marked])'
       );
-      els.forEach(function(el) {
+      priceEls.forEach(function(el) {
         el.setAttribute('data-lux-marked', '1');
-        var cleaned = el.textContent.trim().replace(/[^\d.,]/g, '').replace(',', '.');
-        var orig    = Math.round(parseFloat(cleaned) * 100);
-        if (isNaN(orig) || orig <= 0) return;
-        el.textContent = formatMoney(orig + markupCents);
-        el.setAttribute('data-lux-original', orig);
-        el.setAttribute('data-lux-adjusted', orig + markupCents);
+        var text = el.textContent.trim();
+        var cleaned = text.replace(/[^\d.,]/g, '').replace(',', '.');
+        var originalCents = Math.round(parseFloat(cleaned) * 100);
+        if (isNaN(originalCents) || originalCents <= 0) return;
+        var newCents = originalCents + markupCents;
+        el.textContent = formatMoney(newCents);
+        el.setAttribute('data-lux-original', originalCents);
+        el.setAttribute('data-lux-adjusted', newCents);
       });
     },
 
-    /* ── Intercept fetch(/cart/add.js) and append Price Adjustment ── */
+    /* Intercept fetch(/cart/add.js) and append Price Adjustment item */
     interceptAddToCart: function(markupCents, adjVariantId, landingPath) {
       if (this._intercepting) return;
       this._intercepting = true;
 
-      var orig = window.fetch;
+      var origFetch = window.fetch;
       window.fetch = function(url, opts) {
-        var result = orig.apply(this, arguments);
+        var result = origFetch.apply(this, arguments);
 
         if (typeof url === 'string' && url.indexOf('/cart/add') !== -1 && opts && opts.body) {
           result.then(function(res) {
-            /* Clone so we don't consume the stream */
-            var cloned = res.clone();
-            cloned.json().then(function(data) {
-              /* Don't add adjustment if this IS the landing product */
+            res.clone().json().then(function() {
               var addedPath = '';
               if (opts.body instanceof FormData) {
                 addedPath = opts.body.get('sections_url') || window.location.pathname;
               }
-              var isLandingAdd = landingPath && addedPath === landingPath;
-
-              /* Also skip if the item being added IS already the adjustment */
-              var addedVariant = opts.body instanceof FormData
-                ? parseInt(opts.body.get('id') || '0', 10)
-                : 0;
-              var isAdjItself = addedVariant === adjVariantId;
+              var isLandingAdd  = landingPath && addedPath === landingPath;
+              var addedVariant  = opts.body instanceof FormData
+                ? parseInt(opts.body.get('id') || '0', 10) : 0;
+              var isAdjItself   = addedVariant === adjVariantId;
 
               if (!isLandingAdd && !isAdjItself) {
                 Idealo.addAdjustmentItem(markupCents, adjVariantId);
@@ -168,78 +148,71 @@
             }).catch(function() {});
           }).catch(function() {});
         }
-
         return result;
       };
     },
 
-    /* ── Add (or update) the Price Adjustment line item ── */
+    /* Add/update Price Adjustment quantity = number of non-landing products in cart */
     addAdjustmentItem: function(markupCents, adjVariantId) {
-      /* First check if it's already in cart — update qty instead of adding */
       fetch('/cart.js')
         .then(function(r) { return r.json(); })
         .then(function(cart) {
-          var existing = null;
-          (cart.items || []).forEach(function(item) {
-            if (item.variant_id === adjVariantId) existing = item;
+          /* Count real (non-adjustment) items and their total quantity */
+          var realQty = 0;
+          (cart.items || []).forEach(function(i) {
+            if (i.variant_id !== adjVariantId) realQty += i.quantity;
+          });
+          if (realQty <= 0) return;
+
+          /* Check if adjustment already exists */
+          var adjItem = null;
+          (cart.items || []).forEach(function(i) {
+            if (i.variant_id === adjVariantId) adjItem = i;
           });
 
-          if (existing) {
-            /* Already there — nothing to do (one adjustment per session) */
-            return;
-          }
-
-          /* Add fresh adjustment item */
-          fetch('/cart/add.js', {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id:         adjVariantId,
-              quantity:   1,
-              properties: {
-                '_adj_type':    'idealo_markup',
-                '_adj_cents':   markupCents,
-                '_adj_display': formatMoney(markupCents)
-              }
-            })
-          })
-          .then(function() {
-            /* Refresh cart UI */
-            document.dispatchEvent(new CustomEvent('cart:change', { bubbles: true }));
-            /* Trigger Dawn cart refresh */
-            var cartDrawer = document.querySelector('cart-drawer');
-            if (cartDrawer && cartDrawer.renderContents) {
-              fetch('/?sections=cart-drawer')
-                .then(function(r) { return r.json(); })
-                .then(function(sections) {
-                  if (sections['cart-drawer']) {
-                    var tmp = document.createElement('div');
-                    tmp.innerHTML = sections['cart-drawer'];
-                    var newDrawer = tmp.querySelector('#CartDrawer');
-                    var oldDrawer = document.querySelector('#CartDrawer');
-                    if (newDrawer && oldDrawer) oldDrawer.innerHTML = newDrawer.innerHTML;
-                  }
-                }).catch(function() {});
+          if (adjItem) {
+            /* Update quantity to match number of real items */
+            if (adjItem.quantity !== realQty) {
+              fetch('/cart/change.js', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: adjVariantId, quantity: realQty })
+              }).then(function() {
+                document.dispatchEvent(new CustomEvent('cart:change', { bubbles: true }));
+              }).catch(function() {});
             }
-          })
-          .catch(function() {});
-        })
-        .catch(function() {});
+          } else {
+            /* Add fresh adjustment item with correct quantity */
+            fetch('/cart/add.js', {
+              method:  'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id:       adjVariantId,
+                quantity: realQty,
+                properties: {
+                  '_adj_type':    'referral_markup',
+                  '_adj_cents':   markupCents,
+                  '_adj_display': formatMoney(markupCents)
+                }
+              })
+            }).then(function() {
+              document.dispatchEvent(new CustomEvent('cart:change', { bubbles: true }));
+            }).catch(function() {});
+          }
+        }).catch(function() {});
     },
 
-    /* ── Hide the remove "×" button on the adjustment item via CSS ── */
+    /* Hide the remove button on the Price Adjustment line item */
     hideAdjustmentRemoveButton: function(adjVariantId) {
       var style = document.createElement('style');
       style.textContent =
-        'cart-remove-button[data-variant-id="' + adjVariantId + '"],' +
-        'cart-remove-button button[data-variant-id="' + adjVariantId + '"] { display:none !important; }' +
+        'cart-remove-button[data-variant-id="' + adjVariantId + '"] { display:none !important; }' +
         '.cart-item[data-variant-id="' + adjVariantId + '"] .cart-remove-button { display:none !important; }';
       document.head.appendChild(style);
     },
 
-    /* ── If user somehow removes the adjustment, re-add it ── */
+    /* If the adjustment is removed or quantity is wrong, fix it */
     watchCartForRemoval: function(markupCents, adjVariantId) {
-      var self = this;
       document.addEventListener('cart:change', function() {
         setTimeout(function() {
           fetch('/cart.js')
@@ -247,16 +220,13 @@
             .then(function(cart) {
               var hasAdj  = (cart.items || []).some(function(i) { return i.variant_id === adjVariantId; });
               var hasReal = (cart.items || []).some(function(i) { return i.variant_id !== adjVariantId; });
-              /* Only re-add if cart has real items but adj is missing */
-              if (hasReal && !hasAdj) {
-                self.addAdjustmentItem(markupCents, adjVariantId);
-              }
+              if (hasReal && !hasAdj) Idealo.addAdjustmentItem(markupCents, adjVariantId);
             }).catch(function() {});
         }, 600);
       });
     },
 
-    /* ── Tag cart attributes (visible in Shopify Admin on every order) ── */
+    /* Tag cart attributes for Shopify Admin order visibility */
     tagCart: function(markupCents) {
       var source = sessionStorage.getItem(this.SOURCE_KEY) || 'unknown';
       fetch('/cart/update.js', {
@@ -277,13 +247,13 @@
 
   /* =================================================================
      2. FREE SHIPPING PROGRESS BAR
-  ================================================================= */
+     ================================================================= */
   var FreeShippingBar = {
     init: function() {
       if (!SETTINGS.free_shipping_enable) return;
       this.threshold      = parseInt(SETTINGS.free_shipping_threshold, 10);
-      this.message        = SETTINGS.free_shipping_message || 'Kostenloser Versand f\u00fcr alle Bestellungen!';
-      this.successMessage = SETTINGS.free_shipping_success_message || 'Kostenloser Versand f\u00fcr alle Bestellungen!';
+      this.message        = SETTINGS.free_shipping_message || "Kostenloser Versand f\u00fcr alle Bestellungen!";
+      this.successMessage = SETTINGS.free_shipping_success_message || "Kostenloser Versand f\u00fcr alle Bestellungen!";
       this.injectBar();
       this.update();
       document.addEventListener('cart:change', this.update.bind(this));
@@ -296,19 +266,22 @@
       bar.innerHTML =
         '<div class="free-shipping-bar__inner">' +
           '<div class="free-shipping-bar__text"></div>' +
-          '<div class="free-shipping-bar__track"><div class="free-shipping-bar__fill"></div></div>' +
+          '<div class="free-shipping-bar__track">' +
+            '<div class="free-shipping-bar__fill"></div>' +
+          '</div>' +
         '</div>';
       this.barEl  = bar;
       this.textEl = bar.querySelector('.free-shipping-bar__text');
       this.fillEl = bar.querySelector('.free-shipping-bar__fill');
+
       var targets  = ['cart-drawer .cart-drawer__head','cart-drawer-items','.cart-drawer','.drawer__header'];
       var inserted = false;
       for (var i = 0; i < targets.length; i++) {
-        var t = document.querySelector(targets[i]);
-        if (t) { t.parentNode.insertBefore(bar, t.nextSibling); inserted = true; break; }
+        var target = document.querySelector(targets[i]);
+        if (target) { target.parentNode.insertBefore(bar, target.nextSibling); inserted = true; break; }
       }
-      var form = document.querySelector('form[action="/cart"]');
-      if (form && !inserted) form.parentNode.insertBefore(bar.cloneNode(true), form);
+      var cartPageForm = document.querySelector('form[action="/cart"]');
+      if (cartPageForm && !inserted) cartPageForm.parentNode.insertBefore(bar.cloneNode(true), cartPageForm);
     },
 
     update: function() {
@@ -319,7 +292,7 @@
           self.fillEl.style.width = '100%';
           self.textEl.textContent = self.successMessage;
           self.barEl.classList.add('free-shipping-bar--success');
-          self.fillEl.style.background = 'var(--lux-green,#27ae60)';
+          self.fillEl.style.background = 'var(--lux-green, #27ae60)';
           return;
         }
         var pct = Math.min((total / self.threshold) * 100, 100);
@@ -327,12 +300,12 @@
         if (total >= self.threshold) {
           self.textEl.textContent = self.successMessage;
           self.barEl.classList.add('free-shipping-bar--success');
-          self.fillEl.style.background = 'var(--lux-green,#27ae60)';
+          self.fillEl.style.background = 'var(--lux-green, #27ae60)';
         } else {
-          var rem = ((self.threshold - total) / 100).toFixed(2).replace('.', ',');
-          self.textEl.textContent = self.message.replace('AMOUNT', rem);
+          var remaining = ((self.threshold - total) / 100).toFixed(2).replace('.', ',');
+          self.textEl.textContent = self.message.replace('AMOUNT', remaining);
           self.barEl.classList.remove('free-shipping-bar--success');
-          self.fillEl.style.background = 'var(--lux-gold,#C8A96B)';
+          self.fillEl.style.background = 'var(--lux-gold, #C8A96B)';
         }
       }).catch(function() {});
     }
@@ -340,7 +313,7 @@
 
   /* =================================================================
      3. STICKY ADD-TO-CART BAR
-  ================================================================= */
+     ================================================================= */
   var StickyATC = {
     init: function() {
       var mainBtn = document.querySelector('.product-form__submit');
@@ -358,24 +331,26 @@
     },
 
     createBar: function() {
-      var titleEl  = document.querySelector('.product__title');
-      var priceEl  = document.querySelector('.product .price-item--regular,.product .price-item--sale');
-      var mainForm = document.querySelector('.product-form__submit');
+      var productTitle = document.querySelector('.product__title');
+      var priceEl      = document.querySelector('.product .price-item--regular, .product .price-item--sale');
+      var mainForm     = document.querySelector('.product-form__submit');
       if (!mainForm) return;
-      var titleText = titleEl  ? titleEl.textContent.trim()  : '';
-      var priceText = priceEl  ? priceEl.textContent.trim()  : '';
+      var titleText = productTitle ? productTitle.textContent.trim() : '';
+      var priceText = priceEl      ? priceEl.textContent.trim()      : '';
       var btnText   = mainForm.textContent.trim();
-      var imgEl     = document.querySelector('.product__media-item img');
-      var imgSrc    = imgEl ? imgEl.getAttribute('src') : '';
-      var bar       = document.createElement('div');
-      bar.className = 'sticky-atc-bar';
-      bar.innerHTML =
+      var productImg = document.querySelector('.product__media-item img');
+      var imgSrc     = productImg ? productImg.getAttribute('src') : '';
+      var bar        = document.createElement('div');
+      bar.className  = 'sticky-atc-bar';
+      bar.innerHTML  =
         '<div class="sticky-atc-bar__inner page-width">' +
-        (imgSrc ? '<img class="sticky-atc-bar__img" src="' + imgSrc + '" alt="" width="48" height="48">' : '') +
-        '<div class="sticky-atc-bar__info">' +
-        '<span class="sticky-atc-bar__title">' + titleText + '</span>' +
-        '<span class="sticky-atc-bar__price">' + priceText + '</span>' +
-        '</div><button type="button" class="sticky-atc-bar__btn">' + btnText + '</button></div>';
+          (imgSrc ? '<img class="sticky-atc-bar__img" src="' + imgSrc + '" alt="" width="48" height="48">' : '') +
+          '<div class="sticky-atc-bar__info">' +
+            '<span class="sticky-atc-bar__title">' + titleText + '</span>' +
+            '<span class="sticky-atc-bar__price">' + priceText + '</span>' +
+          '</div>' +
+          '<button type="button" class="sticky-atc-bar__btn">' + btnText + '</button>' +
+        '</div>';
       document.body.appendChild(bar);
       this.bar = bar;
       bar.querySelector('.sticky-atc-bar__btn').addEventListener('click', function() {
@@ -391,32 +366,34 @@
 
     check: function() {
       if (!this.bar || !this.mainBtn) return;
-      var rect = this.mainBtn.getBoundingClientRect(), show = rect.bottom < 0;
-      if (show  && !this.visible) { this.bar.classList.add('sticky-atc-bar--visible');    this.visible = true;  }
-      if (!show &&  this.visible) { this.bar.classList.remove('sticky-atc-bar--visible'); this.visible = false; }
+      var rect = this.mainBtn.getBoundingClientRect(), shouldShow = rect.bottom < 0;
+      if (shouldShow  && !this.visible) { this.bar.classList.add('sticky-atc-bar--visible');    this.visible = true;  }
+      if (!shouldShow &&  this.visible) { this.bar.classList.remove('sticky-atc-bar--visible'); this.visible = false; }
     }
   };
 
   /* =================================================================
      4. RECENTLY VIEWED PRODUCTS
-  ================================================================= */
+     ================================================================= */
   var RecentlyViewed = {
-    KEY: 'lux_recently_viewed', MAX: 12,
+    KEY: 'lux_recently_viewed',
+    MAX: 12,
+
     init: function() { this.track(); this.render(); },
 
     track: function() {
-      var h = window.location.pathname.match(/\/products\/([^/?#]+)/);
-      if (!h) return;
-      var slug = h[1], items = this.getItems();
+      var handle = window.location.pathname.match(/\/products\/([^/?#]+)/);
+      if (!handle) return;
+      var slug = handle[1], items = this.getItems();
       var title = '', price = '', image = '', url = window.location.pathname;
-      var tEl = document.querySelector('.product__title');
-      if (tEl) title = tEl.textContent.trim();
-      var pEl = document.querySelector('.product .price-item--regular,.product .price-item');
-      if (pEl) price = pEl.textContent.trim();
-      var iEl = document.querySelector('.product__media-item img');
-      if (iEl) image = iEl.getAttribute('src') || '';
-      items = items.filter(function(i) { return i.slug !== slug; });
-      items.unshift({ slug:slug, title:title, price:price, image:image, url:url });
+      var titleEl = document.querySelector('.product__title');
+      if (titleEl) title = titleEl.textContent.trim();
+      var priceEl = document.querySelector('.product .price-item--regular, .product .price-item');
+      if (priceEl) price = priceEl.textContent.trim();
+      var imgEl = document.querySelector('.product__media-item img');
+      if (imgEl) image = imgEl.getAttribute('src') || '';
+      items = items.filter(function(item) { return item.slug !== slug; });
+      items.unshift({ slug: slug, title: title, price: price, image: image, url: url });
       items = items.slice(0, this.MAX);
       try { localStorage.setItem(this.KEY, JSON.stringify(items)); } catch(e) {}
     },
@@ -427,38 +404,48 @@
 
     render: function() {
       var items = this.getItems();
-      var cur   = (window.location.pathname.match(/\/products\/([^/?#]+)/) || [])[1];
-      items = items.filter(function(i) { return i.slug !== cur; });
+      var currentHandle = (window.location.pathname.match(/\/products\/([^/?#]+)/) || [])[1];
+      items = items.filter(function(item) { return item.slug !== currentHandle; });
       if (items.length < 2) return;
-      if (!/\/products\/|\/collections\//.test(window.location.pathname)) return;
-      var ex = document.querySelector('.recently-viewed');
-      if (ex) ex.remove();
+      var isProductPage    = /\/products\//.test(window.location.pathname);
+      var isCollectionPage = /\/collections\//.test(window.location.pathname);
+      if (!isProductPage && !isCollectionPage) return;
+      var existing = document.querySelector('.recently-viewed');
+      if (existing) existing.remove();
 
-      function esc(s) {
-        return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      function escapeHtml(str) {
+        return String(str || '')
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
           .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
       }
-      function resized(url, w) {
+      function resizedImageUrl(url, width) {
         if (!url) return '';
-        var c = url.replace(/([?&])width=\d+/g,'').replace(/[?&]$/,'');
-        return c + (c.indexOf('?') === -1 ? '?' : '&') + 'width=' + w;
+        var cleanUrl = url.replace(/([?&])width=\d+/g, '').replace(/[?&]$/, '');
+        return cleanUrl + (cleanUrl.indexOf('?') === -1 ? '?' : '&') + 'width=' + width;
       }
 
-      var html = '<section class="recently-viewed"><div class="page-width">' +
-        '<div class="recently-viewed__header"><span class="recently-viewed__eyebrow">Recently Viewed</span>' +
-        '<h2 class="recently-viewed__title">Continue Your Journey</h2></div>' +
-        '<div class="recently-viewed__scroll">';
+      var html =
+        '<section class="recently-viewed"><div class="page-width">' +
+          '<div class="recently-viewed__header">' +
+            '<span class="recently-viewed__eyebrow">Recently Viewed</span>' +
+            '<h2 class="recently-viewed__title">Continue Your Journey</h2>' +
+          '</div><div class="recently-viewed__scroll">';
 
       items.forEach(function(item) {
-        var u = /^\//.test(item.url||'') ? item.url : '/collections/all';
-        html += '<a href="'+u+'" class="recently-viewed__card">' +
-          '<div class="recently-viewed__img-wrap">' +
-          (item.image ? '<img src="'+resized(item.image,300)+'" alt="'+esc(item.title)+'" loading="lazy" width="150" height="200">'
-                      : '<div class="recently-viewed__placeholder"></div>') +
-          '</div><div class="recently-viewed__info">' +
-          '<span class="recently-viewed__name">'  + esc(item.title) + '</span>' +
-          '<span class="recently-viewed__price">' + esc(item.price) + '</span>' +
-          '</div></a>';
+        var safeUrl   = /^\//.test(item.url || '') ? item.url : '/collections/all';
+        var safeTitle = escapeHtml(item.title || 'Product');
+        var safePrice = escapeHtml(item.price || '');
+        var safeImg   = item.image ? resizedImageUrl(item.image, 300) : '';
+        html +=
+          '<a href="' + safeUrl + '" class="recently-viewed__card">' +
+            '<div class="recently-viewed__img-wrap">' +
+              (safeImg ? '<img src="' + safeImg + '" alt="' + safeTitle + '" loading="lazy" width="150" height="200">' : '<div class="recently-viewed__placeholder"></div>') +
+            '</div>' +
+            '<div class="recently-viewed__info">' +
+              '<span class="recently-viewed__name">'  + safeTitle + '</span>' +
+              '<span class="recently-viewed__price">' + safePrice + '</span>' +
+            '</div>' +
+          '</a>';
       });
 
       html += '</div></div></section>';
@@ -469,30 +456,38 @@
 
   /* =================================================================
      5. LOW STOCK URGENCY INDICATOR
-  ================================================================= */
+     ================================================================= */
   var StockUrgency = {
     init: function() {
-      if (!document.querySelector('product-info')) return;
-      if (!document.querySelectorAll('variant-selects,variant-radios').length) return;
+      var info = document.querySelector('product-info');
+      if (!info) return;
+      var selects = document.querySelectorAll('variant-selects, variant-radios');
+      if (!selects.length) return;
       this.injectContainer();
       this.observe();
     },
     injectContainer: function() {
-      var p = document.querySelector('.product .price');
-      if (!p) return;
-      var c = document.createElement('div');
-      c.className = 'stock-urgency'; c.style.display = 'none';
-      p.parentNode.insertBefore(c, p.nextSibling);
-      this.container = c;
+      var priceEl = document.querySelector('.product .price');
+      if (!priceEl) return;
+      var container = document.createElement('div');
+      container.className = 'stock-urgency';
+      container.style.display = 'none';
+      priceEl.parentNode.insertBefore(container, priceEl.nextSibling);
+      this.container = container;
     },
     observe: function() {
-      var c = this.container; if (!c) return;
+      var container = this.container;
+      if (!container) return;
       document.addEventListener('change', function(e) {
-        if (!e.target.closest('variant-selects,variant-radios')) return;
+        if (!e.target.closest('variant-selects, variant-radios')) return;
         setTimeout(function() {
-          var badge = document.querySelector('.product .badge--low-stock,.inventory--low');
-          c.textContent = badge ? '\uD83D\uDD25 Low stock \u2014 order soon!' : '';
-          c.style.display = badge ? 'block' : 'none';
+          var badge = document.querySelector('.product .badge--low-stock, .inventory--low');
+          if (badge) {
+            container.textContent = '\uD83D\uDD25 Low stock \u2014 order soon!';
+            container.style.display = 'block';
+          } else {
+            container.style.display = 'none';
+          }
         }, 400);
       });
     }
@@ -500,7 +495,7 @@
 
   /* =================================================================
      INIT
-  ================================================================= */
+     ================================================================= */
   function initAll() {
     Idealo.init();
     FreeShippingBar.init();
