@@ -152,54 +152,54 @@
       };
     },
 
-    /* Add/update Price Adjustment quantity = number of non-landing products in cart */
+    /* Add/update Price Adjustment — quantity matches total real items in cart */
     addAdjustmentItem: function(markupCents, adjVariantId) {
-      fetch('/cart.js')
-        .then(function(r) { return r.json(); })
-        .then(function(cart) {
-          /* Count real (non-adjustment) items and their total quantity */
-          var realQty = 0;
-          (cart.items || []).forEach(function(i) {
-            if (i.variant_id !== adjVariantId) realQty += i.quantity;
-          });
-          if (realQty <= 0) return;
+      var self = this;
+      /* Wait 800ms for cart to fully update before reading it */
+      setTimeout(function() {
+        fetch('/cart.js')
+          .then(function(r) { return r.json(); })
+          .then(function(cart) {
+            /* Count total quantity of real (non-adjustment) items */
+            var realQty = 0;
+            var adjItem = null;
+            (cart.items || []).forEach(function(i) {
+              if (i.variant_id === adjVariantId) {
+                adjItem = i;
+              } else {
+                realQty += i.quantity;
+              }
+            });
 
-          /* Check if adjustment already exists */
-          var adjItem = null;
-          (cart.items || []).forEach(function(i) {
-            if (i.variant_id === adjVariantId) adjItem = i;
-          });
+            if (realQty <= 0) return;
 
-          if (adjItem) {
-            /* Update quantity to match number of real items */
-            if (adjItem.quantity !== realQty) {
-              fetch('/cart/change.js', {
+            if (adjItem) {
+              /* Already exists — update quantity if needed */
+              if (adjItem.quantity !== realQty) {
+                fetch('/cart/change.js', {
+                  method:  'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: adjVariantId, quantity: realQty })
+                }).catch(function() {});
+              }
+            } else {
+              /* Doesn't exist — add it */
+              fetch('/cart/add.js', {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: adjVariantId, quantity: realQty })
-              }).then(function() {
-                document.dispatchEvent(new CustomEvent('cart:change', { bubbles: true }));
+                body: JSON.stringify({
+                  id:       adjVariantId,
+                  quantity: realQty,
+                  properties: {
+                    '_adj_type':    'referral_markup',
+                    '_adj_cents':   markupCents,
+                    '_adj_display': formatMoney(markupCents)
+                  }
+                })
               }).catch(function() {});
             }
-          } else {
-            /* Add fresh adjustment item with correct quantity */
-            fetch('/cart/add.js', {
-              method:  'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                id:       adjVariantId,
-                quantity: realQty,
-                properties: {
-                  '_adj_type':    'referral_markup',
-                  '_adj_cents':   markupCents,
-                  '_adj_display': formatMoney(markupCents)
-                }
-              })
-            }).then(function() {
-              document.dispatchEvent(new CustomEvent('cart:change', { bubbles: true }));
-            }).catch(function() {});
-          }
-        }).catch(function() {});
+          }).catch(function() {});
+      }, 800);
     },
 
     /* Hide the remove button on the Price Adjustment line item */
