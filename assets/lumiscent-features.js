@@ -152,71 +152,52 @@
       };
     },
 
-    /* Add/update Price Adjustment — quantity matches total real items in cart */
+    /* Add Price Adjustment — flat fee, added once per session */
     addAdjustmentItem: function(markupCents, adjVariantId) {
-      /* Wait 1000ms for cart to fully update */
       setTimeout(function() {
         fetch('/cart.js')
           .then(function(r) { return r.json(); })
           .then(function(cart) {
-            var realQty = 0;
-            var adjKey  = null;
-            var adjQty  = 0;
-
-            (cart.items || []).forEach(function(i) {
-              if (i.variant_id === adjVariantId) {
-                adjKey = i.key;
-                adjQty = i.quantity;
-              } else {
-                realQty += i.quantity;
-              }
+            var already = (cart.items || []).some(function(i) {
+              return i.variant_id === adjVariantId;
             });
+            if (already) return;
 
-            if (realQty <= 0) return;
-
-            if (adjKey && adjQty === realQty) {
-              /* Already correct — nothing to do */
-              return;
-            }
-
-            if (adjKey) {
-              /* Exists but wrong quantity — remove and re-add */
-              fetch('/cart/change.js', {
-                method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ line: adjKey, quantity: 0 })
-              }).then(function() {
-                return fetch('/cart/add.js', {
-                  method:  'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    id: adjVariantId, quantity: realQty,
-                    properties: { '_adj_type': 'referral_markup' }
-                  })
-                });
-              }).catch(function() {});
-            } else {
-              /* Doesn't exist — add fresh */
-              fetch('/cart/add.js', {
-                method:  'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  id: adjVariantId, quantity: realQty,
-                  properties: { '_adj_type': 'referral_markup' }
-                })
-              }).catch(function() {});
-            }
+            fetch('/cart/add.js', {
+              method:  'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                id: adjVariantId,
+                quantity: 1,
+                properties: { '_adj_type': 'referral_markup' }
+              })
+            }).catch(function() {});
           }).catch(function() {});
-      }, 1000);
+      }, 800);
     },
 
     /* Hide the remove button on the Price Adjustment line item */
     hideAdjustmentRemoveButton: function(adjVariantId) {
       var style = document.createElement('style');
+      /* Hide by variant ID and by product title text */
       style.textContent =
-        'cart-remove-button[data-variant-id="' + adjVariantId + '"] { display:none !important; }' +
-        '.cart-item[data-variant-id="' + adjVariantId + '"] .cart-remove-button { display:none !important; }';
+        'cart-remove-button[data-variant-id="' + adjVariantId + '"] { display:none !important; visibility:hidden !important; }' +
+        '.cart-item[data-variant-id="' + adjVariantId + '"] .cart-remove-button { display:none !important; }' +
+        '.cart-item[data-variant-id="' + adjVariantId + '"] cart-remove-button { display:none !important; }' +
+        /* Also hide quantity controls on the adjustment item */
+        '.cart-item[data-variant-id="' + adjVariantId + '"] .quantity { pointer-events:none; opacity:0.5; }';
       document.head.appendChild(style);
+
+      /* Also use MutationObserver to hide after cart re-renders */
+      if (window.MutationObserver) {
+        var obs = new MutationObserver(function() {
+          var btns = document.querySelectorAll(
+            'cart-remove-button[data-variant-id="' + adjVariantId + '"]'
+          );
+          btns.forEach(function(b) { b.style.display = 'none'; });
+        });
+        obs.observe(document.body, { childList: true, subtree: true });
+      }
     },
 
     /* If the adjustment is removed or quantity is wrong, fix it */
